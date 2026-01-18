@@ -93,6 +93,12 @@ export class Game {
         if (!this.roomMap[roomId]) return { moved: false, events: null };
         this.player.CurrentRoom = roomId;
         advanceGameClockByMoves(this.player, 1);
+        if (this.player?.Stats && this.player.Stats.Energy !== undefined) {
+            const currentEnergy = Number(this.player.Stats.Energy);
+            if (Number.isFinite(currentEnergy)) {
+                this.player.Stats.Energy = Math.max(0, Math.trunc(currentEnergy) - 1);
+            }
+        }
         const events = this.runRoomEnterEvents(roomId);
         const levelProgression = this.checkLevelProgression();
         this.lastEventResult = events;

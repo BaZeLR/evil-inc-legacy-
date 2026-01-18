@@ -6,7 +6,7 @@ import { createCombatState, performCombatTurn } from '../utils/combat.js';
 import { randomIntInclusive } from '../utils/random.js';
 import { ragsToHtml } from '../utils/ragsMarkup.js';
 import { getExperienceCheckpoints, getMentalStatusForLevel } from '../utils/leveling.js';
-import { formatGameClock, getDayPartFromMinutes, getGameClockFromStats } from '../utils/gameTime.js';
+import { advanceGameClockByMoves, formatGameClock, getDayPartFromMinutes, getGameClockFromStats } from '../utils/gameTime.js';
 import { createEmptySaveGame, writeSaveGame } from '../utils/saveGame.js';
 import { writeDbJsonFile } from '../utils/dbWrite.js';
 import { useGameStore } from './store/gameStore.js';
@@ -1643,6 +1643,18 @@ export function GameUI() {
       playerArmorBonus: equippedBonuses.defence,
       playerAttackBonus: equippedBonuses.ms
     });
+
+    advanceGameClockByMoves(game.player, 2);
+    const actionKind = String(action?.kind ?? '').trim().toLowerCase();
+    if (actionKind && actionKind !== 'ability' && game?.player?.Stats && game.player.Stats.Energy !== undefined) {
+      const currentEnergy = Number(game.player.Stats.Energy);
+      if (Number.isFinite(currentEnergy)) {
+        const nextEnergy = Math.max(0, Math.trunc(currentEnergy) - 1);
+        game.player.Stats.Energy = nextEnergy;
+        if (nextCombat) nextCombat.playerEnergy = nextEnergy;
+      }
+    }
+
     setCombat(nextCombat);
     setPlayer({ ...game.player, Stats: { ...game.player.Stats } });
     openLevelUpNotice(nextCombat?.rewards?.levelProgression, game.player, game.leveling);
