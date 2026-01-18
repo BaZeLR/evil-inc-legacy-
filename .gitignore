@@ -2,6 +2,7 @@ node_modules/
 dist/
 regalia/node_modules/
 backups/
+public/DB/savegame.json
 
 *.log
 dev.stdout.log

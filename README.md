@@ -22,6 +22,8 @@ To confirm, open `/DB/rooms.json` in the browser on the dev/preview port.
 
 Edits to `public/DB/*.json` can look ignored if `DB/savegame.json` or browser `localStorage` overrides the same fields. In-game: open Settings → **Reset Save** / **New Game**.
 
+Note: `public/DB/savegame.json` is treated as runtime state (ignored by git). The tracked baseline is `public/DB/savegame.template.json`.
+
 ## Useful commands
 
 - `npm run dev` — run editor/dev server
