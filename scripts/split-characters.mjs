@@ -49,6 +49,13 @@ async function main() {
   const sourcePath = path.join(repoRoot, 'public', 'DB', 'characters', 'characters.json');
   const baseDir = path.join(repoRoot, 'public', 'DB', 'characters');
 
+  try {
+    await fs.access(sourcePath);
+  } catch {
+    console.log(`OK: no legacy characters.json found at ${path.relative(repoRoot, sourcePath)}`);
+    return;
+  }
+
   const categories = [
     { key: 'enemies', dir: path.join(baseDir, 'enemies'), ids: [] },
     { key: 'bosses', dir: path.join(baseDir, 'bosses'), ids: [] },
@@ -97,4 +104,3 @@ main().catch(error => {
   console.error(error?.message || String(error));
   process.exitCode = 1;
 });
-
