@@ -1,0 +1,65 @@
+{
+  "UniqueID": "yes_man_001",
+  "Charname": "Yes Man",
+  "Gender": "Male",
+  "Type": "hostile",
+  "Disposition": "hostile",
+  "Description": "A hostile combatant wielding a Photon Laser.",
+  "CurrentRoom": "eastside_lc_001",
+  "Picture": "Assets/images/characters/Yes_Man.jpg",
+  "KnowsPlayer": false,
+  "Weapons": [
+    "Photon Laser"
+  ],
+  "ExpReward": 10,
+  "CreditsReward": 0,
+  "Element": 4,
+  "LootType": 0,
+  "Encounter": {
+    "Intro": "While exploring E.I.'s Training Room you can help but be amazed! You come across a control panel and decide to give the training program a shot. You press the button and out comes this strange robot riding on one wheel and as a monitor for a face. Im Yes Man, Dr. Evil's favorite robot! That's why he keeps me down here to show me his love!!!! Now [b]I\"LL SHOW YOU MINE!!!!![/b] Hey what the fuck is this? You ask aloud. The robot looks at you with his creepy smile and points his arms at you and fires lasers around you. [c Red][b]Lets Fight![/b][/c]",
+    "EnemyMiss": "[middle]Yes Man flailed all over but you managed to avoid being hit![/middle]",
+    "EnemyHit": "[middle]Im not done yet! The strange robot yells. [b][c Red]PEW! PEW! PEW![/c][/b] The robot looks at you with his creepy smile and points his arms at you and fires lasers at you for [b][c 0,128,64][v: _enemyDMG] [/c]Damage[/b][/middle]",
+    "EnemyCritical": "[middle]Focusing both of his laser on you Yes Man's screen turns to the image of a skull and crossbones. His arms blast you with a strong laser beam and one comes down from the ceiling that knocks you down. [c Red][b]CRITICAL HIT![/b][/c][/middle][middle]You take [c Red][b][v: _enemyDMG] damage[/b][/c][/middle]",
+    "Victory": "[middle]You defeated Yes Man. After about 10 seconds he seems to reboot and hops back up as if nothing happens. Good Show Sir![/middle]"
+  },
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "bConditionFailOnFirst": true,
+      "InputType": "None",
+      "Conditions": [],
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Yes Man raises his Photon Laser."
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "ActionsMenu": [
+    {
+      "Action": "Examine",
+      "Description": "Look at Yes Man closely."
+    },
+    {
+      "Action": "Attack",
+      "Description": "Engage in combat."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {
+    "Attack": 3,
+    "Defence": 2,
+    "Health": 20,
+    "MaxHealth": 20,
+    "Dmg": 3,
+    "Str": 1,
+    "Def": 2,
+    "Agl": 1
+  },
+  "LoreStages": {},
+  "CustomProperties": []
+}

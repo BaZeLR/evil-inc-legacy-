@@ -155,12 +155,157 @@ export async function loadGameData() {
 
     const loadErrors = [];
 
+    async function loadCharactersFromCategoryIndexes() {
+        const categories = [
+            { key: 'enemies', dir: 'DB/characters/enemies', index: 'DB/characters/enemies/index.json' },
+            { key: 'bosses', dir: 'DB/characters/bosses', index: 'DB/characters/bosses/index.json' },
+            { key: 'residents', dir: 'DB/characters/residents', index: 'DB/characters/residents/index.json' },
+            { key: 'secondary_npc', dir: 'DB/characters/secondary_npc', index: 'DB/characters/secondary_npc/index.json' },
+            { key: 'npc', dir: 'DB/characters/npc', index: 'DB/characters/npc/index.json' }
+        ];
+
+        const fileList = [];
+        const seenIds = new Set();
+        let loadedAnyIndex = false;
+
+        for (const category of categories) {
+            try {
+                const indexJson = await fetchJSON(category.index);
+                loadedAnyIndex = true;
+                const idsRaw = Array.isArray(indexJson?.Characters)
+                    ? indexJson.Characters
+                    : Array.isArray(indexJson?.characters)
+                        ? indexJson.characters
+                        : [];
+
+                for (const rawId of idsRaw) {
+                    const id = String(rawId ?? '').trim();
+                    if (!id) continue;
+                    if (seenIds.has(id)) {
+                        loadErrors.push({
+                            kind: 'character',
+                            path: category.index,
+                            error: `Duplicate character id in indexes: ${id}`
+                        });
+                        continue;
+                    }
+                    seenIds.add(id);
+                    fileList.push({ id, path: `${category.dir}/${id}.json` });
+                }
+            } catch {
+                // Ignore missing index files so the loader can fall back to legacy schemas.
+            }
+        }
+
+        if (!loadedAnyIndex) return null;
+
+        const results = await Promise.allSettled(fileList.map(entry => fetchJSON(entry.path)));
+        const characters = [];
+
+        for (let idx = 0; idx < results.length; idx++) {
+            const source = fileList[idx]?.path || null;
+            const result = results[idx];
+
+            if (result.status !== 'fulfilled') {
+                loadErrors.push({
+                    kind: 'character',
+                    path: source,
+                    error: result.reason?.message || String(result.reason)
+                });
+                continue;
+            }
+
+            const character = result.value;
+            const id = character?.UniqueID || character?.id || null;
+            if (!id) {
+                loadErrors.push({
+                    kind: 'character',
+                    path: source,
+                    error: 'Missing UniqueID/id'
+                });
+                continue;
+            }
+
+            characters.push(character);
+        }
+
+        return characters;
+    }
+
+    async function loadCharactersFromDevList() {
+        if (!import.meta?.env?.DEV) return null;
+
+        try {
+            const response = await fetch('/api/db/list?dir=DB/characters', { cache: 'no-store' });
+            if (!response.ok) return null;
+            const payload = await response.json();
+
+            const files = Array.isArray(payload?.files)
+                ? payload.files
+                    .map(entry => String(entry ?? '').trim())
+                    .filter(entry => entry && entry.startsWith('DB/characters/') && entry.toLowerCase().endsWith('.json'))
+                : [];
+            const characterFiles = files.filter(entry => !entry.toLowerCase().endsWith('/index.json') && !entry.toLowerCase().endsWith('/characters.json'));
+            if (!characterFiles.length) return null;
+
+            const results = await Promise.allSettled(characterFiles.map(fetchJSON));
+            const characters = [];
+
+            for (let idx = 0; idx < results.length; idx++) {
+                const source = characterFiles[idx] || null;
+                const result = results[idx];
+
+                if (result.status !== 'fulfilled') {
+                    loadErrors.push({
+                        kind: 'character',
+                        path: source,
+                        error: result.reason?.message || String(result.reason)
+                    });
+                    continue;
+                }
+
+                const character = result.value;
+                const id = character?.UniqueID || character?.id || null;
+                if (!id) {
+                    loadErrors.push({
+                        kind: 'character',
+                        path: source,
+                        error: 'Missing UniqueID/id'
+                    });
+                    continue;
+                }
+
+                characters.push(character);
+            }
+
+            return characters;
+        } catch {
+            return null;
+        }
+    }
+
+    async function loadCharacters() {
+        const fromIndexes = await loadCharactersFromCategoryIndexes();
+        if (fromIndexes) return fromIndexes;
+
+        const fromList = await loadCharactersFromDevList();
+        if (fromList) return fromList;
+
+        try {
+            const legacy = await fetchJSON('DB/characters/characters.json');
+            return Array.isArray(legacy) ? legacy : [];
+        } catch (error) {
+            loadErrors.push({
+                kind: 'character',
+                path: 'DB/characters/characters.json',
+                error: error?.message || String(error)
+            });
+            return [];
+        }
+    }
+
     // Load core data
-    const [player, roomsRaw, characters] = await Promise.all([
-        fetchJSON('DB/player.json'),
-        fetchJSON('DB/rooms.json'),
-        fetchJSON('DB/characters/characters.json')
-    ]);
+    const [player, roomsRaw, characters] = await Promise.all([fetchJSON('DB/player.json'), fetchJSON('DB/rooms.json'), loadCharacters()]);
 
     let leveling = null;
     try {

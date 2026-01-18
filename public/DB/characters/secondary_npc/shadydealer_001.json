@@ -1,0 +1,52 @@
+{
+  "UniqueID": "shadydealer_001",
+  "Charname": "Shady Dealer",
+  "Gender": "Male",
+  "Type": "secondary",
+  "Description": "A low-profile dealer with a coat full of questionable gear.",
+  "CurrentRoom": "blackmarket_lc_001",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "ShopItems": [
+    {
+      "UniqueID": "lab_coat_001",
+      "Price": 60
+    },
+    {
+      "UniqueID": "insulated_boots_001",
+      "Price": 45
+    },
+    {
+      "UniqueID": "rubber_gloves_001",
+      "Price": 35
+    },
+    {
+      "UniqueID": "vibranium_ring_001",
+      "Price": 120
+    },
+    {
+      "UniqueID": "rusty_knife_001",
+      "Price": 25
+    },
+    {
+      "UniqueID": "cheap_pistol_001",
+      "Price": 90
+    }
+  ],
+  "Actions": [],
+  "ActionsMenu": [
+    {
+      "Action": "Talk",
+      "Description": "See what the dealer has for sale."
+    },
+    {
+      "Action": "Examine",
+      "Description": "Look at the dealer closely."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {},
+  "LoreStages": {},
+  "CustomProperties": []
+}

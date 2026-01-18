@@ -9,6 +9,7 @@
     "build": "vite build",
     "rebuild": "npm run clean && npm run build",
     "test": "node --test",
+    "db:characters:split": "node scripts/split-characters.mjs",
     "check:navigation": "node scripts/validate-navigation.mjs",
     "db:verify": "node scripts/verify-db-sync.mjs",
     "release:patch": "npm version patch -m \"chore(release): %s\"",

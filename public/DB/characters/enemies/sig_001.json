@@ -1,0 +1,58 @@
+{
+  "UniqueID": "sig_001",
+  "Charname": "Sig",
+  "Gender": "Male",
+  "Type": "hostile",
+  "Disposition": "hostile",
+  "Description": "A hostile gunman with a pistol and quick reflexes.",
+  "CurrentRoom": "eastside_lc_001",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Weapons": [
+    "Pistol"
+  ],
+  "ExpReward": 120,
+  "CreditsReward": 0,
+  "Element": 1,
+  "LootType": 0,
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "bConditionFailOnFirst": true,
+      "InputType": "None",
+      "Conditions": [],
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Sig taps the side of his pistol and gives you a cold look."
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "ActionsMenu": [
+    {
+      "Action": "Examine",
+      "Description": "Look at Sig closely."
+    },
+    {
+      "Action": "Attack",
+      "Description": "Engage in combat."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {
+    "Attack": 4,
+    "Defence": 2,
+    "Health": 50,
+    "MaxHealth": 50,
+    "Dmg": 4,
+    "Str": 4,
+    "Def": 2,
+    "Agl": 1
+  },
+  "LoreStages": {},
+  "CustomProperties": []
+}

@@ -1,0 +1,62 @@
+{
+  "UniqueID": "beast_bro_001",
+  "Charname": "Beast Bro",
+  "Gender": "Male",
+  "Type": "shapeshifter",
+  "Disposition": "neutral",
+  "Description": "A loud, unpredictable shapeshifter with fists like hammers.",
+  "CurrentRoom": "eastside_lc_001",
+  "Picture": "Assets/images/characters/beast bro.jpg",
+  "KnowsPlayer": false,
+  "Weapons": [
+    "Fist"
+  ],
+  "ExpReward": 50,
+  "CreditsReward": 0,
+  "Element": 1,
+  "LootType": 0,
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "bConditionFailOnFirst": true,
+      "InputType": "None",
+      "Conditions": [],
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "HEY HEY HEY! BRO! I KNOW YOU!<br>There's a bounty on your head.<br><b><span style=\"color:red\">Let's fight!</span></b>"
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "ActionsMenu": [
+    {
+      "Action": "Talk",
+      "Description": "Try to calm Beast Bro down."
+    },
+    {
+      "Action": "Examine",
+      "Description": "Look at Beast Bro closely."
+    },
+    {
+      "Action": "Attack",
+      "Description": "Engage in combat."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {
+    "Attack": 7,
+    "Defence": 2,
+    "Health": 20,
+    "MaxHealth": 20,
+    "Dmg": 7,
+    "Str": 7,
+    "Def": 2,
+    "Agl": 1
+  },
+  "LoreStages": {},
+  "CustomProperties": []
+}

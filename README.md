@@ -24,14 +24,27 @@ Edits to `public/DB/*.json` can look ignored if `DB/savegame.json` or browser `l
 
 Note: `public/DB/savegame.json` is treated as runtime state (ignored by git). The tracked baseline is `public/DB/savegame.template.json`.
 
+## Characters DB layout
+
+Characters are stored as individual files, grouped by category:
+
+- `public/DB/characters/enemies/*.json` (combat enemies)
+- `public/DB/characters/bosses/*.json`
+- `public/DB/characters/residents/*.json`
+- `public/DB/characters/secondary_npc/*.json`
+- `public/DB/characters/npc/*.json`
+
+Each folder has an `index.json` listing the character `UniqueID`s in that folder.
+
 ## Useful commands
 
-- `npm run dev` — run editor/dev server
-- `npm run build` — rebuild `dist/` (updates `dist/DB/**` from `public/DB/**`)
-- `npm run preview` — run the built `dist/` locally
-- `npm run check:navigation` — validate room exits in `public/DB/rooms.json`
-- `npm run db:verify` — verify `dist/DB` matches `public/DB` (after a build)
-- `npm run rebuild` — delete `dist/` then build
+- `npm run dev` - run editor/dev server
+- `npm run build` - rebuild `dist/` (updates `dist/DB/**` from `public/DB/**`)
+- `npm run preview` - run the built `dist/` locally
+- `npm run db:characters:split` - migrate legacy `characters.json` into folders
+- `npm run check:navigation` - validate room exits in `public/DB/rooms.json`
+- `npm run db:verify` - verify `dist/DB` matches `public/DB` (after a build)
+- `npm run rebuild` - delete `dist/` then build
 
 ## Versioning / rollback
 

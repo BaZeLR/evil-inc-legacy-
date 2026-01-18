@@ -1,0 +1,58 @@
+{
+  "UniqueID": "the_martian_001",
+  "Charname": "The Martian",
+  "Gender": "Male",
+  "Type": "alien",
+  "Disposition": "neutral",
+  "Description": "A calm alien presence radiating an otherworldly wave.",
+  "CurrentRoom": "eastside_lc_001",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Weapons": [
+    "Alien Wave"
+  ],
+  "ExpReward": 120,
+  "CreditsReward": 0,
+  "Element": 1,
+  "LootType": 0,
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "bConditionFailOnFirst": true,
+      "InputType": "None",
+      "Conditions": [],
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "The Martian’s eyes glow softly as an alien wave ripples through the air."
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "ActionsMenu": [
+    {
+      "Action": "Talk",
+      "Description": "Try to talk to The Martian."
+    },
+    {
+      "Action": "Examine",
+      "Description": "Look at The Martian closely."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {
+    "Attack": 8,
+    "Defence": 4,
+    "Health": 100,
+    "MaxHealth": 100,
+    "Dmg": 8,
+    "Str": 8,
+    "Def": 4,
+    "Agl": 1
+  },
+  "LoreStages": {},
+  "CustomProperties": []
+}

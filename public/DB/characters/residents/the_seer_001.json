@@ -1,0 +1,58 @@
+{
+  "UniqueID": "the_seer_001",
+  "Charname": "The Seer",
+  "Gender": "Male",
+  "Type": "seer",
+  "Disposition": "neutral",
+  "Description": "A quiet mystic who channels dark energy through a focused gaze.",
+  "CurrentRoom": "eastside_lc_001",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Weapons": [
+    "Dark Energy"
+  ],
+  "ExpReward": 120,
+  "CreditsReward": 0,
+  "Element": 1,
+  "LootType": 0,
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "bConditionFailOnFirst": true,
+      "InputType": "None",
+      "Conditions": [],
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "The Seer tilts his head, and the air hums with dark energy."
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "ActionsMenu": [
+    {
+      "Action": "Talk",
+      "Description": "Try to speak with The Seer."
+    },
+    {
+      "Action": "Examine",
+      "Description": "Look at The Seer closely."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {
+    "Attack": 9,
+    "Defence": 8,
+    "Health": 50,
+    "MaxHealth": 50,
+    "Dmg": 9,
+    "Str": 9,
+    "Def": 8,
+    "Agl": 1
+  },
+  "LoreStages": {},
+  "CustomProperties": []
+}

@@ -1,0 +1,58 @@
+{
+  "UniqueID": "zantaia_001",
+  "Charname": "Zantaia",
+  "Gender": "Female",
+  "Type": "mage",
+  "Disposition": "neutral",
+  "Description": "A composed spellcaster carrying a wand with practiced confidence.",
+  "CurrentRoom": "eastside_lc_001",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Weapons": [
+    "Wand"
+  ],
+  "ExpReward": 120,
+  "CreditsReward": 0,
+  "Element": 1,
+  "LootType": 0,
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "bConditionFailOnFirst": true,
+      "InputType": "None",
+      "Conditions": [],
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Zantaia taps her wand once, and a faint shimmer dances across the air."
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "ActionsMenu": [
+    {
+      "Action": "Talk",
+      "Description": "Try to speak with Zantaia."
+    },
+    {
+      "Action": "Examine",
+      "Description": "Look at Zantaia closely."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {
+    "Attack": 11,
+    "Defence": 7,
+    "Health": 100,
+    "MaxHealth": 100,
+    "Dmg": 11,
+    "Str": 11,
+    "Def": 7,
+    "Agl": 1
+  },
+  "LoreStages": {},
+  "CustomProperties": []
+}

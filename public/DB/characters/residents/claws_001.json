@@ -1,0 +1,58 @@
+{
+  "UniqueID": "claws_001",
+  "Charname": "Claws",
+  "Gender": "Male",
+  "Type": "fighter",
+  "Disposition": "neutral",
+  "Description": "A stoic fighter with metal claws.",
+  "CurrentRoom": "eastside_lc_001",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Weapons": [
+    "Metal Claws"
+  ],
+  "ExpReward": 50,
+  "CreditsReward": 0,
+  "Element": 1,
+  "LootType": 0,
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "bConditionFailOnFirst": true,
+      "InputType": "None",
+      "Conditions": [],
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Claws flexes his metal claws with a sharp scrape."
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "ActionsMenu": [
+    {
+      "Action": "Talk",
+      "Description": "Try to talk to Claws."
+    },
+    {
+      "Action": "Examine",
+      "Description": "Look at Claws closely."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {
+    "Attack": 6,
+    "Defence": 4,
+    "Health": 20,
+    "MaxHealth": 20,
+    "Dmg": 6,
+    "Str": 6,
+    "Def": 4,
+    "Agl": 1
+  },
+  "LoreStages": {},
+  "CustomProperties": []
+}

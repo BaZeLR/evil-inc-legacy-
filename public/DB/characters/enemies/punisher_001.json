@@ -1,0 +1,58 @@
+{
+  "UniqueID": "punisher_001",
+  "Charname": "Punisher",
+  "Gender": "Male",
+  "Type": "hostile",
+  "Disposition": "hostile",
+  "Description": "A hostile gunman with an assault rifle and a relentless stare.",
+  "CurrentRoom": "eastside_lc_001",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Weapons": [
+    "Assault Rifle"
+  ],
+  "ExpReward": 120,
+  "CreditsReward": 0,
+  "Element": 1,
+  "LootType": 0,
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "bConditionFailOnFirst": true,
+      "InputType": "None",
+      "Conditions": [],
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Punisher shoulders his assault rifle and sizes you up."
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "ActionsMenu": [
+    {
+      "Action": "Examine",
+      "Description": "Look at Punisher closely."
+    },
+    {
+      "Action": "Attack",
+      "Description": "Engage in combat."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {
+    "Attack": 14,
+    "Defence": 5,
+    "Health": 150,
+    "MaxHealth": 150,
+    "Dmg": 14,
+    "Str": 14,
+    "Def": 5,
+    "Agl": 1
+  },
+  "LoreStages": {},
+  "CustomProperties": []
+}
