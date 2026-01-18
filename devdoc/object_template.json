@@ -1,0 +1,27 @@
+{
+  "UniqueID": "",
+  "Name": "",
+  "Type": "",                // e.g. eatable, container, machine, weapon, armor, wearable
+  "Description": "",
+  "Picture": "",
+  "Owner": "",               // UniqueID of owner; if empty, belongs to game/world
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 0,                  // 0 means free
+  "Tooltip": "",
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Look at the object closely." },
+    { "Action": "Take", "Description": "Pick up the object." },
+    { "Action": "Drop", "Description": "Drop the object." }
+    // Add custom actions as needed
+  ],
+  "CustomActions": [],         // For any additional actions
+  "CombinableWith": [],        // List of object UniqueIDs this can combine with
+  "CreatesOnCombine": "",     // UniqueID of object created by combination
+  "CustomProperties": []
+}

@@ -1,0 +1,60 @@
+{
+  "UniqueID": "comunit_001",
+  "Name": "Com Unit",
+  "Type": "wearable",
+  "Description": "Communication device. Can be examined, charged, used to call and recieve calls from home base and friends, or hack other devices.",
+  "Picture": "Assets/images/objects/com_unit.png",
+  "Owner": "player_001",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": true,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 0,
+  "Bonuses": {
+    "Defence": 0
+  },
+  "Tooltip": "Examine, Charge, Call, Hack (device), Equip",
+  "ActionsMenu": [
+    {
+      "Action": "Examine",
+      "Description": "Look at the Com Unit closely."
+    },
+    {
+      "Action": "Charge",
+      "Description": "Recharge the Com Unit's battery."
+    },
+    {
+      "Action": "Call",
+      "Description": "Use the Com Unit to make a call."
+    },
+    {
+      "Action": "Hack",
+      "Description": "Attempt to hack a nearby device."
+    },
+    {
+      "Action": "Equip",
+      "Description": "Wear the Com Unit on your person."
+    }
+  ],
+  "CustomActions": [
+    {
+      "Action": "Objective Menu",
+      "Description": "Open the Com Unit's objective menu."
+    }
+  ],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": [
+    {
+      "Property": "Chargeable",
+      "Value": true
+    },
+    {
+      "Property": "Equipped",
+      "Value": true
+    }
+  ]
+}

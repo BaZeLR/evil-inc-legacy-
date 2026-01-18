@@ -1,0 +1,45 @@
+{
+  "UniqueID": "medpack_001",
+  "Name": "Med Pack",
+  "Type": "consumable",
+  "Description": "A small medical pack with quick-heal supplies. Restores health when used by 15 points.",
+  "Picture": "Assets/images/objects/medpack.png",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 10,
+  "Tooltip": "Examine, Take, Drop",
+  "ActionsMenu": [
+    {
+      "Action": "Examine",
+      "Description": "Inspect the Med Pack."
+    },
+    {
+      "Action": "Drop",
+      "Description": "Drop the Med Pack."
+    },
+    {
+      "Action": "Buy",
+      "Description": "Purchase the Med Pack."
+    },
+    {
+      "Action": "Use",
+      "Description": "Use the Med Pack."
+    }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": [
+    {
+      "Property": "RestoreHealth",
+      "Value": 15
+
+    }
+  ]
+}

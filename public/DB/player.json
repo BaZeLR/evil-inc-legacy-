@@ -1,0 +1,71 @@
+{
+  "Gender": "Male",
+  "UniqueID": "player_001",
+  "Name": "Steven Wolf",
+"Description": "Background Info: Orphaned from the great black out. Raised in small town, you discovered your genius at an early age. This had always made you feel like a outsider, often leading you to be teased and bullied.\nDriven to seclusion from the people around you. You dove into your studies and worked your way to a highly coveted position. For the first time in your life you at least felt connected to something, that was until the accident. Feelings of guilt over your teams death has kept you up most nights. You vow to seek revenge, your even willing to change everything you believe in to do it.",
+  "StartingRoom": "eastside_lc_001",
+  "CurrentRoom": "eastside_lc_001",
+  "PlayerGender": "Male",
+  "bPromptForName": false,
+  "bPromptForGender": false,
+  "PlayerPortrait": "Assets/images/player/playerafraid.jpg",
+  "PlayerLayeredImage": "",
+  "Actions": [],
+  "bEnforceWeight": false,
+  "dWeightLimit": 100.5,
+  "Inventory": [
+    {
+      "UniqueID": "comunit_001",
+      "Name": "Com Unit"
+    },
+    
+    {
+      "UniqueID": "wallet_001",
+      "Name": "Wallet"
+    }
+  ],
+  "Stats": {
+    "Health": 95,
+    "MaxHealth": 100,
+    "Notoriety": 0,
+    "MaxNotoriety": 100,
+    "Energy": 95,
+    "MaxEnergy": 95,
+    "Level": 0,
+    "Experience": 0,
+    "DaysInGame": 1,
+    "MS": 4,
+    "Power": 3,
+    "Defence": 0,
+    "Speed": 1
+  },
+  "Abilities": [
+    {
+      "Name": "Give Order",
+      "Tooltip": "Command others to act."
+    },
+    {
+      "Name": "Telepathy",
+      "Tooltip": "Read or send thoughts."
+    },
+    {
+      "Name": "Examine",
+      "Tooltip": "Inspect your surroundings or items."
+    },
+    {
+      "Name": "Wait",
+      "Tooltip": "Skip time."
+    },
+    {
+      "Name": "Mental Blast",
+      "Tooltip": "Psychic attack (combat).",
+      "Combat": true,
+      "EnergyCost": 10
+    }
+  ],
+  "Credits": 50,
+  "CustomProperties": [],
+  "Equipped": [
+    "comunit_001"
+  ]
+}

@@ -1,0 +1,1 @@
+// Placeholder for Cheat.js. Copy the actual file content here.

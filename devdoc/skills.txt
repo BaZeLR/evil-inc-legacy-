@@ -1,0 +1,15 @@
+psychic leech: 
+
+Name: Psychic Leech
+
+Description: Using your powers you absorb some of your targets brain power ! Doing minor damage and healing you the same amount. Does 8-15 Damage and heals the same amount. Cost: 10 Energy
+Name: Mental Healing
+
+Description: Using your powers you focus on your wounds and they close miraculously! Heals (10-25) HP
+Cost: 20 Energy
+
+You have unlocked a New Skill!
+
+Name: Psionic Shield
+
+Description: Using your powers you create a shield all around you. It absorbs 10 points of damage before it fails. Cost: 25 Energy

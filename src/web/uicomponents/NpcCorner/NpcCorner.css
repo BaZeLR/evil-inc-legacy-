@@ -1,0 +1,5 @@
+@import '../cornerPanel.css';
+
+.npc-corner {
+  left: 1rem;
+}

@@ -1,0 +1,561 @@
+walkthrough :
+
+
+
+Evil Inc v1.7  Walkthrough
+
+This walkthrough is pretty bare bones but I’ll try to cover everything without going in to too much detail.
+
+
+START GAME
+
+Start the game and equip all of your stuff.
+Go to EI Level B1 Discuss plan for Aeon Heist. Dr. Evil asks you to recruit 2 scientist types and 2 people to act as muscle. There are currently 3 of each.
+Game can be started with Intro, where equipment given in Speaking Stone Inc.
+
+Katie:
+
+Katie's 1st Quest: Recruiting Katie
++Go to the Cafe to meet Katie.
+
++Using your telepathy learn about her problem.
+
++Ask Katie if you can help her.
+
++Go to the college campus. If its your first time there you will only have the security office unlocked. All rest of Uni location are locked. 
+
++ Go there and talk to Herbert the security guard. No matter what you choose he will boot you out and by right clicking the room icon above the campus you can go around back and sneak into Herbert’s office through a window. tooltip menu list.
+
++Reading his Emails gives you access to a security feedback at your lab. Another email reveals his password for his files. Use you com unit’s hack action to enter it into the computer. This will activate a fight with Herbert.
+
++Afterwards you use domination on him making him your minion. He gives up the drug dealer that stole Katie’s things and tells you he’s located in the back alley Downtown.
+
++Try giving orders to the Drug Dealer and he goes berserk.
+
++Talk to the sentry then pick up Katie's belongings before returning to the cafe.
+
++You give her stuff back and you have the opportunity to give her orders for a scene.
+
++This also opens up Xander Cain’s Event in the harbor district.
+
++You also start Katie's other two quest once completing the 1st.
+
+<You can do these next 2 quest in either order>
+
+Katie’s 2nd Quest: Loan Shark
+(You need to complete recruiting Xander Cain and reprogramming Gina before starting this quest)
+
++Go Downtown to The Uranus Lounge and speak with Manny The Loan Shark
+
++He wants police files in exchange for clearing Katie’s Debt.
+
++Speak with Gina down at the police station after she’s been reprogrammed. She creates a distraction inside and you have only so many moves until you’re caught and fail the quest.
+
++Your goal is to make it from the first floor lobby then up into the police chiefs office on the top floor. Retrieve a key and then go to the evidence room in the basement to find the file and escape.
+
++Enter Police Station Level 1
+
++The break room has a combination for a locked brief case located in the interrogation viewing room and a chocolate bar which restores some health
+
++Find the visitors pass inside the men’s room to get past Louie on the first floor.
+
++Inside there are several encounters with cops or employees that you just have to get through.
+
+------------RMD Cop Encounters--------------------------------------------------------------
++Be nice to the blood splatter guy, Dexter and you shouldn’t have a problem with him. If your a dick you have a chance of him killing you on your way out.
+
++You can fuck the crime lab girl by delivering a item to Ducky who is located in a conference room on the top floor then getting her a slushy down in the break room on the first floor. And then returning to her.
+
++You can also mouth fuck the female detective by giving her orders near the end of her rant. Just let her keep talking.
+
++Cop B the one asking for money is pretty easy. Any answer will get him to leave you alone but some choice subtract the number of turns you have left.
+
+
++Go up to Police Station Level 2
+
++The office 205 in Lvl 2 has a bunch of computers, desks and a trash bin. Inside the trash bin is a empty Starbucks cup. There’s also a computer you can hack if you have the password. You can get it from the IT guy located in the other office on the floor.
+
++In the police station hallway you meet a janitor. He halts your path until you deal with him. Make your way past the janitor buy either rushing past him giving him a heart attack and then have the option of saving him or leaving him to die alone.
+
++Or if you can find a Starbucks cup you can use your powers to convince him its full and he’ll let you past. If you killed him it might matter later on I haven't decided yet.
+
++In the room with the IT guy he give you a password for a computer in the other office on floor 2. Using it on the computer gives you back door access to the police mainframe and grants you bonus EXP. It will matter later on.
+
++Lvl 3 Check out the noise to unlock the Black Cat. She gives you a call after all of this.
+
++Make your way to the top of the Police Station eventually arriving next to interrogation and a viewing room. Interrogation is locked, the key is in the Chiefs Office.
+
++Inside the viewing room is a briefcase that is locked. The combination is hidden down in the break room, inside is 200 credits and a safety deposit key.
+
++In the chiefs office you can look around his room for the password to his computer. Use your com unit to input the password. You don’t need to hack the computer. You only need to find the key to continue
+
++Examine the objects in the room.
+
++There are files on you in there as well as a tesla gun hiding in his desk after you search his desk twice. As well as a report of a unknown psychic causing havoc.
+
++Take the key and make your way back to the main level and down into the evidence room.
+
++You can free the prisoner in the interrogation room, she will come up later either way.
+
++In the evidence room Zachary Hannah Files are located in one of the file cabinets which you can sell to several different people.
+
++The Drug Red sand is also hidden in there.
+
++The piece of evidence you are looking for is in one of the cabinets, remember to pick it up before fleeing the Police station the way you came in.
+
++Return to Manny and give him the evidence to complete quest.
+
++Optional: Trade him red sand. Gets you a VIP Card to check out action stripper action for free and unlocks a scene with Capri.
+
++This unlocks Manny’s Quest: Recruiting Dancers
+
+Katie’s 3rd Quest: Paying back the Prof
+(You need to recruiter Skin to the team and unlock her Bio Chamber to unlock one of the outcomes. The best one IMO. There are several endings for this quest.)
+
++Go speak with Professor Star on Katie's behalf. She is located in the liberal arts building inside her office at Liberty Univ.
+
++Once you speak to her offer to make her a deal. You have several options. Bribery, Threaten, Seduce, Try to force her to forget, or you can go talk to Herbert to see if he has any dirt on her.
+
++Bribery-(Requires Skin’s Research and completion of the Medi gel quest)You offer to make her young again with Skin’s Bio-Rejuvenation Chamber. Star meets you at E.I and you transform her into the image of her former self. You get a scene and she gets some interesting side effects.
+
++Threaten-Choosing this causes her to freak out and the Justice Force shows up to fight. Cant win with this option.
+
++Seduce-If player focus is 5 or greater you can seduce her and she will forget about Katie. You get a scene.
+
++Forget- If you has a power of 5 or greater, you can make her forget who she is. If you try it and you are less than 5 then you trigger a Justice Force attack. If you succeed then you tell her who she is. Either a happy professor who is nice and boring. Also can make her Horny and DTF. Either way you make her not care about Katie.
+
++Herbert_Talk to Herbert and he tells you her daughter was a stripper down at the Uranus Lounge. Go there and take a pic and bring it back to blackmail Prof Star.
+
++After taking care of Prof Star go back and talk to Katie to complete quest. Unlocks a Scene to go get lunch with Katie.
+
+
+
+
+
+
+
+
+
+Dr. Holly Miller:
+
+Holly’s 1st Quest: Finding Dani
+
++You have to enter the Hospital twice to make Holly show up.
+
++Speaking with her and offering her a job she tells you she’s looking for her sister Dani and has hired a private eye. The PI hasn’t found anything yet and Holly wants you to go talk to her.
+
++PI is located in Parker Tower go there and speak to her about info.
+
++You can give orders to get info for free or pay 50 credits. Either way she sets up a meet with her informant.
+
++Informant is located at Hungry Tony’s at the mall. He wont talk to you but read his mind and follow him back to the warehouse.
+
++Arrive at the old steel mill and go inside. Search the room icon to proceed further
+
++In the old factory warehouse you have several rooms to choose. But every time you enter the room the exits become random. Hover your mouse over each compass dot for the room name and tread carefully
+
++Enter Room 003 and speak with the Mean Mistress. She wants you to retrieve her crop and bring it back to her.
+
++Go to Room 001 and look at the tied up girl to reveal the vibe in the room
+
++Talk to the blonde with the corset and do what she asks to receive the Vibe.
+
++Go to room 004 and you talk to the brunet. Offer to trade the vibe for her crop. If you end up in this room three times you get a scene.
+
++Return to 003 and speak with the Mean Mistress again. Revealing the way to Miss T
+
++Confront Miss T and boss fight happens no matter what you choose.
+
++Winning you try to dominate her mind but her nullifying ability suppress it and she escapes.
+
++Read the thank you card she leaves behind to reveal address of Dani’s Kidnapper
+
++In your apartment lobby search for the room number to reveal the door on the same floor as you.
+
++Several ways to try to get inside but only a few safe paths.
+
++Best path is to scan for thoughts, search around the door, scan for thoughts again and then go inside.
+
++Once inside lie to Jake then knock him out and tie him up in your apartment.
+
++Search Jake’s apartment to reveal Dani and her Kidnapper. Mr. T has a persuasive voice and can control you with words.
+
++You have three options to save her any of them will work Returning to Holly you complete the quest
+
++Holly accepts the job and moves to Evil Inc B1
+
++Talk to her there and she will go to her new lab ad Dani will go with her.
+
++You return to Jake and you dominate his mind turning him into your slave and now he can upgrade items for you.
+
+Dani’s Quest: Building Bridges
+
++Speak with Holly then Dani in Holly’s new lab until you trigger the quest.
+
++Speak with Jake Peralta down in B1 Holding Cells about building you something.
+
++He tells you to bring him 5 Justice Force Badges and 10 Irradiated Batteries.
+
++Badges belong to harder level JF Members but defeating one doesn’t mean you’ll get one it’s all random.
+
++Batteries come from every where hunters and heroes alike
+
++Once you obtain these items you have the option to leave the device vulnerable to you.
+
++Choosing this one unlocks 2 scenes for Dani through the give order command.
+
++Completing this quest either way unlocks the scenes for Holly’s new give orders which are 3 scenes. Only the get naked command is allowed before this quest.
+
+
+
+
+
+
+Skin:
+
+Skin’s First Quest:
++You just have to defeat 4 Justice Force Members and return to Skin. Super Easy.
+
++Return and she accepts the job but still loves the JF.
+
++She goes to Evil Inc B1 where she gets her new lab.
+
+Skin’s Quest: Obtaining Medi Gel
+(Need to have The Coon recruited.)
+
++Ask what Skin needs to complete her Bio Chamber.
+
++Tells you about Medi gel and you talk to Dr. Evil then Holly to find out where its located.
+
++Go to Shipping yard to scope out the Fud Ex Building.
+
++Call the Coon with the Com unit and he shows up. Talk to him to begin the quest.
+
++You switch to the Coon and you break into the Fud Ex Building. If you have trained with him in the training room he has more flash bangs and energy.
+
++You want to avoid the guards the best you can.
+
++When you first leave the bathroom examine the room to locate the map to unlock the path to the back of the facility.
+
++Reach Warehouse005 and search for security pass up high
+
++Reach Warehouse008 and search the room icon to reveal the air vent and make your way to the next room.
+
++Unlock the freezer room and the rest is pretty straight forward.
+
++Depending on if you already met Black Cat you get one of two scenes.
+
++Either way you return back to Steven and you switch back to it.
+
++Return to Skin to complete the quest.
+
+Melody Parker:
+Recruiting Melody:
+
++Meet Melody in the Science Lab, she's a bitch but be nice. There's nothing you can really do at first anyway.
+
++Once you see the formula and leave you have to wait for a message from Penny. This only triggers once you’ve recruited 2 scientist and 2 supers.
+
++Return to your lab to read email on PC from Melody.
+
++Buy new Clothes at Elitia's then go to Acqueleros and speak with the hostess by clicking the room icon.
+
++Speak with Melody and solve her equation.
+
++She lures you into a trap.
+
++Once you are victorious you take her to warehouse.
+
++That's all for now…..Wake up and talk to Dr. Evil.
+
+The Coon:
+
+Recruit The Coon :Go downtown and search for the Coon. It’s random so just keep trying until you get it and finish the scene.
+
+Training with the Coon: After recruiting the Coon speak with him in Evil Inc B1 then the training room. A small fight then its done. Afterwards he’s upgraded when you call him for the fud ex heist.
+
+Xander Cain:
+
+Recruiting Xander Cain
+
++Recruiting Xander: After Katie’s 1st Quest she mentions Xander being seen and you go to the harbor and look for him.
+
++Its random so keep trying
+
++A speedster shows up and you stop the fight and give her orders and ask her questions.
+
++Give her one more order and there's a scene with Xander and her.
+
++He moves to B1 and she moves to your Lab.
+
+Manny the Loan Shark:
+Manny’s Quest: Recruiting Dancers
+
++After retrieving the evidence Manny wants you to recruit some new dancers for him.
+
++One dancer is Yuri who is located in the Police Station Lobby.
+
++Talk to her and give her orders to convince her to take the job.
+
++if you meet the requirements she gives you a sneak preview of her moves
+
++Another dancer is Ivy Krump. Located down at pier 69 after examine the room icon.
+
++Find a way past her guards. Either through them or sneak around boat by clicking room icon.
+
++There are two different scenes here but you can only unlock one each play through. To unlock second scene read her mind then bust her on it.
+
++Convince her to become dancer and return to Manny to complete quest.
+
+
+
+Winifred:
+Winifred's Quest: Finding her lab
+
++Go into your apartment lobby to meet Winifred.
+
++Ask Penny if she knows where her lab is
+
++Ask Dr. Evil
+
++Ask Vadar
+
++Ask Penny again……fucking bitch……
+
++Go to Lib Univ Library and search room icon.
+
++Hack Door with com unit.
+
++Meet Skip
+
++Go inside lab and talk with Winifred until Tom shows up.
+
++Talk to Tom.
+
++Take pocket ball quest from Zach.
+
++After completion preform ritual with the Winifred and Zach.
+
++Flip the switch and then get a call from Doc Evil
+
++Quest Complete
+
++Meet with Dr. Evil and start Catch'em all quest.
+
++When you go back to east side you get a message from Winifred that Tom’s gone missing.
+
+
+
+Winifred’s 2nd Quest : Going to church.
+
++Go to the church located off of route 69
+
++speak with Cid
+
++go inside and speak with the holy mother reverend then continue on until you find the locked door.
+
++now you’re looking for the holy mother again but now she’s gone. Your goal is to find her. She is in one of the nun s bedrooms at the far end f the church. Its random but seeing her makes her drop the key then you need to make your way back to the locked door.
+
++Several random events can occur anytime in the church.
+
+
+-----------RMD CHURCH ENCOUNTERS ------------------------------------
+
+Sister Judith: The sister is feeling hot and needs to take her clothes off and fuck. Trying to save her, causes her to masturbate, and giving her your cock she blows you.
+
+Sister Mary Anne: The sister wants you to listen to her read her bible. If you say yes she starts to strip while doing so, but in the end you lose 15 health and 15 energy
+
+Sister Romoana: Romoana sees you and then runs away and you get trapped in a endless hallway. You have to navigate them to reach her and save her. Every wrong  choice randomly subtracts health or energy for each wrong answer. D B B D C A A D
+
+Brother Tomas: Has two naked girls tied up and is getting ready to beat the shit out of them. You have the option of saving them or running away. Saving them involves a boss fight and leaving them give you two scenes.
+
+Pastor Dave: Pastor Dave is turned into a gluttonous cannibal. Read his mind to see it’s the amulet that turned him into this. Its the only way to defeat him in the fight. Otherwise guaranteed to lose. Activates disarm in battle. Should take a couple tries but once you knock it off you just have to defeat him. Afterwards after you save him he wants you to kill him if you say no he just kills himself. You can also give him the order to forget everything. This saves his life if you choose this.
+
+Nun Beatrice: Nothing you can do but continue on
+
+Nun Agatha: She’s a bitch, if you help her she’ll kill you
+
+Prayer Circle: Nuns in a circle if you leave them alone they restore your health and energy to full, if you corrupt them you get  a pretty good scene
+
+Lecturing Priest: Priest has a couple of girls and if you save them he goes down quick and you gain 25 HP if not you get a scene of him lecturing his girls.
+
+Party Priest: Be rude to the party priest o unlock a scene if you try smooth - 25 hp
+
+Mediating Nun: A nun starts to blow you aggressively and if you don’t struggle free she will kill you with all of the BJs
+
+Roaming Altar: The artifact thats been turning all of the nuns and priest into freaks makes you a proposition. If you say no you runaway. If you say yes you get transformed and either end up fucking Winfred or penny depending on where you go. It also cause a game over. Just run away.
+-----------------------------------------------------------------------------------
+
++Once you reach the locked door The Rev Mother, the Priest Cohen and Sister Alice are all inside.
+
++Rev Mother is being controlled by a demon and you are given 3 options
+
++Fight Reverend Mother, Super hard boss fight! But great reward but it actually doesn't do anything now…But you are rewarded with some blueprints. Will come up later.
+
++Give Orders to Alice to Kill Cohen then Fight Rev Mother, making the fight much easier. The good but regretful choice
+
++Give orders to Cohen to make him sin. Rev mother will be able to take over church and the last part of the quest will be pretty easy. Pretty Much the Evil Choice
+
++All options leads to the church catacombs. Pick up research before heading down
+
++Tom’s Research Notes are located in The Church Chancel above the ruins, on the first floor of the ruins Bedchambers, the Empty Chamber, 2nd Floor Private Quarters, 2nd Floor Study.
+
+
++Talk to the gatekeeper after you pick up the robes. Here you have several choices to get inside.
+
++YOU MUST PICK UP THE DARK ROBES. THE MEMBERS INSIDE WILL KILL YOU OTHERWISE.
+
++TALK Option
+
++If you helped Reverend Mother then you can talk to the occult gatekeeper and he will let you through. Just Tell the truth.
+
++If you killed reverend mother and you try telling him the truth he lets you bribe him for 1000 credits. Using your powers you can make him take less but it depends on your focus.
+
++If you killed the rev mother and lie the gatekeeper blocks entry.
+
++SNEAK Option If your stealth is greater than or equal to 4 you sneak past him to the north west to the hidden accove.
+
++ATTACK Option get you no where
+
++POWERS Option lets you in if you have a focus of 6 or greater. The he lets you into the main room.
+
++Hidden Accove has a few options for sneaking into the old ruins. You don’t need this step if you’ve made it inside already.
+
++First thing examine the room to find some rope. Pick it up. Then search the crypt.
+
++The safe way leads to a instant death. Ohh! I love those! Should’ve saved bitches!
+
++The Dangerous path will let you reach the first floor of the ruins.
+
++The dangerous path on the cliff needs rope to get across otherwise you die. Insta Death Mutherfukas! Lol. If you have the rope you will swing to the second floor of the ruin.
+
++Now that you’re inside your goal is to get in to the guarded room on the first floor. A Guard stands ready to test any who enter and you have to pass a test to figure out the right answers.
+
++The ways to figure out the correct answers are by talking to the guest and reading their minds.
+
+----Ruins NPCs--------------
+
+Mysterious Occult Member/ No Face- Speaking with him reveals the location of two JF members. Reading his mind reveals that he lost the key to their cell.
+
+Strange Occult Member- She’s a spy for Cohen and if you did not side with Minos she will ask you to deliver a dead drop for her at the city gates. Her thoughts tell her true nature. She also gives you the pass phrase for one of the questions
+
+"You must give in to inhibitions, embrace all feeling of pleasure...of lust....of desire...."
+
+"You must spread the words through force and example...."
+
+"For the sexually energy we all create feeds our goddess and our goddess sets us free..."
+If you sided with Minos she will hiss and back away from you.
+
+Diabolic Priest- Has a couple of slaves with him. He’s from beyond the city gates. Says the groups motto but in Latin. Carpe Noctemper pericula ludus but this is a red haring. he thinks Quod me nutrit, me destruit
+
+Hooded Occult Member- She shows you a gif as well as giving you the answer  “We must give up all inhibitions, and sense of self. Undergo the Rite of the Six Squirting Masters, and give up all connection to the light.”
+Her thoughts also reveal her thinking Quod me nutrit, me destruit
+
+Old Crow-Has a gif to view but nothing else. Her mind reveals she on to the Strange Occult Member but needs evidence to move forward.
+
+Occult Witch- If you killed cohen and killed rev mother then she thanks you and gives you the latin phrase Quod me nutrit, me destruit, otherwise she just hisses and scares you away. Her thoughts reveal a she saw Tom enter the guarded room a while ago.
+
+Occult Pleasure Girl- Just a scene if you stay a while nothing special about her at all. Her thoughts reveal Tom was in there earlier.
+
+Shadow Cat & Harlee-Quinn- The Two JF members who have been captured are located in the holding cells. You can free them if you have the Ancient Prison Key. If you have a focus of 6 or greater, you can make them give you a scene.
+
+
++The Occult Guard’s test is three question The First answer is A, The Second Answer is also destroys me, The third answer is C. If you sided with Minos you don't have to take the test.
+
++Once inside you have a scene with Minos two different ones depending on whether or not you helped her or not. This leads to finding Tom and you finish the quest no matter what you choose. Go back to Winifred to finish the quest.
+
+
+
+
+
+
+
+
+
+Dr. Evil:
+Dr. Evil’s Quest: Gotta catch’em all!
+
+Once unlocking the pocket ball Dr. Evil wants you to go out and fill his training facility.
+
+Catch 50 NPC’s with specific genetic markers to complete the quest!
+
+Location:
+NPC Name      Resistance Level
+
+The higher the resistance the harder the capture
+
+
+Liberty City East:
+Nerd            20
+Young Super D      15
+Biker B            15
+Happy Grandpa      20
+Powerful CEO      20
+
+Liberty City West:
+Young Super C      15
+Jogger            10
+Biker A            15
+Bikini Babe         10
+
+Liberty City General:
+Old Doctor      15
+Female Doctor   10
+Nurse A         10
+Nurse B         10
+Med Student      10
+Hospital Adm   15
+Janitor         5
+
+Liberty University Campus:
+Student A         5
+Student B         10
+Prof.            25
+College Coed      10
+Young Super A      15
+Visiting Parent A    15
+Visiting Parent B    15
+
+Liberty University Library:
+Nervous Student      5
+Bookworm         15
+Librarian            20   
+Student C         15
+Student D         10
+Young Super B      15
+College Protester    10
+
+Liberty University Gym:
+Athlete A            15
+Athlete B            15   
+Swimmer            5
+Yoga Instructor         5
+Female Body Builder      20
+Basketball Coach      15
+Volleyball Captain      15
+
+
+
+
+Apartment Building:
+Hot Neighbor      15
+Cute Neighbor      15
+High Neighbor      10   
+Fud Ex Driver      10
+Scary Drug Dealer   15
+Married Neighbor   15
+Landlord         20
+
+
+Liberty City Mall:
+Young Shopper      10
+Happy Family      15
+Security Guard      15   
+Milf            15   
+Young Couple      20
+Food Vendor      15
+Gold Digger         10
+
+Total 0/50
+
+Once you collect them all return to Doc Evil to complete quest. Unlocks a scene.

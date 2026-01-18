@@ -1,0 +1,39 @@
+{
+  "UniqueID": "player_001",
+  "Gender": "Male",
+  "Name": "",
+  "Description": "",
+  "StartingRoom": null,
+  "CurrentRoom": null,
+  "PlayerGender": "Male",
+  "bPromptForName": false,
+  "bPromptForGender": false,
+  "PlayerPortrait": "",
+  "PlayerLayeredImage": "",
+  "Actions": [],
+  "bEnforceWeight": false,
+  "dWeightLimit": 100.5,
+  "CustomProperties": [],
+  "Inventory": [
+    {
+      "UniqueID": "comunit_001",
+      "Name": "Com Unit"
+    }
+  ],
+  "Stats": {
+    "Health": 95,
+    "MaxHealth": 95,
+    "Notoriety": 0,
+    "Energy": 95,
+    "MaxEnergy": 95,
+    "Level": 1
+  },
+  "Abilities": [
+    { "Name": "Give Order", "Tooltip": "Command others to act." },
+    { "Name": "Telepathy", "Tooltip": "Read or send thoughts." },
+    { "Name": "Examine", "Tooltip": "Inspect your surroundings or items." },
+    { "Name": "Wait", "Tooltip": "Skip time." }
+  ],
+  "Credits": 50
+}
+

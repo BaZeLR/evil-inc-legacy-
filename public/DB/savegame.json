@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "updatedAt": "2026-01-18T16:41:32.156Z",
+  "player": {
+    "Inventory": [
+      {
+        "UniqueID": "comunit_001",
+        "Name": "Com Unit"
+      },
+      {
+        "UniqueID": "wallet_001",
+        "Name": "Wallet"
+      }
+    ],
+    "Equipped": [
+      "comunit_001"
+    ],
+    "Stats": {
+      "Health": 95,
+      "MaxHealth": 100,
+      "Notoriety": 0,
+      "MaxNotoriety": 100,
+      "Energy": 95,
+      "MaxEnergy": 95,
+      "Level": 1,
+      "Experience": 0,
+      "DaysInGame": 1,
+      "MS": 4,
+      "Power": 3,
+      "Defence": 0,
+      "Speed": 1
+    },
+    "CurrentRoom": "eastside_lc_001",
+    "Credits": 50
+  },
+  "rooms": {},
+  "objects": {}
+}

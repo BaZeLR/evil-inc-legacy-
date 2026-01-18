@@ -1,0 +1,769 @@
+{
+  "RoomGroups": [
+    {
+      "Name": "Liberty City",
+      "UniqueID": "libertycity_group_001",
+      "Spawns": true,
+      "Rooms": ["road7_lc_001", "route13_lc_001", "downtown_lc_001", "harbor_lc_001", "westside_lc_001"],
+      "Description": "",
+      "Picture": "",
+      "CustomProperties": []
+    }
+  ],
+  "Rooms": [
+    {
+      "Name": "East Side",
+      "UniqueID": "eastside_lc_001",
+      "SDesc": "eastside",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Description": "The east side of Liberty City. There are many bars and clubs on this side as well as many businesses. Not the safest place at night.... You stand in front of entrance to appartment building, nearby, in the corner  a <a href=\"Assets/images/rooms/street_vendor.jpg\" target=\"_blank\">Street Vendor</a> and a <a href=\"Assets/images/rooms/debug_demon.jpg\" target=\"_blank\">Debug Demon</a> here.",
+      "Exits": [
+        {
+          "Direction": "North",
+          "DestinationRoom": "69"
+        },
+        {
+          "Direction": "West",
+          "DestinationRoom": "22"
+        },
+        {
+          "Direction": "South",
+          "DestinationRoom": "Appartment Building"
+        },
+        {
+          "Direction": "East",
+          "DestinationRoom": "Talking Stone Inc"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [
+        {
+          "UniqueID": "streetvendor_001"
+        },
+        {
+          "Name": "Debug Demon",
+          "UniqueID": "debugdemon_001",
+          "Type": "object",
+          "AlwaysPresent": true,
+          "Picture": "Assets/images/rooms/debug_demon.jpg",
+          "Description": "A mysterious object that helps fix problems in reality."
+        },
+        {
+          "Name": "duffel",
+          "UniqueID": "duffelbag_001",
+          "Type": "container",
+          "PresentOnFirstVisit": true,
+          "CanExamine": true,
+          "CanPickUp": true,
+          "Description": "you see a fancy duffel lies in the corner near vendor machine",
+          "Tooltip": "Examine or pick up the equipment.",
+          "ActionsMenu": [
+            { "Action": "Examine", "Description": "Look at the equipment closely." },
+            { "Action": "Pick Up", "Description": "Take the equipment with you." }
+          ]
+        }
+      ],
+      "Actions": [
+        {
+          "name": "<<On Player Enter First Time>>",
+          "bActive": true,
+          "InputType": "None",
+          "run": "You step into the reception for the first time."
+        },
+        {
+          "name": "Examine Room",
+          "bActive": true,
+          "Tooltip": "Examine the room for more details.",
+          "run": "You look around and notice the details of the reception area."
+        }
+      ],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": "Assets/images/rooms/east_side.jpg"
+    },
+    {
+      "Name": "Route 69",
+      "SDesc": "route69",
+      "Description": "69 connects east side with Business District of LC which situatated in NE side of the city.",
+      "UniqueID": "route69_lc_001",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Exits": [
+        {
+          "Direction": "NE",
+          "DestinationRoom": "Business District"
+        },
+        {
+          "Direction": "NW",
+          "DestinationRoom": "Cozy Cafe"
+        },
+        {
+          "Direction": "South",
+          "DestinationRoom": "East Side"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": "Assets/images/rooms/69_day.jpg"
+    },
+    {
+      "Name": "Road 22",
+      "SDesc": "road22",
+      "Description": "22 goes from east to west and connects those two areas of Liberty City: East Side and West Side. If you turn north you will reach well-guarded city gates. If you turn south you will reach the city Hospital, a huge Medical center named Liberty General.",
+      "UniqueID": "road22_lc_001",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Exits": [
+        {
+          "Direction": "East",
+          "DestinationRoom": "East Side"
+        },
+        {
+          "Direction": "West",
+          "DestinationRoom": "West Side"
+        },
+        {
+          "Direction": "North",
+          "DestinationRoom": "City Gates"
+        },
+        {
+          "Direction": "South",
+          "DestinationRoom": "Liberty General Hospital"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Business District",
+      "SDesc": "business_district",
+      "Description": "You are in a luxury area with modern buildings-green, clean, and respectful-they mean business here. Here you can meet the most sophisticated crooks and sharks of this city.",
+      "UniqueID": "businessdistrict_lc_001",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Exits": [
+        {
+          "Direction": "North",
+          "DestinationRoom": "Aquerello"
+        },
+        {
+          "Direction": "East",
+          "DestinationRoom": "LC Bank"
+        },
+        {
+          "Direction": "West",
+          "DestinationRoom": "Parker's Tower"
+        },
+        {
+          "Direction": "NorthWest",
+          "DestinationRoom": "LC Tunnel"
+        },
+        {
+          "Direction": "SouthEast",
+          "DestinationRoom": "Route 69"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": "Assets/images/rooms/bd_day.jpg"
+    },
+    {
+      "Name": "LC Tunnel",
+      "SDesc": "lc_tunnel",
+      "Description": "Tunnel connects northeast and southwest parts of Liberty City. Nice shortcut!",
+      "UniqueID": "lctunnel_lc_001",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Exits": [
+        {
+          "Direction": "SouthEast",
+          "DestinationRoom": "Business District"
+        },
+        {
+          "Direction": "SouthWest",
+          "DestinationRoom": "Route 13"
+        }
+      ],
+      "Picture": "Assets/images/rooms/tunnel_north.jpg",
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false
+    },
+    {
+      "Name": "Appartment Building",
+      "UniqueID": "appartmentbuilding_lc_001",
+      "SDesc": "appartment_building",
+      "Group": "East Side",
+      "Spawns": false,
+      "Description": "A worn apartment building on Liberty City's East Side. The front door leads into the lobby.",
+      "Exits": [
+        {
+          "Direction": "North",
+          "DestinationRoom": "East Side"
+        },
+        {
+          "Direction": "In",
+          "DestinationRoom": "Appartment Lobby"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [
+        {
+          "name": "<<On Player Enter First Time>>",
+          "bActive": true,
+          "InputType": "None",
+          "run": "You stop in front of the apartment building for the first time. The entrance looks quiet, but something feels off."
+        }
+      ],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": "Assets/images/rooms/dusk.jpg"
+    },
+    {
+      "Name": "Appartment Lobby",
+      "UniqueID": "appartmentlobby_lc_001",
+      "SDesc": "appartment_lobby",
+      "Group": "East Side",
+      "Spawns": false,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "Out",
+          "DestinationRoom": "Appartment Building"
+        },
+        {
+          "Direction": "Up",
+          "DestinationRoom": "Appartment Upper Floor"
+        },
+        {
+          "Direction": "Down",
+          "DestinationRoom": "Appartment Basement"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Appartment Upper Floor",
+      "UniqueID": "appartmentupperfloor_lc_001",
+      "SDesc": "appartment_upper_floor",
+      "Group": "East Side",
+      "Spawns": false,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "Down",
+          "DestinationRoom": "Appartment Lobby"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Appartment Basement",
+      "UniqueID": "appartmentbasement_lc_001",
+      "SDesc": "appartment_basement",
+      "Group": "East Side",
+      "Spawns": false,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "Up",
+          "DestinationRoom": "Appartment Lobby"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Talking Stone Inc",
+      "UniqueID": "talkingstoneinc_lc_001",
+      "SDesc": "talking_stone_inc",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "West",
+          "DestinationRoom": "East Side"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Cozy Cafe",
+      "UniqueID": "cozycafe_lc_001",
+      "SDesc": "cozy_cafe",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "SW",
+          "DestinationRoom": "West Side"
+        },
+        {
+          "Direction": "SE",
+          "DestinationRoom": "Route 69"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "City Gates",
+      "UniqueID": "citygates_lc_001",
+      "SDesc": "city_gates",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "South",
+          "DestinationRoom": "Road 22"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Liberty General Hospital",
+      "UniqueID": "libertygeneralhospital_lc_001",
+      "SDesc": "liberty_general_hospital",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "North",
+          "DestinationRoom": "Road 22"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Aquerello",
+      "UniqueID": "aquerello_lc_001",
+      "SDesc": "aquerello",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "South",
+          "DestinationRoom": "Business District"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "LC Bank",
+      "UniqueID": "lcbank_lc_001",
+      "SDesc": "lc_bank",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "West",
+          "DestinationRoom": "Business District"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Parker's Tower",
+      "UniqueID": "parkerstower_lc_001",
+      "SDesc": "parkers_tower",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "East",
+          "DestinationRoom": "Business District"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Road 7",
+      "UniqueID": "road7_lc_001",
+      "SDesc": "road7",
+      "Group": "Liberty City",
+      "Spawns": true,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "North",
+          "DestinationRoom": "West Side"
+        },
+        {
+          "Direction": "East",
+          "DestinationRoom": "Downtown"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Road 13",
+      "UniqueID": "route13_lc_001",
+      "SDesc": "route13",
+      "Group": "Liberty City",
+      "Spawns": true,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "North",
+          "DestinationRoom": "Downtown"
+        },
+        {
+          "Direction": "NorthEast",
+          "DestinationRoom": "LC Tunnel"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Downtown",
+      "UniqueID": "downtown_lc_001",
+      "SDesc": "downtown",
+      "Group": "Liberty City",
+      "Spawns": true,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "West",
+          "DestinationRoom": "Road 7"
+        },
+        {
+          "Direction": "South",
+          "DestinationRoom": "Road 13"
+        },
+        {
+          "Direction": "East",
+          "DestinationRoom": "Old Factory"
+        },
+        {
+          "Direction": "NE",
+          "DestinationRoom": "Back Alley"
+        },
+        {
+          "Direction": "NE",
+          "DestinationRoom": "Uranus Lounge"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Old Factory",
+      "UniqueID": "oldfactory_lc_001",
+      "SDesc": "old_factory",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Description": "The old Wilson Steel Mill. Been shut down for years....Maybe I should check it out...",
+      "Exits": [
+        {
+          "Direction": "West",
+          "DestinationRoom": "Downtown"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Back Alley",
+      "UniqueID": "backalley_lc_001",
+      "SDesc": "back_alley",
+      "Group": "Downtown",
+      "Type": "hostile",
+      "Spawns": false,
+      "Description": "A very dim and narrow alley.",
+      "Exits": [
+        {
+          "Direction": "NE",
+          "DestinationRoom": "Black Market"
+        },
+        {
+          "Direction": "SW",
+          "DestinationRoom": "Downtown"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Black Market",
+      "UniqueID": "blackmarket_lc_001",
+      "SDesc": "black_market",
+      "Group": "Downtown",
+      "Type": "hostile",
+      "Spawns": false,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "SW",
+          "DestinationRoom": "Back Alley"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Uranus Lounge",
+      "UniqueID": "uranuslounge_lc_001",
+      "SDesc": "uranus_lounge",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Description": "Home to Liberty City's Underworld",
+      "Exits": [
+        {
+          "Direction": "SW",
+          "DestinationRoom": "Downtown"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Harbor",
+      "UniqueID": "harbor_lc_001",
+      "SDesc": "harbor",
+      "Group": "Liberty City",
+      "Spawns": true,
+      "Description": "",
+      "Exits": [],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "West Side",
+      "UniqueID": "westside_lc_001",
+      "SDesc": "westside",
+      "Group": "Liberty City",
+      "Spawns": true,
+      "Description": "Liberty City West - Home of the Hall of Justice and Liberty Univercity. In the north east direction you can see Cozy Cafe. On the north side of the district is local Univercity campus.",
+      "Exits": [
+        {
+          "Direction": "South",
+          "DestinationRoom": "Road 7"
+        },
+        {
+          "Direction": "East",
+          "DestinationRoom": "Road 22"
+        },
+        {
+          "Direction": "NE",
+          "DestinationRoom": "Cozy Cafe"
+        },
+        {
+          "Direction": "West",
+          "DestinationRoom": "Hall of Justice"
+        },
+        {
+          "Direction": "North",
+          "DestinationRoom": "Liberty Univercity"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Hall of Justice",
+      "UniqueID": "hallofjustice_lc_001",
+      "SDesc": "hall_of_justice",
+      "Group": "Liberty City",
+      "Spawns": false,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "East",
+          "DestinationRoom": "West Side"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "Liberty Univercity",
+      "UniqueID": "libertyunivercity_lc_001",
+      "SDesc": "liberty_univercity",
+      "Group": "West Side",
+      "Spawns": false,
+      "Description": "Liberty City's very own university.",
+      "Exits": [
+        {
+          "Direction": "NW",
+          "DestinationRoom": "College Security Center"
+        },
+        {
+          "Direction": "South",
+          "DestinationRoom": "West Side"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [
+        {
+          "name": "<<On Player Enter First Time>>",
+          "bActive": true,
+          "InputType": "None",
+          "run": "\"Wow this place is not to bad at all.... They must get a lot of money from the Hall of Justice. There's tons of there shit all over campus. Uggghhhhh....It's like they're brainwash these poor kids. How sickening..... \"\n\nYou smile as you stroll through campus. You over hear a conversation while wondering around.\n\n\"Uhhhhh I was sooooo late for Psych 201 yesterday. I totally forgot my campus badge and I couldn't get into the fucking building!\"\n\n\"Well with all these super's fighting these days you can never be too safe.\"\n\n&lt;Well that sucks! I'm going to need a Campus Security Badge to get in to any of the buildings. I should check the Security Center and see if I can get one.....&gt; &lt;...&gt;"
+        }
+      ],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    },
+    {
+      "Name": "College Security Center",
+      "UniqueID": "collegesecuritycenter_lc_001",
+      "SDesc": "college_security_center",
+      "Group": "West Side",
+      "Spawns": false,
+      "Description": "",
+      "Exits": [
+        {
+          "Direction": "SE",
+          "DestinationRoom": "Liberty Univercity"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": ""
+    }
+  ]
+}

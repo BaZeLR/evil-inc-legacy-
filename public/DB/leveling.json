@@ -1,0 +1,95 @@
+{
+  "name": "Leveling Configuration - EXP-Based with Staged Mental Status",
+  "maxLevel": 20,
+  "postMaxStatus": "God-like (MAX - No further EXP needed)",
+  "expThresholdsToNext": [
+    100,
+    100,
+    140,
+    196,
+    275,
+    385,
+    538,
+    753,
+    1055,
+    1500,
+    1500,
+    1500,
+    1500,
+    1500,
+    1500,
+    2500,
+    2500,
+    2500,
+    2500,
+    2500
+  ],
+  "autoGainsPerLevel": {
+    "maxHealth": 10,
+    "maxEnergy": 8
+  },
+  "mentalStages": [
+    {
+      "type": "Bad",
+      "levels": [0],
+      "media": "Assets/images/ui/level_up.mp4",
+      "description": "Your power is completely uncontrolled. Every use hurts you more than your enemies."
+    },
+    {
+      "type": "Weak",
+      "levels": [1, 2, 3],
+      "media": "Assets/images/ui/level_up.mp4",
+      "descriptionByLevelInStage": [
+        "You still have a hard time controlling your power. It slips out of your grasp easily.",
+        "Slight improvement. You can now hold the energy for a few seconds without pain.",
+        "Progress! The power feels less wild. You're starting to direct it... barely."
+      ]
+    },
+    {
+      "type": "Apprentice",
+      "levels": [4, 5, 6, 7],
+      "media": "Assets/images/ui/level_up.mp4",
+      "descriptionByLevelInStage": [
+        "You're an apprentice now. Power responds to your will... most of the time.",
+        "Better control. You can shape it into simple forms without losing focus.",
+        "Real progress! Your mind is sharpening. The energy listens to you.",
+        "Your power grows steadier. You can push harder without losing control."
+      ]
+    },
+    {
+      "type": "Good",
+      "levels": [8, 9, 10, 11, 12],
+      "media": "Assets/images/ui/level_up.mp4",
+      "descriptionByLevelInStage": [
+        "Your power is solid now. You feel confident using it in combat.",
+        "Improvement is steady. The energy flows smoothly through your mind.",
+        "You are good at this. Control is almost second nature.",
+        "A strong mind. You can maintain focus through pressure.",
+        "Reliable power. You can channel it precisely when needed."
+      ]
+    },
+    {
+      "type": "Psychic",
+      "levels": [13, 14, 15, 16, 17],
+      "media": "Assets/images/ui/level_up.mp4",
+      "descriptionByLevelInStage": [
+        "You are a true psychic now. Minds bend to your will.",
+        "Power surges with precision. You can influence thoughts easily.",
+        "Mastery grows. Your presence alone intimidates weaker minds.",
+        "You can project intent with clarity. Few can hide from you.",
+        "Your will is sharp. You can press into defenses without hesitation."
+      ]
+    },
+    {
+      "type": "Mental Master",
+      "levels": [18, 19, 20],
+      "media": "Assets/images/ui/level_up.mp4",
+      "descriptionByLevelInStage": [
+        "You are a Mental Master. Few can resist your mind.",
+        "Control is absolute. You reshape thoughts like clay.",
+        "Perfection approaches. Your will is unbreakable."
+      ]
+    }
+  ]
+}
+

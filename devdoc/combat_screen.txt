@@ -1,0 +1,16 @@
+fight screen. all should be rendered as react component with variables update and texts window during each move during the fight
+screen name Fight!
+it will look like main UI screen instead of location it will show enemy picture, and it box for NPC player' picture will render and instead
+of objects box enemy picture will render. above those both boxes pictures will be to bars one for current HP(health) and one for current energy, with width of box size, players combat actions menu will be shown in center of media window fight, Fight! Run!, by clicking on 
+players picture in text menu tooltip with available by skill level list of combat commands will appear. by clicking on any of that command
+game will call combat function and start turn by turn mini game of fight, until enemy or HP health will be zero. at each turn text will be displayed with  result of chosen action. and variables updated, after fight ended total result of fight will be displayed in text window, exp point and loot assigned if player wins and game over if player loose. 
+
+fight flow mechanics and functions on location enter event game will scan enemies list by their id and randomly assign chance of appearance
+add current notoriety of player if result will be more then 75 , current lock will be changed to Fight and fight screen rendered this chosen enemy character. if below 75 game will scan for non_fighting npc appearance in that location...(see later on --todo)
+
+fighting menu function: 
+         abilities(if available) , weapons(if equipped). abilities draw energy and have their damage points and energy cost, if less the certain value becomes unavailable with text rendered in text window, weapons will have their add to attack points, also we will add run and examine options. 
+and level 1 user will have mental blast and run fight options. damage will of mental blast be depend on user Power + random(6) from 1 to six
+damage will be depend on armor  defense bonus and player defense current stat +rand(6) . damage can be mental or physical or both 
+    
+   

@@ -1,0 +1,1 @@
+// Placeholder for modernizr-2.0.6.js. Copy the actual file content here.

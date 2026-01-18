@@ -1,0 +1,30 @@
+{
+  "UniqueID": "vibranium_ring_001",
+  "Name": "Vibranium Ring",
+  "Type": "wearable",
+  "Description": "A rare, nearly indestructible ring made of vibranium.",
+  "Picture": "Assets/images/objects/vibranium_ring.png",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 0,
+  "Tooltip": "Examine, Take, Drop, Equip, Unequip",
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Look at the Vibranium Ring closely." },
+    { "Action": "Take", "Description": "Pick up the Vibranium Ring." },
+    { "Action": "Drop", "Description": "Drop the Vibranium Ring." },
+    { "Action": "Equip", "Description": "Wear the Vibranium Ring." },
+    { "Action": "Unequip", "Description": "Remove the Vibranium Ring." }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": [
+    { "Property": "Equipped", "Value": false, "attackBonus": 2 }
+  ]
+}

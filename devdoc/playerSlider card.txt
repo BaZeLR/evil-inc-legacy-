@@ -1,0 +1,19 @@
+Basic Stats:
+Power:          4          ← +1 if chosen this level (or previous)
+Focus:          3
+Stealth:        2
+Health:     154/155        ← max +10 per level (4×10 = +40 from base)
+Energy:     135/155        ← max +8 per level (4×8 = +32 from base)
+
+Combat Stats:
+Player Weapon Dmg:   0
+Player Armor Defense:3
+Player Speed:        1
+
+Mental Status: Apprentice : Lvl. 4   ← Correct: Level 4 is first of Apprentice stage
+
+Exp: (0/275)                     ← Reset, next threshold for level 5
+# of Days in Game: [current value]
+
+plus some player's description, small current active photo and back ground text. Above stats table, add some buttons:achivements (another info about fights objective and mission complete,runs from fight times,win fight times)
+We also must add abilities unlocked by players when leveling up and add them to abilities clickable use. 

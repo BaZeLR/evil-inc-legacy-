@@ -1,0 +1,23 @@
+we have blackgrounded screen devided into two Parts  
+first part is narrow vertical left panel bar which contains: time in hours and day part (night,day,etc) in one line
+2a) below in circled icon of player picture. clickable. then clicked slider slides to the right with Player current stats
+    such as health current/max variable, energy current/max variable,notoriety current/max=100 variable,credits(money)==50 Player's current Level with level title,
+    level titles . this derived from object called mental stats example {bad:level 0, weak:level 1,level 2, level 3,Aprentice :from level 4 to level 7,good:from level 8 to level12,...}
+2b) Power: {Player MS Temp},
+    Focus: {Player MD} 
+    Stealth: {Player AGL}
+next in colunm - clickable inventory(equiptment) icon,then clicked slider slides to right with list of clickable items that player has currently in his
+                inventory item_name: and status on/off(on if equipt)
+                then item clicked tool tip will show clickable menu in it: drop,equip,remove(if on),in text window we will see system message,
+                that will update attack/defence variables of player then equipped
+                clickable(when clicked picture displays on media screen and text description) com unit tooltip with: call(name),hack(device),examine,and current objectives clickable list, when 
+                clicked shows objective description and updates on progress it text window
+next in column navigation icon: with slider slides to the right, and navigation buttons from current locations to theeir destinations
+
+Second part of screen devided on two vertical parts upper part 80% of hight is media part, with current location name in upper middle of this part
+and two small windows one from left with clickable vertical of npcs currently in location, and second one from right with vertical list of objects
+currently on currently location. when clicked description shown in text window and picure shown on media window.picture is clickable with tooltip of clickable menu list
+text window is below of media window with '>' button in lower right corner and circled icon of player above it, and placeholder icon for showing speaker if in dialog mode in left side of text window
+Cirlced icon of player with player picture clickable.then clicked shows vertical list of actions player can do examine,talk,ask,telepate,give order or dominate with selected npc 
+
+general: text will use specific traditional rpg fonts everythere in UI, every with is flexible and responsive, NO Scrolling is allowed,fonts is yellowish easy to read. 

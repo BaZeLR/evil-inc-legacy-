@@ -1,0 +1,5 @@
+@import '../cornerPanel.css';
+
+.objects-corner {
+  right: 1rem;
+}

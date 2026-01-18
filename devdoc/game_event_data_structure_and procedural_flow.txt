@@ -1,0 +1,31 @@
+Event Trigger
+│
+├── Event Name / Type                  ← e.g. "<<On Player Enter>>", "<<On Player Enter First Time>>", "<<On Click>>", "<<On Loop>>", timer "<<On Turn X>>"
+│
+├── Attached To                        ← Where the event lives
+│   ├── Room                           ← Most common for enter/leave
+│   ├── Character                      ← NPCs with On Player Enter/Click/Talk
+│   ├── Object                         ← Interactable items
+│   ├── Player                         ← Global player actions
+│   ├── Global                         ← Game-wide (On Game Start, OnLoop)
+│   └── Timer                          ← Timed events
+│
+├── Conditions []                      ← Array of condition objects (AND/OR logic)
+│   ├── Each Condition has:
+│   │   ├── Condition Name             ← Optional label
+│   │   ├── Checks []                  ← Atomic tests
+│   │   │   ├── CondType               ← e.g. CT_Variable, CT_ObjectState, CT_CharacterState, CT_Loop_While
+│   │   │   ├── CkType                 ← eq, gt, lt, contains, visible, worn, etc.
+│   │   │   ├── Step2/3/4              ← Parameters (var name, value, object id)
+│   │   │   └── Loop object (if CT_Loop_While)
+│   │   └── Pass/Fail branches         ← Each can contain sub-conditions or commands
+│
+├── Pass Commands []                   ← If ALL conditions pass → execute these
+│   └── Each is a Command object:
+│       ├── cmdtype                    ← CT_ opcode (CT_SETVARIABLE, CT_DISPLAYTEXT, CT_PAUSEGAME, CT_LAYEREDIMAGE_ADD, CT_EXECUTETIMER, etc.)
+│       ├── CommandName/Text/Part2-4   ← Parameters (text, values, targets)
+│       ├── CustomChoices []           ← If input needed (e.g. menu choices)
+│       └── EnhInputData               ← UI style (background, font, image) if input
+│
+└── Fail Commands []                   ← If ANY condition fails → alternative path
+    └── Same structure as Pass Commands

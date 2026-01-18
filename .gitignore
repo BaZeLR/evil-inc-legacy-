@@ -1,0 +1,12 @@
+node_modules/
+dist/
+regalia/node_modules/
+backups/
+
+*.log
+dev.stdout.log
+dev.stderr.log
+preview.stdout.log
+preview.stderr.log
+
+.DS_Store

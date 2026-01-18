@@ -1,0 +1,36 @@
+# EVIL Incorporated — The Legacy AI Edition
+
+This repo is a Vite + React web game. The game “database” is a set of JSON files that are loaded at runtime from `/DB/...`.
+
+## Source of truth (important)
+
+- Edit these: `public/DB/**/*.json` and `public/Assets/**`
+- Never edit these: `dist/**` (including `dist/DB/**`)
+
+Vite copies everything from `public/` into `dist/` during `npm run build`. That’s why you see two copies of the same DB files.
+
+## Dev vs build (how to know which DB is used)
+
+- Dev (live DB reload): `npm run dev` (http://127.0.0.1:5173)
+  - `/DB/...` is served from `public/DB/...` (see `vite.config.js`).
+- Production preview: `npm run build` then `npm run preview` (http://127.0.0.1:4173)
+  - `/DB/...` is served from `dist/DB/...` (static).
+
+To confirm, open `/DB/rooms.json` in the browser on the dev/preview port.
+
+## “My DB edits don’t show up”
+
+Edits to `public/DB/*.json` can look ignored if `DB/savegame.json` or browser `localStorage` overrides the same fields. In-game: open Settings → **Reset Save** / **New Game**.
+
+## Useful commands
+
+- `npm run dev` — run editor/dev server
+- `npm run build` — rebuild `dist/` (updates `dist/DB/**` from `public/DB/**`)
+- `npm run preview` — run the built `dist/` locally
+- `npm run check:navigation` — validate room exits in `public/DB/rooms.json`
+- `npm run db:verify` — verify `dist/DB` matches `public/DB` (after a build)
+- `npm run rebuild` — delete `dist/` then build
+
+## Reddit/Devvit note
+
+For a Reddit deployment, think of `dist/` as the packaged, read-only artifact (like “web assets” inside a Devvit WebView). If you need *editable* data after deployment, the “DB” needs to move to runtime storage (e.g. Devvit Redis), not static JSON files.

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Regalia Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- CSS -->
+    <link href="css/html5reset.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+    <!-- Updated Libraries (CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/3.12.0/modernizr.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/deep-diff@1.0.2/dist/deep-diff.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <!-- Polyfills -->
+    <script src="js/polyfills.js"></script>
+    <!-- Game Core -->
+    <script src="game/Game.js"></script>
+    <!-- JS Models -->
+    <script src="js/models/Action.js"></script>
+    <script src="js/models/Characters.js"></script>
+    <script src="js/models/Check.js"></script>
+    <script src="js/models/Command.js"></script>
+    <script src="js/models/Condition.js"></script>
+    <script src="js/models/CustomProperty.js"></script>
+    <script src="js/models/EnhancedInputData.js"></script>
+    <script src="js/models/Exit.js"></script>
+    <script src="js/models/Object.js"></script>
+    <script src="js/models/Player.js"></script>
+    <script src="js/models/RagsImage.js"></script>
+    <script src="js/models/Room.js"></script>
+    <script src="js/models/StatusBarItem.js"></script>
+    <script src="js/models/Timer.js"></script>
+    <script src="js/models/Variable.js"></script>
+    <!-- JS Components -->
+    <script src="js/components/CheatMenuComponents.js"></script>
+    <!-- Main JS Files -->
+    <script src="js/DateTimes.js"></script>
+    <script src="js/Constants.js"></script>
+    <script src="js/Globals.js"></script>
+    <script src="js/SaveAndLoad.js"></script>
+    <script src="js/testing.js"></script>
+    <script src="js/Logging.js"></script>
+    <script src="js/CommandLists.js"></script>
+    <script src="js/Finder.js"></script>
+    <script src="js/GameController.js"></script>
+    <script src="js/GameTimers.js"></script>
+    <script src="js/GameUI.js"></script>
+    <script src="js/GameActions.js"></script>
+    <script src="js/GameConditions.js"></script>
+    <script src="js/GameCommands.js"></script>
+    <script src="js/Utilities.js"></script>
+    <script src="js/TextHandler.js"></script>
+    <script src="js/Cheat.js"></script>
+    <script src="js/GameDump.js"></script>
+</head>
+<body>
+<header id="menu">
+    <div class="menuitem">
+        <b class="game-title"></b>
+    </div>
+    <div class="menuitem">
+        <button id="save">Load/Save</button>
+    </div>
+    <div class="menuitem">
+        <button id="cheat_button">Cheat</button>
+    </div>
+    <div class="menuitem">
+        <button id="shrink_ui">Shrink UI</button>
+        <button id="unshrink_ui" style="display: none;">Unshrink UI</button>
+    </div>
+    <div class="menuitem">
+        <b id="regalia_version"></b>
+    </div>
+</header>
+
+<div class="mainrow">
+    <div id="roompanel">
+        <div id="MainText"></div>
+        <div id="RoomBar">
+
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="utf-8"/>
+                <title>Regalia Game</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <!-- CSS -->
+                <link href="css/html5reset.css" rel="stylesheet" />
+                <link href="css/style.css" rel="stylesheet" />
+                <link href="css/custom.css" rel="stylesheet" />
+                <!-- React and dependencies -->
+                <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+                <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+                <!-- Game templates and logic -->
+                <script type="module" src="templates/GameStartTemplates.js"></script>
+                <!-- Main UI entry point (to be created) -->
+                <script type="module" src="js/main.js"></script>
+            </head>
+            <body>
+                <div id="root"></div>
+            </body>
+            </html>
+                    <button id="textactionbutton">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="live-timer-display" style="display: none;">
+            <h4>Live Timers</h4>
+            <table>
+                <tbody class="live-timer-display-rows"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="MessagePane"></div>
+</div>
+
+<div id="PlayerRow">
+    <div class="compass-and-portrait">
+        <div class="compass-up-down">
+            <div class="compass-direction-rows">
+                <div class="compass-direction-row">
+                    <div class="compass-direction" data-direction="Up"></div>
+                </div>
+                <div class="compass-direction-row">
+                    <div class="compass-direction" data-direction="Down"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="compass-rose">
+            <div class="compass-direction-rows">
+                <div class="compass-direction-row">
+                    <div class="compass-direction" data-direction="NorthWest"></div>
+                    <div class="compass-direction" data-direction="North"></div>
+                    <div class="compass-direction" data-direction="NorthEast"></div>
+                </div>
+                <div class="compass-direction-row">
+                    <div class="compass-direction" data-direction="West"></div>
+                    <div class="compass-center">
+                        <button class="compass-direction" id="bIn" data-direction="In" style="background-color:green;">In</button>
+                        <button class="compass-direction" id="bOut" data-direction="Out" style="background-color:green;">Out</button>
+                    </div>
+                    <div class="compass-direction" data-direction="East"></div>
+                </div>
+                <div class="compass-direction-row">
+                    <div class="compass-direction" data-direction="SouthWest"></div>
+                    <div class="compass-direction" data-direction="South"></div>
+                    <div class="compass-direction" data-direction="SouthEast"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="portrait-holder">
+            <div id="PlayerImg"></div>
+            <div id="PortraitImageLayers"></div>
+        </div>
+    </div>
+
+    <div id="RoomObjectsPanel">
+        <div id="RoomObjectsTitle">Room Objects:</div>
+        <div id="RoomObjects"></div>
+    </div>
+    <div id="VisibleCharactersPanel">
+        <div id="VisibleCharactersTitle">Visible Characters:</div>
+        <div id="VisibleCharacters"></div>
+    </div>
+    <div id="InventoryPanel">
+        <div id="InventoryTitle">Inventory:</div>
+        <div id="Inventory"></div>
+    </div>
+</div>
+
+<footer id="statusbar">
+    <div id="statusbartext"></div>
+</footer>
+<div id="selectionmenu">
+    <div id="Actionchoices"></div>
+</div>
+
+<audio id="BGMusic" autoplay>
+    <source id="bgmusicsource" src=""/>
+</audio>
+
+<audio id="SoundEffect" autoplay>
+    <source id="semusicsource" src=""/>
+</audio>
+
+<div class="save-menu hidden modal-backdrop">
+    <div class="save-menu-content">
+        <div class="savegames-header">
+            <h3>Save Game</h3>
+            <button id="new_savegame" class="btn">Create a New Save</button>
+            <button class="export_savegames btn btn">Export Saves</button>
+            <button class="import_savegames btn btn">Import Saves</button>
+            <button class="destroy_savegames btn btn-danger">Destroy All Saves</button>
+        </div>
+        <table class="savegames-table">
+            <thead>
+            <tr>
+                <!-- Load button -->
+                <th></th>
+                <th>id</th>
+                <th class="name-column">name</th>
+                <th>date</th>
+                <!-- Overwrite button -->
+                <th></th>
+                <!-- Destroy button -->
+                <th></th>
+            </tr>
+            </thead>
+            <tbody class="save-load-table-body"></tbody>
+        </table>
+    </div>
+</div>
+
+<div class="export-menu hidden modal-backdrop">
+    <div class="export-menu-content">
+        To export, "Right-click + Save as..." on this link:
+        <div>
+            <a href="#" class="export-download-link">EXPORT</a>
+        </div>
+        <div class="export-menu-actions">
+            <button class="btn">Dismiss</button>
+        </div>
+    </div>
+</div>
+
+<div class="import-menu hidden modal-backdrop">
+    <div class="import-menu-content">
+        To import, choose a .json file of exported saves in this picker:
+        <div>
+            <input type="file">
+        </div>
+        <div class="import-menu-actions">
+            <button class="btn">Dismiss</button>
+        </div>
+    </div>
+</div>
+
+<div class="cheat-menu hidden modal-backdrop"></div>
+
+<div id="tooltip">
+</div>
+
+</body>
+
+</html>

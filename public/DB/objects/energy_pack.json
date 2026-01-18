@@ -1,0 +1,44 @@
+{
+  "UniqueID": "energypack_001",
+  "Name": "Energy Pack",
+  "Type": "consumable",
+  "Description": "A compact pack of stimulants and electrolytes. Restores energy by 10 when used.",
+  "Picture": "Assets/images/objects/energyPack.png",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 10,
+  "Tooltip": "Examine, Take, Drop",
+  "ActionsMenu": [
+    {
+      "Action": "Examine",
+      "Description": "Inspect the Energy Pack."
+    },
+    {
+      "Action": "Drop",
+      "Description": "Drop the Energy Pack."
+    },
+    {
+      "Action": "Buy",
+      "Description": "Purchase the Energy Pack."
+    },
+    {
+      "Action": "Use",
+      "Description": "Use the Energy Pack."
+    }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": [
+    {
+      "Property": "RestoreEnergy",
+      "Value": 10
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "UniqueID": "wallet_001",
+  "Name": "Wallet",
+  "Type": "container",
+  "Description": "A standard wallet. It is currently closed.",
+  "Picture": "Assets/images/objects/wallet.png",
+  "Owner": "player_001",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 0,
+  "Tooltip": "Examine, Take, Drop, Open, Close",
+  "ActionsMenu": [
+    {
+      "Action": "Examine",
+      "Description": "Look at the Wallet closely."
+    },
+    {
+      "Action": "Take",
+      "Description": "Pick up the Wallet."
+    },
+    {
+      "Action": "Drop",
+      "Description": "Drop the Wallet."
+    },
+    {
+      "Action": "Open",
+      "Description": "Open the Wallet."
+    },
+    {
+      "Action": "Close",
+      "Description": "Close the Wallet."
+    }
+  ],
+  "Contents": [
+    {
+      "UniqueID": "money_001",
+      "Name": "credits",
+      "Type": "item"
+    }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": [
+    {
+      "Property": "Closed",
+      "Value": false
+    }
+  ]
+}
