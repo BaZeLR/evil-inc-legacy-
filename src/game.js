@@ -2,7 +2,8 @@
 import { loadGameData } from './loader.js';
 import { EventEngine } from './events/EventEngine.js';
 import { addExperience, applyLevelProgression } from './utils/leveling.js';
-import { advanceGameClockByMoves, ensureGameClock } from './utils/gameTime.js';
+import { applyMoveActionCosts } from './utils/actionCosts.js';
+import { ensureGameClock } from './utils/gameTime.js';
 
 export class Game {
     constructor() {
@@ -92,13 +93,7 @@ export class Game {
     travelTo(roomId) {
         if (!this.roomMap[roomId]) return { moved: false, events: null };
         this.player.CurrentRoom = roomId;
-        advanceGameClockByMoves(this.player, 1);
-        if (this.player?.Stats && this.player.Stats.Energy !== undefined) {
-            const currentEnergy = Number(this.player.Stats.Energy);
-            if (Number.isFinite(currentEnergy)) {
-                this.player.Stats.Energy = Math.max(0, Math.trunc(currentEnergy) - 1);
-            }
-        }
+        applyMoveActionCosts(this.player);
         const events = this.runRoomEnterEvents(roomId);
         const levelProgression = this.checkLevelProgression();
         this.lastEventResult = events;

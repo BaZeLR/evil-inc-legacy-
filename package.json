@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "rebuild": "npm run clean && npm run build",
+    "test": "node --test",
     "check:navigation": "node scripts/validate-navigation.mjs",
     "db:verify": "node scripts/verify-db-sync.mjs",
     "release:patch": "npm version patch -m \"chore(release): %s\"",
