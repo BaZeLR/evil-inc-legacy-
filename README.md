@@ -31,6 +31,12 @@ Edits to `public/DB/*.json` can look ignored if `DB/savegame.json` or browser `l
 - `npm run db:verify` — verify `dist/DB` matches `public/DB` (after a build)
 - `npm run rebuild` — delete `dist/` then build
 
+## Versioning / rollback
+
+- Bump versions (creates git commit + tag): `npm run release:patch` / `npm run release:minor` / `npm run release:major`
+- See versions: `git tag --list "v*"`
+- Roll back to a version: `git checkout v1.0.0`
+
 ## Reddit/Devvit note
 
 For a Reddit deployment, think of `dist/` as the packaged, read-only artifact (like “web assets” inside a Devvit WebView). If you need *editable* data after deployment, the “DB” needs to move to runtime storage (e.g. Devvit Redis), not static JSON files.
