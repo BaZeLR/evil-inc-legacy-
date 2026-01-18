@@ -2,6 +2,7 @@
 import { loadGameData } from './loader.js';
 import { EventEngine } from './events/EventEngine.js';
 import { addExperience, applyLevelProgression } from './utils/leveling.js';
+import { advanceGameClockByMoves, ensureGameClock } from './utils/gameTime.js';
 
 export class Game {
     constructor() {
@@ -36,6 +37,7 @@ export class Game {
         this.characterMap = data.characterMap;
         this.save = data.save ?? null;
         this.loadErrors = Array.isArray(data.loadErrors) ? data.loadErrors : [];
+        ensureGameClock(this.player);
         this.initialized = true;
 
         // Fire initial room events so the UI can show system text immediately.
@@ -61,6 +63,7 @@ export class Game {
         this.characterMap = data.characterMap;
         this.save = data.save ?? null;
         this.loadErrors = Array.isArray(data.loadErrors) ? data.loadErrors : [];
+        ensureGameClock(this.player);
         this.initialized = true;
 
         const resolvedRoomId =
@@ -89,6 +92,7 @@ export class Game {
     travelTo(roomId) {
         if (!this.roomMap[roomId]) return { moved: false, events: null };
         this.player.CurrentRoom = roomId;
+        advanceGameClockByMoves(this.player, 1);
         const events = this.runRoomEnterEvents(roomId);
         const levelProgression = this.checkLevelProgression();
         this.lastEventResult = events;

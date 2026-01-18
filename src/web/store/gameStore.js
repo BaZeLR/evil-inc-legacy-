@@ -23,9 +23,6 @@ export const useGameStore = create(set => ({
   error: null,
   setError: value => set({ error: value }),
 
-  time: new Date(),
-  setTime: valueOrUpdater => set(state => ({ time: resolveNext(valueOrUpdater, state.time) })),
-
   eventMessages: [],
   setEventMessages: valueOrUpdater => set(state => ({ eventMessages: resolveNext(valueOrUpdater, state.eventMessages) })),
 

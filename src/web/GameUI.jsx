@@ -6,6 +6,7 @@ import { createCombatState, performCombatTurn } from '../utils/combat.js';
 import { randomIntInclusive } from '../utils/random.js';
 import { ragsToHtml } from '../utils/ragsMarkup.js';
 import { getExperienceCheckpoints, getMentalStatusForLevel } from '../utils/leveling.js';
+import { formatGameClock, getDayPartFromMinutes, getGameClockFromStats } from '../utils/gameTime.js';
 import { createEmptySaveGame, writeSaveGame } from '../utils/saveGame.js';
 import { writeDbJsonFile } from '../utils/dbWrite.js';
 import { useGameStore } from './store/gameStore.js';
@@ -14,14 +15,6 @@ import { useGameStore } from './store/gameStore.js';
 const DEFAULT_BG = '/Assets/images/rooms/dusk.jpg';
 const DEFAULT_PLAYER = '/Assets/images/player/playerafraid.jpg';
 const LEVEL_UP_MEDIA = '/Assets/images/ui/level_up.mp4';
-
-function getDayPart(date) {
-  const hour = date.getHours();
-  if (hour >= 5 && hour < 12) return 'Morning';
-  if (hour >= 12 && hour < 18) return 'Day';
-  if (hour >= 18 && hour < 22) return 'Evening';
-  return 'Night';
-}
 
 function getMentalLevelDisplayFromTable(player, level) {
   const table = Array.isArray(player?.MentalLevelTable) ? player.MentalLevelTable : [];
@@ -43,8 +36,6 @@ export function GameUI() {
     setPlayer,
     error,
     setError,
-    time,
-    setTime,
     eventMessages,
     setEventMessages,
     eventMedia,
@@ -155,11 +146,6 @@ export function GameUI() {
     return () => {
       cancelled = true;
     };
-  }, []);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
@@ -1214,8 +1200,9 @@ export function GameUI() {
     startCombat(picked);
   }, [game, currentRoom?.id, combat]);
 
-  const hour = String(time.getHours()).padStart(2, '0');
-  const dayPart = getDayPart(time);
+  const gameClock = getGameClockFromStats(player?.Stats);
+  const gameTimeLabel = formatGameClock(gameClock.minutes);
+  const dayPart = getDayPartFromMinutes(gameClock.minutes);
 
   const playerPortrait = player?.PlayerPortrait || DEFAULT_PLAYER;
   const playerPortraitUrl = resolveMediaUrl(playerPortrait) || playerPortrait;
@@ -1239,7 +1226,7 @@ export function GameUI() {
   const defence = (player?.Stats?.Defence ?? 0) + (combat ? equippedBonuses.defence : 0);
   const agility = player?.Stats?.Agility ?? 0;
   const speed = player?.Stats?.Speed ?? 0;
-  const daysInGame = toSafeInt(player?.Stats?.DaysInGame ?? player?.Stats?.Day ?? player?.Stats?.Days ?? 0, 0);
+  const daysInGame = gameClock.day;
 
   const experience = toSafeInt(player?.Stats?.Experience ?? 0, 0);
   const experienceCheckpoints = getExperienceCheckpoints(player, game?.leveling);
@@ -1706,8 +1693,10 @@ export function GameUI() {
       <aside className={`left-panel rpg-frame${activeDrawer ? ' drawer-open' : ''}`}>
         <div className="left-panel-bar">
           <div className="time-block" title="Game time">
-            <span className="game-hour">{hour}</span>
-            <span className="game-daypart">{dayPart}</span>
+            <span className="game-hour">{gameTimeLabel}</span>
+            <span className="game-daypart">
+              {dayPart} · Day {daysInGame}
+            </span>
           </div>
 
           <button
