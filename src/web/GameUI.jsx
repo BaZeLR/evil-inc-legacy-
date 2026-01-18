@@ -311,6 +311,7 @@ export function GameUI() {
     openLevelUpNotice(result?.levelProgression, game.player, game.leveling);
     closeDrawer();
 
+    refreshPlayerState(game);
     const save = ensureSaveGameShape(game);
     commitPlayerToSave(save);
     persistSaveGame(save);
