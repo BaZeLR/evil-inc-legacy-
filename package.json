@@ -1,6 +1,6 @@
 {
   "name": "evil-incorporated-legacy-ai-edition",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "EVIL Incorporated — The Legacy AI Edition (Vite + React web game)",
   "main": "server.js",
   "scripts": {
