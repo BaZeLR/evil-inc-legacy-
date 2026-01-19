@@ -1,0 +1,27 @@
+{
+  "UniqueID": "loanshark_001",
+  "Charname": "Loan Shark",
+  "Gender": "Male",
+  "Type": "secondary",
+  "Description": "A smooth-talking lender who offers quick cash at a steep price.",
+  "CurrentRoom": "uranuslounge_lc_001",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "ShopItems": [],
+  "Actions": [],
+  "ActionsMenu": [
+    {
+      "Action": "Talk",
+      "Description": "See what kind of deal they're offering."
+    },
+    {
+      "Action": "Examine",
+      "Description": "Look the loan shark over."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {},
+  "LoreStages": {},
+  "CustomProperties": []
+}

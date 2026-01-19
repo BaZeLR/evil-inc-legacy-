@@ -1,6 +1,8 @@
 {
   "Category": "secondary_npc",
   "Characters": [
+    "capri_001",
+    "loanshark_001",
     "shadydealer_001"
   ]
 }

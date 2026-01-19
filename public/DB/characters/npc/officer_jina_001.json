@@ -1,10 +1,10 @@
 {
-  "UniqueID": "ginna_hill_001",
-  "Charname": "Officer Ginna Hill",
+  "UniqueID": "officer_jina_001",
+  "Charname": "Officer Jina",
   "Gender": "Female",
   "Type": "soldier",
   "Description": "A tough, no-nonsense police officer.",
-  "CurrentRoom": "ce64198f-9161-4676-b043-53c88e4ad39d",
+  "CurrentRoom": "citygates_lc_001",
   "Picture": "Assets/images/characters/placeholder.png",
   "KnowsPlayer": false,
   "Actions": [
@@ -17,7 +17,7 @@
       "PassCommands": [
         {
           "cmdtype": "CT_DISPLAYTEXT",
-          "CommandText": "Officer Ginna greets you with a nod."
+          "CommandText": "Officer Jina greets you with a nod."
         }
       ],
       "FailCommands": []

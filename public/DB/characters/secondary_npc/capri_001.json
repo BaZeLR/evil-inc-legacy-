@@ -1,0 +1,27 @@
+{
+  "UniqueID": "capri_001",
+  "Charname": "Capri",
+  "Gender": "Male",
+  "Type": "secondary",
+  "Description": "A stylish underworld fixer who always seems to know what's happening in Liberty City.",
+  "CurrentRoom": "uranuslounge_lc_001",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "ShopItems": [],
+  "Actions": [],
+  "ActionsMenu": [
+    {
+      "Action": "Talk",
+      "Description": "Start a conversation."
+    },
+    {
+      "Action": "Examine",
+      "Description": "Look at Capri closely."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {},
+  "LoreStages": {},
+  "CustomProperties": []
+}
