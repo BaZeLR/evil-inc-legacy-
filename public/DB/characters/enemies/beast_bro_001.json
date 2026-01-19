@@ -2,7 +2,7 @@
   "UniqueID": "beast_bro_001",
   "Charname": "Beast Bro",
   "Gender": "Male",
-  "Type": "shapeshifter",
+  "Type": "enemy",
   "Disposition": "neutral",
   "Description": "A loud, unpredictable shapeshifter with fists like hammers.",
   "CurrentRoom": "eastside_lc_001",

@@ -1,17 +1,17 @@
 {
-  "UniqueID": "the_martian_001",
-  "Charname": "The Martian",
-  "Gender": "Male",
-  "Type": "alien",
+  "UniqueID": "gambina_001",
+  "Charname": "Gambina",
+  "Gender": "Female",
+  "Type": "enemy",
   "Disposition": "neutral",
-  "Description": "A calm alien presence radiating an otherworldly wave.",
+  "Description": "A sharp-eyed card thrower with luck on her side.",
   "CurrentRoom": "eastside_lc_001",
   "Picture": "Assets/images/characters/placeholder.png",
   "KnowsPlayer": false,
   "Weapons": [
-    "Alien Wave"
+    "Playing Card"
   ],
-  "ExpReward": 120,
+  "ExpReward": 80,
   "CreditsReward": 0,
   "Element": 1,
   "LootType": 0,
@@ -25,7 +25,7 @@
       "PassCommands": [
         {
           "cmdtype": "CT_DISPLAYTEXT",
-          "CommandText": "The Martian’s eyes glow softly as an alien wave ripples through the air."
+          "CommandText": "Gambina shuffles a single card and snaps it into the air with a grin."
         }
       ],
       "FailCommands": []
@@ -34,22 +34,22 @@
   "ActionsMenu": [
     {
       "Action": "Talk",
-      "Description": "Try to talk to The Martian."
+      "Description": "Try to talk to Gambina."
     },
     {
       "Action": "Examine",
-      "Description": "Look at The Martian closely."
+      "Description": "Look at Gambina closely."
     }
   ],
   "Inventory": [],
   "Schedule": [],
   "Stats": {
-    "Attack": 8,
+    "Attack": 6,
     "Defence": 4,
-    "Health": 100,
-    "MaxHealth": 100,
-    "Dmg": 8,
-    "Str": 8,
+    "Health": 50,
+    "MaxHealth": 50,
+    "Dmg": 6,
+    "Str": 6,
     "Def": 4,
     "Agl": 1
   },

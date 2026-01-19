@@ -1,17 +1,17 @@
 {
-  "UniqueID": "cyclops_001",
-  "Charname": "Cyclops",
+  "UniqueID": "the_martian_001",
+  "Charname": "The Martian",
   "Gender": "Male",
-  "Type": "mutant",
+  "Type": "enemy",
   "Disposition": "neutral",
-  "Description": "A focused mutant who can unleash a laser blast.",
+  "Description": "A calm alien presence radiating an otherworldly wave.",
   "CurrentRoom": "eastside_lc_001",
   "Picture": "Assets/images/characters/placeholder.png",
   "KnowsPlayer": false,
   "Weapons": [
-    "Laser Blast"
+    "Alien Wave"
   ],
-  "ExpReward": 50,
+  "ExpReward": 120,
   "CreditsReward": 0,
   "Element": 1,
   "LootType": 0,
@@ -25,7 +25,7 @@
       "PassCommands": [
         {
           "cmdtype": "CT_DISPLAYTEXT",
-          "CommandText": "Cyclops narrows his eye and you hear a faint rising hum."
+          "CommandText": "The Martian’s eyes glow softly as an alien wave ripples through the air."
         }
       ],
       "FailCommands": []
@@ -34,22 +34,22 @@
   "ActionsMenu": [
     {
       "Action": "Talk",
-      "Description": "Try to talk to Cyclops."
+      "Description": "Try to talk to The Martian."
     },
     {
       "Action": "Examine",
-      "Description": "Look at Cyclops closely."
+      "Description": "Look at The Martian closely."
     }
   ],
   "Inventory": [],
   "Schedule": [],
   "Stats": {
-    "Attack": 5,
+    "Attack": 8,
     "Defence": 4,
-    "Health": 20,
-    "MaxHealth": 20,
-    "Dmg": 5,
-    "Str": 5,
+    "Health": 100,
+    "MaxHealth": 100,
+    "Dmg": 8,
+    "Str": 8,
     "Def": 4,
     "Agl": 1
   },

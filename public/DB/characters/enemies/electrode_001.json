@@ -2,7 +2,7 @@
   "UniqueID": "electrode_001",
   "Charname": "Electrode",
   "Gender": "Unknown",
-  "Type": "hostile",
+  "Type": "enemy",
   "Disposition": "hostile",
   "Description": "A hostile foe crackling with dangerous electrical charge.",
   "CurrentRoom": "eastside_lc_001",

@@ -1,17 +1,17 @@
 {
-  "UniqueID": "rake_man_001",
-  "Charname": "Rake Man",
+  "UniqueID": "freedom_fighter_001",
+  "Charname": "Freedom Fighter",
   "Gender": "Male",
-  "Type": "wanderer",
+  "Type": "enemy",
   "Disposition": "neutral",
-  "Description": "A strange figure carrying a rake like a weapon.",
+  "Description": "A radiant warrior channeling beams of light.",
   "CurrentRoom": "eastside_lc_001",
   "Picture": "Assets/images/characters/placeholder.png",
   "KnowsPlayer": false,
   "Weapons": [
-    "Rake"
+    "Beams of Light"
   ],
-  "ExpReward": 50,
+  "ExpReward": 80,
   "CreditsReward": 0,
   "Element": 1,
   "LootType": 0,
@@ -25,7 +25,7 @@
       "PassCommands": [
         {
           "cmdtype": "CT_DISPLAYTEXT",
-          "CommandText": "Rake Man taps the ground with his rake and stares at you in silence."
+          "CommandText": "Freedom Fighter’s aura flares as beams of light gather at his hands."
         }
       ],
       "FailCommands": []
@@ -34,23 +34,23 @@
   "ActionsMenu": [
     {
       "Action": "Talk",
-      "Description": "Try to talk to Rake Man."
+      "Description": "Try to talk to Freedom Fighter."
     },
     {
       "Action": "Examine",
-      "Description": "Look at Rake Man closely."
+      "Description": "Look at Freedom Fighter closely."
     }
   ],
   "Inventory": [],
   "Schedule": [],
   "Stats": {
     "Attack": 4,
-    "Defence": 1,
-    "Health": 20,
-    "MaxHealth": 20,
+    "Defence": 6,
+    "Health": 50,
+    "MaxHealth": 50,
     "Dmg": 4,
     "Str": 4,
-    "Def": 1,
+    "Def": 6,
     "Agl": 1
   },
   "LoreStages": {},

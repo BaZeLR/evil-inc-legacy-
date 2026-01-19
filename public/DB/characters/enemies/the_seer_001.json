@@ -1,15 +1,15 @@
 {
-  "UniqueID": "zantaia_001",
-  "Charname": "Zantaia",
-  "Gender": "Female",
-  "Type": "mage",
+  "UniqueID": "the_seer_001",
+  "Charname": "The Seer",
+  "Gender": "Male",
+  "Type": "enemy",
   "Disposition": "neutral",
-  "Description": "A composed spellcaster carrying a wand with practiced confidence.",
+  "Description": "A quiet mystic who channels dark energy through a focused gaze.",
   "CurrentRoom": "eastside_lc_001",
   "Picture": "Assets/images/characters/placeholder.png",
   "KnowsPlayer": false,
   "Weapons": [
-    "Wand"
+    "Dark Energy"
   ],
   "ExpReward": 120,
   "CreditsReward": 0,
@@ -25,7 +25,7 @@
       "PassCommands": [
         {
           "cmdtype": "CT_DISPLAYTEXT",
-          "CommandText": "Zantaia taps her wand once, and a faint shimmer dances across the air."
+          "CommandText": "The Seer tilts his head, and the air hums with dark energy."
         }
       ],
       "FailCommands": []
@@ -34,23 +34,23 @@
   "ActionsMenu": [
     {
       "Action": "Talk",
-      "Description": "Try to speak with Zantaia."
+      "Description": "Try to speak with The Seer."
     },
     {
       "Action": "Examine",
-      "Description": "Look at Zantaia closely."
+      "Description": "Look at The Seer closely."
     }
   ],
   "Inventory": [],
   "Schedule": [],
   "Stats": {
-    "Attack": 11,
-    "Defence": 7,
-    "Health": 100,
-    "MaxHealth": 100,
-    "Dmg": 11,
-    "Str": 11,
-    "Def": 7,
+    "Attack": 9,
+    "Defence": 8,
+    "Health": 50,
+    "MaxHealth": 50,
+    "Dmg": 9,
+    "Str": 9,
+    "Def": 8,
     "Agl": 1
   },
   "LoreStages": {},

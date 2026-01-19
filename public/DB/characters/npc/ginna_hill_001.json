@@ -1,0 +1,63 @@
+{
+  "UniqueID": "ginna_hill_001",
+  "Charname": "Officer Ginna Hill",
+  "Gender": "Female",
+  "Type": "npc",
+  "Disposition": "friendly",
+  "Description": "A tough, no-nonsense police officer.",
+  "CurrentRoom": "ce64198f-9161-4676-b043-53c88e4ad39d",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Actions": [
+    {
+      "name": "<<On Player Enter>>",
+      "bActive": true,
+      "bConditionFailOnFirst": true,
+      "InputType": "None",
+      "Conditions": [],
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Officer Ginna greets you with a nod."
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "ActionsMenu": [
+    {
+      "Action": "Talk",
+      "Description": "Start a conversation."
+    },
+    {
+      "Action": "Telepathy",
+      "Description": "Read or send thoughts."
+    },
+    {
+      "Action": "Give Order",
+      "Description": "Command the character."
+    },
+    {
+      "Action": "Dominate",
+      "Description": "Attempt to dominate their will."
+    },
+    {
+      "Action": "Ask",
+      "Description": "Ask a question."
+    },
+    {
+      "Action": "Examine",
+      "Description": "Look at the character closely."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {
+    "Attack": 1,
+    "Defence": 1,
+    "Level": 1,
+    "Money": 0
+  },
+  "LoreStages": {},
+  "CustomProperties": []
+}
