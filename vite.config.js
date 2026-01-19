@@ -25,11 +25,11 @@ function bumpDbVersion(source, changedPath) {
   dbChangeState.at = Date.now();
 }
 
-function recordDbWrite(relativePath) {
+function recordDbMutation(relativePath, source = 'write') {
   const key = String(relativePath ?? '');
   if (!key) return;
   recentDbWrites.set(key, Date.now());
-  bumpDbVersion('write', key);
+  bumpDbVersion(source, key);
 }
 
 function isRecentlyWritten(relativePath) {
@@ -133,7 +133,7 @@ function dbWritePlugin() {
 
             await fs.mkdir(path.dirname(targetPath), { recursive: true });
             await fs.writeFile(targetPath, `${JSON.stringify(payload?.data ?? null, null, 2)}\n`, 'utf8');
-            recordDbWrite(relativePath);
+            recordDbMutation(relativePath, 'write');
 
             res.statusCode = 200;
             res.setHeader('Content-Type', 'application/json');
@@ -141,6 +141,70 @@ function dbWritePlugin() {
           } catch (error) {
             res.statusCode = 400;
             res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ ok: false, error: error?.message || String(error) }));
+          }
+        });
+      });
+    }
+  };
+}
+
+function dbDeletePlugin() {
+  return {
+    name: 'db-delete-plugin',
+    configureServer(server) {
+      server.middlewares.use('/api/db/delete', (req, res, next) => {
+        if (req.method !== 'POST') return next();
+
+        let body = '';
+        req.on('data', chunk => {
+          body += chunk;
+        });
+
+        req.on('end', async () => {
+          try {
+            const payload = JSON.parse(body || '{}');
+            const pathsRaw = Array.isArray(payload?.paths)
+              ? payload.paths
+              : payload?.path
+                ? [payload.path]
+                : [];
+
+            const paths = pathsRaw.map(entry => String(entry ?? '').replace(/^\/+/, '')).filter(Boolean);
+            if (!paths.length) throw new Error('Missing path(s)');
+
+            const withBackup = payload?.backup !== false;
+            const baseDir = path.resolve(process.cwd(), 'public', 'DB') + path.sep;
+            const deleted = [];
+
+            for (const relativePath of paths) {
+              if (!relativePath.startsWith('DB/')) throw new Error('Path must start with DB/');
+              if (!relativePath.toLowerCase().endsWith('.json')) throw new Error('Only .json files can be deleted');
+
+              const targetPath = path.resolve(process.cwd(), 'public', relativePath);
+              if (!targetPath.startsWith(baseDir)) throw new Error('Invalid path');
+
+              const stat = await fs.stat(targetPath);
+              if (!stat.isFile()) throw new Error(`Not a file: ${relativePath}`);
+
+              if (withBackup) {
+                const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+                const backupPath = path.resolve(process.cwd(), 'backups', 'deleted', stamp, relativePath);
+                await fs.mkdir(path.dirname(backupPath), { recursive: true });
+                await fs.copyFile(targetPath, backupPath);
+              }
+
+              await fs.unlink(targetPath);
+              recordDbMutation(relativePath, 'delete');
+              deleted.push(relativePath);
+            }
+
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json; charset=utf-8');
+            res.end(JSON.stringify({ ok: true, deleted, backedUp: withBackup }));
+          } catch (error) {
+            res.statusCode = 400;
+            res.setHeader('Content-Type', 'application/json; charset=utf-8');
             res.end(JSON.stringify({ ok: false, error: error?.message || String(error) }));
           }
         });
@@ -204,7 +268,7 @@ function dbListPlugin() {
 }
 
 export default defineConfig({
-  plugins: [react(), dbServePlugin(), dbWritePlugin(), dbListPlugin(), dbVersionPlugin()],
+  plugins: [react(), dbServePlugin(), dbWritePlugin(), dbDeletePlugin(), dbListPlugin(), dbVersionPlugin()],
   root: '.',
   publicDir: 'public',
   define: {

@@ -49,7 +49,7 @@ export const useGameStore = create(set => ({
   containerUi: {},
   setContainerUi: valueOrUpdater => set(state => ({ containerUi: resolveNext(valueOrUpdater, state.containerUi) })),
 
-  activeDrawer: null, // 'player' | 'inventory' | 'navigation' | 'combat' | 'settings' | 'vendor' | 'actions' | null
+  activeDrawer: null, // 'player' | 'inventory' | 'navigation' | 'combat' | 'settings' | 'vendor' | 'actions' | 'editor' | null
   setActiveDrawer: valueOrUpdater => set(state => ({ activeDrawer: resolveNext(valueOrUpdater, state.activeDrawer) })),
 
   shopVendorId: null,

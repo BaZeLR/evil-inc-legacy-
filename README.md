@@ -46,6 +46,16 @@ Each folder has an `index.json` listing the character `UniqueID`s in that folder
 - `npm run db:verify` - verify `dist/DB` matches `public/DB` (after a build)
 - `npm run rebuild` - delete `dist/` then build
 
+## In-app DB Editor (dev)
+
+When running `npm run dev`, a **DB Editor** button appears in the left sidebar. It can:
+
+- Edit JSON files under `public/DB/**` (save writes to disk).
+- Create/delete characters/objects/rooms.
+- Batch-create assets by ID prefix + count.
+
+Note: deletes are backed up under `backups/deleted/`.
+
 ## Versioning / rollback
 
 - Bump versions (creates git commit + tag): `npm run release:patch` / `npm run release:minor` / `npm run release:major`

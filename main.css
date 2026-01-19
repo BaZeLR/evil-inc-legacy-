@@ -1247,3 +1247,60 @@ html {
   }
   .media-window { height: 35vh; }
 }
+
+/* DB editor (dev tools) */
+.editor-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.editor-divider {
+  border-top: 1px solid rgba(212,175,55,0.25);
+  margin: 0.35rem 0;
+}
+
+.editor-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.editor-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1 1 120px;
+  min-width: 120px;
+}
+
+.editor-field-label {
+  font-size: 0.82rem;
+  opacity: 0.9;
+}
+
+.editor-input,
+.editor-select,
+.editor-textarea {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(212,175,55,0.15);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--text-light);
+  padding: 0.45rem 0.6rem;
+}
+
+.editor-input:focus,
+.editor-select:focus,
+.editor-textarea:focus {
+  outline: 2px solid rgba(212,175,55,0.45);
+  outline-offset: 1px;
+}
+
+.editor-textarea {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.82rem;
+  min-height: 240px;
+  resize: vertical;
+  white-space: pre;
+}

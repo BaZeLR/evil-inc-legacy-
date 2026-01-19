@@ -20,6 +20,7 @@ const DRAWER_SEGMENTS = new Map([
   ['player', 'player'],
   ['inventory', 'inventory'],
   ['settings', 'settings'],
+  ['editor', 'editor'],
   ['navigation', 'navigation'],
   ['vendor', 'vendor'],
   ['combat', 'combat'],
@@ -71,6 +72,11 @@ export function RouteSync() {
     }
 
     if (routeDrawer === 'navigation' && combat) {
+      if (pathname !== '/') navigate('/', { replace: true });
+      return;
+    }
+
+    if (routeDrawer === 'editor' && combat) {
       if (pathname !== '/') navigate('/', { replace: true });
       return;
     }

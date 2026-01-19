@@ -11,6 +11,7 @@ import { formatGameClock, getDayPartFromMinutes, getGameClockFromStats } from '.
 import { createEmptySaveGame, writeSaveGame } from '../utils/saveGame.js';
 import { writeDbJsonFile } from '../utils/dbWrite.js';
 import { useGameStore } from './store/gameStore.js';
+import { DbEditor } from './editor/DbEditor.jsx';
 
 // Local image paths
 const DEFAULT_BG = '/Assets/images/rooms/dusk.jpg';
@@ -178,7 +179,10 @@ export function GameUI() {
         if (nextVersion === prevVersion) return;
         dbVersionRef.current.version = nextVersion;
 
-        if (source === 'write') return;
+        const changedPath = String(payload?.path ?? '').replace(/\\/g, '/').trim();
+        const isSaveMutation = changedPath === 'DB/savegame.json';
+
+        if (source === 'write' && isSaveMutation) return;
 
         await game.reloadFromDb({ preserveRoomId: true });
         if (cancelled) return;
@@ -1740,6 +1744,23 @@ export function GameUI() {
               </svg>
             </button>
 
+            {import.meta.env.DEV ? (
+              <button
+                className={`sidebar-btn${activeDrawer === 'editor' ? ' active' : ''}`}
+                type="button"
+                title="DB Editor"
+                aria-label="DB Editor"
+                disabled={Boolean(combat)}
+                onClick={() => toggleDrawer('editor')}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <ellipse cx="12" cy="5" rx="8" ry="3" />
+                  <path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5" />
+                  <path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" />
+                </svg>
+              </button>
+            ) : null}
+
             <button
               className={`sidebar-btn${activeDrawer === 'navigation' ? ' active' : ''}`}
               type="button"
@@ -1781,6 +1802,8 @@ export function GameUI() {
                       ? 'Inventory'
                       : activeDrawer === 'settings'
                         ? 'Settings'
+                      : activeDrawer === 'editor'
+                        ? 'DB Editor'
                       : activeDrawer === 'vendor'
                         ? 'Vendor'
                       : activeDrawer === 'navigation'
@@ -2094,6 +2117,8 @@ export function GameUI() {
                   ) : null}
                 </div>
               )}
+
+              {activeDrawer === 'editor' && <DbEditor game={game} onRequestClose={closeDrawer} />}
 
               {activeDrawer === 'vendor' && (
                 <div className="drawer-body">
