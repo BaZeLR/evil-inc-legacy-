@@ -1,12 +1,15 @@
 college security center location 
-Scene one:in media Herbert picture if  hoover on location name it will show clickable examine in tooltip,if clicked shows sec.lobby picture
-description(text): Walking into campus security you see a over weight man in his 40's. He's staring intensely at his computer screen. He notices you looking at him and you hear him start clicking then he looks up at you with this dead eyed stare.
+Scene one:in media Herbert picture if  hoover on location name it will show clickable examine in tooltip,
+if clicked shows security lobby picture
+description(text): Walking into campus security you see an overweight man in his 40's.
+He's staring intensely at his computer screen. He notices you looking at him and you hear him
+start clicking then he looks up at you with this dead eyed stare.
 
-"Can I help you? Hmmm now that's one funny get up you got there pal... You in the science department or something?"
-
+"Can I help you? Hmmm now that's one funny get-up you got there pal... You in the science department or something?"
+note to Agent: Now you should render the action/dialog choices menu
 in characters window Herbert (tooltip: talk, examine, Sneak Pass(choosing sneak opens notifier stealth=4 needed, centered red bold)
 "Errr....Uhhhh" <Fuck what do I tell him?>  continue...
-
+"Continue" with blink animation, is a click on right buttom text window which is not suppose to stuck up text.
 hovering on player picture will show tooltip menu column list with Abilities: --give order,--telepathy (mind read)
                                                                                examine: brings slider with player Info Card
                                                                                wait: brings popup menu with list header How long? and choice options 1hour,2 hours,3 hours then clicked calls function of time skipping which adds to current time chosen amount as a parameter
@@ -15,9 +18,12 @@ hovering on player picture will show tooltip menu column list with Abilities: --
 (Lie) Yes I just started over in the Science department.
 (Lie) OH GOD PLEASE HELP!
 pressing --give order brings up :Whom do you want to give the order?
-on choose 1: "Yes...umm... I just started, Im Dr. Wolf. I just moved into the area."
+on choise 1: "Yes...umm... I just started, Im Dr. Wolf. I just moved into the area."
 
-"Doctor 'eh'? Well nice to meet ya I'm Herbert im head of campus security. So your new huh? Have ya got your security badge Dr. Wolf? You're gonna need one to into any of the buildings around campus.... You can get here if ya like." He rubs his large belly and snorts.
+"Doctor 'eh'? Well nice to meet ya, I'm Herbert  head of campus security.
+-So, your new, huh? Have ya got your security badge Dr. Wolf? 
+-You're gonna need one to into any of the buildings around campus....
+-You can get it here  if ya like." He rubs his large belly and snorts.
 
 "Well I guess I'll get one......"
 
@@ -25,7 +31,9 @@ on choose 1: "Yes...umm... I just started, Im Dr. Wolf. I just moved into the ar
 
 "WHAT???"
 
-"I know you rich "educated" folks got the money now fork it over! I'm the head of security and the Dean say's I get to make the rules!"
+"I know you rich "educated" folks got the money...
+-now, fork it over!
+- I'm the head of security and the Dean say's I get to make the rules!"
 if you have 200, game will check current credit amount ... now after text displayed option in Herbert pop up menu added: Buy a security Badge? (if clicked: "Do you want a security badge (yes, No option in pop up menu)" or text window .yes: and new choice Buy a security badge?
 after clicking options in talk menu chosen will disappear
 2nd choice: god help...   clicked text appears:<Well I wonder what I could say to get him out of here...? Oh!>
@@ -36,11 +44,12 @@ after clicking options in talk menu chosen will disappear
 
 <FUCK....> "Uhhh yeah...no problem."
 
-<Now how am I going to acquire a security badge? There's has to be another way in....>
+<Now, how am I going to acquire a security badge? There's has to be another way in....>
 
 Herbert sped away on his Segway toward the campus gates.
- and Herbert picture changes continuation button is blinked with animation, if clicked we exit the location to previous Scene2  hovers on name bring tool tip go around, examine. text:<Dammit my plan worked too well! Now the office door's locked maybe I can find another way in..... Maybe I should check around back...>  new line Liberty City's very own university (hovers on room name) tooltip,render pic in media window
-  -- note all text in blue represent thinking 
+ and Herbert picture changes continuation button is blinked with animation, if clicked we exit the location to previous Scene2  hovers on name bring tool tip go around, examine.
+  text:<Dammit my plan worked too well! Now the office door's locked maybe I can find another way in..... Maybe I should check around back...>  new line Liberty City's very own university (hovers on room name) tooltip,render pic in media window
+  -- note: all text in <green> represent thinking 
   choice go around: Scene 3 picture with text renders: Well that got me nowhere... I wonder If I could sneak in anywhere else? You crouch down and go behind the Security Building to see if there is a back door.
 
 Hey what's this? His window is wide open. It leads directly into Herbert's Office. Well if I'm going to do this I have to go now!
@@ -53,9 +62,10 @@ CRASH! THUD! On your way through the window you knock a cactus down to the groun
 "Oh shit I should have tried to scan the room or something before climbing in here. I hope no one heard that...." You quickly examine the office and see a desk and a computer on top of it.
 
 
-Herbert work station. Gross...you just noticed his trash bin is filled with used tissue. I'm just going to assume he has a "cold". : media window: Room name Herbert work station(render picture): in object window two objects: Herbert's PC, Herbert's Desk
+Herbert work station. Gross...you just noticed his trash bin is filled with used tissue.
+ I'm just going to assume he has a "cold". : media window: Room name Herbert work station(render picture): in object window two objects: Herbert's PC, Herbert's Desk(search desk twice to obtain the badge,take badge,hasbadge==true,all locations on campus becomes unlocked and visible, badge added to player's wallet ,objective complete pupup : you have LC campus badge!)
 herbert's PC examine text: Hmm may be you can hack it from here?,check e-mails, explore Browser history 
-read E-mail's menu : from maintenace,from:mother,from:Dean Wildler . Maintanance text: Hey Herb,
+read E-mail's menu then clicked options as submenu under read Emails will be shown : from maintenace,from:mother,from:Dean Wildler . Maintanance text: Hey Herb,
 
 We installed those "improvements" all over campus. I think you espically like #202.
 
@@ -63,13 +73,12 @@ You have my regards.
 Keith
 
 Ps I want a highlight reel if ya know what I mean in the next few weeks. Load it up with the good stuff!
-
 Mother email: Dearest Herbbie,
 
-How are you I havent seen you in a while. Have you found a girlfriend yet? Oh I hope so, your such a nice boy, handsome too!
+How are you I havent seen you in a while. Have you found a girlfriend yet? 
+Oh I hope so, your such a nice boy, handsome too!
 I miss you so much my little boy, if only you'd move home and let mother take care of you....
-
-You should cum by real soon my Herbie Burgy
+You should cum by real soon my <Herbie Burgy>(in bold italic)
 xxxooo
 
 Love,
@@ -87,10 +96,20 @@ Ryan Wildler
 
 Ps We dont care who your parents are, betray us and you know what happens.
 
-Browser history: 
+Browser history menu choice: 
 Browser History
 You see his Internet browser isn't in safe mode. Clicking the mouse on his browser history it pops with several dozen porn sites. Among the list you find a page he visits quiet frequently called Hidden Cams for Dummies.
+"Hmmmm well this is the only non porn site Herbert the pervert seems to visit.
+ I wonder if he has cameras set up on campus.... I'll have to be careful from here on out. "
 
-"Hmmmm well this is the only non porn site Herbert the pervert seems to visit. I wonder if he has cameras set up on campus.... I'll have to be careful from here on out. "
+You might be able to hack his pc with your Com Unit, to gain access to his network.
+ "<I just need to figure out his password. I wonder if he has it written down somewhere?>"
 
-You might be able to hack his pc with your Com Unit, to gain access to his network. "I just need to figure out his password. I wonder if he has it written down somewhere?"
+password hacking procedure: using com unit hack it should give PC (electronic  object in the room,make it with hackable true ) and players input field, if answer is Herbie Burgy, computer is hacked changed to hacked
+check variable if computer is hacked true, herbert location== currlock. which leads to fight! 
+if you win there are leveling up scene, win pop up and with exp points loots, another scene 3 
+in that scene herbert becames your minion, added to minions and removed from bosses, to do so you hit dominate in abilities menu and after that you can give orders(from player's ability action menu menu) 
+also option ask will be added to dialog menu and questions you want to ask as sub menu then ask clicked
+if you loose popup busted! and game over! with play again button wich start new game and reload the db to original and returnig player state,game state to starting. 
+Herbert-Campus Security,Campus Security.jpg,6,3,[v: Boss HP],70,100,150,1,The monstrosity beats his chest with both hands and goes after you, throwing back into a wall. He punches land all over your body making you feel weak. "You break into my office and I'm suppose to act like nothing is happening? Bullshit! Who are you working for?",Campus Secutiy 01 Blue Beast.jpg,"Awww hold on there little fella', I'm gonna get ya!",Now Im not going to ask you again who are you working for. He squeezes the trigger and zaps you until your unconscious,You awaken in a small room chained to a wall. Opposite of that wall is a locked door. Your ring is gone and you are completely naked.Herbert visits you from time to time to get information out of you but he eventually stops coming. You starve to death in that cell and never seen again
+....Start Over?,0,,,,,,
