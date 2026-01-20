@@ -279,7 +279,7 @@ export default defineConfig({
   server: {
     host: '127.0.0.1',
     port: 5173,
-    strictPort: true,
+    strictPort: false,
     open: true,
     watch: {
       ignored: ['**/regalia/**', '**/public/DB/**'],
@@ -288,7 +288,7 @@ export default defineConfig({
   preview: {
     host: '127.0.0.1',
     port: 4173,
-    strictPort: true,
+    strictPort: false,
     open: true
   },
   optimizeDeps: {

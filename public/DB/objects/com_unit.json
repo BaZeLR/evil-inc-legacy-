@@ -16,7 +16,7 @@
   "Bonuses": {
     "Defence": 0
   },
-  "Tooltip": "Examine, Charge, Call, Hack (device), Equip",
+  "Tooltip": "Examine, Charge, Call, Hack (device), Equip, Unequip",
   "ActionsMenu": [
     {
       "Action": "Examine",
@@ -37,14 +37,263 @@
     {
       "Action": "Equip",
       "Description": "Wear the Com Unit on your person."
-    }
-  ],
-  "CustomActions": [
+    },
+    {
+      "Action": "Unequip",
+      "Description": "Remove the Com Unit."
+    },
     {
       "Action": "Objective Menu",
-      "Description": "Open the Com Unit's objective menu."
+      "Description": "Review your current objectives."
     }
   ],
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYPICTURE",
+          "CommandPart2": "Assets/images/objects/com_unit.mp4"
+        },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "The Com Unit warms against your wrist, waiting for input.\n\nUse [b]Charge[/b] to restore energy, [b]Call[/b] to reach a contact, or [b]Hack[/b] to break into nearby devices."
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Charge",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYPICTURE",
+          "CommandPart2": "Assets/images/objects/com_unit.mp4"
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.Energy",
+          "CommandPart3": "Equals",
+          "CommandPart4": "{player.Stats.MaxEnergy}"
+        },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "You recharge the Com Unit. Energy restored to [b]{player.Stats.Energy}[/b]."
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Call",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYPICTURE",
+          "CommandPart2": "Assets/images/objects/com_unit.mp4"
+        },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "You place a call. Static crackles. No answer."
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Hack",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "<CurrentRoom>",
+              "ConditionStep3": "==",
+              "ConditionStep4": "herbyoffice_lc_001"
+            }
+          ],
+          "PassCommands": [
+            {
+              "Checks": [
+                {
+                  "CondType": "CT_Variable_Comparison",
+                  "ConditionStep2": "player.Stats.herbert_password_found",
+                  "ConditionStep3": "==",
+                  "ConditionStep4": true
+                }
+              ],
+              "PassCommands": [
+                {
+                  "cmdtype": "CT_DISPLAYPICTURE",
+                  "CommandPart2": "Assets/images/characters/herby_warry.jpg"
+                },
+                {
+                  "cmdtype": "CT_DISPLAYTEXT",
+                  "CommandText": "You connect the Com Unit to Herbert's PC and enter the password.\n\n[b]Access granted.[/b] A moment later, you hear frantic footsteps in the hall..."
+                },
+                {
+                  "cmdtype": "CT_SETVARIABLE",
+                  "CommandPart2": "player.Stats.quest_herbert_stage",
+                  "CommandPart3": "Equals",
+                  "CommandPart4": 5
+                },
+                {
+                  "cmdtype": "CT_START_COMBAT",
+                  "CommandPart2": "herbert_001"
+                }
+              ],
+              "FailCommands": [
+                {
+                  "cmdtype": "CT_DISPLAYTEXT",
+                  "CommandText": "The Com Unit can't break in without a password. Maybe Herbert wrote it down somewhere."
+                }
+              ]
+            }
+          ],
+          "FailCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "No hackable devices respond to your Com Unit signal."
+            }
+          ]
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Objective Menu",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYPICTURE",
+          "CommandPart2": "Assets/images/objects/com_unit.mp4"
+        },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "[b]Objectives[/b]"
+        },
+        {
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.quest_herbert_stage",
+              "ConditionStep3": ">=",
+              "ConditionStep4": 5
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "- Defeat Herbert."
+            }
+          ],
+          "FailCommands": [
+            {
+              "Checks": [
+                {
+                  "CondType": "CT_Variable_Comparison",
+                  "ConditionStep2": "player.Stats.quest_herbert_stage",
+                  "ConditionStep3": "==",
+                  "ConditionStep4": 4
+                }
+              ],
+              "PassCommands": [
+                {
+                  "cmdtype": "CT_DISPLAYTEXT",
+                  "CommandText": "- Use [b]Hack[/b] to access Herbert's PC."
+                }
+              ],
+              "FailCommands": [
+                {
+                  "Checks": [
+                    {
+                      "CondType": "CT_Variable_Comparison",
+                      "ConditionStep2": "player.Stats.quest_herbert_stage",
+                      "ConditionStep3": "==",
+                      "ConditionStep4": 3
+                    }
+                  ],
+                  "PassCommands": [
+                    {
+                      "cmdtype": "CT_DISPLAYTEXT",
+                      "CommandText": "- Search Herbert's desk and PC for anything useful."
+                    }
+                  ],
+                  "FailCommands": [
+                    {
+                      "Checks": [
+                        {
+                          "CondType": "CT_Variable_Comparison",
+                          "ConditionStep2": "player.Stats.quest_herbert_stage",
+                          "ConditionStep3": "==",
+                          "ConditionStep4": 2
+                        }
+                      ],
+                      "PassCommands": [
+                        {
+                          "cmdtype": "CT_DISPLAYTEXT",
+                          "CommandText": "- Go around the back of the campus and find another way in."
+                        }
+                      ],
+                      "FailCommands": [
+                        {
+                          "Checks": [
+                            {
+                              "CondType": "CT_Variable_Comparison",
+                              "ConditionStep2": "player.Stats.quest_herbert_stage",
+                              "ConditionStep3": "==",
+                              "ConditionStep4": 1
+                            }
+                          ],
+                          "PassCommands": [
+                            {
+                              "Checks": [
+                                {
+                                  "CondType": "CT_Variable_Comparison",
+                                  "ConditionStep2": "player.Stats.has_campus_badge",
+                                  "ConditionStep3": "==",
+                                  "ConditionStep4": true
+                                }
+                              ],
+                              "PassCommands": [
+                                {
+                                  "cmdtype": "CT_DISPLAYTEXT",
+                                  "CommandText": "- You have a campus security badge. Explore the campus buildings."
+                                }
+                              ],
+                              "FailCommands": [
+                                {
+                                  "cmdtype": "CT_DISPLAYTEXT",
+                                  "CommandText": "- Talk to Herbert at the security center.\n- Get a campus badge, or lure him away from his desk."
+                                }
+                              ]
+                            }
+                          ],
+                          "FailCommands": [
+                            {
+                              "cmdtype": "CT_DISPLAYTEXT",
+                              "CommandText": "No active objectives."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomActions": [],
   "CombinableWith": [],
   "CreatesOnCombine": "",
   "CustomProperties": [

@@ -2,10 +2,10 @@
   "UniqueID": "sig_001",
   "Charname": "Sig",
   "Gender": "Male",
-  "Type": "hostile",
+  "Type": "enemy",
   "Disposition": "hostile",
+  "prob_spawn": 14,
   "Description": "A hostile gunman with a pistol and quick reflexes.",
-  "CurrentRoom": "eastside_lc_001",
   "Picture": "Assets/images/characters/placeholder.png",
   "KnowsPlayer": false,
   "Weapons": [

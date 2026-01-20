@@ -1,5 +1,6 @@
 import { randomIntInclusive, rollD100 } from './random.js';
 import { ragsToHtml } from './ragsMarkup.js';
+import { humanizeId } from './humanize.js';
 
 const DEFAULT_ENEMY_PORTRAIT = '/Assets/images/characters/placeholder.png';
 
@@ -95,7 +96,7 @@ function createLogEntry(html, kind = 'system') {
 }
 
 export function createCombatState({ game, room, enemy, rng }) {
-  const enemyName = enemy?.name || enemy?.Charname || enemy?.Name || 'Enemy';
+  const enemyName = enemy?.name || enemy?.Charname || enemy?.Name || humanizeId(enemy?.id ?? enemy?.UniqueID) || 'Enemy';
   const enemyPicture = enemy?.media || enemy?.Picture || DEFAULT_ENEMY_PORTRAIT;
 
   const enemyMaxHp = ensureMin1(enemy?.Stats?.MaxHealth ?? enemy?.Stats?.Health ?? 1);
@@ -117,7 +118,7 @@ export function createCombatState({ game, room, enemy, rng }) {
     id: `${Date.now()}`,
     turn: 0,
     roomId: room?.id ?? room?.UniqueID ?? null,
-    roomName: room?.name || room?.Name || 'Unknown',
+    roomName: room?.name || room?.Name || humanizeId(room?.id ?? room?.UniqueID) || 'Unknown',
     enemyId: enemy?.id ?? enemy?.UniqueID ?? null,
     enemyName,
     enemyPicture,

@@ -3,9 +3,9 @@
   "Charname": "Rake Man",
   "Gender": "Male",
   "Type": "enemy",
-  "Disposition": "neutral",
+  "Disposition": "hostile",
+  "prob_spawn": 8,
   "Description": "A strange figure carrying a rake like a weapon.",
-  "CurrentRoom": "eastside_lc_001",
   "Picture": "Assets/images/characters/placeholder.png",
   "KnowsPlayer": false,
   "Weapons": [

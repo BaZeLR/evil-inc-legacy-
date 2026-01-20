@@ -59,9 +59,8 @@ async function main() {
   const categories = [
     { key: 'enemies', dir: path.join(baseDir, 'enemies'), ids: [] },
     { key: 'bosses', dir: path.join(baseDir, 'bosses'), ids: [] },
-    { key: 'residents', dir: path.join(baseDir, 'residents'), ids: [] },
-    { key: 'secondary_npc', dir: path.join(baseDir, 'secondary_npc'), ids: [] },
-    { key: 'npc', dir: path.join(baseDir, 'npc'), ids: [] }
+    { key: 'r_citizens', dir: path.join(baseDir, 'r_citizens'), ids: [] },
+    { key: 'main', dir: path.join(baseDir, 'main'), ids: [] }
   ];
 
   const byKey = new Map(categories.map(entry => [entry.key, entry]));
@@ -79,10 +78,10 @@ async function main() {
     const id = String(character?.UniqueID ?? character?.id ?? '').trim();
     if (!id) continue;
 
-    let categoryKey = 'residents';
+    let categoryKey = 'main';
     if (isCombatCharacter(character)) categoryKey = 'enemies';
-    else if (isSecondaryNpc(character)) categoryKey = 'secondary_npc';
-    else if (isHeroNpc(character)) categoryKey = 'npc';
+    else if (isSecondaryNpc(character)) categoryKey = 'main';
+    else if (isHeroNpc(character)) categoryKey = 'main';
 
     const category = byKey.get(categoryKey);
     if (!category) continue;

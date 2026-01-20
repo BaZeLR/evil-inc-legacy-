@@ -4,7 +4,7 @@
       "Name": "Liberty City",
       "UniqueID": "libertycity_group_001",
       "Spawns": true,
-      "Rooms": ["road7_lc_001", "route13_lc_001", "downtown_lc_001", "harbor_lc_001", "westside_lc_001"],
+      "Rooms": ["road7_lc_001", "route13_lc_001", "downtown_lc_001", "harbor_lc_001", "westside_lc_001","businessdistrict_lc_001","eastside_lc_001","lctunnel_lc_001","libertygeneralhospital_lc_001"],
       "Description": "",
       "Picture": "",
       "CustomProperties": []
@@ -16,7 +16,8 @@
       "UniqueID": "eastside_lc_001",
       "SDesc": "eastside",
       "Group": "Liberty City",
-      "Spawns": false,
+      "Type": "hostile",
+      "Spawns": true,
       "Description": "The east side of Liberty City. There are many bars and clubs on this side as well as many businesses. Not the safest place at night.... You stand in front of entrance to appartment building, nearby, in the corner  a <a href=\"Assets/images/rooms/street_vendor.jpg\" target=\"_blank\">Street Vendor</a> and a <a href=\"Assets/images/rooms/debug_demon.jpg\" target=\"_blank\">Debug Demon</a> here.",
       "Exits": [
         {
@@ -36,7 +37,13 @@
           "DestinationRoom": "Talking Stone Inc"
         }
       ],
-      "NPCs": [],
+      "NPCs": [
+        { "UniqueID": "nerd_001", "Weight": 20 },
+        { "UniqueID": "young_super_d_001", "Weight": 15 },
+        { "UniqueID": "biker_b_001", "Weight": 15 },
+        { "UniqueID": "happy_grandpa_001", "Weight": 20 },
+        { "UniqueID": "powerful_ceo_001", "Weight": 20 }
+      ],
       "Objects": [
         {
           "UniqueID": "streetvendor_001"
@@ -89,7 +96,8 @@
       "Description": "69 connects east side with Business District of LC which situatated in NE side of the city.",
       "UniqueID": "route69_lc_001",
       "Group": "Liberty City",
-      "Spawns": false,
+      "Type": "neutral",
+      "Spawns": true,
       "Exits": [
         {
           "Direction": "NE",
@@ -118,7 +126,8 @@
       "Description": "22 goes from east to west and connects those two areas of Liberty City: East Side and West Side. If you turn north you will reach well-guarded city gates. If you turn south you will reach the city Hospital, a huge Medical center named Liberty General.",
       "UniqueID": "road22_lc_001",
       "Group": "Liberty City",
-      "Spawns": false,
+      "Type": "neutral",
+      "Spawns": true,
       "Exits": [
         {
           "Direction": "East",
@@ -151,7 +160,8 @@
       "Description": "You are in a luxury area with modern buildings-green, clean, and respectful-they mean business here. Here you can meet the most sophisticated crooks and sharks of this city.",
       "UniqueID": "businessdistrict_lc_001",
       "Group": "Liberty City",
-      "Spawns": false,
+      "Type": "neutral",
+      "Spawns": true,
       "Exits": [
         {
           "Direction": "North",
@@ -188,7 +198,8 @@
       "Description": "Tunnel connects northeast and southwest parts of Liberty City. Nice shortcut!",
       "UniqueID": "lctunnel_lc_001",
       "Group": "Liberty City",
-      "Spawns": false,
+      "Type": "hostile",
+      "Spawns": true,
       "Exits": [
         {
           "Direction": "SouthEast",
@@ -273,7 +284,7 @@
       "UniqueID": "appartmentupperfloor_lc_001",
       "SDesc": "appartment_upper_floor",
       "Group": "East Side",
-      "Spawns": false,
+      "Spawns": true,
       "Description": "",
       "Exits": [
         {
@@ -314,7 +325,7 @@
       "Name": "Talking Stone Inc",
       "UniqueID": "talkingstoneinc_lc_001",
       "SDesc": "talking_stone_inc",
-      "Group": "Liberty City",
+      "Group": "East Side",
       "Spawns": false,
       "Description": "",
       "Exits": [
@@ -335,7 +346,7 @@
       "Name": "Cozy Cafe",
       "UniqueID": "cozycafe_lc_001",
       "SDesc": "cozy_cafe",
-      "Group": "Liberty City",
+      "Group": "West Side",
       "Spawns": false,
       "Description": "",
       "Exits": [
@@ -361,7 +372,8 @@
       "UniqueID": "citygates_lc_001",
       "SDesc": "city_gates",
       "Group": "Liberty City",
-      "Spawns": false,
+      "Type": "neutral",
+      "Spawns": true,
       "Description": "",
       "Exits": [
         {
@@ -390,7 +402,15 @@
           "DestinationRoom": "Road 22"
         }
       ],
-      "NPCs": [],
+      "NPCs": [
+        { "UniqueID": "old_doctor_001", "Weight": 15 },
+        { "UniqueID": "female_doctor_001", "Weight": 10 },
+        { "UniqueID": "nurse_a_001", "Weight": 10 },
+        { "UniqueID": "nurse_b_001", "Weight": 10 },
+        { "UniqueID": "med_student_001", "Weight": 10 },
+        { "UniqueID": "hospital_adm_001", "Weight": 15 },
+        { "UniqueID": "janitor_001", "Weight": 5 }
+      ],
       "Objects": [],
       "Actions": [],
       "CustomProperties": [],
@@ -553,7 +573,8 @@
       "UniqueID": "oldfactory_lc_001",
       "SDesc": "old_factory",
       "Group": "Liberty City",
-      "Spawns": false,
+      "Type": "hostile",
+      "Spawns": true,
       "Description": "The old Wilson Steel Mill. Been shut down for years....Maybe I should check it out...",
       "Exits": [
         {
@@ -575,7 +596,7 @@
       "SDesc": "back_alley",
       "Group": "Downtown",
       "Type": "hostile",
-      "Spawns": false,
+      "Spawns": true,
       "Description": "A very dim and narrow alley.",
       "Exits": [
         {
@@ -659,6 +680,7 @@
       "UniqueID": "westside_lc_001",
       "SDesc": "westside",
       "Group": "Liberty City",
+      "Type": "neutral",
       "Spawns": true,
       "Description": "Liberty City West - Home of the Hall of Justice and Liberty Univercity. In the north east direction you can see Cozy Cafe. On the north side of the district is local Univercity campus.",
       "Exits": [
@@ -683,7 +705,12 @@
           "DestinationRoom": "Liberty Univercity"
         }
       ],
-      "NPCs": [],
+      "NPCs": [
+        { "UniqueID": "young_super_c_001", "Weight": 15 },
+        { "UniqueID": "jogger_001", "Weight": 10 },
+        { "UniqueID": "biker_a_001", "Weight": 15 },
+        { "UniqueID": "bikini_babe_001", "Weight": 10 }
+      ],
       "Objects": [],
       "Actions": [],
       "CustomProperties": [],
@@ -722,7 +749,15 @@
       "Exits": [
         {
           "Direction": "NW",
-          "DestinationRoom": "College Security Center"
+          "DestinationRoom": "College Security Center",
+          "ShowIf": "player.Stats.herbert_locked_out != true"
+        },
+        {
+          "Direction": "Around Back",
+          "DestinationRoom": "Herbert's Office",
+          "ShowIf": "player.Stats.herbert_locked_out == true",
+          "Todo": true,
+          "TodoLabel": "Go around back"
         },
         {
           "Direction": "South",
@@ -736,13 +771,13 @@
           "name": "<<On Player Enter First Time>>",
           "bActive": true,
           "InputType": "None",
-          "run": "\"Wow this place is not to bad at all.... They must get a lot of money from the Hall of Justice. There's tons of there shit all over campus. Uggghhhhh....It's like they're brainwash these poor kids. How sickening..... \"\n\nYou smile as you stroll through campus. You over hear a conversation while wondering around.\n\n\"Uhhhhh I was sooooo late for Psych 201 yesterday. I totally forgot my campus badge and I couldn't get into the fucking building!\"\n\n\"Well with all these super's fighting these days you can never be too safe.\"\n\n&lt;Well that sucks! I'm going to need a Campus Security Badge to get in to any of the buildings. I should check the Security Center and see if I can get one.....&gt; &lt;...&gt;"
+          "run": "\"Wow this place is not to bad at all.... They must get a lot of money from the Hall of Justice. There's tons of there shit all over campus. Uggghhhhh....It's like they're brainwash these poor kids. How sickening..... \"\n\nYou smile as you stroll through campus. You over hear a conversation while wondering around.\n\n\"Uhhhhh I was sooooo late for Psych 201 yesterday. I totally forgot my campus badge and I couldn't get into the fucking building!\"\n\n\"Well with all these super's fighting these days you can never be too safe.\"\n\n&lt;Well that sucks! I'm going to need a Campus Security Badge to get in to any of the buildings. I should check the Security Center and see if I can get one.....&gt;"
         }
       ],
       "CustomProperties": [],
       "bFirstTimeVisited": false,
       "bFirstTimeLeft": false,
-      "Picture": ""
+      "Picture": "Assets/images/rooms/LC_Campus.jpg"
     },
     {
       "Name": "College Security Center",
@@ -750,20 +785,97 @@
       "SDesc": "college_security_center",
       "Group": "West Side",
       "Spawns": false,
-      "Description": "",
+      "Description": "Campus security headquarters.",
       "Exits": [
         {
           "Direction": "SE",
           "DestinationRoom": "Liberty Univercity"
         }
       ],
-      "NPCs": [],
+      "NPCs": [
+        { "UniqueID": "student_a_001", "Weight": 5 },
+        { "UniqueID": "student_b_001", "Weight": 10 },
+        { "UniqueID": "prof_001", "Weight": 25 },
+        { "UniqueID": "college_coed_001", "Weight": 10 },
+        { "UniqueID": "young_super_a_001", "Weight": 15 },
+        { "UniqueID": "visiting_parent_a_001", "Weight": 15 },
+        { "UniqueID": "visiting_parent_b_001", "Weight": 15 }
+      ],
       "Objects": [],
-      "Actions": [],
+      "Actions": [
+        {
+          "name": "Examine Room",
+          "bActive": true,
+          "InputType": "None",
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYPICTURE",
+              "CommandPart2": "Assets/images/rooms/herby_office_01.jpg"
+            },
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "Campus security is cramped and quiet. A cheap desk, a flickering monitor, and Herbert's heavy breathing in the background."
+            }
+          ],
+          "FailCommands": []
+        }
+      ],
       "CustomProperties": [],
       "bFirstTimeVisited": false,
       "bFirstTimeLeft": false,
       "Picture": ""
+    },
+  {
+    "Name": "Herbert's Office",
+    "UniqueID": "herbyoffice_lc_001",
+    "SDesc": "herberts_office",
+    "Group": "West Side",
+    "Type": "neutral",
+    "Spawns": false,
+    "Description": "Herbert work station. Gross...you just noticed his trash bin is filled with used tissue. I'm just going to assume he has a \"cold\".",
+      "Exits": [
+        {
+          "Direction": "Out",
+          "DestinationRoom": "Liberty Univercity"
+        }
+      ],
+      "NPCs": [],
+      "Objects": [
+        {
+          "UniqueID": "herbert_pc_001"
+        },
+        {
+          "UniqueID": "herbert_desk_001"
+        }
+      ],
+      "Actions": [
+        {
+          "name": "<<On Player Enter First Time>>",
+          "bActive": true,
+          "InputType": "None",
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYPICTURE",
+              "CommandPart2": "Assets/images/rooms/herby_office_01.jpg"
+            },
+            {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Well that got me nowhere... I wonder If I could sneak in anywhere else? You crouch down and go behind the Security Building to see if there is a back door.\n\nHey what's this? His window is wide open. It leads directly into Herbert's Office. Well if I'm going to do this I have to go now!\n\nSliding the window open the rest of the way you get in with ease.\n\n[b]CRASH! THUD![/b] On your way through the window you knock a cactus down to the ground and its pot shatters.\n\n\"Oh shit I should have tried to scan the room or something before climbing in here. I hope no one heard that....\"\n\nYou quickly examine the office and see a desk and a computer on top of it."
+        },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.quest_herbert_stage",
+              "CommandPart3": "Equals",
+              "CommandPart4": 3
+            }
+          ],
+          "FailCommands": []
+        }
+      ],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": "Assets/images/rooms/herby_office.jpg"
     }
   ]
 }

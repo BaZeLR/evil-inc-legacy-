@@ -1,0 +1,238 @@
+{
+  "SchemaVersion": 1,
+  "Events": [
+    {
+      "id": "eastside_player_intro_story_01",
+      "when": "enter",
+      "target": "player",
+      "day": 1,
+      "hour": 12,
+      "evtDay": 1,
+      "prob": 100,
+      "reqs": [],
+      "condStr": "",
+      "item": "",
+      "location": "eastside_lc_001",
+      "action": "event_01",
+      "priority": 100,
+      "thread_name": "intro_story_01",
+      "threaded": true,
+      "repeatable": false,
+      "completeOnTrigger": true,
+      "suppressCombat": true,
+      "rewards": {
+        "exp": 5,
+        "flags": {
+          "intro_story_01_complete": true
+        }
+      },
+      "Actions": [
+        {
+          "name": "event_01",
+          "bActive": true,
+          "InputType": "None",
+          "run": "A chill runs down your spine. The city feels like it's watching you."
+        }
+      ]
+    },
+    {
+      "id": "campussecurity_herbert_01",
+      "when": "enter",
+      "target": "player",
+      "day": 0,
+      "hour": 0,
+      "evtDay": 0,
+      "prob": 100,
+      "reqs": [],
+      "condStr": "",
+      "item": "",
+      "location": "collegesecuritycenter_lc_001",
+      "action": "scene_01",
+      "priority": 120,
+      "thread_name": "campussecurity_herbert",
+      "threaded": true,
+      "repeatable": false,
+      "completeOnTrigger": true,
+      "suppressCombat": true,
+      "rewards": null,
+      "Actions": [
+        {
+          "name": "scene_01",
+          "bActive": true,
+          "InputType": "None",
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYPICTURE",
+              "CommandPart2": "Assets/images/characters/herby_talk.jpg"
+            },
+          {
+            "cmdtype": "CT_DISPLAYTEXT",
+            "CommandText": "Walking into campus security you see a over weight man in his 40's. He's staring intensely at his computer screen. He notices you looking at him and you hear him start clicking then he looks up at you with this dead eyed stare.\n\n\"Can I help you? Hmmm now that's one funny get up you got there pal... You in the science department or something?\"\n\n\"Errr....Uhhhh\" &lt;Fuck what do I tell him?&gt;"
+          },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.quest_herbert_stage",
+              "CommandPart3": "Equals",
+              "CommandPart4": 1
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.herbert_dialog",
+              "CommandPart3": "Equals",
+              "CommandPart4": 1
+            }
+          ],
+          "FailCommands": []
+        }
+      ]
+    },
+    {
+      "id": "campussecurity_herbert_02",
+      "when": "enter",
+      "target": "player",
+      "day": 0,
+      "hour": 0,
+      "evtDay": 0,
+      "prob": 100,
+      "reqs": [],
+      "condStr": "player.Stats.herbert_locked_out == true && player.Stats.herbert_locked_scene_done != true",
+      "item": "",
+      "location": "libertyunivercity_lc_001",
+      "action": "scene_02",
+      "priority": 110,
+      "thread_name": "campussecurity_herbert",
+      "threaded": true,
+      "repeatable": false,
+      "completeOnTrigger": true,
+      "suppressCombat": true,
+      "rewards": null,
+      "Actions": [
+        {
+          "name": "scene_02",
+          "bActive": true,
+          "InputType": "None",
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYPICTURE",
+              "CommandPart2": "Assets/images/rooms/LC_Campus.jpg"
+            },
+          {
+            "cmdtype": "CT_DISPLAYTEXT",
+            "CommandText": "&lt;Dammit my plan worked too well! Now the office door's locked maybe I can find another way in..... Maybe I should check around back...&gt;\n\n[b]TODO:[/b] Go around back."
+          },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.herbert_locked_scene_done",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            }
+          ],
+          "FailCommands": []
+        }
+      ]
+    },
+    {
+      "id": "spawn_combat_enemy_01",
+      "when": "spawn_combat",
+      "target": "player",
+      "day": 0,
+      "hour": 0,
+      "evtDay": 0,
+      "prob": 100,
+      "reqs": [],
+      "condStr": "",
+      "item": "",
+      "location": "*",
+      "action": "spawn_combat_01",
+      "priority": 50,
+      "thread_name": "",
+      "threaded": false,
+      "repeatable": true,
+      "completeOnTrigger": true,
+      "suppressCombat": false,
+      "rewards": null,
+      "Actions": [
+        {
+          "name": "spawn_combat_01",
+          "bActive": true,
+          "InputType": "None",
+          "PassCommands": [
+            {
+              "cmdtype": "CT_SPAWN_RANDOM_ENEMY_ENCOUNTER"
+            }
+          ],
+          "FailCommands": []
+        }
+      ]
+    },
+    {
+      "id": "spawn_spicy_01",
+      "when": "spawn_spicy",
+      "target": "player",
+      "day": 0,
+      "hour": 0,
+      "evtDay": 0,
+      "prob": 100,
+      "reqs": [],
+      "condStr": "",
+      "item": "",
+      "location": "*",
+      "action": "spawn_spicy_01",
+      "priority": 40,
+      "thread_name": "",
+      "threaded": false,
+      "repeatable": true,
+      "completeOnTrigger": true,
+      "suppressCombat": false,
+      "rewards": null,
+      "Actions": [
+        {
+          "name": "spawn_spicy_01",
+          "bActive": true,
+          "InputType": "None",
+          "PassCommands": [
+            {
+              "cmdtype": "CT_TRY_SPICY_EVENT",
+              "CommandText": "<b>Spicy event:</b> a rumor spreads. Notoriety +{vars.last_spicy_delta}."
+            }
+          ],
+          "FailCommands": []
+        }
+      ]
+    },
+    {
+      "id": "spawn_citizen_01",
+      "when": "spawn_citizen",
+      "target": "player",
+      "day": 0,
+      "hour": 0,
+      "evtDay": 0,
+      "prob": 75,
+      "reqs": [],
+      "condStr": "",
+      "item": "",
+      "location": "*",
+      "action": "spawn_citizen_01",
+      "priority": 30,
+      "thread_name": "",
+      "threaded": false,
+      "repeatable": true,
+      "completeOnTrigger": true,
+      "suppressCombat": false,
+      "rewards": null,
+      "Actions": [
+        {
+          "name": "spawn_citizen_01",
+          "bActive": true,
+          "InputType": "None",
+          "PassCommands": [
+            {
+              "cmdtype": "CT_SPAWN_RANDOM_CITIZEN"
+            }
+          ],
+          "FailCommands": []
+        }
+      ]
+    }
+  ]
+}

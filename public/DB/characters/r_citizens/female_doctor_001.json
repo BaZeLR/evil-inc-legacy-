@@ -1,0 +1,21 @@
+{
+  "UniqueID": "female_doctor_001",
+  "Charname": "Female Doctor",
+  "Gender": "Female",
+  "Type": "citizen",
+  "Disposition": "neutral",
+  "prob_spawn": 12,
+  "Description": "A doctor moving briskly between patients and paperwork.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Actions": [],
+  "ActionsMenu": [
+    { "Action": "Talk", "Description": "Start a conversation." },
+    { "Action": "Examine", "Description": "Look closer." }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {},
+  "LoreStages": {},
+  "CustomProperties": []
+}

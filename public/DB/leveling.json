@@ -28,6 +28,11 @@
     "maxHealth": 10,
     "maxEnergy": 8
   },
+  "statLeveling": {
+    "enabled": true,
+    "thresholdToNext": 2,
+    "pointsPerLevel": 1
+  },
   "mentalStages": [
     {
       "type": "Bad",
@@ -92,4 +97,3 @@
     }
   ]
 }
-

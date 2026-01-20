@@ -1,4 +1,5 @@
 import React from 'react';
+import { humanizeId } from '../../../utils/humanize.js';
 import './NpcCorner.css';
 
 export function NpcCorner({ visible, npcs, hiddenCount, inspectTarget, onInspect }) {
@@ -14,8 +15,9 @@ export function NpcCorner({ visible, npcs, hiddenCount, inspectTarget, onInspect
       <ul className="corner-list" aria-label="NPCs in location">
         {list.length ? (
           list.map((npc, idx) => {
-            const npcId = npc?.id ?? npc?.UniqueID ?? `${idx}`;
-            const npcName = npc?.name || npc?.Name || npc?.Charname || 'NPC';
+            const rawId = npc?.id ?? npc?.UniqueID ?? null;
+            const npcId = rawId ?? `${idx}`;
+            const npcName = npc?.name || npc?.Name || npc?.Charname || (rawId ? humanizeId(rawId) : '') || 'NPC';
             const selected = targetType === 'npc' && targetId === npcId;
             const description = npc?.Description || npc?.description || npcName;
             return (

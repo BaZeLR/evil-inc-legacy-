@@ -1161,6 +1161,58 @@ html {
   animation: levelup-pop 420ms ease-out;
 }
 
+.levelup-close-btn {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.65rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(212,175,55,0.55);
+  background: rgba(0,0,0,0.35);
+  color: rgba(224,217,197,0.85);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.levelup-close-btn:hover {
+  background: rgba(0,0,0,0.55);
+  color: rgba(255,240,200,0.95);
+}
+
+.levelup-points {
+  margin-top: 0.85rem;
+  font-size: 0.85rem;
+  color: rgba(224,217,197,0.78);
+}
+
+.levelup-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.levelup-action-btn {
+  padding: 0.55rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(212,175,55,0.55);
+  background: rgba(0,0,0,0.55);
+  color: rgba(255,240,200,0.92);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.levelup-action-btn:hover {
+  background: rgba(30,20,10,0.72);
+  border-color: rgba(212,175,55,0.75);
+}
+
 .levelup-heading {
   font-family: var(--font-ui);
   font-weight: 800;

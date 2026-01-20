@@ -1,8 +1,10 @@
 {
-  "Category": "secondary_npc",
+  "Category": "main",
   "Characters": [
     "capri_001",
+    "ginna_hill_001",
     "loanshark_001",
+    "officer_jina_001",
     "shadydealer_001"
   ]
 }

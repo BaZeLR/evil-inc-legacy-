@@ -88,6 +88,29 @@
   letter-spacing: 0.04em;
 }
 
+.next-btn-continue {
+  width: 112px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.next-btn-blink {
+  animation: next-btn-blink 1s ease-in-out infinite;
+}
+
+@keyframes next-btn-blink {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.06);
+    filter: brightness(1.35);
+  }
+}
+
 .next-btn:hover,
 .next-btn:focus {
   background: rgba(80, 60, 40, 0.8);
@@ -111,6 +134,11 @@
 
 .rags-middle {
   text-align: center;
+}
+
+.rags-thought {
+  color: rgba(125, 255, 160, 0.95);
+  font-style: italic;
 }
 
 .speaker-icon-btn {

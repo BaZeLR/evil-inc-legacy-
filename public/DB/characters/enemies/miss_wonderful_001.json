@@ -3,9 +3,9 @@
   "Charname": "Miss Wonderful",
   "Gender": "Female",
   "Type": "enemy",
-  "Disposition": "neutral",
+  "Disposition": "hostile",
+  "prob_spawn": 13,
   "Description": "A powerful fighter with a calm, confident smile.",
-  "CurrentRoom": "eastside_lc_001",
   "Picture": "Assets/images/characters/placeholder.png",
   "KnowsPlayer": false,
   "Weapons": [

@@ -3,15 +3,16 @@ import { Game } from '../game.js';
 import { LevelUpNotifier } from './LevelUpNotifier.jsx';
 import { ActionsDrawer, LocationTitle, NpcCorner, ObjectsCorner, PlayerDrawer, TextWindow } from './uicomponents/index.js';
 import { createCombatState, performCombatTurn } from '../utils/combat.js';
-import { randomIntInclusive } from '../utils/random.js';
 import { ragsToHtml } from '../utils/ragsMarkup.js';
 import { getExperienceCheckpoints, getMentalStatusForLevel } from '../utils/leveling.js';
 import { applyCombatActionCosts } from '../utils/actionCosts.js';
 import { formatGameClock, getDayPartFromMinutes, getGameClockFromStats } from '../utils/gameTime.js';
+import { humanizeId } from '../utils/humanize.js';
 import { createEmptySaveGame, writeSaveGame } from '../utils/saveGame.js';
 import { writeDbJsonFile } from '../utils/dbWrite.js';
 import { useGameStore } from './store/gameStore.js';
 import { DbEditor } from './editor/DbEditor.jsx';
+import { evaluateCondStr } from '../events/condStr.js';
 
 // Local image paths
 const DEFAULT_BG = '/Assets/images/rooms/dusk.jpg';
@@ -71,14 +72,22 @@ export function GameUI() {
   } = useGameStore();
 
   // Left panel drawers
-  const lastEncounterRoomIdRef = useRef(null);
   const dbVersionRef = useRef({ version: null });
   const [dismissedOverlayKey, setDismissedOverlayKey] = useState(null);
   const [eventMediaTitle, setEventMediaTitle] = useState(null);
+  const [continuePrompt, setContinuePrompt] = useState(null);
 
   useEffect(() => {
     if (!eventMedia) setEventMediaTitle(null);
   }, [eventMedia]);
+
+  const clearContinuePrompt = g => {
+    setContinuePrompt(null);
+    const resolvedGame = g ?? game;
+    if (resolvedGame?.variables && Object.prototype.hasOwnProperty.call(resolvedGame.variables, 'continue_to_room')) {
+      delete resolvedGame.variables.continue_to_room;
+    }
+  };
 
   const updateRoom = (room, g = game, { resetInspectTarget = true } = {}) => {
     setCurrentRoom(room);
@@ -247,6 +256,11 @@ export function GameUI() {
     if (!next.player || typeof next.player !== 'object') next.player = {};
     if (!next.rooms || typeof next.rooms !== 'object') next.rooms = {};
     if (!next.objects || typeof next.objects !== 'object') next.objects = {};
+    if (!next.characters || typeof next.characters !== 'object') next.characters = {};
+    if (!next.events || typeof next.events !== 'object') next.events = {};
+    if (!next.events.threads || typeof next.events.threads !== 'object') next.events.threads = {};
+    if (!next.events.states || typeof next.events.states !== 'object') next.events.states = {};
+    if (!next.events.flags || typeof next.events.flags !== 'object') next.events.flags = {};
     if (!next.version) next.version = 1;
     return next;
   };
@@ -292,6 +306,25 @@ export function GameUI() {
     save.objects[id] = next;
   };
 
+  const commitCharacterToSave = (characterId, save, g = game) => {
+    const id = String(characterId ?? '').trim();
+    if (!id || !g?.characterMap?.[id]) return;
+
+    const char = g.characterMap[id];
+    const category = String(char?.category ?? char?.__category ?? '').trim().toLowerCase();
+    if (category === 'r_citizens' || category === 'enemies') return;
+
+    const next = { ...(save.characters?.[id] || {}) };
+
+    const roomId = String(char?.currentRoomId ?? char?.CurrentRoom ?? '').trim();
+    next.CurrentRoom = roomId;
+
+    if (Array.isArray(char?.CustomProperties)) next.CustomProperties = cloneJson(char.CustomProperties);
+    if (char?.KnowsPlayer !== undefined) next.KnowsPlayer = Boolean(char.KnowsPlayer);
+
+    save.characters[id] = next;
+  };
+
   const openCombatMenu = () => {
     if (!combat) return;
     setCombatMenuEntered(true);
@@ -307,12 +340,20 @@ export function GameUI() {
     if (!destinationId) return;
     if (!game) return;
     if (combat) return;
+    clearContinuePrompt(game);
     const result = game.travelTo(destinationId);
     if (!result?.moved) return;
     const newRoom = game.getCurrentRoom();
     updateRoom(newRoom, game);
-    setEventMessages(result?.events?.texts || []);
-    setEventMedia(result?.events?.media || null);
+    const plannedExitTexts = Array.isArray(result?.planned?.exit?.texts) ? result.planned.exit.texts : [];
+    const plannedEnterTexts = Array.isArray(result?.planned?.enter?.texts) ? result.planned.enter.texts : [];
+    const plannedPresenceTexts = Array.isArray(result?.planned?.presence?.texts) ? result.planned.presence.texts : [];
+    const spawnTexts = Array.isArray(result?.spawns?.texts) ? result.spawns.texts : [];
+    const eventTexts = Array.isArray(result?.events?.texts) ? result.events.texts : [];
+    setEventMessages([...plannedExitTexts, ...plannedEnterTexts, ...plannedPresenceTexts, ...spawnTexts, ...eventTexts]);
+
+    const plannedMedia = result?.planned?.presence?.media || result?.planned?.enter?.media || result?.planned?.exit?.media || null;
+    setEventMedia(plannedMedia || result?.events?.media || null);
     openLevelUpNotice(result?.levelProgression, game.player, game.leveling);
     closeDrawer();
 
@@ -320,6 +361,13 @@ export function GameUI() {
     const save = ensureSaveGameShape(game);
     commitPlayerToSave(save);
     persistSaveGame(save);
+  };
+
+  const handleContinue = () => {
+    if (!continuePrompt) return;
+    const destinationId = String(continuePrompt?.destinationId ?? '').trim();
+    clearContinuePrompt(game);
+    if (destinationId) handleMove(destinationId);
   };
 
   const handleSaveGame = () => {
@@ -342,7 +390,6 @@ export function GameUI() {
     const mode = String(options?.mode ?? 'load').trim().toLowerCase();
     try {
       setError(null);
-      lastEncounterRoomIdRef.current = null;
 
       const g = new Game();
       await g.initialize();
@@ -480,7 +527,7 @@ export function GameUI() {
 
     merged.id = id;
     merged.UniqueID = id;
-    merged.name = merged.Name ?? merged.name ?? obj?.name ?? obj?.Name ?? '';
+    merged.name = merged.Name ?? merged.name ?? obj?.name ?? obj?.Name ?? humanizeId(id) ?? '';
     merged.description = merged.Description ?? merged.description ?? obj?.description ?? obj?.Description ?? '';
     merged.media = merged.Picture ?? merged.media ?? obj?.media ?? obj?.Picture ?? null;
 
@@ -492,6 +539,18 @@ export function GameUI() {
   const getObjectActionNames = obj => {
     const actions = Array.isArray(obj?.ActionsMenu) ? obj.ActionsMenu : [];
     return actions.map(entry => normalizeActionName(entry?.Action ?? entry?.name)).filter(Boolean);
+  };
+
+  const getActionsMenuDescription = (obj, actionLabel) => {
+    const wanted = normalizeActionName(actionLabel);
+    if (!wanted) return null;
+    const actions = Array.isArray(obj?.ActionsMenu) ? obj.ActionsMenu : [];
+    const entry =
+      actions.find(row => normalizeActionName(row?.Action ?? row?.name) === wanted) ||
+      actions.find(row => normalizeActionName(row?.Action ?? row?.name).includes(wanted)) ||
+      null;
+    const text = entry ? String(entry?.Description ?? entry?.description ?? '').trim() : '';
+    return text || null;
   };
 
   const resolveEntityId = entity => {
@@ -604,6 +663,15 @@ export function GameUI() {
     return totals;
   };
 
+  const shouldShowMenuEntry = (entry, ctx) => {
+    if (!entry) return false;
+    const hideIf = String(entry?.HideIf ?? entry?.hideIf ?? '').trim();
+    if (hideIf && evaluateCondStr(hideIf, ctx)) return false;
+    const showIf = String(entry?.ShowIf ?? entry?.showIf ?? entry?.CondStr ?? entry?.condStr ?? '').trim();
+    if (!showIf) return true;
+    return evaluateCondStr(showIf, ctx);
+  };
+
   const getCustomProperty = (obj, propertyName) => {
     const key = String(propertyName ?? '').trim();
     if (!key) return undefined;
@@ -624,31 +692,53 @@ export function GameUI() {
     else props.push(nextEntry);
   };
 
+  const resolveContainerOpenState = (containerId, containerObj = null) => {
+    const id = String(containerId ?? '').trim();
+    if (!id) return false;
+
+    const uiOpen = containerUi?.[id]?.open;
+    if (uiOpen !== undefined) return Boolean(uiOpen);
+
+    const obj = containerObj || game?.objectMap?.[id] || null;
+    if (!obj) return false;
+
+    const closedFlag = getCustomProperty(obj, 'Closed');
+    if (closedFlag !== undefined) return !Boolean(closedFlag);
+
+    const openedFlag = getCustomProperty(obj, 'Opened');
+    if (openedFlag !== undefined) return Boolean(openedFlag);
+
+    return false;
+  };
+
+  const resolveContainerContentIds = (containerId, containerObj = null) => {
+    const id = String(containerId ?? '').trim();
+    if (!id) return [];
+    const obj = containerObj || game?.objectMap?.[id] || null;
+    if (!obj) return [];
+    if (!Array.isArray(obj?.Contents)) return [];
+    return obj.Contents.map(entry => String(entry?.UniqueID ?? entry?.id ?? entry ?? '').trim()).filter(Boolean);
+  };
+
   const toggleContainerOpen = containerId => {
     const id = String(containerId ?? '').trim();
     if (!id) return;
     if (combat) return;
     const containerObj = game?.objectMap?.[id] ?? null;
-    const uiOpen = containerUi?.[id]?.open;
-    let currentOpen = Boolean(uiOpen);
-    if (uiOpen === undefined && containerObj) {
-      const closedFlag = getCustomProperty(containerObj, 'Closed');
-      if (closedFlag !== undefined) currentOpen = !Boolean(closedFlag);
-      else {
-        const openedFlag = getCustomProperty(containerObj, 'Opened');
-        if (openedFlag !== undefined) currentOpen = Boolean(openedFlag);
-      }
-    }
-    const nextOpen = !currentOpen;
-    const defaultContents = Array.isArray(containerObj?.Contents)
-      ? containerObj.Contents.map(entry => String(entry?.UniqueID ?? entry?.id ?? '').trim()).filter(Boolean)
-      : [];
+    const nextOpen = !resolveContainerOpenState(id, containerObj);
+    const defaultContents = resolveContainerContentIds(id, containerObj);
 
     setHoveredContainerItemId(null);
     setContainerUi(prev => {
       const existing = prev?.[id] ?? null;
       const resolvedOpen = existing ? !Boolean(existing.open) : nextOpen;
-      const nextEntry = existing ? { ...existing, open: resolvedOpen } : { open: resolvedOpen, contents: defaultContents };
+      const nextEntry = existing
+        ? {
+            ...existing,
+            open: resolvedOpen,
+            contents: resolvedOpen ? defaultContents : Array.isArray(existing.contents) ? existing.contents : defaultContents
+          }
+        : { open: resolvedOpen, contents: defaultContents };
       return { ...(prev || {}), [id]: nextEntry };
     });
 
@@ -734,7 +824,7 @@ export function GameUI() {
     const obj = game?.objectMap?.[id] ?? null;
     const type = String(obj?.Type ?? obj?.type ?? '').trim().toLowerCase();
     const stackable = type === 'consumable';
-    const name = obj?.Name || obj?.name || id;
+    const name = obj?.Name || obj?.name || humanizeId(id) || 'Item';
 
     const index = inventory.findIndex(entry => (entry?.UniqueID || entry?.id || entry?.Name) === id);
     if (index >= 0) {
@@ -781,7 +871,7 @@ export function GameUI() {
     const cost = toSafeInt(price, 0);
     const currentCredits = toSafeInt(game.player?.Credits, 0);
     const obj = game?.objectMap?.[id] ?? null;
-    const name = obj?.Name || obj?.name || id;
+    const name = obj?.Name || obj?.name || humanizeId(id) || 'Item';
     const stackable = String(obj?.Type ?? obj?.type ?? '').trim().toLowerCase() === 'consumable';
 
     if (hasInventoryItem(id) && !stackable) {
@@ -872,7 +962,7 @@ export function GameUI() {
       if (!media) return;
       setDismissedOverlayKey(null);
       setEventMedia(media);
-      setEventMediaTitle(room?.name || room?.Name || title || null);
+      setEventMediaTitle(room?.name || room?.Name || title || humanizeId(roomId) || null);
       return;
     }
 
@@ -896,7 +986,7 @@ export function GameUI() {
     if (!id) return;
 
     const obj = item?.obj ?? game?.objectMap?.[id] ?? null;
-    const name = obj?.Name || obj?.name || item?.name || id;
+    const name = obj?.Name || obj?.name || item?.name || humanizeId(id) || 'Item';
     const type = String(obj?.Type ?? obj?.type ?? '').trim().toLowerCase();
     const actions = getObjectActionNames(obj);
     const canUse = type === 'consumable' || actions.includes('use');
@@ -969,14 +1059,26 @@ export function GameUI() {
   const removeFromContainer = (containerId, contentId) => {
     const cId = String(containerId ?? '').trim();
     const itemId = String(contentId ?? '').trim();
-    if (!cId || !itemId || !game?.objectMap?.[cId]) return false;
+    if (!cId || !itemId || !game?.objectMap?.[cId]) return { removed: false, removedEntry: null };
 
     const containerObj = game.objectMap[cId];
-    if (!Array.isArray(containerObj.Contents)) return false;
+    if (!Array.isArray(containerObj.Contents)) return { removed: false, removedEntry: null };
 
-    const before = containerObj.Contents.length;
-    containerObj.Contents = containerObj.Contents.filter(entry => String(entry?.UniqueID ?? entry?.id ?? '').trim() !== itemId);
-    return containerObj.Contents.length !== before;
+    const remaining = [];
+    let removedEntry = null;
+
+    for (const entry of containerObj.Contents) {
+      const entryId = String(entry?.UniqueID ?? entry?.id ?? entry ?? '').trim();
+      if (entryId === itemId && removedEntry === null) {
+        removedEntry = entry;
+        continue;
+      }
+      remaining.push(entry);
+    }
+
+    if (removedEntry === null) return { removed: false, removedEntry: null };
+    containerObj.Contents = remaining;
+    return { removed: true, removedEntry };
   };
 
   const takeFromContainerToInventory = ({ containerId, itemId, autoEquip = false } = {}) => {
@@ -986,8 +1088,38 @@ export function GameUI() {
     if (!game) return;
     if (combat) return;
 
-    const removed = removeFromContainer(cId, id);
+    const itemObj = game?.objectMap?.[id] ?? null;
+    const name = itemObj?.Name || itemObj?.name || humanizeId(id) || 'Item';
+    const type = String(itemObj?.Type ?? itemObj?.type ?? '').trim().toLowerCase();
+    const stackable = type === 'consumable';
+    const alreadyOwned = hasInventoryItem(id);
+
+    if (alreadyOwned && !stackable) {
+      setEventMedia(null);
+      setEventMediaTitle(null);
+      setEventMessages([`You already own <b>${name}</b>.`]);
+      return;
+    }
+
+    const removal = removeFromContainer(cId, id);
+    if (!removal.removed) {
+      setEventMedia(null);
+      setEventMediaTitle(null);
+      setEventMessages([`<b>${name}</b> isn't inside that container.`]);
+      return;
+    }
+
     const added = ensureInventoryItem(id);
+    if (!added) {
+      const containerObj = game?.objectMap?.[cId] ?? null;
+      if (containerObj && Array.isArray(containerObj.Contents) && removal.removedEntry) {
+        containerObj.Contents.push(removal.removedEntry);
+      }
+      setEventMedia(null);
+      setEventMediaTitle(null);
+      setEventMessages([`Couldn't take <b>${name}</b>.`]);
+      return;
+    }
 
     setContainerUi(prev => {
       const existing = prev?.[cId] ?? null;
@@ -998,12 +1130,16 @@ export function GameUI() {
     setSelectedInventoryId(id);
     setHoveredContainerItemId(null);
 
-    if (removed || added) {
-      const itemObj = game?.objectMap?.[id] ?? null;
-      const name = itemObj?.Name || itemObj?.name || id;
-      setEventMedia(null);
-      setEventMediaTitle(null);
-      setEventMessages([`You take <b>${name}</b>.`]);
+    if (removal.removed || added) {
+      const lines = [`You take <b>${name}</b>.`];
+      if (autoEquip) {
+        const narration = getActionsMenuDescription(itemObj, 'Equip');
+        lines.push(narration || `You equip <b>${name}</b>.`);
+      }
+
+      setEventMedia(itemObj?.media || itemObj?.Picture || null);
+      setEventMediaTitle(name);
+      setEventMessages(lines);
     }
 
     refreshPlayerState(game);
@@ -1020,21 +1156,11 @@ export function GameUI() {
     if (!game?.player) return;
     syncEquippedToPlayer(equippedInventory);
 
-    let didChange = false;
-    // TODO: Replace with full "power-to-level" progression rules.
-    if (game.player?.Stats) {
-      const currentLevel = toSafeInt(game.player.Stats.Level, 0);
-      const effectivePower = toSafeInt(game.player.Stats.MS, 0) + getEquippedBonuses(equippedInventory, game?.objectMap).ms;
-      if (currentLevel <= 0 && effectivePower >= 2) {
-        game.player.Stats.Level = 1;
-        didChange = true;
-        openLevelUpNotice({ fromLevel: currentLevel, toLevel: 1, levelsGained: 1 }, game.player, game.leveling);
-      }
-    }
-
+    const levelProgression = game.checkLevelProgression();
+    openLevelUpNotice(levelProgression, game.player, game.leveling);
     refreshPlayerState(game);
 
-    if (!didChange) return;
+    if (!levelProgression || levelProgression.levelsGained <= 0) return;
     const save = ensureSaveGameShape(game);
     commitPlayerToSave(save);
     persistSaveGame(save);
@@ -1050,14 +1176,14 @@ export function GameUI() {
     if (!game || !currentRoom || !obj) return;
     if (combat) return;
     if (!canTakeObject(obj)) {
-      const name = obj?.name || obj?.Name || 'object';
+      const name = obj?.name || obj?.Name || humanizeId(obj?.id ?? obj?.UniqueID) || 'object';
       setEventMediaTitle(null);
       setEventMessages([`You can't take <b>${name}</b>.`]);
       return;
     }
 
     const objId = obj?.id ?? obj?.UniqueID ?? null;
-    const name = obj?.name || obj?.Name || objId || 'Object';
+    const name = obj?.name || obj?.Name || humanizeId(objId) || 'Object';
     if (!objId) return;
 
     if (!Array.isArray(game.player.Inventory)) game.player.Inventory = [];
@@ -1132,7 +1258,7 @@ export function GameUI() {
     if (room) {
       if (!Array.isArray(room.objects)) room.objects = [];
       const obj = item?.obj ?? null;
-      const droppedName = item?.name || obj?.name || obj?.Name || removed?.Name || 'Item';
+      const droppedName = item?.name || obj?.name || obj?.Name || removed?.Name || humanizeId(itemId) || 'Item';
       const dropped = obj
         ? { ...obj, CanPickUp: true, CanExamine: true, CanDrop: true }
         : { id: itemId, UniqueID: itemId, Name: droppedName, name: droppedName, description: '', media: null, CanPickUp: true };
@@ -1166,10 +1292,13 @@ export function GameUI() {
   const examineInventoryItem = item => {
     if (!item) return;
     if (combat) return;
+    if (!game || !currentRoom) return;
     setEventMediaTitle(null);
     setInspectTarget({ type: 'object', id: item.id });
-    setEventMedia(null);
-    setEventMessages([]);
+
+    const result = game.eventEngine.runEvent('<<On Click>>', { entityType: 'object', entityId: item.id, entity: item.obj, room: currentRoom });
+    setEventMedia(result?.media || null);
+    setEventMessages(result?.texts || []);
   };
 
   const startCombat = npc => {
@@ -1189,21 +1318,15 @@ export function GameUI() {
     const roomId = currentRoom?.id ?? null;
     if (!roomId) return;
 
-    if (lastEncounterRoomIdRef.current === roomId) return;
-    lastEncounterRoomIdRef.current = roomId;
+    const encounter = game.consumePendingEncounter?.(roomId) ?? null;
+    if (!encounter) return;
+    if (String(encounter?.kind ?? '').toLowerCase() !== 'combat') return;
 
-    const enemies = game.getRoomCharacters(roomId).filter(char => {
-      const disposition = String(char?.Disposition ?? char?.disposition ?? char?.Type ?? char?.type ?? '').trim().toLowerCase();
-      return disposition === 'hostile';
-    });
-    if (!enemies.length) return;
-
-    const notoriety = Number(game?.player?.Stats?.Notoriety ?? 0);
-    const chanceRoll = randomIntInclusive(0, 100) + notoriety;
-    if (chanceRoll <= 75) return;
-
-    const picked = enemies[randomIntInclusive(0, enemies.length - 1)];
-    startCombat(picked);
+    const enemyId = String(encounter?.enemyId ?? '').trim();
+    if (!enemyId) return;
+    const enemy = game?.characterMap?.[enemyId] ?? null;
+    if (!enemy) return;
+    startCombat(enemy);
   }, [game, currentRoom?.id, combat]);
 
   const gameClock = getGameClockFromStats(player?.Stats);
@@ -1224,6 +1347,7 @@ export function GameUI() {
   const notoriety = player?.Stats?.Notoriety ?? 0;
   const maxNotoriety = player?.Stats?.MaxNotoriety ?? 100;
   const credits = player?.Credits ?? 0;
+  const unspentStatPoints = toSafeInt(player?.Stats?.UnspentStatPoints ?? player?.Stats?.unspentStatPoints ?? 0, 0);
 
   const equippedBonuses = getEquippedBonuses(equippedInventory, game?.objectMap);
 
@@ -1242,6 +1366,43 @@ export function GameUI() {
     : Math.max(0, experienceCheckpoints.length - 1);
   const expToNext = level < maxLevel ? toSafeInt(experienceCheckpoints[level], 0) : null;
 
+  const allocateLevelUpPoint = statKey => {
+    if (!game?.player) return;
+    if (!game.player.Stats || typeof game.player.Stats !== 'object') game.player.Stats = {};
+
+    const stats = game.player.Stats;
+    const currentPoints = Math.max(0, toSafeInt(stats.UnspentStatPoints ?? stats.unspentStatPoints ?? 0, 0));
+    if (!currentPoints) return;
+
+    const kind = String(statKey ?? '').trim().toLowerCase();
+
+    if (kind === 'power') {
+      const next = toSafeInt(stats.MS ?? stats.Power ?? 0, 0) + 1;
+      stats.MS = next;
+      stats.Power = next;
+    } else if (kind === 'focus') {
+      const next = toSafeInt(stats.MentalStrength ?? stats.Focus ?? 0, 0) + 1;
+      stats.MentalStrength = next;
+      stats.Focus = next;
+    } else if (kind === 'stealth') {
+      const next = toSafeInt(stats.Agility ?? stats.Stealth ?? 0, 0) + 1;
+      stats.Agility = next;
+      stats.Stealth = next;
+    } else {
+      return;
+    }
+
+    stats.UnspentStatPoints = currentPoints - 1;
+
+    openLevelUpNotice(game.checkLevelProgression(), game.player, game.leveling);
+
+    refreshPlayerState(game);
+
+    const save = ensureSaveGameShape(game);
+    commitPlayerToSave(save);
+    persistSaveGame(save);
+  };
+
   const locationName = currentRoom?.name || currentRoom?.Name || 'Unknown location';
   const locationDescription = currentRoom?.description || currentRoom?.Description || '';
   const locationBg = currentRoom?.media || DEFAULT_BG;
@@ -1250,7 +1411,7 @@ export function GameUI() {
   const inventoryItems = inventory.map(item => {
     const id = item?.UniqueID || item?.id || item?.Name || 'unknown';
     const obj = game?.objectMap?.[id] || null;
-    const baseName = item?.Name || obj?.Name || id;
+    const baseName = item?.Name || obj?.Name || obj?.name || humanizeId(id) || 'Item';
     const quantity = Math.max(1, toSafeInt(item?.Quantity ?? item?.Qty ?? item?.Count ?? 1, 1));
     const label = quantity > 1 ? `${baseName} ×${quantity}` : baseName;
     return { id, name: baseName, label, quantity, obj };
@@ -1265,10 +1426,25 @@ export function GameUI() {
     if (!id) return;
     if (combat) return;
     const current = Boolean(equippedInventory?.[id]);
-    setItemEquipped(id, !current);
+    const shouldEquip = !current;
+    setItemEquipped(id, shouldEquip);
+
+    const obj = game?.objectMap?.[id] ?? null;
+    const name = obj?.Name || obj?.name || humanizeId(id) || 'Item';
+    const narration = getActionsMenuDescription(obj, shouldEquip ? 'Equip' : 'Unequip');
+    const fallback = shouldEquip ? `You equip <b>${name}</b>.` : `You unequip <b>${name}</b>.`;
+
+    setEventMedia(obj?.media || obj?.Picture || null);
+    setEventMediaTitle(name);
+    setEventMessages([narration || fallback]);
   };
 
   const exits = Array.isArray(currentRoom?.exits) ? currentRoom.exits : [];
+  const visibleExits = exits.filter(exit => {
+    const showIf = String(exit?.showIf ?? exit?.ShowIf ?? '').trim();
+    if (!showIf) return true;
+    return evaluateCondStr(showIf, { game, room: currentRoom, vars: game?.variables ?? {} });
+  });
 
   const handleExamineRoom = () => {
     if (!game || !currentRoom) return;
@@ -1337,7 +1513,7 @@ export function GameUI() {
     inspectedNpc?.name ||
     inspectedNpc?.Name ||
     inspectedNpc?.Charname ||
-    null;
+    (inspectTarget?.id ? humanizeId(inspectTarget.id) : null);
   const inspectedDescription =
     inspectedObject?.description || inspectedObject?.Description || inspectedNpc?.description || inspectedNpc?.Description || null;
 
@@ -1346,7 +1522,7 @@ export function GameUI() {
 
     if (!combat && activeDrawer === 'vendor' && shopHoveredItemId) {
       const obj = game?.objectMap?.[shopHoveredItemId] ?? null;
-      return obj?.Name || obj?.name || null;
+      return obj?.Name || obj?.name || humanizeId(shopHoveredItemId) || null;
     }
 
     if (inspectedMedia && inspectedTitle) return inspectedTitle;
@@ -1399,7 +1575,7 @@ export function GameUI() {
         const itemId = String(entry?.UniqueID ?? entry?.id ?? '').trim();
         if (!itemId) return null;
         const itemObj = game?.objectMap?.[itemId] ?? null;
-        const itemName = itemObj?.Name || itemObj?.name || itemId;
+        const itemName = itemObj?.Name || itemObj?.name || humanizeId(itemId) || 'Item';
         const price = toSafeInt(entry?.Price ?? itemObj?.Price ?? 0, 0);
         const stackable = String(itemObj?.Type ?? itemObj?.type ?? '').trim().toLowerCase() === 'consumable';
         return { itemId, itemName, price, stackable };
@@ -1420,17 +1596,73 @@ export function GameUI() {
     if (!name) return;
 
     const result = game.eventEngine.runEvent(name, { entityType, entityId, entity, room: currentRoom });
-    const texts = Array.isArray(result?.texts) && result.texts.length ? result.texts : [`<b>${label || name}</b>.`];
+    const baseTexts = Array.isArray(result?.texts) && result.texts.length ? result.texts : [`<b>${label || name}</b>.`];
 
-    setEventMedia(result?.media || null);
-    setEventMediaTitle(null);
-    setEventMessages(texts);
+    const startCombatEnemyId = String(result?.startCombatEnemyId ?? '').trim();
+    const startCombatEnemy = startCombatEnemyId ? game?.characterMap?.[startCombatEnemyId] ?? null : null;
+
+    if (startCombatEnemyId && startCombatEnemy) {
+      const createCombatLogEntry = (html, kind = 'system') => ({
+        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        html: String(html ?? ''),
+        kind
+      });
+
+      const combatState = createCombatState({ game, room: currentRoom, enemy: startCombatEnemy });
+      const extraLogs = baseTexts
+        .map(line => String(line ?? '').trim())
+        .filter(Boolean)
+        .map(line => createCombatLogEntry(ragsToHtml(line, { game, room: currentRoom }), 'system'));
+
+      if (extraLogs.length) combatState.log = [...extraLogs, ...(combatState.log || [])];
+
+      const overrideMedia = String(result?.media ?? '').trim();
+      const resolvedOverride = overrideMedia ? resolveMediaUrl(overrideMedia) || overrideMedia : null;
+      if (resolvedOverride) combatState.enemyPicture = resolvedOverride;
+
+      setCombatMenuEntered(false);
+      setActiveDrawer(null);
+      setEventMessages([]);
+      setEventMedia(null);
+      setEventMediaTitle(null);
+      setCombat(combatState);
+    } else {
+      const texts = startCombatEnemyId && !startCombatEnemy ? [...baseTexts, `Unknown enemy id: ${startCombatEnemyId}.`] : baseTexts;
+      setEventMedia(result?.media || null);
+      setEventMediaTitle(null);
+      setEventMessages(texts);
+    }
+
     openLevelUpNotice(game.checkLevelProgression(), game.player, game.leveling);
+
+    const nextRoom = game.getCurrentRoom();
+    if (nextRoom) {
+      updateRoom(nextRoom, game, { resetInspectTarget: false });
+
+      if (inspectTarget.type === 'npc' && inspectTarget.id) {
+        const stillPresent = (game.getRoomCharacters(nextRoom.id) || []).some(npc => (npc?.id ?? npc?.UniqueID) === inspectTarget.id);
+        if (!stillPresent) setInspectTarget({ type: 'room', id: nextRoom.id });
+      }
+
+      if (inspectTarget.type === 'object' && inspectTarget.id) {
+        const stillPresent = (game.getRoomObjects(nextRoom.id) || []).some(obj => (obj?.id ?? obj?.UniqueID) === inspectTarget.id);
+        if (!stillPresent) setInspectTarget({ type: 'room', id: nextRoom.id });
+      }
+    }
 
     refreshPlayerState(game);
     const save = ensureSaveGameShape(game);
     commitPlayerToSave(save);
+    if (entityType === 'character' && entityId) commitCharacterToSave(entityId, save);
+    if (entityType === 'object' && entityId) commitObjectToSave(entityId, save);
     persistSaveGame(save);
+
+    if (result?.paused) {
+      const destinationId = String(game?.variables?.continue_to_room ?? '').trim();
+      setContinuePrompt({ destinationId: destinationId || null });
+    } else if (continuePrompt) {
+      clearContinuePrompt(game);
+    }
   };
 
   const buildActionsDrawerModel = () => {
@@ -1441,11 +1673,13 @@ export function GameUI() {
 
     if (inspectTarget.type === 'npc' && inspectedNpc) {
       const npcId = inspectedNpc?.id ?? inspectedNpc?.UniqueID ?? null;
-      const npcName = inspectedNpc?.Charname || inspectedNpc?.name || inspectedNpc?.Name || 'NPC';
+      const npcName = inspectedNpc?.Charname || inspectedNpc?.name || inspectedNpc?.Name || humanizeId(npcId) || 'NPC';
       const npcDesc = inspectedNpc?.Description || inspectedNpc?.description || '';
 
       const menu = Array.isArray(inspectedNpc?.ActionsMenu) ? inspectedNpc.ActionsMenu : [];
+      const menuCtx = { game, room: currentRoom, vars: game?.variables ?? {}, character: inspectedNpc, entity: inspectedNpc };
       const menuActions = menu
+        .filter(entry => shouldShowMenuEntry(entry, menuCtx))
         .map(entry => ({
           label: String(entry?.Action ?? '').trim(),
           description: String(entry?.Description ?? '').trim() || null
@@ -1511,11 +1745,15 @@ export function GameUI() {
 
     if (inspectTarget.type === 'object' && inspectedObject) {
       const objId = inspectedObject?.id ?? inspectedObject?.UniqueID ?? null;
-      const objName = inspectedObject?.name || inspectedObject?.Name || 'Object';
+      const objName = inspectedObject?.name || inspectedObject?.Name || humanizeId(objId) || 'Object';
       const objDesc = inspectedObject?.description || inspectedObject?.Description || '';
+      const containerObj = objId ? game?.objectMap?.[objId] ?? inspectedObject : inspectedObject;
+      const containerOpen = Boolean(objId && isContainerObject(containerObj) && resolveContainerOpenState(objId, containerObj));
 
       const actions = Array.isArray(inspectedObject?.ActionsMenu) ? inspectedObject.ActionsMenu : [];
+      const actionMenuCtx = { game, room: currentRoom, vars: game?.variables ?? {}, objectBeingActedUpon: inspectedObject, entity: inspectedObject };
       const actionItems = actions
+        .filter(entry => shouldShowMenuEntry(entry, actionMenuCtx))
         .map(entry => ({
           label: String(entry?.Action ?? '').trim(),
           description: String(entry?.Description ?? '').trim() || null
@@ -1551,7 +1789,35 @@ export function GameUI() {
             };
           }
           if (actionKey === 'open' || actionKey === 'close') {
+            if (actionKey === 'open' && containerOpen) return null;
+            if (actionKey === 'close' && !containerOpen) return null;
             return { id, label: entry.label, description: entry.description, onClick: () => toggleContainerOpen(objId) };
+          }
+
+          if (actionKey === 'equip' || actionKey === 'unequip') {
+            if (!objId) return null;
+            if (!canEquipObject(containerObj)) return null;
+
+            const inInventory = hasInventoryItem(objId);
+            const equipped = Boolean(equippedInventory?.[objId]);
+            const wantsEquip = actionKey === 'equip';
+            const disabled = !inInventory || (wantsEquip ? equipped : !equipped);
+
+            return {
+              id,
+              label: entry.label,
+              description: entry.description,
+              disabled,
+              onClick: () => {
+                if (!inInventory) return;
+                setItemEquipped(objId, wantsEquip);
+                const narration = entry.description || getActionsMenuDescription(containerObj, wantsEquip ? 'Equip' : 'Unequip');
+                const fallback = wantsEquip ? `You equip <b>${objName}</b>.` : `You unequip <b>${objName}</b>.`;
+                setEventMedia(containerObj?.media || containerObj?.Picture || null);
+                setEventMediaTitle(objName);
+                setEventMessages([narration || fallback]);
+              }
+            };
           }
 
           if (actionKey.startsWith('buy ')) {
@@ -1597,22 +1863,120 @@ export function GameUI() {
         })
         .filter(Boolean);
 
-      return { title: objName, description: objDesc, sections: items.length ? [{ title: 'Actions', items }] : [] };
+      const sections = [];
+      if (items.length) sections.push({ title: 'Actions', items });
+
+      if (objId && containerOpen) {
+        const contentIds = resolveContainerContentIds(objId, containerObj);
+        if (!contentIds.length) {
+          sections.push({
+            title: 'Contents',
+            items: [{ id: `obj:${objId}:contents:empty`, label: 'Empty', description: 'Nothing inside.', disabled: true }]
+          });
+        } else {
+          const contentItems = [];
+          for (const contentId of contentIds) {
+            const contentObj = game?.objectMap?.[contentId] ?? null;
+            const contentName = contentObj?.Name || contentObj?.name || humanizeId(contentId) || 'Item';
+            const contentDesc = contentObj?.Description || contentObj?.description || null;
+            const contentType = String(contentObj?.Type ?? contentObj?.type ?? '').trim().toLowerCase();
+            const stackable = contentType === 'consumable';
+            const inInventory = hasInventoryItem(contentId);
+            const canTake = stackable || !inInventory;
+            const equipable = canEquipObject(contentObj);
+            const equipped = Boolean(equippedInventory?.[contentId]);
+
+            contentItems.push({
+              id: `obj:${objId}:contents:${contentId}:take`,
+              label: `Take ${contentName}`,
+              description: contentDesc,
+              disabled: !canTake,
+              onClick: () => takeFromContainerToInventory({ containerId: objId, itemId: contentId, autoEquip: false })
+            });
+
+            if (equipable) {
+              contentItems.push({
+                id: `obj:${objId}:contents:${contentId}:equip`,
+                label: `Equip ${contentName}`,
+                description: contentDesc,
+                disabled: equipped || (!inInventory && !canTake),
+                onClick: () => {
+                  if (inInventory) {
+                    setItemEquipped(contentId, true);
+                    const narration = getActionsMenuDescription(contentObj, 'Equip');
+                    setEventMedia(contentObj?.media || contentObj?.Picture || null);
+                    setEventMediaTitle(contentName);
+                    setEventMessages([narration || `You equip <b>${contentName}</b>.`]);
+                  } else {
+                    takeFromContainerToInventory({ containerId: objId, itemId: contentId, autoEquip: true });
+                  }
+                }
+              });
+            }
+          }
+
+          sections.push({ title: 'Contents', items: contentItems });
+        }
+      }
+
+      return { title: objName, description: objDesc, sections };
     }
 
-    return {
-      title: roomTitle,
-      description: roomDescriptionText,
-      sections: [
-        {
-          title: 'Room',
-          items: [
-            { id: 'room:examine', label: 'Examine Room', description: 'Inspect your surroundings.', onClick: handleExamineRoom },
-            { id: 'room:navigation', label: 'Navigation', description: 'Choose an exit.', onClick: () => toggleDrawer('navigation') }
-          ]
-        }
+    const todoItems = (visibleExits || [])
+      .filter(exit => Boolean(exit?.todo ?? exit?.Todo ?? false))
+      .map(exit => {
+        const destId = exit.destinationId || null;
+        if (!destId) return null;
+        const todoLabel = String(exit?.todoLabel ?? exit?.TodoLabel ?? '').trim();
+        const label = todoLabel || `Go ${exit.direction}`;
+        const description = exit.destinationName || humanizeId(exit.destinationRaw) || exit.destinationRaw || '';
+        return {
+          id: `todo:${exit.direction}:${destId}`,
+          label,
+          description,
+          onClick: () => handleMove(destId)
+        };
+      })
+      .filter(Boolean);
+
+    const roomMenu = Array.isArray(currentRoom?.ActionsMenu) ? currentRoom.ActionsMenu : [];
+    const roomMenuCtx = { game, room: currentRoom, vars: game?.variables ?? {}, entity: currentRoom };
+    const roomMenuItems = roomMenu
+      .filter(entry => shouldShowMenuEntry(entry, roomMenuCtx))
+      .map(entry => {
+        const label = String(entry?.Action ?? '').trim();
+        if (!label) return null;
+        const actionKey = normalizeActionName(label);
+        if (actionKey === 'examine room' || actionKey === 'navigation') return null;
+        return {
+          id: `room:${currentRoom?.id || 'room'}:${actionKey}`,
+          label,
+          description: String(entry?.Description ?? '').trim() || null,
+          onClick: () =>
+            runEntityActionEvent({
+              entityType: 'room',
+              entityId: currentRoom?.id,
+              entity: currentRoom,
+              eventType: label,
+              label: `${roomTitle}: ${label}`
+            })
+        };
+      })
+      .filter(Boolean);
+
+    const sections = [];
+    if (todoItems.length) sections.push({ title: 'Todo', items: todoItems });
+
+    sections.push({
+      title: 'Room',
+      items: [
+        { id: 'room:examine', label: 'Examine Room', description: 'Inspect your surroundings.', onClick: handleExamineRoom },
+        { id: 'room:navigation', label: 'Navigation', description: 'Choose an exit.', onClick: () => toggleDrawer('navigation') },
+        ...roomMenuItems
       ]
-    };
+    });
+
+    return { title: roomTitle, description: roomDescriptionText, sections };
   };
 
   const actionsDrawerModel = activeDrawer === 'actions' ? buildActionsDrawerModel() : null;
@@ -1870,7 +2234,7 @@ export function GameUI() {
                         const itemIsContainer = isContainerObject(itemObj);
                         const itemIsEquipable = canEquipObject(itemObj);
                         const isEquipped = Boolean(equippedInventory?.[itemId]);
-                        const isOpen = Boolean(containerUi?.[itemId]?.open);
+                        const isOpen = itemIsContainer ? resolveContainerOpenState(itemId, itemObj) : false;
                         const badgeLabel = itemIsEquipable ? (isEquipped ? 'ON' : 'OFF') : itemIsContainer ? (isOpen ? 'OPEN' : 'BAG') : null;
                         const badgeClass = itemIsEquipable ? (isEquipped ? 'on' : 'off') : itemIsContainer ? (isOpen ? 'on' : 'off') : '';
 
@@ -1899,7 +2263,7 @@ export function GameUI() {
                       <div className="inventory-action-row">
                         {isContainerObject(selectedInventoryItem.obj) ? (
                           <button type="button" className="drawer-action-btn" onClick={() => toggleContainerOpen(selectedInventoryItem.id)}>
-                            {containerUi?.[selectedInventoryItem.id]?.open ? 'Close' : 'Open'}
+                            {resolveContainerOpenState(selectedInventoryItem.id, selectedInventoryItem.obj) ? 'Close' : 'Open'}
                           </button>
                         ) : (
                           <button
@@ -1928,9 +2292,53 @@ export function GameUI() {
                         <button type="button" className="drawer-action-btn" onClick={() => examineInventoryItem(selectedInventoryItem)}>
                           Examine
                         </button>
+                        {(() => {
+                          if (combat) return null;
+                          const obj = selectedInventoryItem.obj;
+                          const objId = selectedInventoryItem.id;
+                          if (!obj || !objId) return null;
+
+                          const menu = Array.isArray(obj?.ActionsMenu) ? obj.ActionsMenu : [];
+                          const excluded = new Set(['examine', 'take', 'drop', 'open', 'close', 'shop', 'equip', 'unequip', 'use']);
+                          const entries = [];
+                          const seen = new Set();
+
+                          for (const row of menu) {
+                            const label = String(row?.Action ?? '').trim();
+                            if (!label) continue;
+                            const key = normalizeActionName(label);
+                            if (!key) continue;
+                            if (excluded.has(key) || key.startsWith('buy ')) continue;
+                            if (seen.has(key)) continue;
+                            seen.add(key);
+                            entries.push({ key, label });
+                          }
+
+                          if (!entries.length) return null;
+
+                          return entries.map(entry => (
+                            <button
+                              key={`inv:${objId}:${entry.key}`}
+                              type="button"
+                              className="drawer-action-btn"
+                              onClick={() =>
+                                runEntityActionEvent({
+                                  entityType: 'object',
+                                  entityId: objId,
+                                  entity: obj,
+                                  eventType: entry.label,
+                                  label: `${selectedInventoryItem.name}: ${entry.label}`
+                                })
+                              }
+                            >
+                              {entry.label}
+                            </button>
+                          ));
+                        })()}
                       </div>
 
-                      {isContainerObject(selectedInventoryItem.obj) && containerUi?.[selectedInventoryItem.id]?.open ? (
+                      {isContainerObject(selectedInventoryItem.obj) &&
+                      resolveContainerOpenState(selectedInventoryItem.id, selectedInventoryItem.obj) ? (
                         <div className="container-contents">
                           <div className="drawer-subtitle">Contents</div>
                           <ul className="container-contents-list" aria-label={`${selectedInventoryItem.name} contents`}>
@@ -1956,7 +2364,7 @@ export function GameUI() {
                               return contentIds.map(contentId => {
                                 const contentObj = game?.objectMap?.[contentId] ?? null;
                                 const contentEntry = contentMeta.get(contentId) || null;
-                                const contentName = contentObj?.Name || contentObj?.name || contentEntry?.Name || contentId;
+                                const contentName = contentObj?.Name || contentObj?.name || contentEntry?.Name || humanizeId(contentId) || 'Item';
                                 const contentEquipable = canEquipObject(contentObj);
                                 const contentIsContainer = isContainerObject(contentObj);
                                 const contentInInventory = hasInventoryItem(contentId);
@@ -2041,8 +2449,15 @@ export function GameUI() {
                                                 onClick={event => {
                                                   event.stopPropagation();
                                                   setHoveredContainerItemId(null);
-                                                  if (contentInInventory) setItemEquipped(contentId, true);
-                                                  else takeFromContainerToInventory({ containerId, itemId: contentId, autoEquip: true });
+                                                  if (contentInInventory) {
+                                                    setItemEquipped(contentId, true);
+                                                    const narration = getActionsMenuDescription(contentObj, 'Equip');
+                                                    setEventMedia(contentObj?.media || contentObj?.Picture || null);
+                                                    setEventMediaTitle(contentName);
+                                                    setEventMessages([narration || `You equip <b>${contentName}</b>.`]);
+                                                  } else {
+                                                    takeFromContainerToInventory({ containerId, itemId: contentId, autoEquip: true });
+                                                  }
                                                 }}
                                               >
                                                 Equip
@@ -2055,6 +2470,10 @@ export function GameUI() {
                                                   event.stopPropagation();
                                                   setHoveredContainerItemId(null);
                                                   setItemEquipped(contentId, false);
+                                                  const narration = getActionsMenuDescription(contentObj, 'Unequip');
+                                                  setEventMedia(contentObj?.media || contentObj?.Picture || null);
+                                                  setEventMediaTitle(contentName);
+                                                  setEventMessages([narration || `You unequip <b>${contentName}</b>.`]);
                                                 }}
                                               >
                                                 Unequip
@@ -2135,7 +2554,14 @@ export function GameUI() {
                     const vendorId = resolveEntityId(vendor) || '';
                     const vendorTemplate = vendorId ? game?.objectMap?.[vendorId] ?? game?.characterMap?.[vendorId] ?? null : null;
                     const vendorName =
-                      vendor?.name || vendor?.Name || vendor?.Charname || vendorTemplate?.name || vendorTemplate?.Name || vendorTemplate?.Charname || 'Vendor';
+                      vendor?.name ||
+                      vendor?.Name ||
+                      vendor?.Charname ||
+                      vendorTemplate?.name ||
+                      vendorTemplate?.Name ||
+                      vendorTemplate?.Charname ||
+                      humanizeId(vendorId) ||
+                      'Vendor';
                     const vendorDesc =
                       vendor?.Description || vendor?.description || vendorTemplate?.Description || vendorTemplate?.description || '';
 
@@ -2145,7 +2571,7 @@ export function GameUI() {
                         const id = String(entry?.UniqueID ?? entry?.id ?? '').trim();
                         if (!id) return null;
                         const obj = game?.objectMap?.[id] ?? null;
-                        const name = obj?.Name || obj?.name || id;
+                        const name = obj?.Name || obj?.name || humanizeId(id) || 'Item';
                         const description = obj?.Description || obj?.description || '';
                         const media = obj?.media || obj?.Picture || null;
                         const price = toSafeInt(entry?.Price ?? obj?.Price ?? 0, 0);
@@ -2289,8 +2715,8 @@ export function GameUI() {
                 <div className="drawer-body">
                   <div className="drawer-subtitle">{locationName}</div>
                   <ul className="nav-exit-list">
-                    {exits.length ? (
-                      exits.map((exit, idx) => (
+                    {visibleExits.length ? (
+                      visibleExits.map((exit, idx) => (
                         <li key={`${exit.direction}:${exit.destinationId || exit.destinationRaw || idx}`}>
                           <button
                             type="button"
@@ -2300,7 +2726,7 @@ export function GameUI() {
                             title={exit.destinationId ? undefined : `Unresolved destination: ${exit.destinationRaw}`}
                           >
                             <span className="nav-dir">{exit.direction}</span>
-                            <span className="nav-dest">{exit.destinationName || exit.destinationRaw}</span>
+                            <span className="nav-dest">{exit.destinationName || humanizeId(exit.destinationRaw) || exit.destinationRaw}</span>
                           </button>
                         </li>
                       ))
@@ -2432,7 +2858,13 @@ export function GameUI() {
               ) : null}
             </>
           ) : null}
-          <LocationTitle visible={!showOverlayMediaPanel} combat={combat} locationName={locationName} onExamineRoom={handleExamineRoom} />
+          <LocationTitle
+            visible={!showOverlayMediaPanel}
+            combat={combat}
+            locationName={locationName}
+            locationDescription={locationDescription}
+            onExamineRoom={handleExamineRoom}
+          />
 
           <LevelUpNotifier
             key={levelUpNotice?.key || 'levelup'}
@@ -2441,6 +2873,8 @@ export function GameUI() {
             title={levelUpNotice?.title}
             levelsGained={levelUpNotice?.levelsGained}
             media={levelUpNotice?.media}
+            statPoints={unspentStatPoints}
+            onAllocatePoint={allocateLevelUpPoint}
             onClose={() => setLevelUpNotice(null)}
           />
 
@@ -2474,6 +2908,8 @@ export function GameUI() {
             inspectedDescriptionHtml={inspectedDescriptionHtml}
             locationDescriptionHtml={locationDescriptionHtml}
             eventMessages={eventMessageEntries}
+            continuePrompt={continuePrompt}
+            onContinue={handleContinue}
             onRichTextClick={handleRichTextClick}
             onOpenCombatMenu={openCombatMenu}
             onOpenActions={openActionsMenu}

@@ -2,10 +2,10 @@
   "UniqueID": "huntsman_001",
   "Charname": "The Huntsman",
   "Gender": "Male",
-  "Type": "hunter",
+  "Type": "enemy",
   "Disposition": "hostile",
+  "prob_spawn": 9,
   "Description": "A watchful archer with a bow and keen eyes.",
-  "CurrentRoom": "eastside_lc_001",
   "Picture": "Assets/images/characters/the_archer.jpg",
   "KnowsPlayer": false,
   "Weapons": [

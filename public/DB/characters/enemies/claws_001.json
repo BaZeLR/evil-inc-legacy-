@@ -2,10 +2,10 @@
   "UniqueID": "claws_001",
   "Charname": "Claws",
   "Gender": "female",
-  "Type": "fighter",
-  "Disposition": "neutral",
+  "Type": "enemy",
+  "Disposition": "hostile",
+  "prob_spawn": 14,
   "Description": "A stoic fighter with metal claws.",
-  "CurrentRoom": "eastside_lc_001",
   "Picture": "Assets/images/characters/placeholder.png",
   "KnowsPlayer": false,
   "Weapons": [

@@ -30,11 +30,16 @@ Characters are stored as individual files, grouped by category:
 
 - `public/DB/characters/enemies/*.json` (combat enemies)
 - `public/DB/characters/bosses/*.json`
-- `public/DB/characters/residents/*.json`
-- `public/DB/characters/secondary_npc/*.json`
-- `public/DB/characters/npc/*.json`
+- `public/DB/characters/r_citizens/*.json` (random citizens)
+- `public/DB/characters/main/*.json` (story NPCs / vendors)
 
 Each folder has an `index.json` listing the character `UniqueID`s in that folder.
+
+## Planned events / story arcs
+
+- Edit: `public/DB/events.json`
+- Runtime state: stored in `savegame.json` under `events.threads`, `events.states`, and `events.flags`.
+- Normalize auto IDs/scenes: `npm run events:normalize`
 
 ## Useful commands
 

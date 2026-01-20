@@ -3,9 +3,9 @@
   "Charname": "Cyclops",
   "Gender": "female",
   "Type": "enemy",
-  "Disposition": "neutral",
+  "Disposition": "hostile",
+  "prob_spawn": 5,
   "Description": "A focused mutant who can unleash a laser blast.",
-  "CurrentRoom": "eastside_lc_001",
   "Picture": "Assets/images/characters/placeholder.png",
   "KnowsPlayer": false,
   "Weapons": [

@@ -2,7 +2,7 @@
   "Gender": "Male",
   "UniqueID": "player_001",
   "Name": "Steven Wolf",
-"Description": "Background Info: Orphaned from the great black out. Raised in small town, you discovered your genius at an early age. This had always made you feel like a outsider, often leading you to be teased and bullied.\nDriven to seclusion from the people around you. You dove into your studies and worked your way to a highly coveted position. For the first time in your life you at least felt connected to something, that was until the accident. Feelings of guilt over your teams death has kept you up most nights. You vow to seek revenge, your even willing to change everything you believe in to do it.",
+  "Description": "Background Info: Orphaned from the great black out. Raised in small town, you discovered your genius at an early age. This had always made you feel like a outsider, often leading you to be teased and bullied.\nDriven to seclusion from the people around you. You dove into your studies and worked your way to a highly coveted position. For the first time in your life you at least felt connected to something, that was until the accident. Feelings of guilt over your teams death has kept you up most nights. You vow to seek revenge, your even willing to change everything you believe in to do it.",
   "StartingRoom": "eastside_lc_001",
   "CurrentRoom": "eastside_lc_001",
   "PlayerGender": "Male",

@@ -13,7 +13,7 @@
   "CanCombine": false,
   "CanSpawn": false,
   "Price": 0,
-  "Tooltip": "Examine, Take, Drop, Open, Close",
+  "Tooltip": "Examine, Take, Open, Close",
   "ActionsMenu": [
     {
       "Action": "Examine",
@@ -41,7 +41,13 @@
       "UniqueID": "money_001",
       "Name": "credits",
       "Type": "item"
+    },
+    {
+      "UniqueID": "vibranium_ring_001",
+      "Name": "Vibranium Ring",
+      "Type": "item"
     }
+
   ],
   "CustomActions": [],
   "CombinableWith": [],

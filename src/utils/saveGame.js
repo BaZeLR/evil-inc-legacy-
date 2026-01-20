@@ -6,7 +6,7 @@ function isRecord(value) {
 }
 
 export function createEmptySaveGame() {
-  return { version: 1, updatedAt: null, player: {}, rooms: {}, objects: {} };
+  return { version: 1, updatedAt: null, player: {}, rooms: {}, objects: {}, characters: {}, events: { threads: {}, states: {}, flags: {} } };
 }
 
 export async function loadSaveGame() {
@@ -19,7 +19,15 @@ export async function loadSaveGame() {
       updatedAt: raw.updatedAt ?? null,
       player: isRecord(raw.player) ? raw.player : {},
       rooms: isRecord(raw.rooms) ? raw.rooms : {},
-      objects: isRecord(raw.objects) ? raw.objects : {}
+      objects: isRecord(raw.objects) ? raw.objects : {},
+      characters: isRecord(raw.characters) ? raw.characters : {},
+      events: isRecord(raw.events)
+        ? {
+            threads: isRecord(raw.events.threads) ? raw.events.threads : {},
+            states: isRecord(raw.events.states) ? raw.events.states : {},
+            flags: isRecord(raw.events.flags) ? raw.events.flags : {}
+          }
+        : { threads: {}, states: {}, flags: {} }
     };
   };
 

@@ -1,0 +1,21 @@
+{
+  "UniqueID": "nurse_b_001",
+  "Charname": "Nurse B",
+  "Gender": "Female",
+  "Type": "citizen",
+  "Disposition": "neutral",
+  "prob_spawn": 11,
+  "Description": "A nurse taking a brief break between long shifts.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Actions": [],
+  "ActionsMenu": [
+    { "Action": "Talk", "Description": "Start a conversation." },
+    { "Action": "Examine", "Description": "Look closer." }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {},
+  "LoreStages": {},
+  "CustomProperties": []
+}

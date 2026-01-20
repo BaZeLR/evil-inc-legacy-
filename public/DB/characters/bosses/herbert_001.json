@@ -1,0 +1,469 @@
+{
+  "UniqueID": "herbert_001",
+  "Charname": "Herbert",
+  "Gender": "Male",
+  "Type": "boss",
+  "Disposition": "hostile",
+  "prob_spawn": 0,
+  "Description": "Head of campus security. Overweight, greedy, and far too confident behind a locked door.",
+  "Picture": "Assets/images/characters/herby_talk.jpg",
+  "CurrentRoom": "collegesecuritycenter_lc_001",
+  "KnowsPlayer": false,
+  "Weapons": ["Police Baton"],
+  "ExpReward": 180,
+  "CreditsReward": 60,
+  "Element": 7,
+  "LootType": 0,
+  "Encounter": {
+    "Intro": "[middle]Herbert's face twists into rage. \"You little freak! You think you can break into MY office?\" He grips his baton and charges.[/middle]\n\n[c Red][b]Let's fight![/b][/c]",
+    "EnemyMiss": "[middle]\"Hold still!\" Herbert swings wide and nearly topples over.[/middle]",
+    "EnemyHit": [
+      "[middle]\"That's campus security, baby!\" Herbert cracks you with his baton. You take [c Red][b][v: _enemyDMG] damage[/b][/c].[/middle]",
+      "[middle]Herbert rams forward with his Segway and clips you. You take [c Red][b][v: _enemyDMG] damage[/b][/c].[/middle]"
+    ],
+    "EnemyCritical": "[middle]Herbert screams and puts his full weight behind the strike![c Red][b] CRITICAL HIT![/b][/c] You take [c Red][b][v: _enemyDMG] damage[/b][/c].[/middle]",
+    "Victory": "[middle]Herbert drops his baton and staggers back, wheezing. \"This isn't over...\" He flees, leaving his office in chaos.[/middle]"
+  },
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYPICTURE",
+          "CommandPart2": "Assets/images/characters/herby_warry.jpg"
+        },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Herbert watches you with a dead-eyed stare, fingers tapping at his keyboard."
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Talk",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYPICTURE",
+          "CommandPart2": "Assets/images/characters/herby_talk.jpg"
+        },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Walking into campus security you see a over weight man in his 40's. He's staring intensely at his computer screen. He notices you looking at him and you hear him start clicking then he looks up at you with this dead eyed stare.\n\n\"Can I help you? Hmmm now that's one funny get up you got there pal... You in the science department or something?\"\n\n\"Errr....Uhhhh\" &lt;Fuck what do I tell him?&gt;"
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "character.KnowsPlayer",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Telepathy",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "&lt;My high's starting to ware off I better call my guy and see if he would front me some product. Ever since my parents froze my accounts I've really had a hard time getting high. I better hope this whole hidden camera thing works out or I'm going to own a lot of money...&gt;"
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.herbert_telepathy_done",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Lie: Science Department",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.herbert_dialog",
+              "ConditionStep3": "==",
+              "ConditionStep4": 1
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYPICTURE",
+              "CommandPart2": "Assets/images/characters/herby_talk.jpg"
+            },
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "\"Yes...umm... I just started, Im Dr. Wolf. I just moved into the area.\"\n\n\"Doctor 'eh'? Well nice to meet ya I'm Herbert im head of campus security. So your new huh? Have ya got your security badge Dr. Wolf? You're gonna need one to into any of the buildings around campus.... You can get here if ya like.\" He rubs his large belly and snorts."
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.herbert_badge_offer",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.herbert_dialog",
+              "CommandPart3": "Equals",
+              "CommandPart4": 2
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "character.KnowsPlayer",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            }
+          ],
+          "FailCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "He squints. \"Start with [b]Talk[/b], doc.\""
+            }
+          ]
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Well I guess I'll get one......",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.herbert_dialog",
+              "ConditionStep3": "==",
+              "ConditionStep4": 2
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "\"Well I guess I'll get one......\"\n\n\"GREAT! That'd will be 200 buck's!\""
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.herbert_dialog",
+              "CommandPart3": "Equals",
+              "CommandPart4": 3
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "character.KnowsPlayer",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            }
+          ],
+          "FailCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "He squints. \"Start with [b]Talk[/b], doc.\""
+            }
+          ]
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "WHAT???",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.herbert_dialog",
+              "ConditionStep3": "==",
+              "ConditionStep4": 3
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "\"WHAT???\"\n\n\"I know you rich \\\"educated\\\" folks got the money...\n-now, fork it over!\n- I'm the head of security and the Dean say's I get to make the rules!\""
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.herbert_dialog",
+              "CommandPart3": "Equals",
+              "CommandPart4": 4
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "character.KnowsPlayer",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            }
+          ],
+          "FailCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "Herbert stares at you. \"...huh?\""
+            }
+          ]
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Lie: OH GOD PLEASE HELP!",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.herbert_dialog",
+              "ConditionStep3": ">=",
+              "ConditionStep4": 1
+            },
+            {
+              "CondType": "CT_Variable_Comparison",
+              "CkType": "And",
+              "ConditionStep2": "player.Stats.herbert_dialog",
+              "ConditionStep3": "<=",
+              "ConditionStep4": 4
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYPICTURE",
+              "CommandPart2": "Assets/images/rooms/LC_Campus.jpg"
+            },
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "&lt;Well I wonder what I could say to get him out of here...? Oh!&gt;\n\n\"Oh GOD IT'S HORRIABLE! Quick you have to help! Americana and Miss Liberty are fighting out near the campus gates! They're destroying a lot of property. Hell, they're fighting so hard their uniforms are barley hanging on....\"\n\n\"WHAT! I gotta go check this out! So do you mind getting out? Im going to have to lock up before I go.\"\n\n&lt;FUCK....&gt; \"Uhhh yeah...no problem.\"\n\n&lt;Now how am I going to acquire a security badge? There's has to be another way in....&gt;\n\nHerbert sped away on his Segway toward the campus gates."
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.quest_herbert_stage",
+              "CommandPart3": "Equals",
+              "CommandPart4": 2
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.herbert_locked_out",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.herbert_dialog",
+              "CommandPart3": "Equals",
+              "CommandPart4": 99
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "character.KnowsPlayer",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "character.currentRoomId",
+              "CommandPart3": "Equals",
+              "CommandPart4": ""
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "character.CurrentRoom",
+              "CommandPart3": "Equals",
+              "CommandPart4": ""
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "vars.continue_to_room",
+              "CommandPart3": "Equals",
+              "CommandPart4": "libertyunivercity_lc_001"
+            },
+            {
+              "cmdtype": "CT_PAUSEGAME"
+            }
+          ],
+          "FailCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "He blinks. \"...what?\" Maybe start with [b]Talk[/b]."
+            }
+          ]
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "ok... if you say so...",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.herbert_dialog",
+              "ConditionStep3": "==",
+              "ConditionStep4": 4
+            },
+            {
+              "CondType": "CT_Variable_Comparison",
+              "CkType": "And",
+              "ConditionStep2": "player.Credits",
+              "ConditionStep3": ">=",
+              "ConditionStep4": 200
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Credits",
+              "CommandPart3": "Subtract",
+              "CommandPart4": 200
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.has_campus_badge",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.quest_herbert_stage",
+              "CommandPart3": "Equals",
+              "CommandPart4": 2
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.herbert_dialog",
+              "CommandPart3": "Equals",
+              "CommandPart4": 5
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "character.KnowsPlayer",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            },
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "\"ok... if you say so...\"\n\nYou hand over 200 buck's. Herbert grins and tosses you a [b]Campus Security Badge[/b]."
+            }
+          ],
+          "FailCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "\"200 buck's,\" Herbert says, holding out his hand. You don't have enough."
+            }
+          ]
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Sneak Pass",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.Agility",
+              "ConditionStep3": ">=",
+              "ConditionStep4": 4
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "You move quietly while Herbert is distracted by his screen. You slip past him."
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.quest_herbert_stage",
+              "CommandPart3": "Equals",
+              "CommandPart4": 2
+            }
+          ],
+          "FailCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "[middle][c Red][b]Stealth 4 required.[/b][/c][/middle]\n\nYou hesitate-he's watching too closely."
+            }
+          ]
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "ActionsMenu": [
+    {
+      "Action": "Talk",
+      "Description": "Start a conversation."
+    },
+    {
+      "Action": "Lie: Science Department",
+      "Description": "Claim you're new to the science department.",
+      "ShowIf": "player.Stats.herbert_dialog == 1 && player.Stats.quest_herbert_stage == 1"
+    },
+    {
+      "Action": "Well I guess I'll get one......",
+      "Description": "Agree to get a badge.",
+      "ShowIf": "player.Stats.herbert_dialog == 2 && player.Stats.quest_herbert_stage == 1"
+    },
+    {
+      "Action": "WHAT???",
+      "Description": "React to the price.",
+      "ShowIf": "player.Stats.herbert_dialog == 3 && player.Stats.quest_herbert_stage == 1"
+    },
+    {
+      "Action": "ok... if you say so...",
+      "Description": "Pay 200 credits for the badge.",
+      "ShowIf": "player.Stats.herbert_dialog == 4 && player.Credits >= 200 && player.Stats.has_campus_badge != true && player.Stats.quest_herbert_stage == 1"
+    },
+    {
+      "Action": "Lie: OH GOD PLEASE HELP!",
+      "Description": "Try to lure Herbert away from the desk.",
+      "ShowIf": "player.Stats.herbert_dialog >= 1 && player.Stats.herbert_dialog <= 4 && player.Stats.quest_herbert_stage == 1"
+    },
+    {
+      "Action": "Sneak Pass",
+      "Description": "Try to slip past Herbert (Stealth 4).",
+      "ShowIf": "player.Stats.quest_herbert_stage == 1"
+    },
+    {
+      "Action": "Examine",
+      "Description": "Look at Herbert closely."
+    },
+    {
+      "Action": "Attack",
+      "Description": "Engage in combat."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {
+    "Attack": 6,
+    "Defence": 4,
+    "Health": 60,
+    "MaxHealth": 60,
+    "Dmg": 6,
+    "Str": 6,
+    "Def": 4,
+    "Agl": 1,
+    "Agility": 1
+  },
+  "LoreStages": {},
+  "CustomProperties": []
+}

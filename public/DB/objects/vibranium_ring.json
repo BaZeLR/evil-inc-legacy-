@@ -2,7 +2,7 @@
   "UniqueID": "vibranium_ring_001",
   "Name": "Vibranium Ring",
   "Type": "wearable",
-  "Description": "A rare, nearly indestructible ring made of vibranium.",
+  "Description": "A rare, nearly indestructible ring made of vibranium, with a nice shining gem.",
   "Picture": "Assets/images/objects/vibranium_ring.png",
   "Owner": "",
   "AlwaysPresent": false,
@@ -13,18 +13,24 @@
   "CanCombine": false,
   "CanSpawn": false,
   "Price": 0,
+  "Bonuses": {
+    "Attack": 2
+  },
   "Tooltip": "Examine, Take, Drop, Equip, Unequip",
   "ActionsMenu": [
     { "Action": "Examine", "Description": "Look at the Vibranium Ring closely." },
     { "Action": "Take", "Description": "Pick up the Vibranium Ring." },
     { "Action": "Drop", "Description": "Drop the Vibranium Ring." },
-    { "Action": "Equip", "Description": "Wear the Vibranium Ring." },
+    {
+      "Action": "Equip",
+      "Description": "As you slip the ring onto your left middle finger, a surge of intense vibrations courses through you instantly—raw energy pulsing from the metal into your skin. It starts subtle, a warm hum that builds quickly into something overwhelming: electric waves rippling up your arm, spreading through your body, making your heart race and your breath hitch. The power feels alive, almost seductive, demanding more as it throbs against your flesh."
+    },
     { "Action": "Unequip", "Description": "Remove the Vibranium Ring." }
   ],
   "CustomActions": [],
   "CombinableWith": [],
   "CreatesOnCombine": "",
   "CustomProperties": [
-    { "Property": "Equipped", "Value": false, "attackBonus": 2 }
+    { "Property": "Equipped", "Value": false }
   ]
 }

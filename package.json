@@ -12,6 +12,7 @@
     "db:characters:split": "node scripts/split-characters.mjs",
     "check:navigation": "node scripts/validate-navigation.mjs",
     "db:verify": "node scripts/verify-db-sync.mjs",
+    "events:normalize": "node scripts/normalize-events.mjs",
     "release:patch": "npm version patch -m \"chore(release): %s\"",
     "release:minor": "npm version minor -m \"chore(release): %s\"",
     "release:major": "npm version major -m \"chore(release): %s\"",

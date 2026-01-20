@@ -1,5 +1,6 @@
 // This loader is for Reddit html AIF/src, not regalia.
 import { loadSaveGame } from './utils/saveGame.js';
+import { parsePlannedEventsDocument } from './events/PlannedEvent.js';
 
 function normalizeLookupKey(value) {
     return String(value ?? '').trim().toLowerCase();
@@ -159,9 +160,8 @@ export async function loadGameData() {
         const categories = [
             { key: 'enemies', dir: 'DB/characters/enemies', index: 'DB/characters/enemies/index.json' },
             { key: 'bosses', dir: 'DB/characters/bosses', index: 'DB/characters/bosses/index.json' },
-            { key: 'residents', dir: 'DB/characters/residents', index: 'DB/characters/residents/index.json' },
-            { key: 'secondary_npc', dir: 'DB/characters/secondary_npc', index: 'DB/characters/secondary_npc/index.json' },
-            { key: 'npc', dir: 'DB/characters/npc', index: 'DB/characters/npc/index.json' }
+            { key: 'r_citizens', dir: 'DB/characters/r_citizens', index: 'DB/characters/r_citizens/index.json' },
+            { key: 'main', dir: 'DB/characters/main', index: 'DB/characters/main/index.json' }
         ];
 
         const fileList = [];
@@ -190,7 +190,7 @@ export async function loadGameData() {
                         continue;
                     }
                     seenIds.add(id);
-                    fileList.push({ id, path: `${category.dir}/${id}.json` });
+                    fileList.push({ id, path: `${category.dir}/${id}.json`, category: category.key });
                 }
             } catch {
                 // Ignore missing index files so the loader can fall back to legacy schemas.
@@ -226,7 +226,10 @@ export async function loadGameData() {
                 continue;
             }
 
-            characters.push(character);
+            characters.push({
+                ...character,
+                __category: fileList[idx]?.category ?? null
+            });
         }
 
         return characters;
@@ -248,11 +251,17 @@ export async function loadGameData() {
             const characterFiles = files.filter(entry => !entry.toLowerCase().endsWith('/index.json') && !entry.toLowerCase().endsWith('/characters.json'));
             if (!characterFiles.length) return null;
 
-            const results = await Promise.allSettled(characterFiles.map(fetchJSON));
+            const entries = characterFiles.map(entry => {
+                const normalized = String(entry ?? '').replace(/\\/g, '/');
+                const parts = normalized.split('/');
+                const category = parts.length >= 3 && parts[0] === 'DB' && parts[1] === 'characters' ? parts[2] : null;
+                return { path: entry, category };
+            });
+            const results = await Promise.allSettled(entries.map(entry => fetchJSON(entry.path)));
             const characters = [];
 
             for (let idx = 0; idx < results.length; idx++) {
-                const source = characterFiles[idx] || null;
+                const source = entries[idx]?.path || null;
                 const result = results[idx];
 
                 if (result.status !== 'fulfilled') {
@@ -275,7 +284,10 @@ export async function loadGameData() {
                     continue;
                 }
 
-                characters.push(character);
+                characters.push({
+                    ...character,
+                    __category: entries[idx]?.category ?? null
+                });
             }
 
             return characters;
@@ -319,6 +331,14 @@ export async function loadGameData() {
         leveling = null;
     }
 
+    let plannedEvents = [];
+    try {
+        const eventsRaw = await fetchJSON('DB/events.json');
+        plannedEvents = parsePlannedEventsDocument(eventsRaw);
+    } catch {
+        plannedEvents = [];
+    }
+
     const roomsList = Array.isArray(roomsRaw?.Rooms) ? roomsRaw.Rooms : [];
     const roomIndex = buildRoomIndex(roomsList);
 
@@ -334,24 +354,30 @@ export async function loadGameData() {
         const roomDescription = room?.Description ?? room?.description ?? '';
         const roomMedia = room?.Picture ?? room?.media ?? null;
 
-        const exitsRaw = Array.isArray(room?.Exits) ? room.Exits : [];
-        const exits = exitsRaw
-            .map(exit => {
-                const direction = String(exit?.Direction ?? exit?.direction ?? '').trim();
-                const destinationRaw = exit?.DestinationRoom ?? exit?.destination ?? '';
-                const destinationId = resolveRoomId(destinationRaw, roomIndex, roomsList);
-                const destinationRoom = destinationId
-                    ? roomsList.find(r => String(r?.UniqueID ?? '').trim() === destinationId)
-                    : null;
+                const exitsRaw = Array.isArray(room?.Exits) ? room.Exits : [];
+                const exits = exitsRaw
+                    .map(exit => {
+                        const direction = String(exit?.Direction ?? exit?.direction ?? '').trim();
+                        const destinationRaw = exit?.DestinationRoom ?? exit?.destination ?? '';
+                        const showIf = String(exit?.ShowIf ?? exit?.showIf ?? exit?.CondStr ?? exit?.condStr ?? '').trim();
+                        const todo = Boolean(exit?.Todo ?? exit?.todo ?? false);
+                        const todoLabel = String(exit?.TodoLabel ?? exit?.todoLabel ?? '').trim();
+                        const destinationId = resolveRoomId(destinationRaw, roomIndex, roomsList);
+                        const destinationRoom = destinationId
+                            ? roomsList.find(r => String(r?.UniqueID ?? '').trim() === destinationId)
+                            : null;
 
-                return {
-                    direction,
-                    destinationId,
-                    destinationName: destinationRoom?.Name ?? String(destinationRaw ?? '').trim(),
-                    destinationRaw: String(destinationRaw ?? '').trim()
-                };
-            })
-            .filter(exit => exit.direction);
+                        return {
+                            direction,
+                            destinationId,
+                            destinationName: destinationRoom?.Name ?? String(destinationRaw ?? '').trim(),
+                            destinationRaw: String(destinationRaw ?? '').trim(),
+                            showIf: showIf || null,
+                            todo: todo || undefined,
+                            todoLabel: todoLabel || null
+                        };
+                    })
+                    .filter(exit => exit.direction);
 
         const objectsRaw = Array.isArray(room?.Objects) ? room.Objects : [];
         const objects = objectsRaw.map((obj, idx) => {
@@ -380,6 +406,8 @@ export async function loadGameData() {
     const fallbackObjectFiles = [
         'DB/objects/com_unit.json',
         'DB/objects/duffel_bag.json',
+        'DB/objects/herbert_pc_001.json',
+        'DB/objects/herbert_desk_001.json',
         'DB/objects/wallet.json',
         'DB/objects/vibranium_ring.json',
         'DB/objects/rubber_gloves.json',
@@ -455,7 +483,8 @@ export async function loadGameData() {
         id: char?.UniqueID || char?.id,
         name: char?.Charname ?? char?.Name ?? char?.name ?? '',
         description: char?.Description ?? char?.description ?? '',
-        currentRoomId: char?.CurrentRoom ?? char?.currentRoom ?? char?.location ?? null
+        currentRoomId: char?.CurrentRoom ?? char?.currentRoom ?? char?.location ?? null,
+        category: char?.__category ?? char?.category ?? null
     }));
 
     // Build lookup maps
@@ -500,6 +529,29 @@ export async function loadGameData() {
         }
     }
 
+    if (save?.characters && typeof save.characters === 'object') {
+        for (const [charId, charState] of Object.entries(save.characters)) {
+            if (!charId || !characterMap[charId]) continue;
+            const char = characterMap[charId];
+            const state = charState && typeof charState === 'object' ? charState : null;
+            if (!state) continue;
+
+            const hasRoomOverride =
+                Object.prototype.hasOwnProperty.call(state, 'CurrentRoom') ||
+                Object.prototype.hasOwnProperty.call(state, 'currentRoomId') ||
+                Object.prototype.hasOwnProperty.call(state, 'currentRoom');
+
+            if (hasRoomOverride) {
+                const roomId = String(state?.CurrentRoom ?? state?.currentRoomId ?? state?.currentRoom ?? '').trim();
+                char.CurrentRoom = roomId;
+                char.currentRoomId = roomId;
+            }
+
+            if (Array.isArray(state?.CustomProperties)) char.CustomProperties = state.CustomProperties;
+            if (state?.KnowsPlayer !== undefined) char.KnowsPlayer = Boolean(state.KnowsPlayer);
+        }
+    }
+
     // Return game data structure
     return {
         player,
@@ -510,6 +562,7 @@ export async function loadGameData() {
         roomMap,
         characters: mappedCharacters,
         characterMap,
+        plannedEvents,
         leveling,
         save,
         loadErrors

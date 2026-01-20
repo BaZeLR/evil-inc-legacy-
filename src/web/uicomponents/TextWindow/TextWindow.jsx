@@ -11,11 +11,14 @@ export function TextWindow({
   inspectedDescriptionHtml,
   locationDescriptionHtml,
   eventMessages,
+  continuePrompt,
+  onContinue,
   onRichTextClick,
   onOpenCombatMenu,
   onOpenActions
 }) {
   const inCombat = Boolean(combat);
+  const showContinue = Boolean(!inCombat && continuePrompt);
 
   return (
     <section className="text-window text-overlay">
@@ -87,17 +90,17 @@ export function TextWindow({
               ))}
             </div>
           ) : null}
-          {!inCombat ? <p>What do you do?</p> : null}
+          {!inCombat && !showContinue ? <p>What do you do?</p> : null}
         </div>
       </div>
 
       <button
-        className={`next-btn${inCombat ? '' : ' next-btn-actions'}`}
+        className={`next-btn${showContinue ? ' next-btn-continue next-btn-blink' : inCombat ? '' : ' next-btn-actions'}`}
         type="button"
-        aria-label={inCombat ? 'Combat menu' : 'Actions'}
-        onClick={inCombat ? onOpenCombatMenu : onOpenActions}
+        aria-label={inCombat ? 'Combat menu' : showContinue ? 'Continue' : 'Actions'}
+        onClick={inCombat ? onOpenCombatMenu : showContinue ? onContinue : onOpenActions}
       >
-        {inCombat ? '>' : 'Actions'}
+        {inCombat ? '>' : showContinue ? 'Continue' : 'Actions'}
       </button>
     </section>
   );

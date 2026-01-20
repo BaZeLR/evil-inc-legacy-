@@ -63,5 +63,7 @@ export function ragsToHtml(rawText, context = {}) {
   });
   text = text.replace(/\[\/c\]/gi, '</span>');
 
+  text = text.replace(/&lt;([\s\S]*?)&gt;/g, (_, inner) => `<span class="rags-thought">&lt;${inner}&gt;</span>`);
+
   return text;
 }

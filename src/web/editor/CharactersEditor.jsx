@@ -7,9 +7,8 @@ import { StatusLine } from './StatusLine.jsx';
 const CHARACTER_CATEGORIES = [
   { key: 'enemies', label: 'Enemies' },
   { key: 'bosses', label: 'Bosses' },
-  { key: 'residents', label: 'Residents' },
-  { key: 'secondary_npc', label: 'Secondary NPC' },
-  { key: 'npc', label: 'NPC' }
+  { key: 'r_citizens', label: 'Random Citizens' },
+  { key: 'main', label: 'Main' }
 ];
 
 export function CharactersEditor() {
@@ -397,4 +396,3 @@ export function CharactersEditor() {
     </>
   );
 }
-

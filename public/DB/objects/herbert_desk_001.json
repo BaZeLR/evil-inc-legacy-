@@ -1,0 +1,61 @@
+{
+  "UniqueID": "herbert_desk_001",
+  "Name": "Herbert's Desk",
+  "Type": "object",
+  "Description": "Herbert's desk is cluttered with junk mail and sticky notes. The trash bin is... unpleasant.",
+  "Picture": "",
+  "Owner": "",
+  "AlwaysPresent": true,
+  "PresentOnFirstVisit": true,
+  "CanExamine": true,
+  "CanPickUp": false,
+  "CanDrop": false,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 0,
+  "Tooltip": "Examine, Search Desk",
+  "ActionsMenu": [
+    {
+      "Action": "Examine",
+      "Description": "Look at Herbert's desk closely."
+    },
+    {
+      "Action": "Search Desk",
+      "Description": "Search for anything useful."
+    }
+  ],
+  "Actions": [
+    {
+      "name": "Search Desk",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "You rummage through the mess and find a sticky note: [b]\"202\"[/b].\n\n\"That has to be his password.\""
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.herbert_password_found",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.herbert_pc_password",
+          "CommandPart3": "Equals",
+          "CommandPart4": 202
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.quest_herbert_stage",
+          "CommandPart3": "Equals",
+          "CommandPart4": 4
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": []
+}
+

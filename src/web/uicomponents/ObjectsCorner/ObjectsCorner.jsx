@@ -1,4 +1,5 @@
 import React from 'react';
+import { humanizeId } from '../../../utils/humanize.js';
 import './ObjectsCorner.css';
 
 export function ObjectsCorner({
@@ -30,8 +31,9 @@ export function ObjectsCorner({
       <ul className="corner-list" aria-label="Objects in location">
         {list.length ? (
           list.map((obj, idx) => {
-            const objId = obj?.id ?? obj?.UniqueID ?? `${idx}`;
-            const objName = obj?.name || obj?.Name || 'Object';
+            const rawId = obj?.id ?? obj?.UniqueID ?? null;
+            const objId = rawId ?? `${idx}`;
+            const objName = obj?.name || obj?.Name || (rawId ? humanizeId(rawId) : '') || 'Object';
             const selected = targetType === 'object' && targetId === objId;
 
             const canTake = typeof canTakeObject === 'function' ? canTakeObject(obj) : false;
