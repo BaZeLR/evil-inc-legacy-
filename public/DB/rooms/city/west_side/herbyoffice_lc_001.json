@@ -1,0 +1,24 @@
+{
+  "Name": "Herbert's Office",
+  "UniqueID": "herbyoffice_lc_001",
+  "SDesc": "herberts_office",
+  "Group": "West Side",
+  "Type": "neutral",
+  "Spawns": false,
+  "Description": "Herbert work station. Gross...you just noticed his trash bin is filled with used tissue. I'm just going to assume he has a 'cold'.",
+  "Exits": [
+    { "Direction": "Out", "DestinationRoom": "Liberty University" }
+  ],
+  "NPCs": [],
+  "Objects": [
+    { "UniqueID": "herbert_pc_001" },
+    { "UniqueID": "herbert_desk_001" }
+  ],
+  "Actions": [
+    { "name": "<<On Player Enter First Time>>", "bActive": true, "InputType": "None", "PassCommands": [ { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/rooms/herby_office_01.jpg" }, { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Well that got me nowhere... I wonder If I could sneak in anywhere else? You crouch down and go behind the Security Building to see if there is a back door.\n\nHey what's this? His window is wide open. It leads directly into Herbert's Office. Well if I'm going to do this I have to go now!\n\nSliding the window open the rest of the way you get in with ease.\n\n[b]CRASH! THUD![/b] On your way through the window you knock a cactus down to the ground and its pot shatters.\n\n\"Oh shit I should have tried to scan the room or something before climbing in here. I hope no one heard that....\"\n\nYou quickly examine the office and see a desk and a computer on top of it." }, { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.quest_herbert_stage", "CommandPart3": "Equals", "CommandPart4": 3 } ], "FailCommands": [] }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/herby_office.jpg"
+}

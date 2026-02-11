@@ -1,0 +1,50 @@
+{
+  "UniqueID": "streetvendor_001",
+  "Name": "Street Vendor",
+  "Type": "machine",
+  "Description": "A shifty merchant machine with energy and medical aid packs for sale.",
+  "Picture": "Assets/images/objects/street_vendor.jpg",
+  "Owner": "",
+  "AlwaysPresent": true,
+  "PresentOnFirstVisit": true,
+  "Location": "eastside_lc_001",
+  "CanExamine": true,
+  "CanPickUp": false,
+  "CanDrop": false,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 0,
+  "Tooltip": "Examine, Buy Energy Pack, Buy Med Pack",
+  "ActionsMenu": [
+    {
+      "Action": "Examine",
+      "Description": "Inspect the vendor machine."
+    },
+    {
+      "Action": "Shop",
+      "Description": "Browse vendor wares."
+    },
+    {
+      "Action": "Buy Energy Pack",
+      "Description": "Purchase an Energy Pack."
+    },
+    {
+      "Action": "Buy Med Pack",
+      "Description": "Purchase a Med Pack."
+    }
+  ],
+  "ShopItems": [
+    {
+      "UniqueID": "energypack_001",
+      "Price": 10
+    },
+    {
+      "UniqueID": "medpack_001",
+      "Price": 10
+    }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": []
+}

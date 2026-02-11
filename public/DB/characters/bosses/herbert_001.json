@@ -6,7 +6,7 @@
   "Disposition": "hostile",
   "prob_spawn": 0,
   "Description": "Head of campus security. Overweight, greedy, and far too confident behind a locked door.",
-  "Picture": "Assets/images/characters/herby_talk.jpg",
+  "Picture": "Assets/images/characters/bosses/herby_talk.jpg",
   "CurrentRoom": "collegesecuritycenter_lc_001",
   "KnowsPlayer": false,
   "Weapons": ["Police Baton"],
@@ -15,7 +15,7 @@
   "Element": 7,
   "LootType": 0,
   "Encounter": {
-    "Intro": "[middle]Herbert's face twists into rage. \"You little freak! You think you can break into MY office?\" He grips his baton and charges.[/middle]\n\n[c Red][b]Let's fight![/b][/c]",
+    "Intro":     "[middle]Herbert's face twists into rage. \"You little freak! You think you can break into MY office?\" He grips his baton and charges.[/middle]\n\n[c Red][b]Let's fight![/b][/c]",
     "EnemyMiss": "[middle]\"Hold still!\" Herbert swings wide and nearly topples over.[/middle]",
     "EnemyHit": [
       "[middle]\"That's campus security, baby!\" Herbert cracks you with his baton. You take [c Red][b][v: _enemyDMG] damage[/b][/c].[/middle]",
@@ -32,7 +32,7 @@
       "PassCommands": [
         {
           "cmdtype": "CT_DISPLAYPICTURE",
-          "CommandPart2": "Assets/images/characters/herby_warry.jpg"
+          "CommandPart2": "Assets/images/characters/bosses/herby_warry.jpg"
         },
         {
           "cmdtype": "CT_DISPLAYTEXT",
@@ -48,7 +48,7 @@
       "PassCommands": [
         {
           "cmdtype": "CT_DISPLAYPICTURE",
-          "CommandPart2": "Assets/images/characters/herby_talk.jpg"
+          "CommandPart2": "Assets/images/characters/bosses/herby_talk.jpg"
         },
         {
           "cmdtype": "CT_DISPLAYTEXT",
@@ -98,7 +98,7 @@
           "PassCommands": [
             {
               "cmdtype": "CT_DISPLAYPICTURE",
-              "CommandPart2": "Assets/images/characters/herby_talk.jpg"
+              "CommandPart2": "Assets/images/characters/bosses/herby_talk.jpg"
             },
             {
               "cmdtype": "CT_DISPLAYTEXT",
@@ -241,7 +241,7 @@
           "PassCommands": [
             {
               "cmdtype": "CT_DISPLAYPICTURE",
-              "CommandPart2": "Assets/images/rooms/LC_Campus.jpg"
+              "CommandPart2": "Assets/images/rooms/lc_campus.jpg"
             },
             {
               "cmdtype": "CT_DISPLAYTEXT",

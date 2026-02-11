@@ -1,0 +1,281 @@
+{
+  "$comment": "PROLOGUE SEQUENCE: Dr Evil Interview (to the test setup)",
+  "UniqueID": "drevilscommandcenter_drevil_001_sequence",
+  "Title": "Dr Evil Interview",
+  "SceneType": "sequence",
+  "Location": "drevilscommandcenter_lc_001",
+  "TargetEntity": "dr_evil_001",
+  "Repeatable": false,
+  "Trigger": {
+    "EventType": "Triggered by event (manual)",
+    "AttachedTo": "character",
+    "EntityID": "dr_evil_001"
+  },
+  "Stages": [
+    {
+      "StageID": "stage_01",
+      "Media": "Assets/images/characters/main_npc/drE_welcoming.png",
+      "Text": ["\"Awwww! Yes, Yes, Yes!\n You're the one, who the employment agency told me about!",
+      "\n- See, Mini Me?","- I told you he would show up! din't I?",
+      "\n- Can you believe it's him? It's really him?",
+      " Doctor stands to greets you. His clone follows suite.",
+      "",
+      "\n -Welcome to my building!",
+      "\n- I am Dr.Evil and this little beautiful man is Mini Me.",
+      " We are going to see, if you got what it takes to join our little organization!",
+      " \n -Muahahaha!","\n- Well,hm, hm... tell me a bit about yourself, since",
+      " my henchmen still need a little more time to get the test ready for you...",
+      "Doctor asks looking at you"],
+      "Choices": [],
+      "NextStage": "stage_01a"
+    },
+    {
+      "StageID": "stage_01a",
+      "Media": "Assets/images/player/thinking_pose.jpg",
+      "Text": ["Feeling a little dumbfounded, you nervously begin:",
+      "-Ummm... ummm ...well... umm...well...um... My name is Steven Wolf",
+      "\n- I was known, as a child prodigy of sort in my home town of Blue Leaf.",
+      "\n-I graduated high school when I was 12.",
+      "\n- I finished college when I was 17 with a masters in electrical engineering and bachelors in computer science."],
+      "Choices": [],
+      "NextStage": "stage_01b"
+    },
+    {
+      "StageID": "stage_01b",
+      "Media": "Assets/images/characters/main_npc/drE_speaks.png",
+      "Text": 
+      ["\n-Well ,well not too shabby. I see you ended up at AEON. Thats quite impressive, Steven.",
+      "\n- With your skills, I bet, you did well there.",
+      "\n- Why did you leave? Did something happen?... Dr. Evil asks, giving you a knowing look."],
+      "Choices": [],
+      "NextStage": "stage_02a"
+    },
+    {
+      "StageID": "stage_02a",
+      "Media": "Assets/images/rooms/Intro/AEON HQ.jpg",
+      "Text":[ "\n-It's not so simple, ehhhh...",
+      "Rubbing the back of your head, you tell yourself not to be so nervous.",
+      "\n ",
+      "Until recently, I was working at AEON, a tech firm.",
+      "Specializing in furthering humans needs, as well as creating weapons and defense systems...",
+      
+      "-Awwww! Yes, Yes, Yes! Fascinating!"],
+      "Choices": [],
+      "NextStage": "stage_02b"
+    },
+    {
+      "StageID": "stage_02b",
+      "Media": "Assets/images/player/thinking_pose_01.jpg",
+      "Text": ["",
+      "-I was there for several years, until I became the head of their R&D Department.",
+      " We had access to the real cutting edge technology. It was nirvana for the scientist like myself!!!",
+      "- But we were given this project... and within a few months there was an incident...",
+      "-My team and I, We were given the task to develop a non lethal riot suppressing technology.",
+      "- Their goal was to take out as many people as possible with out hurting them. Humans and super alike.",
+      "-We were making a huge progress."],
+        "Choices": [],
+      "NextStage": "stage_02c"
+    },
+    {
+      "StageID": "stage_02c",
+      "Media": "Assets/images/player/lab_accident.jpg",
+      "Text": ["- One day,while we were testing the device, there was an explosion in the lab next to us.",
+      "- All of a sudden our laboratory went into lockdown mode and the safety lights came on.",
+      "- We were trying to reach HQ that's when one of my tech's heard the device power on...",
+      "-She rushed towards it to shut power down, but...it  didn't work...erhm.",
+      "-You choke up a little recalling  those events,and the last time you were with your team.","",
+      "-You were never a popular guy. But with them you had always felt accepted and at home. Losing them had hurt you a lot.",
+      " You've spent many nights wondering what you could have done differently.",
+      "-The doctor gives you a few seconds before saying \"please continue...\""],
+      "Choices": [],
+      "NextStage": "stage_02d"
+    },
+    {
+      "StageID": "stage_02d",
+      "Media": "Assets/images/player/lab_accident_01.jpg",
+      "Text":[ "\"Well... ummm... as I was saying...",
+      " The device emitted a high pitched hum and a bright light filled the room.",
+      " Next thing I know, everyone around me is collapsing to the ground.",
+      " I tried to help them but I felt this wave of dizziness come over me.",
+      " The last thing I remember before passing out was seeing my team members writhing on the ground in pain.",
+      "",
+      "When I woke up, I was in the hospital. Apparently I had been out for weeks.",
+      " My team was gone. All of them. Just vanished without a trace..."],
+      "Choices": [],
+      "NextStage": "stage_03"
+    },
+    {
+      "StageID": "stage_03",
+      "Media": "Assets/images/characters/main_npc/drE_speaks_04.png",
+      "Text": [
+      
+      "Dr. Evil leans forward in his chair, steepling his fingers together.",
+      "\nHmmmm... Interesting. Very interesting indeed. So your team just disappeared?",
+      " No one has any idea what happened to them?  he asks.",
+      "\n",
+      "You nod your head. \n\"-No one has any idea. The company said they were never on the project to begin with.\"",
+      "",
+      "\n\"That's odd... very odd.\" Dr. Evil says, rubbing his chin thoughtfully.",
+      "\n\"Well Steven, I think we are getting to the heart of the matter here.",
+      "\n-Why don't you tell me what you think  is happened? Why your team disappeared like that?\" he inquires.",
+      "",
+      "You take a deep breath and begin to explain what you think happened that day..."],
+      "Choices": [],
+      "NextStage": "stage_03a"
+    },
+    {
+      "StageID": "stage_03a",
+      "Media": "Assets/images/player/lab_accident_02.jpg",
+
+      "Text": ["\n\"Well my whole team was turned into these, these...",
+      "...Husk those, mindless drones with glazed over white eyes. Everyone except me that is...",
+      "- I was in a coma for a few weeks...",
+      "\n",
+      "Well you were right, Mini Me - he's not a killer!\n- Well..., not yet anyway Muawhahahahahah!",
+      " Doctor Evil slaps the miniature man on the shoulder. Mini Me smiles widely and shakes his head up and down, agreeing with the doctor.",
+      "- He looks at you and gives you the thumbs down.\n\n\"-I don't know why I wasn't affected like the rest...\n"],
+      "Choices": [],
+      "NextStage": "stage_04"
+    },  
+    {
+      "StageID": "stage_04",
+      "Media": "Assets/images/player/thinking_pose_01.jpg",
+      "Text": [
+      " All I know is, as soon as I woke up, I was visited by AEON's lawyers.",
+      "They explained how I was fired and how they burned all existence of me from there files. Not to mentioned locked up all of my research and prototypes!",
+      " Worse of all they have been actively blocking all of my employment opportunities.",
+      "thinking << Maybe I shouldn't have said that last part...>>","\n"],
+      "Choices": [],
+      "NextStage": "stage_05"
+    },
+    {
+      "StageID": "stage_05",
+      "Media": "Assets/images/characters/main_npc/drE_speaks.png",
+      "Text": [
+      "-I don't know, if you noticed Mr. Wolf, but we are more than prepared to fight a lawsuit.",
+      "- Were not exactly your typical tech company I...Steven??? Are you ok?",
+      "\n",
+      "You fell to your knees as a migraine hits you out of no where. A sharp pain in your temple makes you grab the side of your head in agony.",
+      " The pain subsides, but you can still feel it  pulsing  inside your skull","\n",
+      "-Yes.....its just since that since the accident I've been getting these migraines a lot lately.",
+      "\n- The doctors say it's nothing...but...",
+
+      "-Its not nothing, Mr Wolf. Would you be so kind, as to tell me what's going on?",
+      "...well..I swear, I've been hearing people's thoughts those last few weeks...",
+      "\n",
+      "A machine that gave you the advanced mind ability, eh?",
+      "\n-That's some side effect from almost turning into a mindless drone,dr notice ",
+      "\n- Very interesting and very useful, if mastered. If you can live long enough to master it...\n- So, what went wrong with your device?",
+      "- It must drive a tech genius like you crazy not knowing."],
+      "Choices": [],
+      "NextStage": "stage_06"
+    },
+    {
+      "StageID": "stage_06",
+      "Media": "Assets/images/player/thinking_pose.jpg",
+      "Text": [
+        "-Well I don't have solid proof, but it had to be my assistant Fiona!",
+      "\n- Our department split into two groups. One group working on the science,",
+      " \nand the other creating a device, that allows them to use it in the field.",
+      " I put Fiona in charge of the science part. My team built the device."],
+      "Choices": [],
+      "NextStage": "stage_07"
+    },
+    {
+      "StageID": "stage_07",
+      "Media": "Assets/images/characters/secondary_npc/fiona.jpg",
+      "Text": [
+       "-Fiona was a young prodigy, like myself. She had come to AEON right after I did",
+       "-We quickly rose through the ranks together often competing for similar projects and positions.",
+       "\n -When my old job opened up we both put in for it, but I got the head researcher job.",
+       "\n- Fiona was assigned as my lab assistant. She was very bright and had no problem staying \"late\" but it was just an act, to gain access to the device...",
+       "\n\n\"-Using what money and contacts I had left, I managed to track her down.",
+       "\n- It seems just two days after the incident she relocated back to Liberty City."],
+      "Choices": [],
+      "NextStage": "stage_08"
+    },
+    {
+      "StageID": "stage_08",
+      "Media": "Assets/images/characters/main_npc/drE_laugh_01.png",
+      "Text": [
+       "\n- She's landed a job at THE HALL OF JUSTICE!",
+       "\n\n\"...Muawhahahahaha! Oh my the plot thickens.",
+       "\n Oh! I love it!",
+       "\n- Muhawhahahahahahahaha!",
+       "\n Muhawhahahahahahahaha! ",
+       "\n- Muhawhahahahahahahaha!,",
+       "\n\n\"Yes... The Hall of Justice, home of the Justice Force! Fiona is head researcher in their civilian defense department. It all seems to coincidental.",
+       "\n- I'm starting to think she was a spy for the Justice force the whole time.",
+       "- I need to talk to her to figure what exactly she did!",
+       "\n-Why do you need to speak with her? Why not just take her out?",
+       "\n- You're so sure she's done it?"],
+        "Choices": [],
+      "NextStage": "stage_09"
+    },
+    {
+      "StageID": "stage_09",
+      "Media": "Assets/images/characters/main_npc/drE_speaks.png",
+      "Text": [
+       "\n- I mean, you don't have any proof, do you?\" Dr. Evil asks, looking at you with a raised eyebrow.",
+       "\n\n-Well no, but I have a pretty good idea of what she did",
+       "\n\n-If I figure out what she did, I might be able to reverse the affect of the device on my team. Hell!!! maybe even myself!\""],
+      "Choices": [],
+      "NextStage": "stage_09a"
+    },
+    {
+      "StageID": "stage_09a",
+      "Media": "Assets/images/characters/main_npc/drEvilAndMiniMe.png",
+      "Text":[ 
+      "\"A noble goal, Steven! Thank you for being so forthcoming with your story.",
+      "-Truth is, we have a common enemy you and I. I believe you are correct, that Fiona sabotaged your device, but what if she did it for the fucking Justice Force?",
+      "- Who's really to blame? As I mentioned before, we are not your typical tech startup.",
+      "- Truth is E. I. is just a front for my little organization.",
+      "- A public persona, as you will. In truth we dubble in more than just technology here.",
+      "- Our goal? World Domination...",
+      "-Dr.Evil stares at you with a serious face you almost crack a smile.",
+      "\n\n&lt;He cant be serious? Can he?&gt;",
+      "\n-You feel sick to your stomach all of a sudden.",
+      "- Are you ready to take the test, Steven?",
+      "Dr. Evil asks.",
+      "\n\n&lt;Fuck it...&gt;",
+      "\n\nYou shake your head up and down.",
+      "\n\n\"Muwhahahahaah! Fine then! MINI ME READY THE TEST!"],
+      "NextStage": "stage_10"
+    },
+
+      {
+        "StageID": "stage_10",
+        "Media": "Assets/images/rooms/evil_office_desk.jpg",
+        "Text": [
+      "The little man hops up in his chair and takes a large breath. READY THE TEST!!!",
+      " With haste the henchmen carry out a...school desk and chair? WTF?&lt;This is what took so long to prepare.....?&gt;",
+      "They place the desk in the center of the room facing Dr. Evil.",
+      " Mini Me jumps down from his chair. Runs to the desk and slaps a piece of paper and a #2 pencil on to it before running back to the Doctor's side.",
+      "-What is this...?\" You ask almost jokingly. There no way thats all there is.",
+      "-Please take a seat.",
+      " The Doctor stands and motions towards the desk.",
+      "-But...",
+      " you say, raising a eyebrow.",
+      "\n\"Zip it...\"\n\"-Bu..",
+      "-I said, zip it!","- zippidy do, zippidy dee",
+      "\n- just fricking zip it, STEVEN!",
+      "- Now! Sit down! Shut up and get ready!",
+      "-Today's the first day of the rest of your life!",
+      "\"\n\n&lt;What have I gotten myself into?&gt;"],
+      "Effects": [
+        { "cmdtype": "CT_SETVARIABLE", "Variable": "player.Stats.prologue_test_ready", "Operator": "Equals", "Value": true },
+        { "cmdtype": "CT_SETVARIABLE", "Variable": "player.Stats.prologue_interview_complete", "Operator": "Equals", "Value": true }
+      ],
+      "IsEnd": true
+    }
+  ],
+  "Rewards": {
+    "OnComplete": {
+      "Experience": 10,
+      "Credits": 0,
+      "Items": [],
+      "Flags": {"player.Stats.prologue_test_ready": true, "player.Stats.prologue_interview_complete": true }
+    }
+  }
+}
+

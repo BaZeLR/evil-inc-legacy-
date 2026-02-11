@@ -1,0 +1,290 @@
+{
+  "UniqueID": "herbert_pc_001",
+  "Name": "Herbert's PC",
+  "Type": "object",
+  "Description": "Herbert's workstation. The monitor is still warm. You might be able to hack it with your Com Unit.",
+  "Picture": "Assets/images/rooms/herby_office_01.jpg",
+  "Owner": "herbert_001",
+  "AlwaysPresent": true,
+  "PresentOnFirstVisit": true,
+  "CanExamine": true,
+  "CanPickUp": false,
+  "CanDrop": false,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 0,
+  "Tooltip": "Hmm may be you can hack it from here?, check e-mails, explore Browser history",
+  "ActionsMenu": [
+    {
+      "Action": "Examine",
+      "Description": "Look at Herbert's PC closely."
+    },
+    {
+      "Action": "Read Emails",
+      "Description": "Open Herbert's inbox.",
+      "ShowIf": "player.Stats.herbert_pc_email_menu != true"
+    },
+    {
+      "Action": "From: Maintenance",
+      "Description": "Read the maintenance email.",
+      "ShowIf": "player.Stats.herbert_pc_email_menu == true"
+    },
+    {
+      "Action": "From: Mother",
+      "Description": "Read the email from his mother.",
+      "ShowIf": "player.Stats.herbert_pc_email_menu == true"
+    },
+    {
+      "Action": "From: Dean Wildler",
+      "Description": "Read the Dean's email.",
+      "ShowIf": "player.Stats.herbert_pc_email_menu == true"
+    },
+    {
+      "Action": "Back",
+      "Description": "Close the inbox.",
+      "ShowIf": "player.Stats.herbert_pc_email_menu == true"
+    },
+    {
+      "Action": "Browser History",
+      "Description": "Look through Herbert's browser history.",
+      "ShowIf": "player.Stats.herbert_pc_email_menu != true"
+    },
+    {
+      "Action": "Hack",
+      "Description": "Bypass the login prompt.",
+      "InputType": "Text",
+      "Placeholder": "Enter password",
+      "SubmitLabel": "Hack",
+      "MaskInput": true
+    }
+  ],
+  "Actions": [
+    {
+      "name": "Hack",
+      "bActive": true,
+      "InputType": "Text",
+      "PassCommands": [
+        {
+          "Checks": [
+            {
+              "CondType": "CT_Input_Comparison",
+              "ConditionStep3": "==",
+              "ConditionStep4": "Herbie Burgy"
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "<b>ACCESS GRANTED</b>\n\nYou slip past the login prompt and gain control of the workstation."
+            },
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "Ah ha! Got it! Now let's see what you're hiding my little Herbie poo.....\n\nWell well you've been a bad boy Herbert!\n\nLooking through his files it seems that Herb has installed cameras all over campus. All on the University's dime to boot. Accessing the program you are able to write a backdoor into this program so you can access it any time from E.I.\n\nDr. Evil should be pleased!"
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "object.Owner",
+              "CommandPart3": "Equals",
+              "CommandPart4": "player_001"
+            },
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "Security camera feed: <b>#202</b>."
+            },
+            {
+              "cmdtype": "CT_DISPLAYPICTURE",
+              "CommandPart2": "Assets/images/rooms/herby_office_01.jpg"
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.herbert_hidden_cams_found",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "global.continue_script",
+              "CommandPart3": "Equals",
+              "CommandPart4": "herbert_pc_hack_aftermath"
+            },
+            {
+              "cmdtype": "CT_PAUSEGAME"
+            }
+          ],
+          "FailCommands": [
+            {
+              "Checks": [
+                {
+                  "CondType": "CT_Input_Comparison",
+                  "ConditionStep3": "==",
+                  "ConditionStep4": "Herby Burgy"
+                }
+              ],
+              "PassCommands": [
+                {
+                  "cmdtype": "CT_DISPLAYTEXT",
+                  "CommandText": "<b>ACCESS GRANTED</b>\n\nYou slip past the login prompt and gain control of the workstation."
+                },
+                {
+                  "cmdtype": "CT_SETVARIABLE",
+                  "CommandPart2": "object.Owner",
+                  "CommandPart3": "Equals",
+                  "CommandPart4": "player_001"
+                },
+                {
+                  "cmdtype": "CT_DISPLAYTEXT",
+                  "CommandText": "Security camera feed: <b>#202</b>."
+                },
+                {
+                  "cmdtype": "CT_DISPLAYPICTURE",
+                  "CommandPart2": "Assets/images/rooms/herby_office_01.jpg"
+                },
+                {
+                  "cmdtype": "CT_SETVARIABLE",
+                  "CommandPart2": "player.Stats.herbert_hidden_cams_found",
+                  "CommandPart3": "Equals",
+                  "CommandPart4": true
+                },
+                {
+                  "cmdtype": "CT_SETVARIABLE",
+                  "CommandPart2": "global.continue_script",
+                  "CommandPart3": "Equals",
+                  "CommandPart4": "herbert_pc_hack_aftermath"
+                },
+                {
+                  "cmdtype": "CT_PAUSEGAME"
+                }
+              ],
+              "FailCommands": [
+                {
+                  "cmdtype": "CT_DISPLAYTEXT",
+                  "CommandText": "<b>ACCESS DENIED</b>\n\nThat password doesn't work."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Read Emails",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "[b]Inbox[/b]\n\nFrom: Maintenance\nFrom: Mother\nFrom: Dean Wildler"
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.herbert_pc_email_menu",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "From: Maintenance",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "[b]Maintenance Email[/b]\n\nHey Herb,\n\nWe installed those \"improvements\" all over campus. I think you espically like #202.\n\nYou have my regards.\nKeith\n\nPs I want a highlight reel if ya know what I mean in the next few weeks. Load it up with the good stuff!"
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.herbert_password_found",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.herbert_pc_password",
+          "CommandPart3": "Equals",
+          "CommandPart4": 202
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.quest_herbert_stage",
+          "CommandPart3": "Equals",
+          "CommandPart4": 4
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "From: Mother",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "[b]Mother Email[/b]\n\nDearest Herbbie,\n\nHow are you I havent seen you in a while. Have you found a girlfriend yet? Oh I hope so, your such a nice boy, handsome too!\n\nI miss you so much my little boy, if only you'd move home and let mother take care of you....\n\nYou should cum by real soon my Herbie Burgy\nxxxooo\n\nLove,\nMom"
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "From: Dean Wildler",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "[b]Dean Email[/b]\n\nHello Herbert,\n\nI thought about your situation and I think me and the boys have come up with a solution. Come to my office around 1:00 Friday.\n\nUntil then just stay away from the girl.\n\nGOT IT?\n\nLiberty Univ Dean\nRyan Wildler\n\nPs We dont care who your parents are, betray us and you know what happens."
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Back",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.herbert_pc_email_menu",
+          "CommandPart3": "Equals",
+          "CommandPart4": false
+        },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "You close the inbox."
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Browser History",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "[b]Browser History[/b]\n\nYou see his Internet browser isn't in safe mode. Clicking the mouse on his browser history it pops with several dozen porn sites. Among the list you find a page he visits quiet frequently called [b]Hidden Cams for Dummies[/b].\n\n\"Hmmmm well this is the only non porn site Herbert the pervert seems to visit. I wonder if he has cameras set up on campus.... I'll have to be careful from here on out.\"\n\nYou might be able to hack his pc with your Com Unit, to gain access to his network.\n\n\"I just need to figure out his password. I wonder if he has it written down somewhere?\""
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.herbert_hidden_cams_found",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [
+    {
+      "Property": "Hackable",
+      "Value": true
+    },
+    {
+      "Property": "PasswordHint",
+      "Value": "202"
+    }
+  ]
+}
+

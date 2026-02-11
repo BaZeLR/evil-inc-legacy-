@@ -1,0 +1,18 @@
+{
+  "Name": "Bedroom",
+  "UniqueID": "bedroom_001",
+  "SDesc": "bedroom",
+  "Group": "apartment_player",
+  "Spawns": false,
+  "Description": "A small, sparsely furnished bedroom with a single bed, a cracked window, and faded wallpaper. The air smells faintly of dust and old linens.",
+  "Exits": [
+    { "Direction": "South", "DestinationRoom": "apartment_player_001" }
+  ],
+  "NPCs": [],
+  "Objects": ["bed_001"],
+  "Actions": ["sleep_action_001"],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/players_bedroom.jpg"
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "Thread Template v1.0",
+  "$comment": "Thread = named story arc with ordered event IDs. State is managed by EventController via save.events.threads.",
+  "name": "prologue",
+  "state": "active",
+  "allowedStates": ["active", "inactive", "blocked", "completed"],
+  "stateConditions": {
+    "active": [],
+    "inactive": [],
+    "blocked": [],
+    "completed": []
+  },
+  "flags": {
+    "started": true,
+    "completed": false
+  },
+  "events": [
+    "start prologue",
+    "ei reception_1",
+    "50th floor encounter",
+    "interview_1",
+    "dr_test",
+    "dr asks",
+    "player's app",
+    "winifred encounter",
+    "channel 4",
+    "ei reception_2",
+    "breafing",
+    "vader office talk",
+    "elevator encounter",
+    "personal lab",
+    "hospital"
+  ]
+}

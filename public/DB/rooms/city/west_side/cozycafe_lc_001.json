@@ -1,0 +1,19 @@
+{
+  "Name": "Cozy Cafe",
+  "UniqueID": "cozycafe_lc_001",
+  "SDesc": "cozy_cafe",
+  "Group": "West Side",
+  "Spawns": false,
+  "Description": "",
+  "Exits": [
+    { "Direction": "SW", "DestinationRoom": "West Side" },
+    { "Direction": "SE", "DestinationRoom": "Route 69" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/Uranus_Lounge_Day.jpg"
+}

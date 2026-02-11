@@ -1,0 +1,13 @@
+{
+  "id": "weapon_kat_001",
+  "name": "Light Sable",
+  "picture": "Assets/images/objects/weapons/sci_fi_katana.png",
+  "menu": ["examine", "equip", "unequip"],
+  "description": "A two handed katana with a laser for a blade. Cuts through most materials and can deflect laser projectiles. Its completely collapsible and easily hidden.",
+  "effects": ["Powerful laser cuts through most substances", "Concealable"],
+  "playerWeaponDmg": 3,
+  "playerSpeed": 3,
+  "cost": 300,
+  "actionDescription": "With both hands on the hilt you concentrate on your opponent and charge them with all your might! You are within striking range! SLASH! SLASH! SLASH! You make three quick attacks each landing on them before retreating back!",
+  "tags": ["Concealable"]
+}

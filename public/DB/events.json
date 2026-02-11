@@ -60,29 +60,7 @@
           "name": "scene_01",
           "bActive": true,
           "InputType": "None",
-          "PassCommands": [
-            {
-              "cmdtype": "CT_DISPLAYPICTURE",
-              "CommandPart2": "Assets/images/characters/herby_talk.jpg"
-            },
-          {
-            "cmdtype": "CT_DISPLAYTEXT",
-            "CommandText": "Walking into campus security you see a over weight man in his 40's. He's staring intensely at his computer screen. He notices you looking at him and you hear him start clicking then he looks up at you with this dead eyed stare.\n\n\"Can I help you? Hmmm now that's one funny get up you got there pal... You in the science department or something?\"\n\n\"Errr....Uhhhh\" &lt;Fuck what do I tell him?&gt;"
-          },
-            {
-              "cmdtype": "CT_SETVARIABLE",
-              "CommandPart2": "player.Stats.quest_herbert_stage",
-              "CommandPart3": "Equals",
-              "CommandPart4": 1
-            },
-            {
-              "cmdtype": "CT_SETVARIABLE",
-              "CommandPart2": "player.Stats.herbert_dialog",
-              "CommandPart3": "Equals",
-              "CommandPart4": 1
-            }
-          ],
-          "FailCommands": []
+          "TriggerScene": "libertycampus_herbert_pl_001_story"
         }
       ]
     },
@@ -97,7 +75,7 @@
       "reqs": [],
       "condStr": "player.Stats.herbert_locked_out == true && player.Stats.herbert_locked_scene_done != true",
       "item": "",
-      "location": "libertyunivercity_lc_001",
+      "location": "libertyuniversity_lc_001",
       "action": "scene_02",
       "priority": 110,
       "thread_name": "campussecurity_herbert",
@@ -114,11 +92,11 @@
           "PassCommands": [
             {
               "cmdtype": "CT_DISPLAYPICTURE",
-              "CommandPart2": "Assets/images/rooms/LC_Campus.jpg"
+              "CommandPart2": "Assets/images/rooms/lc_campus.jpg"
             },
           {
             "cmdtype": "CT_DISPLAYTEXT",
-            "CommandText": "&lt;Dammit my plan worked too well! Now the office door's locked maybe I can find another way in..... Maybe I should check around back...&gt;\n\n[b]TODO:[/b] Go around back."
+            "CommandText": "&lt;Dammit my plan worked too well! Now the office door's locked... maybe I can find another way in.&gt;\n\nMaybe I should check around back for a window into Herbert's office."
           },
             {
               "cmdtype": "CT_SETVARIABLE",
@@ -128,6 +106,35 @@
             }
           ],
           "FailCommands": []
+        }
+      ]
+    },
+    {
+      "id": "drevils_command_center_intro_01",
+      "when": "enter",
+      "target": "player",
+      "day": 0,
+      "hour": 0,
+      "evtDay": 0,
+      "prob": 100,
+      "reqs": [],
+      "condStr": "player.Stats.prologue_intro_skipped != true && player.Stats.prologue_interview_complete != true",
+      "item": "",
+      "location": "drevilscommandcenter_lc_001",
+      "action": "drevil_intro_scene",
+      "priority": 200,
+      "thread_name": "prologue_command_center",
+      "threaded": true,
+      "repeatable": false,
+      "completeOnTrigger": true,
+      "suppressCombat": true,
+      "rewards": null,
+      "Actions": [
+        {
+          "name": "drevil_intro_scene",
+          "bActive": true,
+          "InputType": "None",
+          "TriggerScene": "drevilscommandcenter_drevil_001_sequence"
         }
       ]
     },
@@ -176,9 +183,22 @@
       "reqs": [],
       "condStr": "",
       "item": "",
-      "location": "*",
+      "location": [
+        "road7_lc_001",
+        "route13_lc_001",
+        "downtown_lc_001",
+        "harbor_lc_001",
+        "westside_lc_001",
+        "businessdistrict_lc_001",
+        "eastside_lc_001",
+        "lctunnel_lc_001",
+        "libertygeneralhospital_lc_001",
+        "citygates_lc_001",
+        "route69_lc_001",
+        "road22_lc_001"
+      ],
       "action": "spawn_spicy_01",
-      "priority": 40,
+      "priority": 80,
       "thread_name": "",
       "threaded": false,
       "repeatable": true,
@@ -201,19 +221,54 @@
       ]
     },
     {
-      "id": "spawn_citizen_01",
-      "when": "spawn_citizen",
+      "id": "spawn_witness_01",
+      "when": "spawn_witness",
       "target": "player",
       "day": 0,
       "hour": 0,
       "evtDay": 0,
-      "prob": 75,
+      "prob": "65-95",
       "reqs": [],
-      "condStr": "",
+      "condStr": "room.Spawns == true",
+      "item": "",
+      "location": "*",
+      "action": "spawn_witness_01",
+      "priority": 35,
+      "thread_name": "",
+      "threaded": false,
+      "repeatable": true,
+      "completeOnTrigger": true,
+      "suppressCombat": false,
+      "rewards": null,
+      "Actions": [
+        {
+          "name": "spawn_witness_01",
+          "bActive": true,
+          "InputType": "None",
+          "PassCommands": [
+            {
+              "cmdtype": "CT_TRY_WITNESS_EVENT",
+              "CommandText": "<b>Witness:</b> {vars.last_witness_line}"
+            }
+          ],
+          "FailCommands": []
+        }
+      ]
+    },
+    {
+      "id": "spawn_citizen_01",
+      "when": "enter",
+      "target": "player",
+      "day": 0,
+      "hour": 0,
+      "evtDay": 0,
+      "prob": "65-95",
+      "reqs": [],
+      "condStr": "room.Spawns == true",
       "item": "",
       "location": "*",
       "action": "spawn_citizen_01",
-      "priority": 30,
+      "priority": 70,
       "thread_name": "",
       "threaded": false,
       "repeatable": true,
@@ -228,6 +283,10 @@
           "PassCommands": [
             {
               "cmdtype": "CT_SPAWN_RANDOM_CITIZEN"
+            },
+            {
+              "cmdtype": "CT_TRY_SPAWN_EXTRA_CITIZEN",
+              "CommandPart2": 45
             }
           ],
           "FailCommands": []

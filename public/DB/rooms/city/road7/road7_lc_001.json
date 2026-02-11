@@ -1,0 +1,19 @@
+{
+  "Name": "Road 7",
+  "UniqueID": "road7_lc_001",
+  "SDesc": "road7",
+  "Group": "Liberty City",
+  "Spawns": true,
+  "Description": "",
+  "Exits": [
+    { "Direction": "North", "DestinationRoom": "West Side" },
+    { "Direction": "East", "DestinationRoom": "Downtown" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/downtown_day.jpg"
+}

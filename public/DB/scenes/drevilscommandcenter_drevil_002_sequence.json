@@ -1,0 +1,74 @@
+{
+  "$comment": "PROLOGUE SEQUENCE: Dr Evil Job Offer (post-test)",
+  "UniqueID": "drevilscommandcenter_drevil_002_sequence",
+  "Title": "Joining Evil Inc.",
+  "SceneType": "sequence",
+  "Location": "drevilscommandcenter_lc_001",
+  "TargetEntity": "dr_evil_001",
+  "Repeatable": false,
+  "Trigger": {
+    "EventType": "Triggered by event (manual)",
+    "AttachedTo": "character",
+    "EntityID": "dr_evil_001"
+  },
+  "Stages": [
+    {
+      "StageID": "stage_01",
+      "Media": "Assets/images/characters/main_npc/drE_speaks.png",
+      "Text": ["Talk\n\"Very well done Steven! Your mind is very sharp and ready to tackle the world in front of you. Please stand up and walk towards us.\" He claps his hands and two henchmen are brought out.\n\nStanding up and approaching where the duo were sitting you say"],
+     "NextStage": "stage_02",
+      "Choices": []
+    },
+    {
+      "StageID": "stage_02",
+      "Media": "Assets/images/characters/main_npc/drE_speaks_03.png",
+      "Text": ["\"So Steven, I have to ask, what do you think of my two lovely assistants here?\" He says looking at the two henchmen.\n",
+      "-Well I have to admit I was thinking there was gonna be more. Your receptionist said you went through 10 people so far. Whats with these two...\" You ask looking back at the two obviously scared chaps.\n",
+      "-Yes well to be perfectly honest all my interviews are actually a way to feed my pet sharks Patty and Selma. You see at the end of each interview I have either a qualified new employee or shark food. Do you know how much feed cost for them two? Me neither I've always done this! Muawhahahaah! Quite genius yes?\"\n\n\"I'm afraid to admit we don't take as many applicants as we use to. Thanks to that Economic Situation, we've had to cut way back on our hiring and had to let folks go. My poor sharks were just bloated to the gills!\""],
+      "Choices": [],
+      "NextStage": "stage_02a"
+    },
+    {
+      "StageID": "stage_02a",
+      "Media": "Assets/images/characters/main_npc/dre_laughs.png",
+      "NextStage": "stage_03"
+    },
+    {
+      "StageID": "stage_03",
+      "Media": "Assets/images/characters/main_npc/drE_speaks_03.png",
+      "NextStage": "stage_04"
+    },
+    {
+      "StageID": "stage_04",
+      "Media": "Assets/images/objects/olddesk_fall.jpg", 
+      "Text":[ "--------------------\n\n\"Really... I'm all for catching a good game every now and again but rooting for the Cubs. NOT IN MY BUILDING THEY WONT!!!\" The Doctor yells at the two.\n\nHe pushes a button on his desk and the floor opens up and both guys and the desk fall into the water bellow. Dr.Evil pushes another button and the floor is replace with what looks like some kind of glass. The men struggle to stay at the top near the glass but then the sharks came.... Their screams were muffled as they were both brought underwater. The water become red ...quickly...\n",
+      "Steven I would like to offer you a job. I willing to supply you with a fully equipped lab and maybe even a assistant or two down the road. I want your main focus to be helping me take down the Justice Force! \"\n\nYou gulp. \"I know this is no simple task Steven but between your combined genius and resources we will show the world that we dont need heroes to survive! Do you accept?","\n\nYou nod again.\n\n\"Excellent! Never forget Steven! We are an EVIL ORGANIZATION AND I'M IN CHARGE! That means if you fuck me or my organization that means your DEAD! And not just you Steven, we will go after your entire family. Your neighbors hell even people you don't know... Then we'll take care of you last...be warned!\" He says all too seriously \"Now that thats over join us in a evil laugh!!! To the end of the Hall of Justice and THAT FRIKNING JUSTICE FORCE!!!!!!!!\"\n\nMuwahahahahahahahahahahahahaha!\nMuwahahahahahahahahahahahahaha!\nMuwahahahahahahahahahahahahaha!\n\nJoining Evil Inc. - Complete [ EXP + 70 ]"],
+      "Effects": [
+        { "cmdtype": "CT_SETVARIABLE", "Variable": "player.Stats.prologue_job_offer_complete", "Operator": "Equals", "Value": true },
+        { "cmdtype": "CT_DISPLAYPICTURE", "commandPart2": "Assets/images/characters/main_npc/dre_laugh_01.png" },
+        { "cmdtype": "CT_DISPLAYPICTURE", "commandPart2": "Assets/images/objects/olddesk_fall.jpg" },
+        { "cmdtype": "CT_DISPLAYPICTURE", "commandPart2": "Assets/images/characters/main_npc/drE_speaks_03.png" },
+        { "cmdtype": "CT_SETVARIABLE", "Variable": "object.visible", "Operator": "Equals", "Value": false }
+      ],
+      "NextStage": "stage_05"
+    },
+    {
+      "StageID": "stage_05",
+      "Media": "Assets/images/characters/main_npc/drE_exam_jesture.png",
+      "Text": "\"Mini Me, get human resources to set up Mr. Wolf's file. Tell them a lab on the 34th floor, and Steven do you have a place to stay?\" The doctor asks.\n\n\"No I am currently living out of a suite case at my sisters apartment.\"\n\n\"We'll we can give you a company apartment. We offer them to all higher ranking E.I. employees. They have a bit more security than your standard home.\" Evil stand and meets you in the center of the room and Mini Me runs off to prepare your living quarters.\n\n\"I would like to have a private word with you before you leave. And if you have any questions, please, ask.\"",
+      "Effects": [
+        { "cmdtype": "CT_SETVARIABLE", "Variable": "player.Stats.prologue_can_ask_drevil", "Operator": "Equals", "Value": true },
+        { "cmdtype": "CT_SETVARIABLE", "Variable": "player.Stats.prologue_can_ask", "Operator": "Equals", "Value": true }
+      ],
+      "IsEnd": true
+    }
+  ],
+  "Rewards": {
+    "OnComplete": {
+      "Experience": 70,
+      "Credits": 0,
+      "Items": [],
+      "Flags": {}
+    }
+  }
+}

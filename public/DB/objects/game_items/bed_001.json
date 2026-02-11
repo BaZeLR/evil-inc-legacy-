@@ -1,0 +1,54 @@
+{
+  "UniqueID": "bed_001",
+  "Name": "Bed",
+  "Type": "object",
+  "Description": "A plain bed with rumpled sheets. It looks comfortable enough.",
+  "Owner": "Steven Wolf",
+  "AlwaysPresent": true,
+  "PresentOnFirstVisit": true,
+  "CanExamine": true,
+  "CanPickUp": false,
+  "CanDrop": false,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 0,
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Sleep to restore energy and health." },
+    {
+      "Action": "Sleep",
+      "Description": "Sleep\nYou stretch out on the bed and drift off for a while.\n\nHealth and energy restored. You feel refreshed."
+    }
+  ],
+  "Actions": [
+    {
+      "name": "Examine",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "A plain bed with rumpled sheets. It looks comfortable enough." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Sleep",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.Health", "CommandPart3": "Equals", "CommandPart4": "{player.Stats.MaxHealth}" },
+        { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.Energy", "CommandPart3": "Equals", "CommandPart4": "{player.Stats.MaxEnergy}" },
+        { "cmdtype": "CT_ADVANCE_TIME", "CommandPart2": 360 },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "You sleep for a while and wake up feeling restored."
+        },
+        {
+          "cmdtype": "CT_DISPLAYPICTURE",
+          "CommandPart2": "Assets/images/playersteven_1.jpg",
+          "CommandText": "Health and energy restored. You feel refreshed."
+         }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": []
+}

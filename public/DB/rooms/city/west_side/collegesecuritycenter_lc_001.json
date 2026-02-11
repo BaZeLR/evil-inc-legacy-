@@ -1,0 +1,30 @@
+{
+  "Name": "College Security Center",
+  "UniqueID": "collegesecuritycenter_lc_001",
+  "SDesc": "college_security_center",
+  "Group": "West Side",
+  "Spawns": false,
+  "Description": "Campus security headquarters. Herbert's domain.",
+  "Exits": [
+    { "Direction": "SE", "DestinationRoom": "Liberty University" },
+    { "Direction": "Around Back", "DestinationRoom": "Herbert's Office", "ShowIf": "player.Stats.herbert_locked_out == true" },
+    { "Direction": "North", "DestinationRoom": "Herbert's Office", "ShowIf": "player.Stats.herbert_locked_out != true" }
+  ],
+  "NPCs": [
+    { "UniqueID": "student_a_001", "Weight": 5 },
+    { "UniqueID": "student_b_001", "Weight": 10 },
+    { "UniqueID": "prof_001", "Weight": 25 },
+    { "UniqueID": "college_coed_001", "Weight": 10 },
+    { "UniqueID": "young_super_a_001", "Weight": 15 },
+    { "UniqueID": "visiting_parent_a_001", "Weight": 15 },
+    { "UniqueID": "visiting_parent_b_001", "Weight": 15 }
+  ],
+  "Objects": [],
+  "Actions": [
+    { "name": "Examine Room", "bActive": true, "InputType": "None", "PassCommands": [ { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/rooms/herby_office_01.jpg" }, { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Campus security is cramped and quiet. A cheap desk, a flickering monitor, and Herbert's heavy breathing in the background." } ], "FailCommands": [] }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/chief_of_security_evil_inc.jpg"
+}

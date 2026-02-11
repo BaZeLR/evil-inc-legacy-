@@ -1,0 +1,18 @@
+{
+  "Name": "Police Station",
+  "UniqueID": "policestation_lc_001",
+  "SDesc": "police_station",
+  "Group": "Liberty City",
+  "Spawns": false,
+  "Description": "The local police station, busy with officers and citizens.",
+  "Exits": [
+    { "Direction": "NorthWest", "DestinationRoom": "Route 13" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/chief_of_security_evil_inc.jpg"
+}

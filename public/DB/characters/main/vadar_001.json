@@ -1,0 +1,111 @@
+{
+  "UniqueID": "vadar_001",
+  "Charname": "Mr Vadar",
+  "Gender": "Male",
+  "Type": "main character",
+  "Disposition": "ei_boss",
+  "Description": "Mr Vadar.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "CurrentRoom": "evilinc_vadar_office_lc_001",
+  "KnowsPlayer": false,
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Look at Mr Vadar." },
+    { "Action": "Talk", "Description": "Talk to Mr Vadar.", "ShowIf": "player.Stats.talked_to_vadar != true" },
+    { "Action": "Ask", "Description": "????", "ShowIf": "player.Stats.vadar_ask_ready == true" },
+    { "Action": "Telepathy", "Description": "Read Mr Vadar's thoughts.", "ShowIf": "player.Stats.prologue_telepathy_unlocked == true" }
+  ],
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/placeholder.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Mr Vadar." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Examine",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/placeholder.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Mr Vadar." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Telepathy",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "(<I have a itch...Grrr I hate this suit. If I didn't need it to survive I could finally live a normal life. If I ever catch Robo Man I'll torture him for what he put me through.....>)"
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Ask",
+      "bActive": true,
+      "InputType": "None",
+      "bConditionFailOnFirst": false,
+      "CustomChoiceTitle": "????",
+      "CustomChoices": [
+        { "Label": "Heist?", "Value": "Heist?", "ShowIf": "player.Stats.vadar_ask_ready == true" },
+        { "Label": "Do you know how to find dr WinifredBurkle Lab?", "Value": "Do you know how to find dr WinifredBurkle Lab?", "ShowIf": "player.Stats.vadar_ask_ready == true" }
+      ],
+      "Conditions": [
+        {
+          "ConditionName": "Heist",
+          "Checks": [
+            {
+              "CondType": "CT_Input_Comparison",
+              "ConditionStep3": "Equals",
+              "ConditionStep4": "Heist?"
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_TRIGGER_SCENE",
+              "CommandPart2": "evilinc_securitycenter_002_sequence::ask_heist"
+            }
+          ],
+          "FailCommands": []
+        },
+        {
+          "ConditionName": "Winifred Lab",
+          "Checks": [
+            {
+              "CondType": "CT_Input_Comparison",
+              "ConditionStep3": "Equals",
+              "ConditionStep4": "Do you know how to find dr WinifredBurkle Lab?"
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_TRIGGER_SCENE",
+              "CommandPart2": "evilinc_securitycenter_002_sequence::ask_winifred"
+            }
+          ],
+          "FailCommands": []
+        }
+      ],
+      "PassCommands": [],
+      "FailCommands": []
+    },
+    {
+      "name": "Talk",
+      "bActive": true,
+      "InputType": "None",
+      "Conditions": [],
+      "TriggerScene": "evilinc_securitycenter_002_sequence",
+      "PassCommands": [],
+      "FailCommands": []
+    }
+
+  ],
+  "CustomProperties": [{"mindReadable": true}]
+}

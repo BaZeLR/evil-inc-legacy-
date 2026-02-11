@@ -1,0 +1,22 @@
+{
+  "UniqueID": "cute_neighbor_001",
+  "Charname": "Cute Neighbor",
+  "Gender": "Unknown",
+  "Type": "citizen",
+  "Disposition": "neutral",
+  "prob_spawn": 10,
+  "Description": "A cute neighbor carrying groceries and offering a shy smile.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Actions": [],
+  "ActionsMenu": [
+    { "Action": "Talk", "Description": "Start a conversation." },
+    { "Action": "Examine", "Description": "Look closer." }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {},
+  "LoreStages": {},
+  "SpawnAreas": ["Apartment Building"],
+  "CustomProperties": []
+}

@@ -1,0 +1,26 @@
+{
+  "Name": "Liberty University Gym",
+  "UniqueID": "libertyuniversitygym_lc_001",
+  "SDesc": "liberty_university_gym",
+  "Group": "Liberty University Gym",
+  "Spawns": true,
+  "Description": "The gym is loud and busy. Shoes squeak on the court and someone is always lifting something heavy.",
+  "Exits": [
+    { "Direction": "East", "DestinationRoom": "Liberty University" }
+  ],
+  "NPCs": [
+    { "UniqueID": "athlete_a_001", "Weight": 15 },
+    { "UniqueID": "athlete_b_001", "Weight": 15 },
+    { "UniqueID": "swimmer_001", "Weight": 5 },
+    { "UniqueID": "yoga_instructor_001", "Weight": 5 },
+    { "UniqueID": "female_body_builder_001", "Weight": 20 },
+    { "UniqueID": "basketball_coach_001", "Weight": 15 },
+    { "UniqueID": "volleyball_captain_001", "Weight": 15 }
+  ],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/lc_campus.jpg"
+}

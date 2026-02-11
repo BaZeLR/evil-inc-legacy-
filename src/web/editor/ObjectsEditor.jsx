@@ -6,6 +6,7 @@ import { StatusLine } from './StatusLine.jsx';
 
 export function ObjectsEditor({ game }) {
   const canWrite = Boolean(import.meta?.env?.DEV);
+  const [category, setCategory] = useState('equipment');
   const [search, setSearch] = useState('');
   const [selectedId, setSelectedId] = useState(null);
   const [jsonText, setJsonText] = useState('');
@@ -19,6 +20,13 @@ export function ObjectsEditor({ game }) {
   const [batchPad, setBatchPad] = useState(3);
 
   const loadedJsonRef = useRef(null);
+
+  const OBJECT_CATEGORIES = [
+    { key: 'equipment', label: 'Equipment' },
+    { key: 'gadgets', label: 'Gadgets' },
+    { key: 'game_items', label: 'Game Items' },
+    { key: 'weapons', label: 'Weapons' }
+  ];
 
   const objectSourceMap = game?.objectSourceMap ?? {};
   const objectIds = useMemo(() => Object.keys(objectSourceMap || {}).sort((a, b) => a.localeCompare(b)), [objectSourceMap]);
@@ -108,7 +116,7 @@ export function ObjectsEditor({ game }) {
     next.UniqueID = id;
     if (!next.Name) next.Name = id;
 
-    const filePath = `DB/objects/${id}.json`;
+    const filePath = `DB/objects/${category}/${id}.json`;
 
     setStatus({ kind: 'info', message: `Creating ${id}...` });
     try {
@@ -169,7 +177,7 @@ export function ObjectsEditor({ game }) {
         const next = jsonClone(baseTemplate);
         next.UniqueID = id;
         if (!next.Name) next.Name = id;
-        const filePath = `DB/objects/${id}.json`;
+        const filePath = `DB/objects/${category}/${id}.json`;
         await writeDbJsonFile(filePath, next);
         createdPaths.push(filePath);
       }
@@ -187,7 +195,17 @@ export function ObjectsEditor({ game }) {
   return (
     <>
       <div className="drawer-subtitle">Objects</div>
-      <div className="drawer-muted">Writes go to `public/DB/objects/**` (dev server only).</div>
+      <div className="drawer-muted">Writes go to public/DB/objects/[category]/** (dev server only).</div>
+      <div className="editor-row">
+        <div className="editor-field">
+          <div className="editor-field-label">Category</div>
+          <select className="editor-select" value={category} onChange={e => setCategory(e.target.value)}>
+            {OBJECT_CATEGORIES.map(entry => (
+              <option key={entry.key} value={entry.key}>{entry.label}</option>
+            ))}
+          </select>
+        </div>
+      </div>
       {!canWrite ? <div className="drawer-warning">Write APIs are only available on `npm run dev`.</div> : null}
 
       <StatusLine status={status} />
@@ -241,7 +259,7 @@ export function ObjectsEditor({ game }) {
       <div className="editor-divider" />
 
       <div className="drawer-subtitle">Create / Batch</div>
-      <div className="drawer-muted">Uses the current editor JSON as a template when possible.</div>
+      <div className="drawer-muted">Create new objects using current JSON as base structure.</div>
 
       <div className="editor-row">
         <div className="editor-field">

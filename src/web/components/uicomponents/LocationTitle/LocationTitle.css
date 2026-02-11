@@ -1,0 +1,81 @@
+.location-title {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.018);
+  padding: 0.35rem 1.1rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-accent);
+  text-shadow: 0 0 8px black;
+  z-index: 2;
+  cursor: pointer;
+  user-select: none;
+  min-width: 0;
+}
+
+.location-title.has-extra-actions {
+  animation: location-title-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes location-title-pulse {
+  0% {
+    box-shadow: 0 0 0 0.5px rgba(80, 255, 120, 0.22);
+  }
+  50% {
+    box-shadow: 0 0 0 0.5px rgba(80, 255, 120, 0.72), 0 0 10px rgba(80, 255, 120, 0.15);
+  }
+  100% {
+    box-shadow: 0 0 0 0.5px rgba(80, 255, 120, 0.22);
+  }
+}
+
+.location-title:hover,
+.location-title:focus {
+  outline: 2px solid rgba(212, 175, 55, 0.35);
+}
+
+.location-title-text {
+  display: inline-block;
+  max-width: min(76vw, 64ch);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.location-title-tooltip {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  border: none;
+  box-shadow: none;
+  padding: 0.35rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 50;
+  pointer-events: auto;
+  min-width: max-content;
+}
+
+.location-title-tooltip-btn {
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0.15rem 0.25rem;
+  font-family: var(--font-text);
+  font-size: 0.75rem;
+  color: rgba(224, 217, 197, 0.96);
+  text-align: left;
+  cursor: pointer;
+}
+
+.location-title-tooltip-btn:hover,
+.location-title-tooltip-btn:focus {
+  outline: none;
+  color: var(--text-accent);
+}

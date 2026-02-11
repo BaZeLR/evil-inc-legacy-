@@ -1,0 +1,26 @@
+{
+  "Name": "City Mall",
+  "UniqueID": "citymall_lc_001",
+  "SDesc": "city_mall",
+  "Group": "Liberty City Mall",
+  "Spawns": true,
+  "Description": "A large shopping mall with many stores and a food court.",
+  "Exits": [
+    { "Direction": "East", "DestinationRoom": "Route 13" }
+  ],
+  "NPCs": [
+    { "UniqueID": "young_shopper_001", "Weight": 10 },
+    { "UniqueID": "happy_family_001", "Weight": 15 },
+    { "UniqueID": "security_guard_001", "Weight": 15 },
+    { "UniqueID": "milf_001", "Weight": 15 },
+    { "UniqueID": "young_couple_001", "Weight": 20 },
+    { "UniqueID": "food_vendor_001", "Weight": 15 },
+    { "UniqueID": "gold_digger_001", "Weight": 10 }
+  ],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/ParkerTower.jpg"
+}

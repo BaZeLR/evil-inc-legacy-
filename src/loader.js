@@ -1,6 +1,8 @@
-// This loader is for Reddit html AIF/src, not regalia.
 import { loadSaveGame } from './utils/saveGame.js';
 import { parsePlannedEventsDocument } from './events/PlannedEvent.js';
+import { getRoomImage } from './utils/roomUtils.js';
+
+// This loader is for Reddit html AIF/src, not regalia.
 
 function normalizeLookupKey(value) {
     return String(value ?? '').trim().toLowerCase();
@@ -8,6 +10,18 @@ function normalizeLookupKey(value) {
 
 function normalizeLookupKeyLoose(value) {
     return normalizeLookupKey(value).replace(/[^a-z0-9]/g, '');
+}
+
+function normalizeArrayLike(value) {
+    if (Array.isArray(value)) return value;
+    if (!value || typeof value !== 'object') return [];
+
+    const numericEntries = Object.entries(value)
+        .filter(([key]) => /^\d+$/.test(key))
+        .sort((a, b) => Number(a[0]) - Number(b[0]))
+        .map(([, entry]) => entry);
+
+    return numericEntries;
 }
 
 function stripJsonComments(input) {
@@ -74,6 +88,27 @@ function stripJsonComments(input) {
     }
 
     return output;
+}
+
+function applyVariableDefaults(player, schema) {
+    if (!player) return;
+    if (!player.Stats || typeof player.Stats !== 'object') player.Stats = {};
+    if (!schema || typeof schema !== 'object') return;
+
+    const defaults = schema.variables && typeof schema.variables === 'object' ? schema.variables : null;
+    if (!defaults) return;
+
+    for (const [name, def] of Object.entries(defaults)) {
+        if (player.Stats[name] !== undefined) continue;
+        const type = String(def?.type ?? '').trim().toLowerCase();
+        if ('default' in def) {
+            player.Stats[name] = def.default;
+            continue;
+        }
+        if (type === 'number') player.Stats[name] = 0;
+        else if (type === 'string') player.Stats[name] = '';
+        else player.Stats[name] = false;
+    }
 }
 
 function buildRoomIndex(rooms) {
@@ -156,12 +191,84 @@ export async function loadGameData() {
 
     const loadErrors = [];
 
+    // Load leveling + planned events (kept inside the loader to avoid top-level await)
+    let leveling = null;
+    try {
+        leveling = await fetchJSON('DB/leveling.json');
+    } catch (error) {
+        loadErrors.push({
+            kind: 'leveling',
+            path: 'DB/leveling.json',
+            error: error?.message || String(error)
+        });
+        leveling = null;
+    }
+
+    let plannedEvents = [];
+    try {
+        const eventsRaw = await fetchJSON('DB/events.json');
+        plannedEvents = parsePlannedEventsDocument(eventsRaw);
+    } catch (error) {
+        loadErrors.push({
+            kind: 'plannedEvents',
+            path: 'DB/events.json',
+            error: error?.message || String(error)
+        });
+        plannedEvents = [];
+    }
+
+    let timers = [];
+    try {
+        const timersRaw = await fetchJSON('DB/timers.json');
+        if (Array.isArray(timersRaw?.timers)) {
+            timers = timersRaw.timers;
+        } else if (Array.isArray(timersRaw)) {
+            timers = timersRaw;
+        } else {
+            const fromNested = normalizeArrayLike(timersRaw?.timers);
+            const fromRoot = normalizeArrayLike(timersRaw);
+            timers = fromNested.length ? fromNested : fromRoot;
+        }
+    } catch (error) {
+        loadErrors.push({
+            kind: 'timers',
+            path: 'DB/timers.json',
+            error: error?.message || String(error)
+        });
+        timers = [];
+    }
+
+    let variableSchema = null;
+    let textLibrary = null;
+    try {
+        variableSchema = await fetchJSON('DB/variables.schema.json');
+    } catch (error) {
+        loadErrors.push({
+            kind: 'variables',
+            path: 'DB/variables.schema.json',
+            error: error?.message || String(error)
+        });
+        variableSchema = null;
+    }
+    try {
+        textLibrary = await fetchJSON('DB/texts.json');
+    } catch (error) {
+        loadErrors.push({
+            kind: 'texts',
+            path: 'DB/texts.json',
+            error: error?.message || String(error)
+        });
+        textLibrary = null;
+    }
+
     async function loadCharactersFromCategoryIndexes() {
         const categories = [
             { key: 'enemies', dir: 'DB/characters/enemies', index: 'DB/characters/enemies/index.json' },
             { key: 'bosses', dir: 'DB/characters/bosses', index: 'DB/characters/bosses/index.json' },
             { key: 'r_citizens', dir: 'DB/characters/r_citizens', index: 'DB/characters/r_citizens/index.json' },
-            { key: 'main', dir: 'DB/characters/main', index: 'DB/characters/main/index.json' }
+            { key: 'main', dir: 'DB/characters/main', index: 'DB/characters/main/index.json' },
+            { key: 'secondary', dir: 'DB/characters/secondary', index: 'DB/characters/secondary/index.json' },
+            { key: 'mental_minions', dir: 'DB/characters/mental_minions', index: 'DB/characters/mental_minions/index.json' }
         ];
 
         const fileList = [];
@@ -305,7 +412,7 @@ export async function loadGameData() {
 
         try {
             const legacy = await fetchJSON('DB/characters/characters.json');
-            return Array.isArray(legacy) ? legacy : [];
+            return Array.isArray(legacy) ? legacy : normalizeArrayLike(legacy);
         } catch (error) {
             loadErrors.push({
                 kind: 'character',
@@ -317,29 +424,113 @@ export async function loadGameData() {
     }
 
     // Load core data
-    const [player, roomsRaw, characters] = await Promise.all([fetchJSON('DB/player.json'), fetchJSON('DB/rooms.json'), loadCharacters()]);
 
-    let leveling = null;
-    try {
-        leveling = await fetchJSON('DB/leveling.json');
-    } catch (error) {
-        loadErrors.push({
-            kind: 'leveling',
-            path: 'DB/leveling.json',
-            error: error?.message || String(error)
+    const [player, roomsIndex, characters, fullIndex] = await Promise.all([
+        fetchJSON('DB/player.json'),
+        fetchJSON('DB/rooms/index.json'),
+        loadCharacters(),
+        fetchJSON('DB/full_index.json').catch(() => null)
+    ]);
+
+    // Load all room files listed in the index
+    let roomsList = [];
+    if (Array.isArray(roomsIndex?.files)) {
+        const roomFiles = roomsIndex.files
+            .filter(f => f.toLowerCase().endsWith('.json') && !f.endsWith('index.json'));
+        const roomResults = await Promise.allSettled(roomFiles.map(f => fetchJSON(f)));
+        roomsList = [];
+        roomResults.forEach((result, index) => {
+            const filePath = roomFiles[index];
+            if (result.status === 'fulfilled' && result.value && result.value.UniqueID) {
+                roomsList.push(result.value);
+                return;
+            }
+            const errorMessage =
+                result.status === 'rejected'
+                    ? result.reason?.message || String(result.reason)
+                    : 'Room missing UniqueID';
+            loadErrors.push({
+                kind: 'room',
+                path: filePath,
+                error: errorMessage
+            });
         });
-        leveling = null;
     }
 
-    let plannedEvents = [];
+    if (Array.isArray(fullIndex?.files) && Array.isArray(roomsIndex?.files)) {
+        const normalizePath = value => String(value ?? '').trim().replace(/\\/g, '/').replace(/^\/+/, '');
+        const fullFiles = new Set(fullIndex.files.map(normalizePath));
+        const roomFiles = new Set(roomsIndex.files.map(normalizePath));
+        const fullRoomFiles = Array.from(fullFiles).filter(entry => entry.startsWith('DB/rooms/'));
+
+        for (const roomFile of roomFiles) {
+            if (!roomFile) continue;
+            if (!fullFiles.has(roomFile)) {
+                loadErrors.push({
+                    kind: 'roomsIndex',
+                    path: roomFile,
+                    error: 'Missing from DB/full_index.json'
+                });
+            }
+        }
+
+        for (const roomFile of fullRoomFiles) {
+            if (!roomFile) continue;
+            if (!roomFiles.has(roomFile)) {
+                loadErrors.push({
+                    kind: 'roomsIndex',
+                    path: roomFile,
+                    error: 'Present in DB/full_index.json but missing from DB/rooms/index.json'
+                });
+            }
+        }
+    }
+
+    // Compatibility: some content pipelines still edit DB/rooms.json (legacy monolith).
+    // Merge only NPC-style lists into the per-room objects so spawns can work.
     try {
-        const eventsRaw = await fetchJSON('DB/events.json');
-        plannedEvents = parsePlannedEventsDocument(eventsRaw);
-    } catch {
-        plannedEvents = [];
-    }
+        const legacyRooms = await fetchJSON('DB/rooms.json');
+        const legacyList = Array.isArray(legacyRooms) ? legacyRooms : Array.isArray(legacyRooms?.rooms) ? legacyRooms.rooms : [];
+        if (Array.isArray(legacyList) && legacyList.length) {
+            const legacyById = new Map(
+                legacyList
+                    .map(r => {
+                        const id = String(r?.UniqueID ?? '').trim();
+                        return id ? [id, r] : null;
+                    })
+                    .filter(Boolean)
+            );
 
-    const roomsList = Array.isArray(roomsRaw?.Rooms) ? roomsRaw.Rooms : [];
+            roomsList = roomsList.map(room => {
+                const roomId = String(room?.UniqueID ?? '').trim();
+                const legacy = roomId ? legacyById.get(roomId) : null;
+                if (!legacy) return room;
+
+                const merged = { ...room };
+
+                const legacyNpcs = Array.isArray(legacy?.NPCs) ? legacy.NPCs : Array.isArray(legacy?.npcs) ? legacy.npcs : null;
+                const legacyResidents = Array.isArray(legacy?.Residents)
+                    ? legacy.Residents
+                    : Array.isArray(legacy?.residents)
+                        ? legacy.residents
+                        : null;
+
+                const roomNpcs = Array.isArray(room?.NPCs) ? room.NPCs : Array.isArray(room?.npcs) ? room.npcs : null;
+                const roomResidents = Array.isArray(room?.Residents)
+                    ? room.Residents
+                    : Array.isArray(room?.residents)
+                        ? room.residents
+                        : null;
+
+                if (legacyNpcs && (!roomNpcs || roomNpcs.length === 0)) merged.NPCs = legacyNpcs;
+                if (legacyResidents && (!roomResidents || roomResidents.length === 0)) merged.Residents = legacyResidents;
+
+                return merged;
+            });
+        }
+    } catch {
+        // Optional legacy file.
+    }
     const roomIndex = buildRoomIndex(roomsList);
 
     // Default new games to the configured starting room. Save data can still override CurrentRoom later.
@@ -352,17 +543,20 @@ export async function loadGameData() {
         const roomId = String(room?.UniqueID ?? '').trim();
         const roomName = room?.Name ?? room?.name ?? '';
         const roomDescription = room?.Description ?? room?.description ?? '';
-        const roomMedia = room?.Picture ?? room?.media ?? null;
+        // Always resolve roomMedia to a string using getRoomImage for UI compatibility
+        const roomMedia = getRoomImage(room, typeof gameTime !== 'undefined' ? gameTime : null);
 
                 const exitsRaw = Array.isArray(room?.Exits) ? room.Exits : [];
                 const exits = exitsRaw
                     .map(exit => {
                         const direction = String(exit?.Direction ?? exit?.direction ?? '').trim();
-                        const destinationRaw = exit?.DestinationRoom ?? exit?.destination ?? '';
-                        const showIf = String(exit?.ShowIf ?? exit?.showIf ?? exit?.CondStr ?? exit?.condStr ?? '').trim();
+                        const destinationRaw = exit?.DestinationRoom ?? exit?.destination ?? null;
+                        const destinationText = typeof destinationRaw === 'string' ? destinationRaw.trim() : '';
+                        const showIfRaw = exit?.ShowIf ?? exit?.showIf ?? exit?.CondStr ?? exit?.condStr ?? null;
+                        const showIf = typeof showIfRaw === 'string' ? showIfRaw.trim() : showIfRaw;
                         const todo = Boolean(exit?.Todo ?? exit?.todo ?? false);
-                        const todoLabel = String(exit?.TodoLabel ?? exit?.todoLabel ?? '').trim();
-                        const destinationId = resolveRoomId(destinationRaw, roomIndex, roomsList);
+                        const todoLabel = exit?.TodoLabel ?? exit?.todoLabel ?? null;
+                        const destinationId = destinationText ? resolveRoomId(destinationText, roomIndex, roomsList) : null;
                         const destinationRoom = destinationId
                             ? roomsList.find(r => String(r?.UniqueID ?? '').trim() === destinationId)
                             : null;
@@ -370,11 +564,11 @@ export async function loadGameData() {
                         return {
                             direction,
                             destinationId,
-                            destinationName: destinationRoom?.Name ?? String(destinationRaw ?? '').trim(),
-                            destinationRaw: String(destinationRaw ?? '').trim(),
-                            showIf: showIf || null,
+                            destinationName: destinationRoom?.Name ?? destinationText,
+                            destinationRaw: destinationRaw ?? destinationText,
+                            showIf: showIf ?? null,
                             todo: todo || undefined,
-                            todoLabel: todoLabel || null
+                            todoLabel: todoLabel ?? null
                         };
                     })
                     .filter(exit => exit.direction);
@@ -398,45 +592,28 @@ export async function loadGameData() {
             description: roomDescription,
             media: roomMedia,
             exits,
-            objects
+            objects,
+            bFirstTimeVisited: room?.bFirstTimeVisited !== undefined ? Boolean(room.bFirstTimeVisited) : false,
+            bFirstTimeLeft: room?.bFirstTimeLeft !== undefined ? Boolean(room.bFirstTimeLeft) : false
         };
     });
 
-    // Load all object instances
-    const fallbackObjectFiles = [
-        'DB/objects/com_unit.json',
-        'DB/objects/duffel_bag.json',
-        'DB/objects/herbert_pc_001.json',
-        'DB/objects/herbert_desk_001.json',
-        'DB/objects/wallet.json',
-        'DB/objects/vibranium_ring.json',
-        'DB/objects/rubber_gloves.json',
-        'DB/objects/lab_coat.json',
-        'DB/objects/insulated_boots.json',
-        'DB/objects/energy_pack.json',
-        'DB/objects/med_pack.json',
-        'DB/objects/rusty_knife.json',
-        'DB/objects/cheap_pistol.json',
-        'DB/objects/street_vendor.json'
-    ];
 
-    let objectFiles = [...fallbackObjectFiles];
-    if (import.meta?.env?.DEV) {
-        try {
-            const response = await fetch('/api/db/list?dir=DB/objects', { cache: 'no-store' });
-            if (response.ok) {
-                const payload = await response.json();
-                if (Array.isArray(payload?.files) && payload.files.length) {
-                    objectFiles = payload.files
-                        .map(entry => String(entry ?? '').trim())
-                        .filter(entry => entry && entry.toLowerCase().endsWith('.json') && entry.startsWith('DB/'))
-                        .sort((a, b) => a.localeCompare(b));
-                }
-            }
-        } catch {
-            objectFiles = [...fallbackObjectFiles];
+    // Load all object instances using the generated DB/full_index.json
+    let objectFiles = [];
+    try {
+        const indexData = await fetchJSON('DB/full_index.json');
+        if (Array.isArray(indexData?.files)) {
+            // Only include object files (DB/objects/...) and skip index.json itself
+            objectFiles = indexData.files
+                .filter(f => f.startsWith('DB/objects/') && f.toLowerCase().endsWith('.json') && !f.endsWith('index.json'))
+                .sort((a, b) => a.localeCompare(b));
         }
+    } catch (e) {
+        loadErrors.push({ kind: 'object', path: 'DB/full_index.json', error: e?.message || String(e) });
+        objectFiles = [];
     }
+
     const objectResults = await Promise.allSettled(objectFiles.map(fetchJSON));
     const objects = [];
     const objectSourceMap = {};
@@ -467,7 +644,7 @@ export async function loadGameData() {
 
         const mapped = {
             ...rawObject,
-            media: rawObject?.Picture || rawObject?.media || null,
+            media: rawObject?.Picture || rawObject?.picture || rawObject?.media || null,
             id: objectId,
             name: rawObject?.Name ?? rawObject?.name ?? '',
             description: rawObject?.Description ?? rawObject?.description ?? ''
@@ -477,7 +654,8 @@ export async function loadGameData() {
     }
 
     // Map characters
-    const mappedCharacters = (Array.isArray(characters) ? characters : []).map(char => ({
+    const characterList = Array.isArray(characters) ? characters : normalizeArrayLike(characters);
+    const mappedCharacters = characterList.map(char => ({
         ...char,
         media: char?.Picture || char?.media || null,
         id: char?.UniqueID || char?.id,
@@ -489,15 +667,64 @@ export async function loadGameData() {
 
     // Build lookup maps
     const objectMap = {};
+    const objectNameMap = {};
     objects.forEach(obj => {
+        if (!obj?.id) return;
         objectMap[obj.id] = obj;
+        const names = [
+            obj?.Name,
+            obj?.name,
+            obj?.SDesc,
+            obj?.sdesc
+        ]
+            .map(value => normalizeLookupKey(value))
+            .filter(Boolean);
+        const looseNames = [
+            obj?.Name,
+            obj?.name,
+            obj?.SDesc,
+            obj?.sdesc
+        ]
+            .map(value => normalizeLookupKeyLoose(value))
+            .filter(Boolean);
+
+        for (const key of names) {
+            if (!objectNameMap[key]) objectNameMap[key] = obj;
+        }
+        for (const key of looseNames) {
+            if (!objectNameMap[key]) objectNameMap[key] = obj;
+        }
     });
 
     const roomMap = {};
     rooms.forEach(room => { roomMap[room.id] = room; });
 
     const characterMap = {};
-    mappedCharacters.forEach(char => { characterMap[char.id] = char; });
+    mappedCharacters.forEach(char => {
+        if (char?.id) characterMap[char.id] = char;
+    });
+
+    const characterNameMap = {};
+    mappedCharacters.forEach(char => {
+        const names = [
+            char?.CharnameOverride,
+            char?.Charname,
+            char?.Name,
+            char?.name
+        ]
+            .map(value => normalizeLookupKey(value))
+            .filter(Boolean);
+
+        for (const key of names) {
+            if (!characterNameMap[key]) characterNameMap[key] = char;
+        }
+    });
+
+    const timerNameMap = {};
+    (Array.isArray(timers) ? timers : []).forEach(timer => {
+        const nameKey = normalizeLookupKey(timer?.Name ?? timer?.name ?? '');
+        if (nameKey && !timerNameMap[nameKey]) timerNameMap[nameKey] = timer;
+    });
 
     const save = await loadSaveGame();
 
@@ -505,6 +732,10 @@ export async function loadGameData() {
     if (save?.player) {
         if (Array.isArray(save.player.Inventory)) player.Inventory = save.player.Inventory;
         if (Array.isArray(save.player.Equipped)) player.Equipped = save.player.Equipped;
+        if (Array.isArray(save.player.Abilities)) player.Abilities = save.player.Abilities;
+        if (Array.isArray(save.player.MentalMinions)) player.MentalMinions = save.player.MentalMinions;
+        if (Array.isArray(save.player.CompletedScenes)) player.CompletedScenes = save.player.CompletedScenes;
+        if (Array.isArray(save.player.VisitedRooms)) player.VisitedRooms = save.player.VisitedRooms;
         if (save.player.Credits !== undefined) player.Credits = save.player.Credits;
         if (save.player.Stats && typeof save.player.Stats === 'object') {
             player.Stats = { ...(player.Stats || {}), ...save.player.Stats };
@@ -513,11 +744,15 @@ export async function loadGameData() {
         if (savedRoom) player.CurrentRoom = savedRoom;
     }
 
+    applyVariableDefaults(player, variableSchema);
+
     if (save?.rooms && typeof save.rooms === 'object') {
         for (const [roomId, roomState] of Object.entries(save.rooms)) {
             if (!roomId || !roomMap[roomId]) continue;
             const objectsOverride = roomState?.objects ?? roomState?.Objects ?? null;
             if (Array.isArray(objectsOverride)) roomMap[roomId].objects = objectsOverride;
+            if (roomState?.bFirstTimeVisited !== undefined) roomMap[roomId].bFirstTimeVisited = Boolean(roomState.bFirstTimeVisited);
+            if (roomState?.bFirstTimeLeft !== undefined) roomMap[roomId].bFirstTimeLeft = Boolean(roomState.bFirstTimeLeft);
         }
     }
 
@@ -558,12 +793,23 @@ export async function loadGameData() {
         rooms,
         objects,
         objectMap,
+        objectNameMap,
         objectSourceMap,
         roomMap,
         characters: mappedCharacters,
         characterMap,
+        characterNameMap,
         plannedEvents,
         leveling,
+        timers,
+        variableSchema,
+        texts: textLibrary,
+        timerNameMap,
+        timerMap: timers.reduce((acc, timer) => {
+            const id = String(timer?.UniqueID ?? timer?.id ?? '').trim();
+            if (id) acc[id] = timer;
+            return acc;
+        }, {}),
         save,
         loadErrors
     };

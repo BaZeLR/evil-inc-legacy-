@@ -1,0 +1,53 @@
+{
+  "UniqueID": "emily_001",
+  "Charname": "Emily Wolf",
+  "Gender": "Female",
+  "Type": "secondary",
+  "Disposition": "friendly",
+  "prob_spawn": 0,
+  "Description": "Steven's younger sister. Warm, grounded, and protective.",
+  "CurrentRoom": "emily_apartment_lc_001",
+  "Picture": "Assets/images/characters/secondary_npc/emily.png",
+  "KnowsPlayer": true,
+  "ActionsMenu": [
+    { "Action": "Talk", "Description": "Talk to Emily." },
+    { "Action": "Examine", "Description": "Look at Emily closely." }
+  ],
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/secondary_npc/emily.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Emily looks up and smiles when she sees you." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Examine",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/secondary_npc/emily.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Emily Wolf, your younger sister. She's always been the steady one." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Talk",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/secondary_npc/emily.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "\"Steven? You look exhausted. Sit for a second.\" (Placeholder)" }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "Inventory": [],
+  "Schedule": {"from": "21:00", "to": "06:00", "location": "emily_apartment_bedroom_lc_001"},
+  "Stats": {},
+  "LoreStages": {},
+  "CustomProperties": []
+}

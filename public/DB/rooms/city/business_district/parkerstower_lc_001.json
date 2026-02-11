@@ -1,0 +1,21 @@
+{
+  "Name": "Parker's Tower",
+  "UniqueID": "parkerstower_lc_001",
+  "SDesc": "parkers_tower",
+  "Group": "Liberty City",
+  "Spawns": false,
+  "Description": "",
+  "Exits": [
+    { "Direction": "East", "DestinationRoom": "Business District" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": { 
+    "day": "Assets/images/rooms/parkers_tower_day.jpg",
+    "dusk": "Assets/images/rooms/parkers_tower_dusk.jpg", 
+    "night": "Assets/images/rooms/parkers_tower_night.jpg" }
+}

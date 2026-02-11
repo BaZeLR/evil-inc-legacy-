@@ -1,0 +1,22 @@
+{
+  "UniqueID": "gold_digger_001",
+  "Charname": "Gold Digger",
+  "Gender": "Unknown",
+  "Type": "citizen",
+  "Disposition": "neutral",
+  "prob_spawn": 10,
+  "Description": "A gold digger browsing expensive items and watching who’s watching.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Actions": [],
+  "ActionsMenu": [
+    { "Action": "Talk", "Description": "Start a conversation." },
+    { "Action": "Examine", "Description": "Look closer." }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {},
+  "LoreStages": {},
+  "SpawnAreas": ["Liberty City Mall"],
+  "CustomProperties": []
+}

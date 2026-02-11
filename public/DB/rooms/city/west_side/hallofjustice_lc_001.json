@@ -1,0 +1,18 @@
+{
+  "Name": "Hall of Justice",
+  "UniqueID": "hallofjustice_lc_001",
+  "SDesc": "hall_of_justice",
+  "Group": "Liberty City",
+  "Spawns": false,
+  "Description": "",
+  "Exits": [
+    { "Direction": "East", "DestinationRoom": "West Side" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/evilInc.png"
+}

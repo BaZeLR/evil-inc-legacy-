@@ -1,0 +1,32 @@
+{
+  "UniqueID": "force_field_lvl1_001",
+  "Name": "Force Field (Level 1)",
+  "Type": "wearable",
+  "Description": "A level 1 force field used by most local law enforcement in combating meta humans. Absorbs 10 points of damage before needing to be recharged. Recharges itself after every battle!",
+  "Picture": "Assets/images/objects/force_field_lvl1_001.png",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 700,
+  "Bonuses": {
+    "Defence": 1
+  },
+  "Tooltip": "Examine, Equip",
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Inspect the force field." },
+    { "Action": "Equip", "Description": "Activate the force field." },
+    { "Action": "Unequip", "Description": "Deactivate the force field." },
+    { "Action": "Drop", "Description": "Drop the force field." }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": [
+    { "Property": "ShieldPoints", "Value": 10 }
+  ]
+}

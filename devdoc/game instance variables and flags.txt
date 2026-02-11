@@ -1,0 +1,108 @@
+Game Variables and Flags (Gameplay Control)
+
+Storage and usage
+- player.Stats.*: primary gameplay flags (quests, prologue, gates)
+- game.variables (aka global./vars.): global flags and engine control
+- ShowIf/HideIf/CondStr: condition hooks (string or object)
+
+Prologue / Intro (Evil Inc)
+- player.Stats.prologue_complete: true when intro is skipped or finished (GameUI start variant).
+- player.Stats.prologue_wallet_xp_awarded: prevents double XP when wallet is equipped.
+- player.Stats.prologue_penny_complete: set after Penny sequence (evilreception_penny_001_sequence).
+- player.Stats.prologue_interview_complete: set after Dr. Evil interview (drevilscommandcenter_drevil_001_sequence).
+- player.Stats.prologue_test_ready: set when desk appears (drevilscommandcenter_drevil_001_sequence).
+- player.Stats.prologue_test_step: question progress (1,2,3); set to 4 on completion (old_school_desk_001).
+- player.Stats.prologue_test_complete: true after Q3 (old_school_desk_001).
+- player.Stats.prologue_job_offer_complete: set after job offer (drevilscommandcenter_drevil_002_sequence).
+- player.Stats.prologue_can_ask_drevil: gate for Dr. Evil Ask scene (drevilscommandcenter_drevil_002_sequence).
+- player.Stats.prologue_can_ask: used by Dr. Evil ActionsMenu (dr_evil_001.json) - mismatch with prologue_can_ask_drevil.
+- player.Stats.prologue_ask_minds_done: Ask menu gate (drevilscommandcenter_drevil_ask_001_story).
+- player.Stats.prologue_ask_justice_done: Ask menu gate (drevilscommandcenter_drevil_ask_001_story).
+- player.Stats.prologue_time_skip_seen: set on time-skip stage (drevilscommandcenter_drevil_ask_001_story).
+- player.Stats.prologue_telepathy_unlocked: set when vibranium ring is equipped (Telepathy ability added).
+
+Dr. Evil test (3 questions)
+- player.Stats.prologue_test_step = 1 shows "Answer Question # 1"
+- player.Stats.prologue_test_step = 2 shows "Answer Question # 2"
+- player.Stats.prologue_test_step = 3 shows "Answer Question # 3"
+- player.Stats.prologue_test_complete = true when all answered
+
+Evil Inc job quest (Talking Stone Inc)
+- player.Stats.quest_main_started: scene entry requirement (eastside_evilcorp_001_story).
+- player.Stats.quest_main_stage: main quest progression (eastside_evilcorp_001_story).
+- player.Stats.employed_at_evilcorp: hired flag.
+- player.Stats.infiltrated_evilcorp: infiltration flag.
+- player.Stats.evilcorp_keycard: keycard granted flag.
+- player.Stats.evilcorp_rejected: rejection flag.
+- player.Stats.good_impression: dialog outcome flag.
+- player.Stats.fast_track_employee: fast-track flag.
+- player.Stats.scanned_evilcorp: psychic scan flag.
+
+Campus / Herbert quest
+- player.Stats.quest_herbert_stage: stage counter (herbert_001.json, herbert_pc_001.json, herbyoffice_lc_001.json).
+- player.Stats.herbert_dialog: talk stage counter.
+- player.Stats.herbert_badge_offer: offer state.
+- player.Stats.has_campus_badge: badge acquired (used to unlock campus choices).
+- player.Stats.herbert_badge_acquired: badge obtained via desk search.
+- player.Stats.herbert_locked_out: used to change campus security entry.
+- player.Stats.herbert_locked_scene_done: prevents repeat lockout scene.
+- player.Stats.herbert_desk_search_once: first desk search done.
+- player.Stats.herbert_pc_email_menu: toggles PC inbox menu.
+- player.Stats.herbert_password_found: password clue found.
+- player.Stats.herbert_pc_password: stored as numeric 202.
+- player.Stats.herbert_hidden_cams_found: camera network discovered.
+- player.Stats.herbert_telepathy_done: telepathy branch done.
+- player.Stats.herbert_postfight_interrogated: post-fight interrogation done.
+- player.Stats.herbert_loss: player beat Herbert (combat exit).
+- global.campus_unlocked: set from Herbert desk (not currently enforced by code; prefer ShowIf on exits).
+
+Side quests / placeholders
+- katie_quest_01/02/03: listed in Katie.json (file currently invalid JSON).
+- Additional flags mentioned in notes: dr_winifred_lab_found, hollie_quest_01, skin_challenge, etc.
+
+GameflowMainEvents (planned flags from devdoc/GameflowMainEvents.txt)
+- player.Stats.recruited_scientists_count: Dr. Evil B1 recruit goal (need 2).
+- player.Stats.recruited_muscle_count: Dr. Evil B1 recruit goal (need 2).
+- player.Stats.quest_katie_stage: Katie recruitment flow (cafe -> campus -> back alley -> return).
+- player.Stats.quest_katie_loan_shark_stage: Manny loan shark chain (requires xander_recruited + gina_reprogrammed).
+- player.Stats.quest_katie_prof_stage: Prof Star chain (bribery/threaten/seduce/forget/blackmail branches).
+- player.Stats.xander_recruited: Xander Cain recruited (unlocked after Katie quest 1).
+- player.Stats.gina_reprogrammed: police station distraction prerequisite.
+- player.Stats.manny_recruited: Manny loan shark contact.
+- player.Stats.manny_dancers_stage: Yuri/Ivy recruitment for Manny.
+- player.Stats.capri_scene_unlocked: unlocked by trading red sand.
+- player.Stats.holly_quest_stage: finding Dani (hospital visits, PI, warehouse, Jake).
+- player.Stats.holly_recruited: Holly moves to Evil Inc B1.
+- player.Stats.dani_bridge_stage: Jake bridge quest (requires badges and batteries).
+- player.Stats.jf_badges_count: Justice Force badges collected (target 5).
+- player.Stats.irradiated_batteries_count: batteries collected (target 10).
+- player.Stats.skin_recruited: Skin recruited (after 4 JF wins).
+- player.Stats.skin_medi_gel_stage: Medi gel chain (requires coon_recruited).
+- player.Stats.coon_recruited: Coon recruited (random downtown).
+- player.Stats.coon_trained: training complete (adds gear for Fud Ex heist).
+- player.Stats.melody_recruit_stage: Melody Parker recruitment chain.
+- player.Stats.melody_email_ready: Penny email gate (requires 2 scientists + 2 supers).
+- player.Stats.winifred_lab_stage: lab discovery chain (Penny/Dr Evil/Vadar/library hack).
+- player.Stats.winifred_recruited: lab found and ritual complete.
+- player.Stats.winifred_church_stage: church quest chain (rev mother, Cohen, robes, gatekeeper).
+- player.Stats.occult_robes_obtained: dark robes picked up.
+- player.Stats.church_rev_mother_outcome: outcome enum (helped/killed/evil_choice).
+- player.Stats.catch_em_all_started: Dr. Evil "catch'em all" quest started.
+- player.Stats.catch_em_all_count: captured NPC count (target 50).
+- player.Stats.catch_em_all_completed: quest complete flag.
+
+Objectives (Com Unit)
+- Objective text is driven by prologue flags and player.Stats.quest_herbert_stage
+  (see public/DB/objects/equipment/com_unit.json).
+
+Engine control / flow
+- global.continue_to_room: used with CT_PAUSEGAME to continue to a room.
+- global.continue_script: used with CT_PAUSEGAME to continue a script.
+
+Important items referenced by objectives/flags
+- duffelbag_001: prologue inventory container.
+- wallet_001: prologue XP trigger.
+- vibranium_ring_001: granted in Dr. Evil Ask (minds) chain.
+- campus_badge_001: granted in campus security scene.
+- evilcorp_employee_badge: granted in eastside_evilcorp_001_story.
+- evilcorp_keycard: flag for keycard access (item in narrative).

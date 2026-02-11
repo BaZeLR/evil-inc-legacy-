@@ -6,7 +6,15 @@ function isRecord(value) {
 }
 
 export function createEmptySaveGame() {
-  return { version: 1, updatedAt: null, player: {}, rooms: {}, objects: {}, characters: {}, events: { threads: {}, states: {}, flags: {} } };
+  return {
+    version: 1,
+    updatedAt: null,
+    player: {},
+    rooms: {},
+    objects: {},
+    characters: {},
+    events: { threads: {}, states: {}, flags: {}, activeScenes: {} }
+  };
 }
 
 export async function loadSaveGame() {
@@ -25,9 +33,10 @@ export async function loadSaveGame() {
         ? {
             threads: isRecord(raw.events.threads) ? raw.events.threads : {},
             states: isRecord(raw.events.states) ? raw.events.states : {},
-            flags: isRecord(raw.events.flags) ? raw.events.flags : {}
+            flags: isRecord(raw.events.flags) ? raw.events.flags : {},
+            activeScenes: isRecord(raw.events.activeScenes) ? raw.events.activeScenes : {}
           }
-        : { threads: {}, states: {}, flags: {} }
+        : { threads: {}, states: {}, flags: {}, activeScenes: {} }
     };
   };
 

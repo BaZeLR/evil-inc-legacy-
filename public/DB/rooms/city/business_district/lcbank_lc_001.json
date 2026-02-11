@@ -1,0 +1,18 @@
+{
+  "Name": "LC Bank",
+  "UniqueID": "lcbank_lc_001",
+  "SDesc": "lc_bank",
+  "Group": "Liberty City",
+  "Spawns": false,
+  "Description": "",
+  "Exits": [
+    { "Direction": "West", "DestinationRoom": "Business District" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/bd_day.jpg"
+}

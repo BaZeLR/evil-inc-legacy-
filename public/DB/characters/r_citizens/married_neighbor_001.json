@@ -1,0 +1,22 @@
+{
+  "UniqueID": "married_neighbor_001",
+  "Charname": "Married Neighbor",
+  "Gender": "Unknown",
+  "Type": "citizen",
+  "Disposition": "neutral",
+  "prob_spawn": 10,
+  "Description": "A married neighbor checking the mailbox and trying to avoid eye contact.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Actions": [],
+  "ActionsMenu": [
+    { "Action": "Talk", "Description": "Start a conversation." },
+    { "Action": "Examine", "Description": "Look closer." }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {},
+  "LoreStages": {},
+  "SpawnAreas": ["Apartment Building"],
+  "CustomProperties": []
+}

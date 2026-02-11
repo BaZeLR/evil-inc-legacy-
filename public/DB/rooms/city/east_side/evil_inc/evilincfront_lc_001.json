@@ -1,0 +1,53 @@
+{
+  "Name": "Evil Incorporated Front",
+  "UniqueID": "evilincfront_lc_001",
+  "SDesc": "evil_inc_front",
+  "Group": "Liberty City",
+  "Spawns": false,
+  "Description": "Hmmm...Something about this building is off",
+  "Exits": [
+    { "Direction": "In", "DestinationRoom": "evilreception_lc_001" },
+    {
+      "Direction": "West",
+      "DestinationRoom": "eastside_lc_001",
+      "ShowIf": "player.Stats.prologue_complete == true || player.Stats.prologue_intro_skipped == true"
+    }
+  ],
+  "NPCs": [],
+  "Objects": [
+    { "UniqueID": "duffelbag_001" }
+  ],
+  "Actions": [
+    {
+      "name": "<<On Player Enter First Time>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "[c yellow][b]Welcome to the game![/b][/c] I'm the tutorial for first time  players. If you have used Rags before please ignore this it wont be for long. The lower left corner of the game is your compass. Around the compass are little green dots indicating a direction you can travel. For right now all you can do is go inside Evil Inc's HQ. More will open up after the prolog."
+        },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "You pick your Equipment. Make sure you equip everything inside before moving on!"
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Examine Room",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/rooms/evilInc.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Hmmm...Something about this building is off" }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/evilInc.png"
+}
+

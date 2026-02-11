@@ -1,0 +1,19 @@
+{
+  "Name": "Black Market",
+  "UniqueID": "blackmarket_lc_001",
+  "SDesc": "black_market",
+  "Group": "Downtown",
+  "Type": "hostile",
+  "Spawns": false,
+  "Description": "",
+  "Exits": [
+    { "Direction": "SW", "DestinationRoom": "Back Alley" }
+  ],
+  "NPCs": ["shadydealer_001"],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/weapon_dealer.jpg"
+}

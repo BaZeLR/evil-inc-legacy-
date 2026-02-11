@@ -1,0 +1,71 @@
+{
+  "UniqueID": "duffelbag_001",
+  "Name": "Duffel Bag",
+  "Type": "container",
+  "Description": "Fancy bag with useful stuff.",
+  "Picture": "public/Assets/images/objects/equipment_duffel.jpg",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": true,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 0,
+  "Tooltip": "Examine, Take, Drop, Open, Close",
+  "ActionsMenu": [
+    {
+      "Action": "Examine",
+      "Description": "Look at the Duffel Bag closely."
+    },
+    {
+      "Action": "Take",
+      "Description": "Pick up the Duffel Bag."
+    },
+    {
+      "Action": "Drop",
+      "Description": "Drop the Duffel Bag."
+    },
+    {
+      "Action": "Open",
+      "Description": "Open the Duffel Bag to see what's inside."
+    },
+    {
+      "Action": "Close",
+      "Description": "Close the Duffel Bag."
+    }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": [
+    {
+      "Property": "taken",
+      "Value": false
+    }
+  ],
+  "Contents": [
+    {
+      "UniqueID": "wallet_001",
+      "Name": "Wallet",
+      "Type": "container"
+    },
+    {
+      "UniqueID": "lab_coat_001",
+      "Name": "Basic Lab Coat",
+      "Type": "wearable"
+      
+    },
+    {
+      "UniqueID": "rubber_gloves_001",
+      "Name": "Standard Rubber Gloves",
+      "Type": "wearable"
+    },
+    {
+      "UniqueID": "insulated_boots_001",
+      "Name": "Insulated Boots",
+      "Type": "wearable"
+    }
+  ]
+}

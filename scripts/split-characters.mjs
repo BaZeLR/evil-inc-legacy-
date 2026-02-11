@@ -60,7 +60,9 @@ async function main() {
     { key: 'enemies', dir: path.join(baseDir, 'enemies'), ids: [] },
     { key: 'bosses', dir: path.join(baseDir, 'bosses'), ids: [] },
     { key: 'r_citizens', dir: path.join(baseDir, 'r_citizens'), ids: [] },
-    { key: 'main', dir: path.join(baseDir, 'main'), ids: [] }
+    { key: 'main', dir: path.join(baseDir, 'main'), ids: [] },
+    { key: 'secondary', dir: path.join(baseDir, 'secondary'), ids: [] },
+    { key: 'mental_minions', dir: path.join(baseDir, 'mental_minions'), ids: [] }
   ];
 
   const byKey = new Map(categories.map(entry => [entry.key, entry]));

@@ -1,0 +1,19 @@
+{
+  "Name": "Old Factory",
+  "UniqueID": "oldfactory_lc_001",
+  "SDesc": "old_factory",
+  "Group": "Liberty City",
+  "Type": "hostile",
+  "Spawns": true,
+  "Description": "The old Wilson Steel Mill. Been shut down for years....Maybe I should check it out...",
+  "Exits": [
+    { "Direction": "West", "DestinationRoom": "Downtown" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/tunnel_south.jpg"
+}

@@ -10,7 +10,7 @@ const OUTPUT_DIR = path.resolve(__dirname, '../../');
 // Variable names and their output files
 const VAR_TO_FILE = {
   imagedata: 'images.json',
-  roomdata: 'rooms.json',
+  roomdata: 'rooms/index.json',
   playerdata: 'player.json',
   variabledata: 'variables.json',
   timerdata: 'timers.json',

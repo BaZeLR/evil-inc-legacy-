@@ -149,7 +149,7 @@ Supported markup in text:
 
 ### Where actions live
 - Rooms: `public/DB/rooms.json` (Room `Actions[]`, and room `objects[]` / `NPCs[]`)
-- Objects: `public/DB/objects/<id>.json` (Object `Actions[]`, `ActionsMenu[]`, `Contents[]`, `ShopItems[]`)
+- Objects: `public/DB/objects/<category>/<id>.json` (Object `Actions[]`, `ActionsMenu[]`, `Contents[]`, `ShopItems[]`)
 - Characters: `public/DB/characters/<category>/<id>.json` (Character `Actions[]`, `ActionsMenu[]`, `ShopItems[]`)
 - Planned events: `public/DB/events.json` (`Events[]`, picked by EventController)
 

@@ -1,0 +1,21 @@
+{
+  "Name": "Route 69",
+  "SDesc": "route69",
+  "Description": "69 connects east side with Business District of LC which situatated in NE side of the city.",
+  "UniqueID": "route69_lc_001",
+  "Group": "Liberty City",
+  "Type": "neutral",
+  "Spawns": true,
+  "Exits": [
+    { "Direction": "NE", "DestinationRoom": "Business District" },
+    { "Direction": "NW", "DestinationRoom": "Cozy Cafe" },
+    { "Direction": "South", "DestinationRoom": "East Side" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/69_day.jpg"
+}

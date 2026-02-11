@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Emily_and_Mark",
+    "type": "picture",
+    "link": "Assets/images/Emily_and_Mark.jpg",
+    "group": "character",
+    "showif_trueCondition": "currentRoom == 'emily_apartment' && playerApartmentUnlocked && livingQuartersUnlocked"
+  },
+  {
+    "name": "Emily_03",
+    "type": "picture",
+    "link": "Assets/images/Emily_03.jpg",
+    "group": "character",
+    "showif_trueCondition": "currentRoom == 'emily_apartment' && playerApartmentUnlocked && livingQuartersUnlocked"
+  }
+]

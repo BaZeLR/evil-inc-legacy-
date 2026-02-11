@@ -1,0 +1,38 @@
+{
+  "Name": "E.I. Command Center",
+  "UniqueID": "drevilscommandcenter_lc_001",
+  "SDesc": "e_i_command_center",
+  "Group": "Evil Inc Building 50th Floor",
+  "Spawns": false,
+  "Description": "E.I.'s command center.",
+  "Exits": [
+    {
+      "Direction": "South",
+      "DestinationRoom": "evilinc50thfloor_lc_001",
+      "ShowIf": "player.Stats.prologue_interview_complete == true || player.Stats.prologue_intro_skipped == true"
+    }
+  ],
+  "NPCs": [],
+  "Objects": [
+    {
+      "UniqueID": "old_school_desk_001",
+      "ShowIf": "player.Stats.prologue_test_ready == true"
+    }
+  ],
+  "Actions": [
+    {
+      "name": "Examine Room",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/rooms/eviloffice.jpg" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "E.I.'s command center." }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": true,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/drEvilComandCenter.jpg"
+}

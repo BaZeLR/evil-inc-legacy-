@@ -24,6 +24,63 @@ function normalizeColorSpec(raw) {
   return text.toLowerCase();
 }
 
+function parseArrayToken(token) {
+  const raw = String(token ?? '').trim();
+  if (!raw) return { base: '', indexes: [] };
+  const base = raw.split('(')[0].trim();
+  const indexes = [];
+  const matches = raw.matchAll(/\(([^)]+)\)/g);
+  for (const match of matches) {
+    const value = String(match[1] ?? '').trim();
+    if (!value) continue;
+    const num = Number(value);
+    indexes.push(Number.isFinite(num) ? num : value);
+  }
+  return { base, indexes };
+}
+
+function resolveArrayIndex(value, indexes) {
+  let current = value;
+  for (const index of indexes) {
+    if (current === null || current === undefined) return undefined;
+    if (Array.isArray(current)) {
+      current = current[index];
+      continue;
+    }
+    if (typeof current === 'object') {
+      current = current[index];
+      continue;
+    }
+    return undefined;
+  }
+  return current;
+}
+
+function resolveLegacyToken(type, rawToken, context) {
+  const { base, indexes } = parseArrayToken(rawToken);
+  if (!base) return '';
+  let ref = base;
+  const tokenType = String(type ?? '').trim().toLowerCase();
+  if (tokenType === 'rp') ref = `room.${base}`;
+  if (tokenType === 'ip') ref = `object.${base}`;
+  if (tokenType === 'pp') ref = `player.${base}`;
+  if (tokenType === 'cp') ref = `character.${base}`;
+  if (tokenType === 'vp') ref = `vars.${base}`;
+  if (tokenType === 'tp') ref = `timer.${base}`;
+  const resolved = resolveValue(ref, context);
+  if (indexes.length) return resolveArrayIndex(resolved, indexes);
+  return resolved;
+}
+
+function interpolateLegacyTokens(text, context) {
+  if (typeof text !== 'string' || !text.includes('[')) return text;
+  return text.replace(/\[(V|RP|IP|PP|CP|VP|TP):\s*([^\]]+)\]/gi, (match, rawType, rawToken) => {
+    const resolved = resolveLegacyToken(rawType, rawToken, context);
+    if (resolved === null || resolved === undefined) return '';
+    return String(resolved);
+  });
+}
+
 function interpolateRagsVars(text, context) {
   if (typeof text !== 'string' || !text.includes('[v:')) return text;
 
@@ -46,6 +103,7 @@ export function ragsToHtml(rawText, context = {}) {
   if (rawText === null || rawText === undefined) return '';
   let text = String(rawText);
 
+  text = interpolateLegacyTokens(text, context);
   text = interpolateRagsVars(text, context);
 
   text = text.replace(/\r\n/g, '\n').replace(/\n/g, '<br>');

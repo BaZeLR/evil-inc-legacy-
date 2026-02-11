@@ -1,0 +1,20 @@
+{
+  "Name": "Emily's Apartment",
+  "UniqueID": "emily_apartment_lc_001",
+  "SDesc": "emily_apartment",
+  "Group": "Apartment Building",
+  "Spawns": false,
+  "Description": "Emily's living room. It's small but warm, with a couch, a low table, and framed photos on the wall.",
+  "Exits": [
+    { "Direction": "North", "DestinationRoom": "appartmentlobby_lc_001" },
+    { "Direction": "East", "DestinationRoom": "emily_apartment_bedroom_lc_001" }
+  ],
+  "NPCs": ["mark", "emily"],
+  "Objects": [],
+  "Actions": [ { "name": "talk", "label": "Talk" },
+        { "name": "hang_out", "label": "Hang Out" }],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/characters/placeholder.png"
+}

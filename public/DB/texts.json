@@ -1,0 +1,7 @@
+{
+  "$comment": "Central text library. Use {text.<path>} or {global.texts.<path>} in CommandText or scene text.",
+  "room_scene": {
+    "text_01": "",
+    "text_02": ""
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "UniqueID": "heavy_duty_lab_coat_001",
+  "Name": "Heavy Duty Lab Coat",
+  "Type": "wearable",
+  "Description": "An extra thick lab coat that allows you to take more of a beating.",
+  "Picture": "Assets/images/objects/Armor/improvebLabcoat.png",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 300,
+  "Bonuses": {
+    "Defence": 3
+  },
+  "Tooltip": "Examine, Equip",
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Inspect the coat." },
+    { "Action": "Equip", "Description": "Wear the lab coat." },
+    { "Action": "Unequip", "Description": "Remove the lab coat." },
+    { "Action": "Drop", "Description": "Drop the coat." }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": []
+}

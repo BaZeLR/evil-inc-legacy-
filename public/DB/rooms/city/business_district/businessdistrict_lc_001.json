@@ -1,0 +1,26 @@
+{
+  "Name": "Business District",
+  "SDesc": "business_district",
+  "Description": "You are in a luxury area with modern buildings-green, clean, and respectful-they mean business here. Here you can meet the most sophisticated crooks and sharks of this city.",
+  "UniqueID": "businessdistrict_lc_001",
+  "Group": "Liberty City",
+  "Type": "neutral",
+  "Spawns": true,
+  "Exits": [
+    { "Direction": "North", "DestinationRoom": "Aquerello" },
+    { "Direction": "East", "DestinationRoom": "LC Bank" },
+    { "Direction": "West", "DestinationRoom": "Parker's Tower" },
+    { "Direction": "NorthWest", "DestinationRoom": "LC Tunnel_north" },
+    { "Direction": "SouthEast", "DestinationRoom": "Route 69" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture":{ 
+    "day": "Assets/images/rooms/bd_day.jpg",
+    "dusk": "Assets/images/rooms/bd_dusk.jpg", 
+    "night": "Assets/images/rooms/bd_night.jpg" }
+}

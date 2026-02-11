@@ -1,0 +1,44 @@
+{
+  "UniqueID": "herbyoffice_hack_confrontation_001_story",
+  "Title": "Caught in the Office",
+  "Description": "Herbert catches you after you hack his computer.",
+  "Location": "herbyoffice_lc_001",
+  "SceneType": "story",
+  "Priority": 100,
+  "Trigger": {
+    "EventType": "<<Triggered By Event>>",
+    "RequiredFlags": {}
+  },
+  "Media": "Assets/images/characters/bosses/herby_warry.jpg",
+  "Stages": [
+    {
+      "StageID": "start",
+      "Text": "Herbert storms in, out of breath, staring at you like you just broke reality.",
+      "Choices": [
+        {
+          "ChoiceID": "uhh_hi",
+          "Text": "UHHH HI there ) !",
+          "NextStage": "uhh_hi_stage"
+        }
+      ]
+    },
+    {
+      "StageID": "uhh_hi_stage",
+      "Text": "FREEZE!!!! He draws his gun. Pointing the thing straight at you. Not wanting this buffoon to shoot you put your hands in the air! \"Hey I dont...\"\n\nBANG! BANG! BANG! His shots ring out in his small office.\n\n\"What the f...!!!!?\"\n\n\"I SAID DONT MOVE SCUMBAG! I DONT KNOW WHY YOUR IN HERE OR WHAT YOU SAW ON MY PC BUT YOUR GOING TO REGRET IT!!!!\"\n\nHerbert fires wildly at you but manages to miss three more times. He still has his gun trained on you and the sound of a empty clip enrages him, \"EEEEERRRR!!!! STOP MOVIN RAHHHWR!\" The giant man runs out of bullets and just whips the gun at you. His eyes begin to glow and his skin turns a strange bluish color. Looking more beast than man he charges at you!\n\nFIGHT!",
+      "Media": "Assets/images/characters/bosses/herby_warry.jpg",
+      "Effects": [
+        {
+          "Type": "CT_SETVARIABLE",
+          "VarName": "global.pending_combat_media",
+          "Value": "Assets/images/characters/bosses/herby_hyp.jpg"
+        },
+        {
+          "Type": "CT_STARTCOMBAT",
+          "EnemyID": "herbert_001"
+        }
+      ],
+      "IsEnd": true,
+      "Choices": []
+    }
+  ]
+}

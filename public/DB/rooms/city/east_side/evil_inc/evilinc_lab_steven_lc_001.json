@@ -1,0 +1,77 @@
+{
+  "Name": "E.I. your personal lab(R&D)",
+  "UniqueID": "evilinc_lab_steven_lc_001",
+  "SDesc": "e_i_lab_steven",
+  "Group": "ei_34_floor",
+  "Spawns": false,
+  "Description": "So this is my lab. I LOVE IT!!!!\n\nIt has everything I need to extract my revenge on Fiona! It looks like the good doctor outfitted me with a few nice gadgets. \"Ohhh! A containment field, that will be good if I ever have a prisoner to hold. A giant laser well I don't know about that... I should be able to program it to keep Mini Me away at the very least ..... And my PC will have a collection of information on the Justice Force. Plus will be updated as more intel is discovered.\"\n\nDebug demon:<You can also check your Email and view E.I.'s Security Feed via your PC.>\nI couldn't have wished for a better lab!",
+  "Exits": [
+    { "Direction": "South", "DestinationRoom": "evilinc34thfloor_lc_001" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [
+    {
+      "name": "<<On Player Leave>>",
+      "bActive": true,
+      "InputType": "None",
+      "Conditions": [
+        {
+          "ConditionName": "Yes Man escort",
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.prologue_lab_intro_done",
+              "ConditionStep3": "==",
+              "ConditionStep4": true
+            },
+            {
+              "CkType": "And",
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.prologue_yesman_scene_done",
+              "ConditionStep3": "!=",
+              "ConditionStep4": true
+            }
+          ],
+          "PassCommands": [],
+          "FailCommands": []
+        }
+      ],
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "\"Hello! My name is Yes Man, Dr. Evils most favorite robot! I am here to ... wait you seemed to be injured\" The odd robot notes.\n\n\"Yeah...I just had a..... \"meeting\" with Vadar. It was a little intense.\"\n\n\"Well, this is no good, you need to go to the hospital, right now and get fixed up!!!\"\n\n\"Dr. Evil keeps a doctor on his payroll to keep all your procedures off the books. Just tell em you have a appointment with Dr. Aaron Hart, they'll see you in right away.\"\n\nGo to hospital?"
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.prologue_yesman_scene_done",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.prologue_hospital_started",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        },
+        {
+          "cmdtype": "CT_SET_CHARACTER_ROOM",
+          "CommandPart2": "yesman_friend_001",
+          "CommandPart3": "libertygeneralhospital_lc_001"
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "global.continue_to_room",
+          "CommandPart3": "Equals",
+          "CommandPart4": "libertygeneralhospital_lc_001"
+        },
+        { "cmdtype": "CT_PAUSEGAME" }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/34_floor_evil_inc.jpg"
+}

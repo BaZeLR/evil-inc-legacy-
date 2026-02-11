@@ -5,6 +5,7 @@
   "Type": "citizen",
   "Disposition": "neutral",
   "prob_spawn": 12,
+  
   "Description": "An older man smiling at everyone as he strolls along.",
   "Picture": "Assets/images/characters/placeholder.png",
   "KnowsPlayer": false,
@@ -17,5 +18,6 @@
   "Schedule": [],
   "Stats": {},
   "LoreStages": {},
+  "SpawnAreas": ["Liberty City East"],
   "CustomProperties": []
 }

@@ -1,0 +1,34 @@
+{
+  "$comment": "PROLOGUE SCENE: Quiz Completed Results",
+  "UniqueID": "E.I_CC_Player_Job_Test",
+  "Title": "The Quiz",
+  "SceneType": "sequence",
+  "Location": "drevilscommandcenter_lc_001",
+  "TargetEntity": "dr_evil_001",
+  "Repeatable": false,
+  "Trigger": {
+    "EventType": "Triggered by event (manual)",
+    "AttachedTo": "character",
+    "EntityID": "dr_evil_001"
+  },
+  "Stages": [
+    {
+      "StageID": "results",
+      "Media": "Assets/images/characters/main_npc/dr Evil serious.mp4",
+      "Text": [
+        "--------------------------------",
+        "Question # 1: Johnny's mother had three children. The clues all pointed straight to Johnny.",
+        "Question # 2: The word 'incorrectly' always hangs itself with the wrong spelling, so of course the answer was incorrectly.",
+        "Question # 3: The butcher shop clerk weighs meat. Dr. Evil laughs out loud as you find the obvious answer.",
+        "\"Good job! You got them all right! Give him what he deserves, Mini Me!\" Mini Me stands and gives you the finger.",
+        "",
+        "Dr. Evil leans in close. \"-I told you! the Justice Force would never know what hit them. You have the mind I need.\"",
+        "",
+        "Note to Agent: stop before the job offer scene (drevilscommandcenter_drevil_002_sequence)."
+      ],
+      "Choices": [],
+      "IsEnd": true
+    }
+  ],
+  "Rewards": null
+}

@@ -1,0 +1,32 @@
+{
+  "UniqueID": "cheap_pistol_001",
+  "Name": "Cheap Pistol",
+  "Type": "weapon",
+  "Description": "A worn handgun with a scratched serial number.",
+  "Picture": "Assets/images/objects/weapons/ebony_and_ivory.jpg",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 90,
+  "WeaponBonus": 2,
+  "Bonuses": {
+    "Attack": 2,
+    "WeaponBonus": 2
+  },
+  "Tooltip": "Examine, Equip",
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Inspect the pistol." },
+    { "Action": "Equip", "Description": "Equip the pistol." },
+    { "Action": "Unequip", "Description": "Holster the pistol." },
+    { "Action": "Drop", "Description": "Drop the pistol." }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": []
+}

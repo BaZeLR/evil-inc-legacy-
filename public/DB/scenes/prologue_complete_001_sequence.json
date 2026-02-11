@@ -1,0 +1,48 @@
+{
+  "$comment": "PROLOGUE SEQUENCE: Completion and objectives",
+  "UniqueID": "prologue_complete_001_sequence",
+  "Title": "Prologue Complete",
+  "SceneType": "sequence",
+  "Location": "road22_lc_001",
+  "Repeatable": false,
+  "ChunkByParagraphs": true,
+  "ParagraphsPerPage": 2,
+  "Trigger": {
+    "EventType": "Triggered by event (manual)",
+    "AttachedTo": "room",
+    "EntityID": "road22_lc_001"
+  },
+  "Stages": [
+    {
+      "StageID": "stage_01",
+      "Text": "<Now that you leave the hospital you are ready to start your mission! Spend some time in the city and build your team.\n\nReturn to the hospital to restore health. Going back to your apartment to sleep to recover both energy and health. Every time you sleep the game will advance to the next day.\n\nWhile you travel around you will come across random encounters save often! Not all the encounter will be bounty hunters. Have a notoriety over 30 the Heroes will come looking for you! Be on the look out!>",
+      "Effects": [
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.prologue_complete",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.GameTimeMinutes",
+          "CommandPart3": "Equals",
+          "CommandPart4": 720
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.DaysInGame",
+          "CommandPart3": "Equals",
+          "CommandPart4": 1
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Credits",
+          "CommandPart3": "Equals",
+          "CommandPart4": 50
+        }
+      ],
+      "IsEnd": true
+    }
+  ]
+}

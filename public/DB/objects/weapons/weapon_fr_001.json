@@ -1,0 +1,12 @@
+{
+  "id": "weapon_fr_001",
+  "name": "Freeze Ray",
+  "picture": "Assets/images/objects/weapons/Freeze_Ray.png",
+  "menu": ["examine", "equip", "unequip"],
+  "description": "A gun that runs on Wonderflonium, that upon fired has a chance to freeze the enemy in time! Leaving them wide open to attack!",
+  "effects": ["Powerful blast of Wonderflonium does big damage", "Chance to freeze opponent for 3 turns"],
+  "playerWeaponDmg": 4,
+  "cost": null,
+  "actionDescription": null,
+  "tags": []
+}

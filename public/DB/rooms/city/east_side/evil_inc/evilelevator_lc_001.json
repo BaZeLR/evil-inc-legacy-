@@ -1,0 +1,44 @@
+{
+  "Name": "Evil Elevator",
+  "UniqueID": "evilelevator_lc_001",
+  "SDesc": "evil_elevator",
+  "Group": "Evil Inc Building",
+  "Spawns": false,
+  "media": "Assets/images/rooms/EI_Elevator.jpg",
+  "Description": "Hmm... it kinda smells like piss in here...",
+  "Exits": [
+    { "Direction": "1st Floor", "DestinationRoom": "evilreception_lc_001" },
+    {
+      "Direction": "50th Floor",
+      "DestinationRoom": "evilinc50thfloor_lc_001",
+      "ShowIf": "player.Stats.prologue_penny_complete == true"
+    },
+    {
+      "Direction": "34th Floor",
+      "DestinationRoom": "evilinc34thfloor_lc_001",
+      "ShowIf": "player.Stats.prologue_time_skip_seen == true"
+    },
+    {
+      "Direction": "B1 Level",
+      "DestinationRoom": "evilincsecuritylevel_lc_001",
+      "ShowIf": "player.Stats.prologue_time_skip_seen == true"
+    }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [
+    {
+      "name": "Examine Room",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Hmm... it kinda smells like piss in here..." }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/EI_Elevator.jpg"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "weapon_eAndi_001",
+  "name": "Ebony & Ivory",
+  "picture": "Assets/images/objects/weapons/ebony_and_ivory.jpg",
+  "menu": ["examine", "equip", "unequip"],
+  "description": "A pair of semi-automatic pistols, designed to rapidly fire bullets instilled with demonic power. The right-handed white gun, Ivory, was custom built for rapid firing and fast draw times, while the left-handed black gun, Ebony, has been modified for long-distance targeting and comfort.",
+  "effects": ["Causes Demonic Damage", "Concealable (easy to hide)"],
+  "playerWeaponDmg": 10,
+  "playerSpeed": 3,
+  "cost": 1300,
+  "actionDescription": "You pull out Ebony & Ivory and pop off a few rounds! POPPOP POP POPOPOP POPOP.",
+  "special": "Burning, Concealable",
+  "tags": ["Concealable"]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "emily",
+  "name": "Emily",
+  "category": "main",
+  "mindreadable": true,
+  "actionsMenu": [
+    { "name": "talk", "label": "Talk" },
+    { "name": "hang_out", "label": "Hang Out" }
+  ],
+  "actions": [
+    { "name": "talk", "type": "dialogue" },
+    { "name": "hang_out", "type": "scene", "scene": "after_hang_out" }
+  ]
+}

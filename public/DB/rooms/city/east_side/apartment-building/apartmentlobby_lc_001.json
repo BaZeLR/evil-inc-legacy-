@@ -1,0 +1,74 @@
+{
+  "Name": "Apartment Lobby",
+  "UniqueID": "apartmentlobby_lc_001",
+  "SDesc": "apartment_lobby",
+  "Group": "Apartment Building",
+  "Spawns": true,
+  "SpawnResidentsFromNPCs": true,
+  "ResidentSpawnChance": 70,
+  "Description": "",
+  "Exits": [
+    { "Direction": "Out", "DestinationRoom": "apartmentbuilding_lc_001" },
+    { "Direction": "Up", "DestinationRoom": "apartmentupperfloor_lc_001" },
+    { "Direction": "South", "DestinationRoom": "emily_apartment_lc_001" }
+  ],
+  "NPCs": [
+    { "UniqueID": "hot_neighbor_001", "Weight": 15 },
+    { "UniqueID": "cute_neighbor_001", "Weight": 15 },
+    { "UniqueID": "high_neighbor_001", "Weight": 10 },
+    { "UniqueID": "fud_ex_driver_001", "Weight": 10 },
+    { "UniqueID": "scary_drug_dealer_001", "Weight": 15 },
+    { "UniqueID": "married_neighbor_001", "Weight": 15 },
+    { "UniqueID": "landlord_001", "Weight": 20 }
+  ],
+  "Objects": [],
+  "Actions": [
+    {
+      "name": "<<On Player Leave First Time>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/placeholder.png" },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "ALERT ALERT ALERT!\n\nINCOMING BREAKING NEWS FROM CHANNEL 4!\nYou switch your com unit to the feed. (Placeholder)"
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "<<On Player Enter>>",
+      "bActive": true,
+      "InputType": "None",
+      "Conditions": [
+        {
+          "ConditionName": "Winifred lobby intro",
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.prologue_time_skip_seen",
+              "ConditionStep3": "==",
+              "ConditionStep4": true
+            },
+            {
+              "CkType": "And",
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.winifred_lab_stage",
+              "ConditionStep3": "!=",
+              "ConditionStep4": 1
+            }
+          ],
+          "PassCommands": [],
+          "FailCommands": []
+        }
+      ],
+      "TriggerScene": "apartment_winifred_001_sequence",
+      "PassCommands": [],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/apartment_lobby.png"
+}

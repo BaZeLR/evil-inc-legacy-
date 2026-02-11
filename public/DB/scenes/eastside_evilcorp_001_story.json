@@ -1,0 +1,430 @@
+{
+  "$comment": "STORY SCENE: Get Hired at Evil Incorporated",
+  
+  "UniqueID": "eastside_evilcorp_001_story",
+  "SceneName": "Get Hired at Evil Incorporated",
+  "SceneType": "story",
+  "Location": "eastside_lc_001",
+  "TargetEntity": "evil_incorp_building_lc_001",
+  "Tags": ["main-quest", "evil-incorporated", "job-application"],
+  "Description": "Player's first major objective: secure employment at Evil Incorporated ",
+  "ChunkByParagraphs": true,
+  "ParagraphsPerPage": 2,
+  
+  "Trigger": {
+    "EventType": "<<On Player Enter First Time>>",
+    "AttachedTo": "room",
+    "EntityID": "evil_incorp_building_lc_001",
+    "RequiredFlags": {
+      "quest_main_started": true
+    }
+  },
+  
+  "Stages": [
+    {
+      "StageID": "arrival",
+      "Media": "Assets/images/rooms/evilInc.png",
+      "MediaType": "image",
+      "Text": "You stand before the imposing glass tower of [b]Talking Stone Inc.[/b], a front company for the notorious [b]Evil Incorporated[/b].\n\nYour contact told you they're looking for someone with... special abilities. This is your chance to infiltrate their organization.\n\nThe revolving doors gleam in the sunlight. Security cameras track every movement.",
+      "AutoAdvance": false,
+      "NextStage": "entrance_choice"
+    },
+    {
+      "StageID": "entrance_choice",
+      "Text": "[b]How do you want to approach this?[/b]",
+      "Choices": [
+        {
+          "ChoiceID": "enter_confident",
+          "DisplayText": "Walk in confidently through the front door",
+          "Tooltip": "Act like you belong here",
+          "ShowIf": null,
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You straighten your posture and stride through the revolving doors like you own the place.\n\nThe lobby is sleek and modern. A receptionist looks up from her desk."
+            }
+          ],
+          "NextStage": "lobby_encounter",
+          "GainExp": 5
+        },
+        {
+          "ChoiceID": "scan_first",
+          "DisplayText": "Use psychic senses to scan the building first",
+          "Tooltip": "Requires MS >= 4",
+          "ShowIf": {
+            "Condition": "CT_Variable_Comparison",
+            "Variable": "player.Stats.MS",
+            "Operator": ">=",
+            "Value": 4
+          },
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You close your eyes and extend your mental awareness...\n\n[i]Multiple minds inside... security guards on the third floor... someone powerful in the penthouse... wait, is someone scanning back?[/i]\n\nYou snap back to reality. Better be careful."
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "Variable": "player.Stats.scanned_evilcorp",
+              "Operator": "Equals",
+              "Value": true
+            }
+          ],
+          "NextStage": "entrance_choice_after_scan",
+          "GainExp": 10,
+          "EnergyCost": 10
+        },
+        {
+          "ChoiceID": "find_back_entrance",
+          "DisplayText": "Look for a service entrance",
+          "Tooltip": "The sneaky approach",
+          "ShowIf": null,
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You circle around the building, staying in the shadows.\n\nThere! A loading dock with an unsecured door. But there's a security camera aimed right at it."
+            }
+          ],
+          "NextStage": "back_entrance",
+          "GainExp": 5
+        }
+      ]
+    },
+    {
+      "StageID": "entrance_choice_after_scan",
+      "Text": "Now that you've scanned the building, what's your approach?",
+      "Choices": [
+        {
+          "ChoiceID": "enter_prepared",
+          "DisplayText": "Enter through the front, mentally prepared",
+          "Tooltip": "You know what to expect now",
+          "Effects": [],
+          "NextStage": "lobby_encounter_prepared",
+          "GainExp": 5
+        },
+        {
+          "ChoiceID": "avoid_scanner",
+          "DisplayText": "Find another way in to avoid the psychic",
+          "Effects": [],
+          "NextStage": "back_entrance"
+        }
+      ]
+    },
+    {
+      "StageID": "lobby_encounter",
+      "Media": "Assets/images/scenes/evilcorp_lobby.jpg",
+      "Text": "The receptionist, a woman in her thirties with sharp eyes, gives you a professional smile.\n\n\"Welcome to Talking Stone Inc. Do you have an appointment?\"",
+      "Choices": [
+        {
+          "ChoiceID": "apply_job",
+          "DisplayText": "\"I'm here to apply for a position\"",
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "She raises an eyebrow. \"We don't typically accept walk-in applications. However...\" She looks you up and down. \"Fill out this form.\"\n\nShe slides a tablet across the desk."
+            }
+          ],
+          "NextStage": "application_form",
+          "GainExp": 10
+        },
+        {
+          "ChoiceID": "mind_control_receptionist",
+          "DisplayText": "Use telepathy on the receptionist",
+          "Tooltip": "Requires MS >= 5 and 15 Energy",
+          "ShowIf": {
+            "Condition": "CT_Variable_Comparison",
+            "Variable": "player.Stats.MS",
+            "Operator": ">=",
+            "Value": 5
+          },
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You focus your mind on hers... [i]'You will give me access...'[/i]\n\nHer eyes glaze over for a moment. \"Of course. Take this visitor badge. Mr. Stone is expecting you on the top floor.\"\n\nShe hands you a keycard."
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "Variable": "player.Stats.evilcorp_keycard",
+              "Operator": "Equals",
+              "Value": true
+            }
+          ],
+          "NextStage": "quick_access",
+          "GainExp": 25,
+          "EnergyCost": 15
+        },
+        {
+          "ChoiceID": "charm_receptionist",
+          "DisplayText": "Try to charm your way in",
+          "ChanceSuccess": 40,
+          "OnSuccess": {
+            "Text": "You flash your most winning smile and engage in some light flirtation.\n\nShe laughs. \"Well, you're persistent. Fine, I'll send your information up. Someone will be down shortly.\"",
+            "NextStage": "waiting_room",
+            "GainExp": 15
+          },
+          "OnFailure": {
+            "Text": "She's not impressed. \"Sir, if you don't have an appointment, I'm going to have to ask you to leave.\"",
+            "NextStage": "kicked_out",
+            "GainExp": 0
+          }
+        }
+      ]
+    },
+    {
+      "StageID": "application_form",
+      "Text": "The digital form asks for:\n- Name\n- Special abilities\n- Previous employment\n- Reason for applying\n\nThere's a section at the bottom: [b]'Are you willing to do whatever it takes to succeed?'[/b]",
+      "Choices": [
+        {
+          "ChoiceID": "fill_honestly",
+          "DisplayText": "Fill it out honestly",
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You fill in your real information, including a vague description of your psychic abilities.\n\nThe receptionist scans it. \"Interesting. Please wait here.\""
+            }
+          ],
+          "NextStage": "waiting_room",
+          "GainExp": 10
+        },
+        {
+          "ChoiceID": "fill_strategically",
+          "DisplayText": "Fill it out strategically (emphasize useful skills)",
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You carefully word your responses to make yourself sound valuable but not threatening.\n\nThe receptionist reads it and nods approvingly. \"Mr. Stone will want to see this. One moment.\""
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "Variable": "player.Stats.good_impression",
+              "Operator": "Equals",
+              "Value": true
+            }
+          ],
+          "NextStage": "fast_track_interview",
+          "GainExp": 20
+        }
+      ]
+    },
+    {
+      "StageID": "waiting_room",
+      "Media": "Assets/images/scenes/evilcorp_waiting.jpg",
+      "Text": "You're directed to a waiting area with leather chairs and corporate art.\n\nAfter 20 minutes, a man in a suit approaches. \"The hiring manager will see you now.\"",
+      "Effects": [],
+      "NextStage": "interview",
+      "GainExp": 5
+    },
+    {
+      "StageID": "interview",
+      "Media": "Assets/images/characters/hiring_manager.jpg",
+      "Text": "The hiring manager is a stern woman with silver hair. She looks at your application.\n\n\"So, you think you have what it takes to work for us? This isn't a normal company. We need people who are... exceptional.\"\n\nShe leans forward. \"Tell me, what makes you exceptional?\"",
+      "Choices": [
+        {
+          "ChoiceID": "demonstrate_powers",
+          "DisplayText": "Demonstrate your psychic abilities",
+          "Tooltip": "Show her what you can do",
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You focus and lift a pen from her desk with your mind. It hovers between you.\n\nShe doesn't flinch. \"Impressive. But can you follow orders?\""
+            }
+          ],
+          "NextStage": "loyalty_test",
+          "GainExp": 15
+        },
+        {
+          "ChoiceID": "talk_experience",
+          "DisplayText": "Talk about your unique experiences",
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You describe your background, carefully omitting certain details while emphasizing your problem-solving abilities.\n\nShe listens intently. \"You're hiding something. But then again, so is everyone here.\""
+            }
+          ],
+          "NextStage": "loyalty_test",
+          "GainExp": 10
+        },
+        {
+          "ChoiceID": "read_her_mind",
+          "DisplayText": "Read her mind to see what she wants to hear",
+          "Tooltip": "Requires MS >= 6",
+          "ShowIf": {
+            "Condition": "CT_Variable_Comparison",
+            "Variable": "player.Stats.MS",
+            "Operator": ">=",
+            "Value": 6
+          },
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You probe her thoughts... She's testing you, looking for loyalty and ruthlessness.\n\nYou craft your answer accordingly: \"I'm exceptional because I'm willing to do whatever necessary to achieve my goals. No hesitation.\"\n\nA slight smile crosses her face. \"Exactly what I wanted to hear.\""
+            }
+          ],
+          "NextStage": "hired_immediately",
+          "GainExp": 30,
+          "EnergyCost": 20
+        }
+      ]
+    },
+    {
+      "StageID": "loyalty_test",
+      "Text": "She slides a piece of paper across the desk.\n\n\"Sign this. It's an NDA. Once you sign, you work for us. There's no going back.\"\n\nThe contract is extensive, with clauses about secrecy, loyalty, and consequences for betrayal.",
+      "Choices": [
+        {
+          "ChoiceID": "sign_contract",
+          "DisplayText": "Sign the contract",
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You sign your name. She nods.\n\n\"Welcome to Evil Incorporated. Your employee ID will be ready tomorrow. Report to the seventh floor at 9 AM.\""
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "Variable": "player.Stats.quest_main_stage",
+              "Operator": "Equals",
+              "Value": 2
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "Variable": "player.Stats.employed_at_evilcorp",
+              "Operator": "Equals",
+              "Value": true
+            }
+          ],
+          "NextStage": "success_hired",
+          "GainExp": 50
+        },
+        {
+          "ChoiceID": "refuse_sign",
+          "DisplayText": "Refuse to sign",
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "She pulls the paper back. \"Then we have nothing more to discuss. Security will show you out.\""
+            }
+          ],
+          "NextStage": "kicked_out",
+          "GainExp": 0
+        }
+      ]
+    },
+    {
+      "StageID": "hired_immediately",
+      "Text": "She stands and extends her hand.\n\n\"You're hired. Someone with your... talents... will be very useful. Welcome to Evil Incorporated.\"\n\nYou've successfully infiltrated the organization.",
+      "Effects": [
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "Variable": "player.Stats.quest_main_stage",
+          "Operator": "Equals",
+          "Value": 2
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "Variable": "player.Stats.employed_at_evilcorp",
+          "Operator": "Equals",
+          "Value": true
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "Variable": "player.Stats.fast_track_employee",
+          "Operator": "Equals",
+          "Value": true
+        }
+      ],
+      "NextStage": "success_hired",
+      "GainExp": 75
+    },
+    {
+      "StageID": "success_hired",
+      "Media": "Assets/images/scenes/evilcorp_hired.jpg",
+      "Text": "[b]OBJECTIVE COMPLETE[/b]\n\nYou've been hired at Evil Incorporated. The infiltration begins.\n\nNew objective: Explore your new workplace and gather intelligence.",
+      "Effects": [
+        {
+          "cmdtype": "CT_ADDTOARRAY",
+          "Variable": "player.CompletedScenes",
+          "Value": "eastside_evilcorp_001_story"
+        }
+      ],
+      "IsEnd": true
+    },
+    {
+      "StageID": "kicked_out",
+      "Text": "Security escorts you to the exit. You'll need to find another way in.\n\n[i]Quest Updated: Find an alternative route into Evil Incorporated[/i]",
+      "Effects": [
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "Variable": "player.Stats.evilcorp_rejected",
+          "Operator": "Equals",
+          "Value": true
+        }
+      ],
+      "IsEnd": true
+    },
+    {
+      "StageID": "back_entrance",
+      "Text": "You're at the service entrance. The camera is a problem.",
+      "Choices": [
+        {
+          "ChoiceID": "disable_camera_mentally",
+          "DisplayText": "Use psychic powers to disable the camera",
+          "Tooltip": "Requires MS >= 5",
+          "ShowIf": {
+            "Condition": "CT_Variable_Comparison",
+            "Variable": "player.Stats.MS",
+            "Operator": ">=",
+            "Value": 5
+          },
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You focus on the camera's circuitry... [i]short... circuit...[/i]\n\nSparks fly and the camera goes dark. You slip inside."
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "Variable": "player.Stats.infiltrated_evilcorp",
+              "Operator": "Equals",
+              "Value": true
+            }
+          ],
+          "NextStage": "inside_service_area",
+          "GainExp": 25,
+          "EnergyCost": 15
+        },
+        {
+          "ChoiceID": "wait_for_delivery",
+          "DisplayText": "Wait for a delivery truck and sneak in",
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You wait in the shadows. After 10 minutes, a truck pulls up. You slip in behind the driver."
+            }
+          ],
+          "NextStage": "inside_service_area",
+          "GainExp": 15
+        }
+      ]
+    },
+    {
+      "StageID": "inside_service_area",
+      "Text": "You're in. The service corridors are dimly lit. You can hear voices ahead.\n\nThis is just the beginning...",
+      "Effects": [
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "Variable": "player.Stats.quest_main_stage",
+          "Operator": "Equals",
+          "Value": 1.5
+        }
+      ],
+      "IsEnd": true
+    }
+  ],
+  
+  "Rewards": {
+    "OnComplete": {
+      "Experience": 100,
+      "Credits": 500,
+      "Items": ["evilcorp_employee_badge"],
+      "UnlockRooms": ["evilcorp_floor7_001"],
+      "UnlockScenes": ["evilcorp_firstday_002_story"]
+    }
+  }
+}

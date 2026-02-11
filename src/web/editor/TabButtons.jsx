@@ -17,6 +17,9 @@ export function TabButtons({ tab, setTab }) {
       <button type="button" className="drawer-action-btn" aria-selected={tab === 'rooms'} onClick={() => setTab('rooms')}>
         Rooms
       </button>
+      <button type="button" className="drawer-action-btn" aria-selected={tab === 'scenes'} onClick={() => setTab('scenes')}>
+        Scenes
+      </button>
     </div>
   );
 }

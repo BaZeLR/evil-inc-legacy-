@@ -1,0 +1,191 @@
+{
+  "UniqueID": "old_school_desk_001",
+  "Name": "Old School Desk",
+  "Type": "object",
+  "Description": "old desk from a elementary school. It has curse words carved all over it...",
+  "Picture": "Assets/images/rooms/eviloffice.jpg",
+  "Owner": "mini_me_001",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": false,
+  "CanDrop": false,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 0,
+  "Tooltip": ["Examine", "Take Test"],
+  "ActionsMenu": [
+    {
+      "Action": "Examine",
+      "Description": "Look at the desk closely.",
+      "ShowIf": "player.Stats.prologue_test_ready == true"
+    },
+    {
+      "Action": "Take Test",
+      "Description": "You take a seat. Is there something weird about the floor?\n\nNow are you ready Steven? Well too bad it doesnt matter anyway! Muawhahahaha!\n\nAnswer all your questions aloud.\n\nThen whats with the desk and paper......?\n\nQuestion # 1",
+      "ShowIf": "player.Stats.prologue_test_ready == true && player.Stats.prologue_test_step != 1 && player.Stats.prologue_test_step != 2 && player.Stats.prologue_test_step != 3 && player.Stats.prologue_test_complete != true"
+    },
+    {
+      "Action": "Answer Question # 1",
+      "Description": "Johnny `s mother had three children. The first child was named April The second child was named May. What was the third child `s name?\n(answer) Johnny",
+      "InputType": "text",
+      "Placeholder": "Enter answer",
+      "SubmitLabel": "Submit",
+      "ShowIf": "player.Stats.prologue_test_ready == true && player.Stats.prologue_test_step == 1 && player.Stats.prologue_test_complete != true"
+    },
+    {
+      "Action": "Answer Question # 2",
+      "Description": "Next question\n\nQuestion # 2\n\nWhat word in the English Language is always spelled incorrectly?\n\nanswer: incorrectly",
+      "InputType": "text",
+      "Placeholder": "Enter answer",
+      "SubmitLabel": "Submit",
+      "ShowIf": "player.Stats.prologue_test_ready == true && player.Stats.prologue_test_step == 2 && player.Stats.prologue_test_complete != true"
+    },
+    {
+      "Action": "Answer Question # 3",
+      "Description": "----\nQuestion # 3\n\nThere is a clerk at the butcher shop, he is five feet ten inches tall, and he wears size 13 sneakers. What does he weigh?\nanswer meat",
+      "InputType": "text",
+      "Placeholder": "Enter answer",
+      "SubmitLabel": "Submit",
+      "ShowIf": "player.Stats.prologue_test_ready == true && player.Stats.prologue_test_step == 3 && player.Stats.prologue_test_complete != true"
+    }
+  ],
+  "Actions": [
+    {
+      "name": "<<On Player Enter First Time>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [],
+      "FailCommands": []
+    },
+    {
+      "name": "<<On Player Enter>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [],
+      "FailCommands": []
+    },
+    {
+      "name": "<<On Player Leave First Time>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [],
+      "FailCommands": []
+    },
+    {
+      "name": "<<On Player Leave>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [],
+      "FailCommands": []
+    },
+    {
+      "name": "Examine",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/rooms/eviloffice.jpg" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "old desk from a elementary school. It has curse words carved all over it..." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Take Test",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "You take a seat. Is there something weird about the floor?\n\n-Now, are you ready, Steven?\n - Well, too bad it doesnt matter anyway! Muawhahahaha!\n\n-Answer all your questions aloud.\n\nThen whats with the desk and paper..?\n\nQuestion # 1"
+        },
+        { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.prologue_test_step", "CommandPart3": "Equals", "CommandPart4": 1 }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Answer Question # 1",
+      "bActive": true,
+      "InputType": "Text",
+      "PassCommands": [
+        { "cmdtype": "CT_SETVARIABLEBYINPUT", "CommandPart3": "Dr Evil Riddle 01" },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Next question\n\nQuestion # 2\n\nWhat word in the English Language is always spelled incorrectly?"
+        },
+        { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.prologue_test_step", "CommandPart3": "Equals", "CommandPart4": 2 }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Answer Question # 2",
+      "bActive": true,
+      "InputType": "Text",
+      "PassCommands": [
+        { "cmdtype": "CT_SETVARIABLEBYINPUT", "CommandPart3": "Dr Evil Riddle 02" },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Question # 3\n\nThere is a clerk at the butcher shop, he is five feet ten inches tall, and he wears size 13 sneakers. What does he weigh?"
+        },
+        { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.prologue_test_step", "CommandPart3": "Equals", "CommandPart4": 3 }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Answer Question # 3",
+      "bActive": true,
+      "InputType": "Text",
+      "PassCommands": [
+        { "cmdtype": "CT_SETVARIABLEBYINPUT", "CommandPart3": "Dr Evil Riddle 03" },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Well, well take a minute to think about your answer Steven..."
+        },
+        {
+          "conditionname": "How did you do?",
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "Dr Evil Riddle 01",
+              "ConditionStep3": "Contains",
+              "ConditionStep4": "johnny"
+            },
+            {
+              "CkType": "And",
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "Dr Evil Riddle 02",
+              "ConditionStep3": "Contains",
+              "ConditionStep4": "incorrectly"
+            },
+            {
+              "CkType": "And",
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "Dr Evil Riddle 03",
+              "ConditionStep3": "Contains",
+              "ConditionStep4": "meat"
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "\"Good job you got them all right! Give em what he deserves Mini Me!\" Mini Me stands and give you the finger."
+            },
+            { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.prologue_test_complete", "CommandPart3": "Equals", "CommandPart4": true },
+            { "cmdtype": "CT_TRIGGER_SCENE", "CommandPart2": "E.I_CC_Player_Job_Test" },
+            { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.prologue_test_step", "CommandPart3": "Equals", "CommandPart4": 0 }
+          ],
+          "FailCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "Well, so much for boy genius...\n\nFEED HIM TO THE SHARKS BOYS!!!\n\nMUAWHAHAHAHAHAHAHA\n\nSuddenly, the floor beneath you opens up and you fall in to a tank with sharks. To make matters worse they have freaking laser beams attached to their heads!\n\nYou died. Better brush up on your riddles."
+            },
+            { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.prologue_test_ready", "CommandPart3": "Equals", "CommandPart4": false },
+            { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.prologue_test_step", "CommandPart3": "Equals", "CommandPart4": 0 },
+            { "cmdtype": "CT_TRIGGER_SCENE", "CommandPart2": "E.I_CC_Player_Job_Test_GameOver" }
+          ]
+        }
+      ],
+      "FailCommands": []
+    }
+
+  ]
+}

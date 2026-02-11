@@ -1,0 +1,26 @@
+{
+  "Name": "Campus Library",
+  "UniqueID": "campuslibrary_lc_001",
+  "SDesc": "campus_library",
+  "Group": "Liberty University Library",
+  "Spawns": true,
+  "Description": "The campus library is quiet, warm, and packed with books. Students whisper between the stacks.",
+  "Exits": [
+    { "Direction": "South", "DestinationRoom": "Liberty University" }
+  ],
+  "NPCs": [
+    { "UniqueID": "nervous_student_001", "Weight": 5 },
+    { "UniqueID": "bookworm_001", "Weight": 15 },
+    { "UniqueID": "librarian_001", "Weight": 20 },
+    { "UniqueID": "student_c_001", "Weight": 15 },
+    { "UniqueID": "student_d_001", "Weight": 10 },
+    { "UniqueID": "young_super_b_001", "Weight": 15 },
+    { "UniqueID": "college_protester_001", "Weight": 10 }
+  ],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/lc_campus.jpg"
+}

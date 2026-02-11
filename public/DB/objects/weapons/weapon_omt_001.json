@@ -1,0 +1,14 @@
+{
+  "id": "weapon_omt_001",
+  "name": "Omni Tool",
+  "picture": "Assets/images/objects/weapons/onmi_blade.jpg",
+  "menu": ["examine", "equip", "unequip"],
+  "description": "Omni-tools are multipurpose diagnostic and manufacturing tools. When activated, an omni-tool can appear over either of a person's forearms and/or hands, and occasionally both, as an orange hologram.",
+  "effects": ["Guards against negative status effects", "Blade attached to impale opponents", "Concealable"],
+  "playerWeaponDmg": 1,
+  "playerArmorDefense": 4,
+  "cost": 300,
+  "actionDescription": "You activate your Omni Tool's weapon and carefully approach the enemy. Once you're close enough you impale them with the blade!",
+  "special": "Null",
+  "tags": ["Concealable"]
+}

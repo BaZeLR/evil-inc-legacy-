@@ -1,0 +1,27 @@
+{
+  "files": [
+    "DB/scenes/after_hang_out.json",
+    "DB/scenes/apartment_player_001_sequence.json",
+    "DB/scenes/apartment_winifred_001_sequence.json",
+    "DB/scenes/drevilscommandcenter_drevil_001_sequence.json",
+    "DB/scenes/drevilscommandcenter_drevil_002_sequence.json",
+    "DB/scenes/drevilscommandcenter_drevil_ask_001_story.json",
+    "DB/scenes/eastside_evilcorp_001_story.json",
+    "DB/scenes/eicc_player_job_test_gameover_sequence.json",
+    "DB/scenes/eicc_player_job_test_sequence.json",
+    "DB/scenes/evilinc_intro_001_sequence.json",
+    "DB/scenes/evilinc_lab_intro_001_sequence.json",
+    "DB/scenes/evilinc_securitycenter_001_sequence.json",
+    "DB/scenes/evilinc_securitycenter_002_sequence.json",
+    "DB/scenes/evilreception_penny_001_sequence.json",
+    "DB/scenes/evilreception_penny_002_sequence.json",
+    "DB/scenes/hang_out.json",
+    "DB/scenes/herbyoffice_hack_confrontation_001_story.json",
+    "DB/scenes/herbyoffice_postfight_001_story.json",
+    "DB/scenes/hospital_intro_001_sequence.json",
+    "DB/scenes/libertycampus_herbert_pl_001_story.json",
+    "DB/scenes/prologue_complete_001_sequence.json",
+    "DB/scenes/scene_template.json",
+    "DB/scenes/talk_continue_scene_template.json"
+  ]
+}

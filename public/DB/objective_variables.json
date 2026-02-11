@@ -1,0 +1,91 @@
+{
+  "primary": {
+    "prologue": [
+      "prologue_complete",
+      "prologue_intro_skipped",
+      "prologue_time_skip_seen",
+      "prologue_penny_complete",
+      "prologue_interview_complete",
+      "prologue_test_ready",
+      "prologue_test_step",
+      "prologue_test_complete",
+      "prologue_job_offer_complete",
+      "prologue_can_ask_drevil",
+      "prologue_ask_minds_done",
+      "prologue_ask_justice_done",
+      "prologue_telepathy_unlocked",
+      "prologue_apartment_intro_done",
+      "prologue_security_meeting_ready",
+      "prologue_security_briefing_done",
+      "evilinc_security_badge",
+      "prologue_lab_intro_done",
+      "prologue_yesman_scene_done",
+      "prologue_hospital_started",
+      "prologue_hospital_intro_done"
+    ],
+    "main_quest": [
+      "quest_main_started",
+      "quest_main_stage",
+      "employed_at_evilcorp",
+      "infiltrated_evilcorp",
+      "evilcorp_keycard",
+      "evilcorp_rejected",
+      "good_impression",
+      "fast_track_employee"
+    ]
+  },
+  "secondary": {
+    "herbert": [
+      "quest_herbert_stage",
+      "herbert_dialog",
+      "herbert_badge_offer",
+      "has_campus_badge",
+      "herbert_badge_acquired",
+      "herbert_locked_out",
+      "herbert_locked_scene_done",
+      "herbert_desk_search_once",
+      "herbert_pc_email_menu",
+      "herbert_password_found",
+      "herbert_pc_password",
+      "herbert_hidden_cams_found",
+      "herbert_telepathy_done",
+      "herbert_postfight_interrogated",
+      "herbert_loss"
+    ],
+    "recruitment": [
+      "recruited_scientists_count",
+      "recruited_muscle_count",
+      "melody_recruit_stage",
+      "melody_email_ready"
+    ],
+    "katie": [
+      "quest_katie_stage",
+      "quest_katie_loan_shark_stage",
+      "quest_katie_prof_stage",
+      "xander_recruited",
+      "gina_reprogrammed",
+      "manny_recruited",
+      "manny_dancers_stage",
+      "capri_scene_unlocked"
+    ],
+    "holly": [
+      "holly_quest_stage",
+      "holly_recruited",
+      "dani_bridge_stage",
+      "jf_badges_count",
+      "irradiated_batteries_count"
+    ],
+    "winifred": [
+      "winifred_lab_stage",
+      "winifred_recruited",
+      "winifred_church_stage",
+      "occult_robes_obtained",
+      "church_rev_mother_outcome"
+    ],
+    "catch_em_all": [
+      "catch_em_all_started",
+      "catch_em_all_count",
+      "catch_em_all_completed"
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "UniqueID": "mark_001",
+  "Charname": "Mark",
+  "Gender": "Male",
+  "Type": "secondary",
+  "Disposition": "neutral",
+  "prob_spawn": 0,
+  "Description": "Emily's fiance. Friendly but wary around the chaos in Liberty City.",
+  "CurrentRoom": "emily_apartment_lc_001",
+  "Picture": "Assets/images/characters/secondary_npc/mark.png",
+  "KnowsPlayer": false,
+  "ActionsMenu": [
+    { "Action": "Talk", "Description": "Talk to Mark." },
+    { "Action": "Examine", "Description": "Look at Mark closely." }
+  ],
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/secondary_npc/mark.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Mark gives you a cautious nod." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Examine",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/secondary_npc/mark.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Mark looks like he's keeping one eye on the door." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Talk",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/placeholder.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "\"Hey Steven. Emily said you'd drop by.\" (Placeholder)" }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "Inventory": [],
+  "Schedule": {"from": "21:00", "to": "06:00", "location": "emily_apartment_bedroom_lc_001"},
+  "Stats": {},
+  "LoreStages": {},
+  "CustomProperties": []
+}

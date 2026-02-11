@@ -1,0 +1,132 @@
+{
+  "UniqueID": "herbyoffice_postfight_001_story",
+  "Title": "Herbert, Defeated",
+  "Description": "Interrogate Herbert after winning the fight.",
+  "Location": "herbyoffice_lc_001",
+  "SceneType": "story",
+  "Priority": 100,
+  "Trigger": {
+    "EventType": "<<Triggered By Event>>",
+    "RequiredFlags": {}
+  },
+  "Media": "Assets/images/characters/bosses/herby_warry.jpg",
+  "Stages": [
+    {
+      "StageID": "start",
+      "Text": "herbert:\"Ughhhh....\". Herbert moans semi-conscious on the ground of his office. If your going to get that info nows the time!",
+      "Choices": [
+        {
+          "ChoiceID": "power_interrogate",
+          "Text": "Tell me what I want to know! (POWER=2)",
+          "ShowIf": {
+            "StatCheck": {
+              "Power": 2
+            }
+          },
+          "NextStage": "power_interrogate_stage"
+        }
+      ]
+    },
+    {
+      "StageID": "power_interrogate_stage",
+      "Text": "After the fight with Herbert he lies on ground grasping his temples. Errrrrgggghhhhh....... He groans.\n\n\"Enough of this fat ass! I\"VE HAD ENOUGH!!!!\" Shouting at the fat blue ape writing on the floor. You feel energy building up inside your head like before but this time different.....\n\nWith that. A powerful mental blast detonates from with in you. Sending everything not nailed down flying through the air! When It hits Herbert, his eyes begin to glow a odd color. \"What the hell was that? I've never done that before....Your eyes.... What the hell is the matter with you Herb?\"\n\n\"Nothing......master.....\" The big man moaned out in a low voice.\n\n&lt;Huh? Did he just call me master?&gt;\n\n&lt;In extreme circumstances... You will be able to surpass your limitations to control ones mind. In these cases you crush their will, turning them into mindless slaves, now bound to you. You now know Domination it is located under abilities. Using this ability renders the target into a mindless state. They keep all their memory's but the person they were ceases to exist. However they will follow your orders and are 100% devoted to you.&gt;\n\nYou dominate the poor fools mind....\n\n&lt;Herbert from now one you are 100 % devoted to my interests. You will do everything I say without question and be completely honest with me. You wont remember me until you hear my voice but will still follow my commands even though you wont know why. After I question you. I want you to go back to your normal routine and act normal, but from now on you'll be my eyes and ears around campus. Got it?&gt;\n\n\"Yes master...\" He mumbles.\n\n\"Good now I have some questions to ask.\"",
+      "Media": "Assets/images/characters/bosses/herby_hyp.jpg",
+      "AutoAdvance": true,
+      "NextStage": "questions_menu",
+      "Effects": [
+        {
+          "Type": "CT_SETVARIABLE",
+          "VarName": "player.Stats.herbert_postfight_interrogated",
+          "Value": true
+        }
+      ],
+      "IsEnd": false,
+      "Choices": []
+    },
+    {
+      "StageID": "questions_menu",
+      "Text": "Herbert stares blankly, awaiting your words.",
+      "Media": "Assets/images/characters/bosses/herby_hyp.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "q_strong",
+          "Text": "Why you so strong?",
+          "NextStage": "answer_strong"
+        },
+        {
+          "ChoiceID": "q_cameras",
+          "Text": "Tell me about the cameras you installed on the colleges dime herbie....",
+          "NextStage": "answer_cameras"
+        },
+        {
+          "ChoiceID": "q_weird",
+          "Text": "Have you noticed here out of ordinary?",
+          "NextStage": "answer_weird"
+        },
+        {
+          "ChoiceID": "q_done",
+          "Text": "That's all for now.",
+          "NextStage": "end"
+        }
+      ]
+    },
+    {
+      "StageID": "answer_strong",
+      "Text": "\"Master, I was born this way. My mommy calls me her little boy blue....I used to live with her but I moved so I could be closer to work. You never know when the Security Chief Herbert will be needed, master!\" The dim witted super says proudly.",
+      "Media": "Assets/images/characters/bosses/herby_hyp.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "back_to_questions_1",
+          "Text": "Ask another question.",
+          "NextStage": "questions_menu"
+        },
+        {
+          "ChoiceID": "done_1",
+          "Text": "That's enough.",
+          "NextStage": "end"
+        }
+      ]
+    },
+    {
+      "StageID": "answer_cameras",
+      "Text": "\"Me and the maintenance guys thought we might be able to catch some sweet action of the girls around here. We put them in every locker room classroom and office in the school. Me and the guys sell passwords to watch the cam show. The people really like it, the girls are very interesting. I mean who knows If any of these young ladies we have caught on camera might turn out to be... Maybe a lawyer, doctor, police officer,.......Justice Force........\"\n\n\"Ahhh so your trying to run a little black mail scheme. Very nice...... Well continue your little project... But know I will also be using the feed for my own surveillance so know I am watching you at all times.\"\n\n\"Yes master....\"",
+      "Media": "Assets/images/characters/bosses/herby_hyp.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "back_to_questions_2",
+          "Text": "Ask another question.",
+          "NextStage": "questions_menu"
+        },
+        {
+          "ChoiceID": "done_2",
+          "Text": "That's enough.",
+          "NextStage": "end"
+        }
+      ]
+    },
+    {
+      "StageID": "answer_weird",
+      "Text": "\"Besides my mind being taken over by a mad scientist..... Nope all is pretty quite, master... We do get the occasional \\\"super\\\" attack but never anything too exciting.\"\n\n\"Well keep a look out for potential recruits.\"\n\n\"Yes master...\"",
+      "Media": "Assets/images/characters/bosses/herby_hyp.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "back_to_questions_3",
+          "Text": "Ask another question.",
+          "NextStage": "questions_menu"
+        },
+        {
+          "ChoiceID": "done_3",
+          "Text": "That's enough.",
+          "NextStage": "end"
+        }
+      ]
+    },
+    {
+      "StageID": "end",
+      "Text": "\"Yes master...\" Herbert mumbles, waiting for your next command.",
+      "Media": "Assets/images/characters/bosses/herby_hyp.jpg",
+      "IsEnd": true,
+      "Choices": []
+    }
+  ]
+}

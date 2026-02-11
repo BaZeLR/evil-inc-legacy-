@@ -1,0 +1,10 @@
+{ 
+  "id": "example_media",
+  "name": "example_media",
+  "filetype": "jpg", // png | mp4 | gif
+  "path": "Assets/images/example_media.jpg",
+  "render_as": "background", //  | overlay | character | portrait|layered|sequence|
+  // Optional: Only include if conditional rendering is needed
+  "showif_trueCondition": "playerHasKeyItem" 
+}
+

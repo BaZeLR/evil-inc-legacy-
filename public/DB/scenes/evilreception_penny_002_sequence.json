@@ -1,0 +1,43 @@
+{
+  "$comment": "PROLOGUE SEQUENCE: Penny reminder after time skip",
+  "UniqueID": "evilreception_penny_002_sequence",
+  "Title": "Penny Reminder",
+  "SceneType": "sequence",
+  "Location": "evilreception_lc_001",
+  "TargetEntity": "penny_001",
+  "Repeatable": false,
+  "Trigger": {
+    "EventType": "Triggered by event (manual)",
+    "AttachedTo": "character",
+    "EntityID": "penny_001"
+  },
+  "Stages": [
+    {
+      "StageID": "stage_01",
+      "Media": "Assets/images/characters/main_npc/penny_portrait.png",
+      "Text": ["Talk\n\"Oh good morning Mr. Wolf! Dr. E said to meet him in in the Security Center on B1. Got that? Hmmmm...",
+      
+      "\n-I could have sworn I was suppose to tell you something else... Oh! well must not have been important..."],
+      "NextStage": "stage_02"
+    },
+    {  
+      "StageID": "stage_02",
+      "Media": "Assets/images/characters/main_npc/penny_portrait.png",
+      "Text" : [
+      "\n- Feeling a little confident from the woman in your building earlier, you decide to drop your best line on Penny.\n",
+      "\n-Thanks uh uh ummm....Pen...Penny... Hey! I was wondering when.. you know...when...like, if you have time... I mean...",
+      "\n -Let me stop you right there, dweeb! I don't date any of you lab monkeys, got it?",
+      "\n- Now, stop staring at me and get going!",
+      "\n She stomps her foot and points to the elevator."],
+      "Effects": [
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.prologue_security_meeting_ready",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        }
+      ],
+      "IsEnd": true
+    }
+  ]
+}

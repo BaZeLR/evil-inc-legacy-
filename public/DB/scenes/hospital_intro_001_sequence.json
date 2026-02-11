@@ -1,0 +1,30 @@
+{
+  "$comment": "PROLOGUE SEQUENCE: Hospital arrival",
+  "UniqueID": "hospital_intro_001_sequence",
+  "Title": "Hospital Arrival",
+  "SceneType": "sequence",
+  "Location": "libertygeneralhospital_lc_001",
+  "Repeatable": false,
+  "ChunkByParagraphs": true,
+  "ParagraphsPerPage": 2,
+  "Trigger": {
+    "EventType": "Triggered by event (manual)",
+    "AttachedTo": "room",
+    "EntityID": "libertygeneralhospital_lc_001"
+  },
+  "Stages": [
+    {
+      "StageID": "stage_01",
+      "Text": "You felt a bit strange walking through downtown with a giant robot following your every move but we arrived at Liberty City General. Once inside Yes Man wait next to the door to make sure you get healed. Wow so this is one nice hospital. You look around at how futuristic everything seems.\n\nYour local hospital. It seems to have a very advanced set up here. The Justice Force must donate a lot.",
+      "Effects": [
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.prologue_hospital_intro_done",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        }
+      ],
+      "IsEnd": true
+    }
+  ]
+}

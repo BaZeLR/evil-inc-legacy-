@@ -1,0 +1,54 @@
+{
+  "$comment": "PROLOGUE SCENE: Quiz Game Over",
+  "UniqueID": "E.I_CC_Player_Job_Test_GameOver",
+  "Title": "Quiz Fallout",
+  "SceneType": "sequence",
+  "Location": "drevilscommandcenter_lc_001",
+  "TargetEntity": "dr_evil_001",
+  "Repeatable": false,
+  "Trigger": {
+    "EventType": "Triggered by event (manual)",
+    "AttachedTo": "character",
+    "EntityID": "dr_evil_001"
+  },
+  "Stages": [
+    {
+      "StageID": "game_over",
+      "Media": "Assets/images/rooms/drEvil_office_shark_atack.jpg",
+      "Text": [
+        "The floor beneath you cracks open. The last thing you see is a pool of water dripping red.",
+        "Mini Me belts out a delighted \"Muahahaha!\" as your world tilts into the abyss.",
+        "<b>Game Over.</b> Would you like to try again?"
+      ],
+      "Choices": [
+        {
+          "ChoiceID": "try_again",
+          "Text": "Yes, another shot.",
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "Mini Me drags you back to the desk, tosses down a fresh set of forms, and those same questions stare up at you."
+            },
+            { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.prologue_testscore", "CommandPart3": "Equals", "CommandPart4": 0 },
+            { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.prologue_test_step", "CommandPart3": "Equals", "CommandPart4": 1 },
+            { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.prologue_test_ready", "CommandPart3": "Equals", "CommandPart4": true },
+            { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.prologue_test_gameover", "CommandPart3": "Equals", "CommandPart4": false }
+          ]
+        },
+        {
+          "ChoiceID": "give_up",
+          "Text": "No, I quit.",
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "Dr. Evil laughs from the edge of the platform while you slump against the glass."
+            },
+            { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.prologue_test_gameover", "CommandPart3": "Equals", "CommandPart4": true }
+          ]
+        }
+      ],
+      "IsEnd": true
+    }
+  ],
+  "Rewards": null
+}

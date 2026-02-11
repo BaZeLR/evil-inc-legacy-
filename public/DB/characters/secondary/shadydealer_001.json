@@ -1,0 +1,131 @@
+{
+  "UniqueID": "shadydealer_001",
+  "Charname": "Shady Dealer",
+  "Gender": "Male",
+  "Type": "secondary",
+  "Description": "A low-profile dealer with a coat full of questionable gear.",
+  "CurrentRoom": "blackmarket_lc_001",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "ShopItems": [
+    {
+      "UniqueID": "rubber_gloves_001",
+      "Price": 200,
+      "Category": "Armors"
+    },
+    {
+      "UniqueID": "heavy_duty_lab_coat_001",
+      "Price": 300,
+      "Category": "Armors"
+    },
+    {
+      "UniqueID": "steel_toe_boots_001",
+      "Price": 100,
+      "Category": "Armors"
+    },
+    {
+      "UniqueID": "cloaking_device_001",
+      "Price": 1200,
+      "Category": "Armors"
+    },
+    {
+      "UniqueID": "force_field_lvl1_001",
+      "Price": 700,
+      "Category": "Armors"
+    },
+    {
+      "UniqueID": "vibranium_ring_001",
+      "Price": 120,
+      "Category": "Armors"
+    },
+    {
+      "UniqueID": "cheap_pistol_001",
+      "Price": 90,
+      "Category": "Weapons"
+    },
+    {
+      "UniqueID": "rusty_knife_001",
+      "Price": 25,
+      "Category": "Weapons"
+    },
+    {
+      "UniqueID": "weapon_tsl_001",
+      "Price": 100,
+      "Category": "Weapons"
+    },
+    {
+      "UniqueID": "weapon_omt_001",
+      "Price": 300,
+      "Category": "Weapons"
+    },
+    {
+      "UniqueID": "weapon_kat_001",
+      "Price": 300,
+      "Category": "Weapons"
+    },
+    {
+      "UniqueID": "weapon_fr_001",
+      "Price": 400,
+      "Category": "Weapons"
+    },
+    {
+      "UniqueID": "weapon_srfl_001",
+      "Price": 600,
+      "Category": "Weapons"
+    },
+    {
+      "UniqueID": "weapon_eAndi_001",
+      "Price": 1300,
+      "Category": "Weapons"
+    }
+  ],
+  "Actions": [
+    {
+      "name": "Talk",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "\"Look Im not here for chit chat tell me what you need.\""
+        },
+        {
+          "cmdtype": "CT_OPENSHOP",
+          "CommandPart2": "shadydealer_001"
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Shop",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_OPENSHOP",
+          "CommandPart2": "shadydealer_001"
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "ActionsMenu": [
+    {
+      "Action": "Talk",
+      "Description": "Chat with the dealer."
+    },
+    {
+      "Action": "Shop",
+      "Description": "Browse the dealer's inventory."
+    },
+    {
+      "Action": "Examine",
+      "Description": "Look at the dealer closely."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {},
+  "LoreStages": {},
+  "CustomProperties": []
+}

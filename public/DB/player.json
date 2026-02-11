@@ -3,69 +3,298 @@
   "UniqueID": "player_001",
   "Name": "Steven Wolf",
   "Description": "Background Info: Orphaned from the great black out. Raised in small town, you discovered your genius at an early age. This had always made you feel like a outsider, often leading you to be teased and bullied.\nDriven to seclusion from the people around you. You dove into your studies and worked your way to a highly coveted position. For the first time in your life you at least felt connected to something, that was until the accident. Feelings of guilt over your teams death has kept you up most nights. You vow to seek revenge, your even willing to change everything you believe in to do it.",
-  "StartingRoom": "eastside_lc_001",
-  "CurrentRoom": "eastside_lc_001",
+  "StartingRoom": "evilincfront_lc_001",
+  "CurrentRoom": "evilincfront_lc_001",
   "PlayerGender": "Male",
   "bPromptForName": false,
   "bPromptForGender": false,
   "PlayerPortrait": "Assets/images/player/playerafraid.jpg",
   "PlayerLayeredImage": "",
-  "Actions": [],
+  "Actions": [
+    {
+    "Name":    "Open",
+    "Tooltip": "Open your equipment bag to see what you have.",
+    "Type":    "Utility",
+    "Target":  "Self"
+  },
+  {
+    "Name":    "Close",
+    "Tooltip": "Close your equipment bag.",
+    "Type":    "Utility",
+    "Target":  "Self"
+  },
+  {
+    "Name":   "Check Stats",
+    "Tooltip": "View your current stats in Player's profile.",
+    "Type":    "Utility",
+    "Target":  "Self"
+  },
+  {
+    "Name":    "Skip Time",
+    "Tooltip": "Advance the game time by a chosen amount.",
+    "Type":    "Utility",
+    "Target":  "Self"
+  },
+  {
+    "Name":    "Talk",
+    "Tooltip": "Initiate a conversation with a character.",
+    "Type":    "Interaction",
+    "Target":  "Other"
+  },
+  {
+    "Name":    "read mind",
+    "Tooltip": "Read the thoughts of a target.",
+    "Type":    "abilities",
+    "Target":  "character"
+  },
+
+  {
+    "Name":    "give order",
+    "Tooltip": "Command a target to perform an action.",
+    "Type":    "abilities",
+    "Target":  "character"
+  },
+
+  { "Name":    "dominate",
+    "Tooltip": "Dominate the mind of a target.",
+    "Type":    "abilities",
+    "Target":  "character"
+  },
+
+  {"Name":    "mental blast",
+  "Type":    "combat",
+  "Tooltip": "Unleash a powerful mental attack on a target.",
+  "Target":  "character"
+  },
+
+  {
+  "Name":   "psychic leech",
+  "Tooltip":"Drain mental energy from a target to heal yourself.",
+  "Type":   "combat",
+  "Target": "character"
+  }, 
+
+  {
+   "Name":  "physical slam",
+   "Type":    "combat",
+   "Tooltip": "Deliver a crushing physical attack to a target.",
+   "Target":  "character"
+  }, 
+
+  {
+  "Name":    "mental healing",
+  "Type":    "combat",
+  "Tooltip": "Heal your wounds through mental focus.",
+  "Target":  "Self"
+  },
+  {
+  "Name":    "psionic shield",
+  "Type":    "combat",
+  "Tooltip": "Create a mental shield to absorb damage.",
+  "Target":  "Self"
+  },
+  {
+    "Name":    "equip",
+    "Tooltip": "Equip an item from your inventory.", 
+    "Type":    "Utility",
+    "Target":  "Self"
+  },
+  {
+    "Name":    "unequip",
+    "Tooltip": "Unequip an item you are currently using.",
+    "Type":    "Utility",
+    "Target":  "Self"
+  },
+  { 
+    "Name":    "use",
+    "Tooltip": "Use an item from your inventory.",
+    "Type":    "Utility",
+    "Target":  "Self"
+  },
+  { 
+    "Name":    "drop",
+    "Tooltip": "Drop an item from your inventory.",
+    "Type":    "Utility",
+    "Target":  "Self"
+  },
+  {
+    "Name":    "give",
+    "Tooltip": "Give an item to another character.",
+    "Type":    "Interaction",
+    "Target":  "Character"
+  },
+  {
+    "Name":    "examine",
+    "Tooltip": "Examine an object or character closely.",
+    "Type":    "Interaction",
+    "Target":  "Object/Character"
+  },
+  {
+    "Name":    "wait",
+    "Tooltip": "Wait for a specified amount of time.",
+    "Type":    "Utility",
+    "Target":  "Self"
+  },
+  {
+    "Name":    "move",
+    "Tooltip": "Move to a different location.",
+    "Type":    "Navigation",
+    "Target":  "Location"
+  },
+  {
+    "Name":    "attack",
+    "Tooltip": "Attack a target in combat.",
+    "Type":    "Combat",
+    "Target":  "Character"
+  },
+ { 
+    "Name":    "defend",
+    "Tooltip": "Defend against an incoming attack.",
+    "Type":    "Combat",
+    "Target":  "Self"
+  },
+  {
+    "Name":    "escape",
+    "Tooltip": "Attempt to flee from combat.",
+    "Type":    "Combat",
+    "Target":  "Self"
+  },
+  { 
+    "Name":    "Hack",
+    "Tooltip": "Use your hacking skills to interact with electronic devices around.",
+    "Type":    "Utility",
+    "Target":  "item"
+  },
+  { 
+    "Name":    "Call",
+    "Tooltip": "Use your Com Unit to make a call.",
+    "Type":    "Utility",
+    "Target":  "character"
+  },
+  {
+    "Name":    "read",
+    "Tooltip": "Read readable object",
+    "Type":    "Utility",
+    "Target":  "item"
+  },
+  {
+    "Name":    "sleep",
+    "Tooltip": "Sleep to restore energy and health.",
+    "Type":    "Utility",
+    "Target":  "Self"
+  },
+  {
+    "Name":    "train",
+    "Tooltip": "Train to improve your abilities.",
+    "Type":    "combat",
+    "Target":  "character" 
+  }
+],
   "bEnforceWeight": false,
   "dWeightLimit": 100.5,
   "Inventory": [
-    {
-      "UniqueID": "comunit_001",
-      "Name": "Com Unit"
-    },
-    
-    {
-      "UniqueID": "wallet_001",
-      "Name": "Wallet"
-    }
+    "comunit_001"
   ],
   "Stats": {
-    "Health": 95,
+    "Health": 100,
     "MaxHealth": 100,
     "Notoriety": 0,
     "MaxNotoriety": 100,
-    "Energy": 95,
-    "MaxEnergy": 95,
+    "Energy": 100,
+    "MaxEnergy": 100,
     "Level": 0,
     "Experience": 0,
     "DaysInGame": 1,
-    "MS": 4,
-    "Power": 3,
+    "Attack": 0,
     "Defence": 0,
-    "Speed": 1
+    "Speed": 0,
+    "Power": 0,
+    "Focus": 0,
+    "Stealth": 0,
+    "CoreStatPeakBase": 0,
+    "CoreStatPeakEquip": 0,
+    "CoreStatXP": 0
   },
   "Abilities": [
     {
-      "Name": "Give Order",
-      "Tooltip": "Command others to act."
-    },
-    {
-      "Name": "Telepathy",
-      "Tooltip": "Read or send thoughts."
-    },
-    {
       "Name": "Examine",
-      "Tooltip": "Inspect your surroundings or items."
+      "Tooltip": "Check Stats",
+      "Combat": false
     },
     {
       "Name": "Wait",
-      "Tooltip": "Skip time."
+      "Tooltip": "Skip time",
+      "Combat": false
+    },
+    {
+      "Name": "Telepathy",
+      "Tooltip": "Read or send thoughts (Mind Reading).",
+      "Combat": false,
+      "PowerRequired": 0
+    },
+    {
+      "Name": "Give Order",
+      "Tooltip": "Command others to act.",
+      "Combat": false,
+      "PowerRequired": 1
+    },
+    {
+      "Name": "Dominate",
+      "Tooltip": "Dominate",
+      "Combat": false,
+      "PowerRequired": 2 
     },
     {
       "Name": "Mental Blast",
-      "Tooltip": "Psychic attack (combat).",
+      "Tooltip": "Mental Blast",
       "Combat": true,
-      "EnergyCost": 10
+      "EnergyCost": 10,
+      "PowerRequired": 1,
+      "Attack": "Power + 2-7"
+    },
+    {
+      "Name": "Psychic Leech",
+      "Tooltip": "Absorb target's brain power, doing damage and healing yourself.",
+      "Combat": true,
+      "EnergyCost": 10,
+      "PowerRequired": 2,
+      "Attack": "Power + 8-15",
+      "Health": "+8-15"
+    },
+    {
+      "Name": "Physical Slam",
+      "Tooltip": "Crush the mind of your target dealing heavy damage.",
+      "Combat": true,
+      "EnergyCost": 25,
+      "PowerRequired": 4,
+      "Attack": "Power + 15-25"
+    },
+    {
+      "Name": "Mental Healing",
+      "Tooltip": "Focus on your wounds to miraculously close them.",
+      "Combat": true,
+      "EnergyCost": 20,
+      "PowerRequired": 4,
+      "Energy":" + 10-25",
+      "Health": "+ 10-20"
+    },
+    {
+      "Name": "Psionic Shield",
+      "Tooltip": "Create a psychic shield that absorbs 10 damage.",
+      "Combat": true,
+      "EnergyCost": 25,
+      "PowerRequired": 4,
+      "ShieldPoints": 10
     }
   ],
-  "Credits": 50,
+  "Credits": 10000,
   "CustomProperties": [],
-  "Equipped": [
-    "comunit_001"
-  ]
+  "MentalMinions": [],
+  "CompletedScenes": [],
+  "VisitedRooms": [],
+  "Companions": [],
+  "Achievements": ["HangedOutWithMarkAndEmily"],
+  "Flags": {
+    "hangedOutEmily": false
+  }
 }

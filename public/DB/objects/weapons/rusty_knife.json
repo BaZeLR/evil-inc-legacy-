@@ -1,0 +1,32 @@
+{
+  "UniqueID": "rusty_knife_001",
+  "Name": "Rusty Knife",
+  "Type": "weapon",
+  "Description": "A chipped, rust-stained blade. Not much, but better than fists.",
+  "Picture": "Assets/images/objects/weapons/onmi_blade.jpg",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 25,
+  "WeaponBonus": 1,
+  "Bonuses": {
+    "Attack": 1,
+    "WeaponBonus": 1
+  },
+  "Tooltip": "Examine, Equip",
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Look at the knife closely." },
+    { "Action": "Equip", "Description": "Equip the knife." },
+    { "Action": "Unequip", "Description": "Put the knife away." },
+    { "Action": "Drop", "Description": "Drop the knife." }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": []
+}

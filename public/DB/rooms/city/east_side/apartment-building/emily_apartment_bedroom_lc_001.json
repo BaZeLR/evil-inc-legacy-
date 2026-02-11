@@ -1,0 +1,18 @@
+{
+  "Name": "Emily's Bedroom",
+  "UniqueID": "emily_apartment_bedroom_lc_001",
+  "SDesc": "emily_bedroom",
+  "Group": "emily_apartment",
+  "Spawns": false,
+  "Description": "A tidy bedroom with a neatly made bed and a small nightstand.",
+  "Exits": [
+    { "Direction": "south", "DestinationRoom": "emily_apartment_lc_001" }
+  ],
+  "NPCs": ["emily","mark"],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/characters/emily.png"
+}

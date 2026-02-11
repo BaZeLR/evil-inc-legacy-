@@ -1,0 +1,35 @@
+{
+  "UniqueID": "wallet_001",
+  "Name": "Wallet",
+  "Type": "equipment",
+  "Description": "Your personal wallet containing {CREDITS} credits.",
+  "Picture": "Assets/images/objects/wallet.png",
+  "Owner": "player_001",
+  "AlwaysPresent": true,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "CanEquip": true,
+  "Price": 0,
+  "Tooltip": "Examine, Take, Drop, Equip, Unequip",
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Check what's inside your wallet." },
+    { "Action": "Take", "Description": "Pick up the wallet." },
+    { "Action": "Drop", "Description": "Drop the wallet." },
+    { "Action": "Equip", "Description": "Put the wallet where you can use it quickly." },
+    { "Action": "Unequip", "Description": "Put the wallet away." }
+  ],
+  "Contents": [],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": [
+    {
+      "Property": "ShowCredits",
+      "Value": true
+    }
+  ]
+}

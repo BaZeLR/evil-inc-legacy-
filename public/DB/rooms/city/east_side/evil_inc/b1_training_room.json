@@ -1,0 +1,67 @@
+{
+ "name": "E.I. Training Room",
+  "UniqueID": "ei_training_room_lc_001",
+  "SDesc": "e_i_training_room",
+  "Group": "EI Security Level B1",
+  "Spawns": false,
+  "Description": "E.I.'s training room.",
+   "NPCs": ["Yes Man"],
+  "Exits": [
+    {
+      "Direction": "northwest",
+      "DestinationRoom": "evilelevator_lc_001evilincsecuritylevel_lc_001",
+      "Locked": false 
+     }
+    ],
+    "Objects": [],
+    "bFirstTimeVisited": false,
+    "bFirstTimeLeft": false, 
+    "Actions": [
+      {
+        "name": "Examine Room",
+        "bActive": true,
+        "InputType": "None",
+        "PassCommands": [
+          {
+            "cmdtype": "CT_DISPLAYPICTURE",
+            "CommandPart2": "Assets/images/rooms/training_room_evil_inc.jpg"
+          },
+          {
+            "cmdtype": "CT_DISPLAYTEXT",
+            "CommandText": "The room is filled with various training dummies and targets. A large screen on the wall displays a variety of training exercises."
+          } 
+        ],
+        "FailCommands": []
+      },
+        {
+            "name": "<<On Player First Enter>>",
+            "bActive": true,
+            "InputType": "None",
+            "Conditions": [
+            {
+                "ConditionName": "hasSecurityBadge",
+                "Checks": [
+                {
+                    "CondType": "CT_Variable_Comparison",
+                    "ConditionStep2": "player.Stats.hasSecurityBadge",
+                    "ConditionStep3": "==",
+                    "ConditionStep4": true
+                },
+                {
+                    "CkType": "And",
+                    "CondType": "CT_Variable_Comparison",
+                    "ConditionStep2": "player.Stats.hospitalVisitedTrue",
+                    "ConditionStep3": "==",
+                    "ConditionStep4": true
+                }
+                ],
+                "PassCommands": [],
+                "FailCommands": []
+            }
+            ],
+            "TriggerScene": "evilinc_training_room_intro_sequence",
+            "PassCommands": [],
+            "FailCommands": []
+        }
+    ]            
+}

@@ -1,0 +1,18 @@
+{
+  "Name": "Science Lab",
+  "UniqueID": "sciencelab_lc_001",
+  "SDesc": "science_lab",
+  "Group": "Liberty University Campus",
+  "Spawns": false,
+  "Description": "A locked science building. The halls smell faintly of chemicals.",
+  "Exits": [
+    { "Direction": "West", "DestinationRoom": "Liberty University" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/lc_campus.jpg"
+}

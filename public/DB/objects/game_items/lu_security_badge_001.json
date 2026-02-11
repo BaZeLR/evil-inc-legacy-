@@ -1,0 +1,27 @@
+{
+  "UniqueID": "campus_badge_001",
+  "Name": "L.U. Security Badge",
+  "Type": "equipment",
+  "SDesc": "lcuSecurity_badge_001",
+  "Description": "A Liberty University campus security badge used to access locked buildings.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "CanEquip": true,
+  "Price": 0,
+  "Tooltip": "Examine, Take",
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Inspect the campus security badge." },
+    { "Action": "Take", "Description": "Pick up the campus security badge." }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": []
+}

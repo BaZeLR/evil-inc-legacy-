@@ -1,0 +1,36 @@
+name: Thick Insulated Gloves,
+Description: A large pair of thick insulated gloves every mad scientist should own!
+Player Armor Defense:+1 
+COST: 200 Credits
+pic todo
+
+
+name: Heavy Duty Lab Coat
+
+Description: A extra thick lab coat that allows you to take more of a beating.
+Player Armor Defense:+3 
+COST: 300 Credits
+
+
+name: Steel Toe Boots
+Description: A large pair of sturdy but heavy steel toe boots.
+Player Armor Defense:+2 Player
+Speed: -1
+COST: 100 Credits
+
+name: Cloaking Device
+Description: A very old arm band with what looks like a chunk of the meteor imbued in it. 
+Activating it will cause you to turn completely invisible but at the cost of all your energy.
+STEALTH: +10
+COST: 1200 Credits
+
+Name: Force Field level 1
+Description : 
+A level 1 force field used by most local law enforcement in combating meta humans. Absorbs 10 points of damage before needing to be recharged. Recharges itself after every battle!
+Player Shield: +10
+COST: 700 Credits
+
+dealer text if not enough money to buy(current credit amount check) -- You don't have enough money Pal, maybe next time
+dealer text : I think I now exactly what guy like you might need! 
+
+

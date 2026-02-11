@@ -24,7 +24,7 @@ test('characters DB is split into category folders with indexes', async () => {
   const legacyPath = path.join(baseDir, 'characters.json');
   assert.equal(await pathExists(legacyPath), false);
 
-  const categories = ['enemies', 'bosses', 'r_citizens', 'main'];
+  const categories = ['enemies', 'bosses', 'r_citizens', 'main', 'secondary', 'mental_minions'];
   const allIds = new Set();
 
   for (const category of categories) {

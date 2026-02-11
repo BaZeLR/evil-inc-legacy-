@@ -151,7 +151,7 @@ function getCoreStat(stats, keys, fallback = 0) {
 
 function getObjectCoreBonus(obj) {
   const root = obj?.Bonuses ?? obj?.bonuses ?? obj?.StatsBonus ?? obj?.statsBonus ?? null;
-  const power = clampInt(root?.Power ?? root?.MS ?? root?.Attack ?? root?.Str ?? obj?.MSBonus ?? obj?.AttackBonus ?? 0, 0);
+  const power = clampInt(root?.Power ?? root?.MS ?? root?.Str ?? obj?.MSBonus ?? 0, 0);
   const focus = clampInt(root?.Focus ?? root?.MentalStrength ?? obj?.MentalStrengthBonus ?? obj?.FocusBonus ?? 0, 0);
   const stealth = clampInt(root?.Stealth ?? root?.Agility ?? root?.Agl ?? obj?.AgilityBonus ?? obj?.StealthBonus ?? 0, 0);
   return { power, focus, stealth };
@@ -198,11 +198,8 @@ function applyStatLevelProgression(player, config, context, maxLevel, fromLevel)
   const peakBase = toFiniteNumber(stats.CoreStatPeakBase, NaN);
   const peakEquip = toFiniteNumber(stats.CoreStatPeakEquip, NaN);
 
-  if (!Number.isFinite(peakBase)) stats.CoreStatPeakBase = baseScore;
-  if (!Number.isFinite(peakEquip)) stats.CoreStatPeakEquip = equipScore;
-
-  const resolvedPeakBase = toFiniteNumber(stats.CoreStatPeakBase, baseScore);
-  const resolvedPeakEquip = toFiniteNumber(stats.CoreStatPeakEquip, equipScore);
+  const resolvedPeakBase = Number.isFinite(peakBase) ? peakBase : 0;
+  const resolvedPeakEquip = Number.isFinite(peakEquip) ? peakEquip : 0;
 
   const gainedBase = baseScore > resolvedPeakBase ? baseScore - resolvedPeakBase : 0;
   const gainedEquip = equipScore > resolvedPeakEquip ? equipScore - resolvedPeakEquip : 0;

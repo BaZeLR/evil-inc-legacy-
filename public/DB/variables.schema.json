@@ -1,0 +1,425 @@
+{
+  "variables": {
+    "prologue_complete": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_intro_skipped": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_time_skip_seen": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_penny_complete": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_interview_complete": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_test_ready": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_test_step": {
+      "type": "number",
+      "default": 0,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_test_complete": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_job_offer_complete": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_can_ask_drevil": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_can_ask": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_ask_minds_done": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_ask_justice_done": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_telepathy_unlocked": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_apartment_intro_done": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_security_meeting_ready": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_security_briefing_done": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "evilinc_security_badge": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_lab_intro_done": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_yesman_scene_done": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_hospital_started": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "prologue_hospital_intro_done": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "prologue"
+    },
+    "quest_main_started": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "main_quest"
+    },
+    "quest_main_stage": {
+      "type": "number",
+      "default": 0,
+      "category": "primary",
+      "group": "main_quest"
+    },
+    "employed_at_evilcorp": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "main_quest"
+    },
+    "infiltrated_evilcorp": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "main_quest"
+    },
+    "evilcorp_keycard": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "main_quest"
+    },
+    "evilcorp_rejected": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "main_quest"
+    },
+    "good_impression": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "main_quest"
+    },
+    "fast_track_employee": {
+      "type": "boolean",
+      "default": false,
+      "category": "primary",
+      "group": "main_quest"
+    },
+    "quest_herbert_stage": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "herbert_dialog": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "herbert_badge_offer": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "has_campus_badge": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "herbert_badge_acquired": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "herbert_locked_out": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "herbert_locked_scene_done": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "herbert_desk_search_once": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "herbert_pc_email_menu": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "herbert_password_found": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "herbert_pc_password": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "herbert_hidden_cams_found": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "herbert_telepathy_done": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "herbert_postfight_interrogated": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "herbert_loss": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "herbert"
+    },
+    "recruited_scientists_count": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "recruitment"
+    },
+    "recruited_muscle_count": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "recruitment"
+    },
+    "melody_recruit_stage": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "recruitment"
+    },
+    "melody_email_ready": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "recruitment"
+    },
+    "quest_katie_stage": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "katie"
+    },
+    "quest_katie_loan_shark_stage": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "katie"
+    },
+    "quest_katie_prof_stage": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "katie"
+    },
+    "xander_recruited": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "katie"
+    },
+    "gina_reprogrammed": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "katie"
+    },
+    "manny_recruited": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "katie"
+    },
+    "manny_dancers_stage": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "katie"
+    },
+    "capri_scene_unlocked": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "katie"
+    },
+    "holly_quest_stage": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "holly"
+    },
+    "holly_recruited": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "holly"
+    },
+    "dani_bridge_stage": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "holly"
+    },
+    "jf_badges_count": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "holly"
+    },
+    "irradiated_batteries_count": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "holly"
+    },
+    "winifred_lab_stage": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "winifred"
+    },
+    "winifred_recruited": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "winifred"
+    },
+    "winifred_church_stage": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "winifred"
+    },
+    "occult_robes_obtained": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "winifred"
+    },
+    "church_rev_mother_outcome": {
+      "type": "string",
+      "default": "",
+      "category": "secondary",
+      "group": "winifred"
+    },
+    "catch_em_all_started": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "catch_em_all"
+    },
+    "catch_em_all_count": {
+      "type": "number",
+      "default": 0,
+      "category": "secondary",
+      "group": "catch_em_all"
+    },
+    "catch_em_all_completed": {
+      "type": "boolean",
+      "default": false,
+      "category": "secondary",
+      "group": "catch_em_all"
+    }
+  },
+  "schemaVersion": 1
+}

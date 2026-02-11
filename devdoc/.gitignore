@@ -1,0 +1,17 @@
+# Ignore all images
+*.jpg
+*.png
+*.gif
+*.bmp
+*.jpeg
+*.webp
+
+# Ignore all videos
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# If media in specific folders (e.g., src/media/)
+media/
+assets/

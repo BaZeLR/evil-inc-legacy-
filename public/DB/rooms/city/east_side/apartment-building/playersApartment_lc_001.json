@@ -1,0 +1,51 @@
+{
+  "Name": "E.I leaving quarters",
+  "UniqueID": "apartment_player_001",
+  "SDesc": "Your Apartment",
+  "Group": "apartment_building",
+  "owner": "player",
+  "Spawns": false,
+  "Description": "My own apartment I still can't believe I live here. Time to get going to the E.I .",
+  "Exits": [
+    { "Direction": "east", "DestinationRoom": "apartmentupperfloor_lc_001" },
+    { "Direction": "north", "DestinationRoom": "bedroom_001" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [
+    {
+      "name": "<<On Player Enter>>",
+      "bActive": true,
+      "InputType": "None",
+      "Conditions": [
+        {
+          "ConditionName": "Apartment intro",
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.prologue_time_skip_seen",
+              "ConditionStep3": "==",
+              "ConditionStep4": true
+            },
+            {
+              "CkType": "And",
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.prologue_apartment_intro_done",
+              "ConditionStep3": "!=",
+              "ConditionStep4": true
+            }
+          ],
+          "PassCommands": [],
+          "FailCommands": []
+        }
+      ],
+      "TriggerScene": "apartment_player_001_sequence",
+      "PassCommands": [],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/players_living_room.jpg"
+}

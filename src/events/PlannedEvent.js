@@ -62,6 +62,9 @@ function parseWhen(value, fallback = 'enter') {
   ) {
     return 'presence';
   }
+  if (raw === 'character_enter' || raw === 'npc_enter') return 'character_enter';
+  if (raw === 'character_leave' || raw === 'npc_leave') return 'character_leave';
+  if (raw === 'manual') return 'manual';
   return raw;
 }
 

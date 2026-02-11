@@ -1,0 +1,13 @@
+{
+  "id": "weapon_tsl_001",
+  "name": "Tesla",
+  "picture": "Assets/images/objects/weapons/Tesla_Gun_(Cut).PNG",
+  "menu": ["examine", "equip", "unequip"],
+  "description": "The 'Tesla' is an electrically based handgun invented by and named after Nikola Tesla, as an alternative to bullets.",
+  "effects": ["Temporary unconsciousness/paralysis", "Immediate electrical combustion", "Non-Lethal", "Concealable"],
+  "playerWeaponDmg": 2,
+  "cost": 100,
+  "actionDescription": "You pull the trigger of the Tesla and it charges. Electricity can be seen shooting around inside of the chamber it glows a bright bluish white until a dozen lightning bolts shoots from the tip! ZAP! ZAP! ZAP!",
+  "special": "Shock for one turn if successful attack",
+  "tags": ["Concealable"]
+}

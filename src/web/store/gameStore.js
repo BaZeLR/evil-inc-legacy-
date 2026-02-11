@@ -42,6 +42,10 @@ export const useGameStore = create(set => ({
   setHoveredObjectMenuId: valueOrUpdater =>
     set(state => ({ hoveredObjectMenuId: resolveNext(valueOrUpdater, state.hoveredObjectMenuId) })),
 
+  hoveredNpcMenuId: null,
+  setHoveredNpcMenuId: valueOrUpdater =>
+    set(state => ({ hoveredNpcMenuId: resolveNext(valueOrUpdater, state.hoveredNpcMenuId) })),
+
   hoveredContainerItemId: null,
   setHoveredContainerItemId: valueOrUpdater =>
     set(state => ({ hoveredContainerItemId: resolveNext(valueOrUpdater, state.hoveredContainerItemId) })),
@@ -54,6 +58,9 @@ export const useGameStore = create(set => ({
 
   shopVendorId: null,
   setShopVendorId: valueOrUpdater => set(state => ({ shopVendorId: resolveNext(valueOrUpdater, state.shopVendorId) })),
+
+  shopCategory: null,
+  setShopCategory: valueOrUpdater => set(state => ({ shopCategory: resolveNext(valueOrUpdater, state.shopCategory) })),
 
   shopHoveredItemId: null,
   setShopHoveredItemId: valueOrUpdater =>

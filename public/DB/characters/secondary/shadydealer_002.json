@@ -1,0 +1,41 @@
+{
+  "UniqueID": "shadydealer_002",
+  "Charname": "Shady Dealer",
+  "Gender": "Male",
+  "Type": "secondary",
+  "Description": "A local drug dealer. Who knows who he works for....?",
+  "CurrentRoom": "back_alley_001",
+  "Picture": "Assets/images/characters/secondary/shadydealer_002.png",
+  "KnowsPlayer": false,
+  "Actions": [
+    {
+      "name": "Talk",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+      "cmdtype": "CT_DISPLAYTEXT",
+      "CommandText": "Sup....- Hey Dexter! I got whatever it is you need its just gonna cost ya'.... But I bet you got it don't ya you white boys always do....\n-Huh? My name is not Dexter.....And have you seen a mirror lately?\nYou ask the \"home boy\".\nHe just laughs high on some new drug.\n-You sure you look just like that kid from tv....Anyway what can I get ya my man?\n- Look, Im not trying to start any shit but I know you robbed the locker room up at LCU. You took some stuff from a friend of mine and I want it back.\n-Naaaa man.... I don't know what the fuck your talking about.....Look I gotta run."
+}
+       
+      ],
+      "FailCommands": []
+    }
+  ],
+
+  "ActionsMenu":  [
+    {
+      "Action": "Talk",
+      "Description": "Chat with the dealer."
+    },
+    {
+      "Action": "Examine",
+      "Description": "Look at the dealer closely."
+    }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {},
+  "LoreStages": {},
+  "CustomProperties": []
+}

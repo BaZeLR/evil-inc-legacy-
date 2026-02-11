@@ -1,0 +1,22 @@
+{
+  "Name": "Uranus Lounge Club",
+  "UniqueID": "uranuslounge_inside_lc_001",
+  "SDesc": "uranus_lounge_inside",
+  "Group": "uranius lounge",
+  "Spawns": false,
+  "Description": "Inside Uranus Lounge. Music thumps behind closed doors and the air smells like expensive perfume and cheap smoke.",
+  "Exits": [
+    { "Direction": "Out", "DestinationRoom": "uranuslounge_lc_001" }
+  ],
+  "NPCs": ["loanshark_001", "capri_001"],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": {
+    "day": "Assets/images/rooms/Uranus Lounge_Inside.jpg",
+    "dusk": "Assets/images/rooms/Uranus Lounge_Inside.jpg",
+    "night": "Assets/images/rooms/Uranus Lounge_Inside.jpg"
+  }
+}

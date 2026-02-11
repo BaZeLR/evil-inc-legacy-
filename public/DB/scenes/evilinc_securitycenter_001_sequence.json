@@ -1,0 +1,296 @@
+{
+  "$comment": "PROLOGUE SEQUENCE: Security Center briefing",
+  "UniqueID": "evilinc_securitycenter_001_sequence",
+  "Title": "Security Center Briefing",
+  "SceneType": "sequence",
+  "Location": "evilincsecuritylevel_lc_001",
+  "Repeatable": false,
+  "ChunkByParagraphs": true,
+  "ParagraphsPerPage": 2,
+  "Trigger": {
+    "EventType": "Triggered by event (manual)",
+    "AttachedTo": "room",
+    "EntityID": "evilincsecuritylevel_lc_001"
+  },
+  "Stages": [
+    {
+      "StageID": "stage_01",
+      "Text": ["You ride the elevator for several minutes and your starting to get bored.\n\n<Well this sure is interesting how far down does this building go? Feels like I've been in here forever.>",
+      "\n\nDING! The doors roll open and there stands a horrible sight!",
+      "\n\n<HOLY SHIT! WRONG FLOOR!!!! WRONG FLOOR!!!!!>"],
+      "NextStage": "stage_01a"
+    },
+    {
+      "StageID": "stage_01a",
+      "Media":"Assets/images/characters/main_npc/vadar_stops.png",
+
+      "Text": [
+      "\n\nPSHHHHHEEEEERRRRHHHHH! -WHO THE FUCK ARE YOU? HOW DID YOU GET DOWN HERE? YOU'RE WITH THE JUSTICE FORCE AREN'T YOU?",
+      "\n PSHHHHHEEEEERRRRHHHHH!\n\nThe giant man in black thrust his open hand at you and you feel a wave of energy slam you into the elevators back wall.",
+      "\n Suddenly it's hard to breath and you can barley take a breath."],
+      "NextStage": "stage_01b"
+    },
+    {
+      "StageID": "stage_01b",
+      "Media":"Assets/images/characters/main_npc/vadar_attacks_01.png",
+      "Text": [
+      "\n\n\"-Ahhhh...hhh..h.h St...ev...n.....W...lf..... \" is all you can choke out.",
+      " The strange looking man in the costume steps into the elevator and kneels down in front of you. You can't see his face because of the mask but you can tell he's studying you.",
+      "\n\n\"Ohhh...I see. \"The giant man lowers his hand and your breathing returns to \"somewhat\" normal"],
+      "NextStage": "stage_01c"
+    },
+    {
+      "StageID": "stage_01c",
+      "Media1":"Assets/images/characters/main_npc/drE_speaks_03.png",
+      "Text1": [
+      "\n\n\"-Mr Vadar! That's no way to treat the third member in our band of EVIL!",
+      " Muawhahahaha! C'mon be a gentelman, help Mr. Wolf to his feet",
+      "\n Doctor Evils voice can be heard as you spot him witnessing the whole scene from the center of the room",
+      "\n\nAs the giant man-robot-thing helps you up, you notice the room you were in was high tech. Several henchmen were working different consoles, rushing back and forth in a serious manner",
+      "\n Dr. Evil approaches you both . As usual, Mini Me follows behind him smiling at your misfortune just a minute ago."],
+      "NextStage": "stage_02"
+    },
+    {
+      "StageID": "stage_02",
+      "Media":"Assets/images/characters/main_npc/vadar_shows_office_2.png",
+      "Text": [
+      "\n-Mr. Wolf I heard many things about you. I wouldn't of had to strike you, if you had your security badge. Didn't the receptionist give it to you up stairs?",
+      "\n- Never mind, I'll just get you another. Meet me in my office before you leave...",
+      "\n Vadar says in a authoritative tone.",
+      "\n -Now, Steven! today is the day, we go over the outline of our plan are you ready to begin?\" the doctor chimes in.",
+      "\n\n-Yes!, in fact my inside source at AEON was able to get me the info I needed, so are you ready? Let me have your attention to the center monitor. Lets Begin."],
+      "NextStage": "stage_03"
+    },
+    { 
+      "StageID": "stage_03",
+      "Media": "Assets/images/characters/main_npc/drE_exam_jesture.png",
+      "Choices": [],
+        
+      "NextStage": "stage_04"
+    },
+    {
+      "StageID": "stage_04",
+      "Text":[ "-----------\n\n\"Well, as we all know, we're here because we all want the end of the Justice Force",
+      "- So here's what we know:",
+      "- The Justice Force is composed of several meta-humans with special abilities",
+      "- Super strength, super speed, laser vision, talking to fish. There seems to be a new variety every day popping up somewhere",
+      " -And lately, the Justice Force has been growing. Taking in even non-super's as support roles for running their day to day operation",
+      "\n-Our goal isn't to take out these small fry, they are not the problem. Our primary goal is to go after KEY members of the Force to bring them down or to our cause",
+      "\n Without these key players the whole Justice Force will be unable to continue. Soon becoming a distant memory."],
+      "Media": "Assets/images/characters/main_npc/drE_speaks.png",
+      "Choices": [],
+      "NextStage": "stage_05"
+    },
+    { 
+      "StageID": "stage_03",
+      "Text": ["-------------------------------",
+      "\n\nOur Primary Targets:\n\n---------\n\nMeta-Hume: The Goddess",
+      "\nReal Name: Julia Swanson",
+      "\nPowers: A extrasensory ability to perceive the stress points, fracture planes, or weaknesses, in all objects or persons around By striking and applying pressure at these points, she can split or shatter objects made of seemingly invincible substances or render insensate beings of far greater strength than she is",
+      "\nPosition in JF: A founding member of the Justice Force, she now is the big lady in charge.",
+      "\nBio:\n Raised a poor orphan along side her brother in L.C, she developed her powers at a very early age.",
+      "\n She graduated at the top of her class in both high school and college. She first put on her tiara almost 20 years ago along side her brother.",
+      "\n Together, they took to combat the evil that had taken over the world."],
+      "Media": "Assets/images/JF/Goddess.png",
+      "Choices": [],
+      "NextStage": "stage_04"
+    },
+    {
+      "StageID": "stage_04",
+      "Media": "Assets/images/JF/Goddess.png",
+      "Text1": ["-------------------------------",
+      "\n\nHer and her brother, Odin the Mighty, were both founding members of the team.",
+      "\n Has a reputation of being a deadly viper while wielding her twin daggers, she is not to be messed with."
+      ,"\n\nMeta-Hume: The Might Odin"],
+      "NextStage": "stage_05"
+    },
+    {
+      "StageID": "stage_05",
+      "Media2": "Assets/images/JF/mighty_odin.jpg",
+      "Text2": [  
+      "\nReal Name: Tobias Swanson",
+      "\nPowers: His powers are to absorb and store all kinetic energy inside his body then release it back upon his enemies.",
+      "\n This means the more he fights, the stronger he becomes.",
+      "\n Is also super strong and has a very high endurance.",
+      "\n\nPosition in JF: A founding member of the team. Odin trains the new initiates getting them ready for real combat.",
+      "\n\nBio: Raised along side of his sister in the slums of Liberty City.",
+      "\n Tobias uses his hammer to deliver his own unique brand of justice. A very cruel man who enjoys wagging war on just about anybody. He was known to fall into these blood frenzies and just start killing who ever was around.",
+      "\n A number of working girls have died because of this. He can't control when it happens, so he tries to drink himself in to a stooper.",
+      "\n Doesn't always work... but the JF always has his back and covers up the deaths..."],
+      "Choices": [],
+      "NextStage": "stage_06"
+    },
+    {
+      "StageID": "stage_06",
+      "Media": "Assets/images/JF/Starry_Night.jpg",
+      "Text": ["-------------------------------",
+      "\n\nMeta-Hume: Starry Night","\nReal Name.: Diana Kent",
+      "\nPowers: A gifted warrior of sword and shield."],
+      "NextStage": "stage_07"
+    },
+    {
+      "StageID": "stage_07",
+      "Media": "Assets/images/JF/Starry_Night_02.png",
+      "Text": [
+      "\n She has enhanced strength and endurance granted to her by ancient Greek goddess Hera.",
+      "\n Her abilities are magically based and one of the few supers that was not born with her abilities.",
+      "\n Has several powerful relics, she uses to fight besides her.",
+      "\n Her second power is a passive power she can't turn off. She's able to make people work really well together so they can accomplish a common goal. She could turn a crowd of civilians in to a army or mob with nothing but a mere glance.",
+      "\n\nPosition in JF: A founding member. Recently she has been taking less and less responsibility in the field.",
+      "\n She's has been running the Hall of Justice's day to day operations as well, as over seeing the junior members.",
+      "\n\nBio: Diana Kent was born ordinary at birth but went on to receive the blessing of the Greek Goddess Hera during a field trip to a traveling museum.",
+      "\n Details of the incident are classified. She met the Goddess in her youth and has been at her side ever since"],
+      "Choices": [],
+      "NextStage": "stage_08"
+    },
+    {
+      "StageID": "stage_08",
+      "Media": "Assets/images/JF/miss_Liberty.png", 
+      "Text": ["------------------",
+      
+      "\n\nMeta-Hume: The Meta-Hume",
+      "\nReal Name: Shannon Hannah",
+      "\nPowers: Mastery over flight. ",
+      "Has semi advanced strength and endurance.",
+      "Generates a force field around her body to protect her from just about anything."],
+      "NextStage": "stage_09"
+    },
+    {
+      "StageID": "stage_09",
+      "Media": "Assets/images/JF/miss_Liberty_01.png",
+      "Text": [
+      "\nPosition in JF: 2nd Generation",
+      "\n Serious ass kicker.",
+      "\n\nBio: Born and raised right here, in Liberty City.",
+      "\n Shannon Hannah was the heiress to Hannah's Family Fortune.",
+      "- Her father was a scientist researching synthetically created super powers",
+      "\n Until he and the rest of his family was gunned down during a home invasion",
+      "\n Ever since, Shannon has devoted her life and fortune to the fight against evil.",
+      "- Turns out, her father had been testing the secret formula on his daughter and by result is how she came into her abilities."],
+      "Choices":[],
+      "NextStage":"stage_10"
+    },
+    {
+      
+      "StageID":"stage_10",
+      "Media":"Assets/images/characters/mai_npcs/drE_speaks.png",
+      "Text" : [       
+      "\n\n--My Plan, dr Evil says",
+      "\n\n-Stage 1:",
+      "\nWe cut off their blood supply,and  then... we will go for the head.",
+      "\nI have discovered that the majority of the Force's funding comes from Miss Liberty.",
+      "\nAs well as her father's company Hannah Industries, so we need to take her out!\n-But the thing is we cant just kill her",
+      "\n- If We do that we're gonna have every super within a hundred miles at our front door and this is big  No go!",
+      "\n- I suggest we use the device I was working on at AEON to brainwash her into being a double agent and work for us!",
+      "\n Once I have control, we have her leave the Justice Fucks, taking her money with her. But to do this we are going to have to break into AEON...",
+      "\n-And as of this morning, I've have discovered a way inside. I have a mole on at the company, who is willing to help us but, as a part of the deal we have to break him and his research out of captivity.",
+      "\n- Apparently, the research is bound to the lab in one of their Sub-Levels.",
+      "\n- If we agree to help her, he'll be able to unlock a side door at a undisclosed location.So, We can get, in grab my tech, grab her and we leave.","- In and out, before anybody knows a thing.",
+       "\n You cut in and say confidently: \n\n"],
+      "NextStage": "stage_11"
+    },
+    {
+      "StageID": "stage_11",
+       "Text": [
+       "-YOU CAN'T BE SERIOUS? So what? You just walk on through to the lower level like a walk in the park?",
+       "- They're the worlds leading technologies on the planet. They are bound to have security in place to keep the likes of us out!",
+       " Nano Bots that infiltrate the targets immune system, Robotic Security Guards, not to mention lasers!",
+       "- What do you suppose then?\", Vadar asks.",
+       "\n\nsteven thoughs <God this guys an ass!>\n"],
+       "NextStage": "stage_12"
+    },
+    {
+      "StageID": "stage_12",
+      "Media": "Assets/images/characters/mai_npcs/drE_speaks_01.png",
+       "Text": [
+       "-Once a month the whole system gets updated",
+       "- Security measures, to keep people like us from ever breaching their firewall.",
+       " The thing is this is when the building itself is the most vulnerable.",
+       "\n Security Bots will be shut down, cameras are off line. Plus almost everyone has the day off until the update is complete.",
+       "\n And... as it so happens to be, my mole is in charge of updating the system. We give her the heads up and we sneak onto the property.",
+       "\n Making our way inside through one of the side doors where the techs take their smoke breaks. That's how we get inside.\"\n\n",
+       "-There will still be people inside the lab, a few scientist and engineers. But we shouldn't have to worry about them.",
+       "\n What we'll need to watch for is the extra people, they bring to help guard the place during the update.",
+       "- I will lead a small team through the heart of AEON, and down to the sub levels to where my old lab is then to get the mole.",
+       "- Down in the lab areas there they are only a small handfuls of human guards that should be easily avoidable.",
+       "- If detected we will have to incapacitate anyone in our way before they can raise alarm.",
+       "\n Once we arrive at my old office, we grab the device and my old research, then we head to LAB 113. Where my informant is being held.",
+       "- Unfortunately freeing him will trigger the alarm..."],
+       "NextStage": "stage_13"
+    },
+    {
+      "StageID": "stage_13",
+      "Media": "Assets/images/characters/mai_npcs/vadar_stops.png",
+      "Text": [
+       "\nVadar crosses his arms and asks.\"- Just walk into one of the most secure buildings in the world. Go deep into their complex then intentionally trigger an alarm...",
+       "\nYeah, I don't buy it...but! Let say, it isn't dumb, as fuck! ",
+       "\n...Even if you manage to get to that point. How exactly do you plan on escaping?\"\n"],
+       "NextStage": "stage_14"
+      },
+      {
+       "StageID": "stage_14",
+       "Media": "Assets/images/characters/mai_npcs/drE_speaks_02.png",
+       "Text": [
+       "I'm so glad you asked,  Mr.Vadar! If all goes to plan we will be able to just sneak back out.",
+       "\n- but since I imagine something WILL go wrong, we will need a DISTRACTION!",
+       "\n That's where you, Mr. Vadar, come in. You and your best guy's storm the front door guns blazing.",
+       "\n Your aim is to draw as much attention, as possible causing the whole building to go into emergency lock down.",
+       "\n During a lock down, all the remaining scientist in the building are herded into a safe room. Riding out whatever is happening.",
+       "- As it turns out on the same floor, as my mole there's my old colleague Dr. Lyle Knopf.",
+       "- Lyle was working on human teleportation and he was getting pretty close. I think we can use his teleporter to get us safely out of the building",
+       "\nI know AEON's security procedure! We can pull this off, but... we will need to build our resources around here.",
+       "\"\nTrue we have had to let some people go...-Fine! Steven!"],
+       "NextStage": "stage_15"
+     },
+      {
+      "StageID": "stage_15",
+      "Media": "Assets/images/characters/mai_npcs/drE_speaks_03.png",
+      "Text": [
+       "\n- I want you to go out and get us some new recruits for us. Convince them that working for us, would be in their best interest!",
+       " \n Dr Evil winks his eye at you.\"\n\nYou are going to come across many weak willed people in Liberty City.",
+       "\n- Use your powers to bring them to your cause! Careful, though you might come across someone with enough fortitude to withstand your abilities",
+       "\n- Or a super in their disguise. SAVE OFTEN\n\n",
+       "-I know of some old friends that might even join our cause. Thing is... you're going to have to help them first.",
+       "\n Come, talk to me later. Oh! and find Mini Me, when you want to go see your new lab."],
+      "Effects": [        
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.recruited_scientists_count",
+          "CommandPart3": "Equals",
+          "CommandPart4": 0
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.recruited_muscle_count",
+          "CommandPart3": "Equals",
+          "CommandPart4": 0
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.Melody_recruited",
+          "CommandPart3": "Equals",
+          "CommandPart4": false
+        },
+        {
+          "cmdtype": "CT_DISPLAYIMAGE",
+          "CommandPart2": "Assets/images/rooms/evilInc_B1.png"
+          
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.prologue_security_briefing_complete",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "securityLevel.vadarOffice_unlocked",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        }
+        
+      ],
+      "IsEnd": true
+    }
+  ]
+}

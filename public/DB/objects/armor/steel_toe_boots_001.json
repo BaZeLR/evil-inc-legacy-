@@ -1,0 +1,31 @@
+{
+  "UniqueID": "steel_toe_boots_001",
+  "Name": "Steel Toe Boots",
+  "Type": "wearable",
+  "Description": "A large pair of sturdy but heavy steel toe boots.",
+  "Picture": "Assets/images/objects/Armor/insulatedBoots.png",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 100,
+  "Bonuses": {
+    "Defence": 2,
+    "Speed": -1
+  },
+  "Tooltip": "Examine, Equip",
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Inspect the boots." },
+    { "Action": "Equip", "Description": "Put the boots on." },
+    { "Action": "Unequip", "Description": "Take the boots off." },
+    { "Action": "Drop", "Description": "Drop the boots." }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": []
+}

@@ -1,0 +1,40 @@
+{
+  "Name": "Appartment Building",
+  "UniqueID": "apartmentbuilding_lc_001",
+  "SDesc": "appartment_building",
+  "Group": "Apartment Building",
+  "Spawns": true,
+  "SpawnResidentsFromNPCs": true,
+  "ResidentSpawnChance": 70,
+  "Description": "A worn apartment building on Liberty City's East Side. The front door leads into the lobby.",
+  "Exits": [
+    { "Direction": "North", "DestinationRoom": "eastside_lc_001" },
+    { "Direction": "In", "DestinationRoom": "appartmentlobby_lc_001" }
+  ],
+  "NPCs": [
+    { "UniqueID": "hot_neighbor_001", "Weight": 15 },
+    { "UniqueID": "cute_neighbor_001", "Weight": 15 },
+    { "UniqueID": "high_neighbor_001", "Weight": 10 },
+    { "UniqueID": "fud_ex_driver_001", "Weight": 10 },
+    { "UniqueID": "scary_drug_dealer_001", "Weight": 15 },
+    { "UniqueID": "married_neighbor_001", "Weight": 15 },
+    { "UniqueID": "landlord_001", "Weight": 20 }
+  ],
+  "Objects": [],
+  "Actions": [
+    {
+      "name": "<<On Player Enter First Time>>",
+      "bActive": true,
+      "InputType": "None",
+      "run": "You stop in front of the apartment building for the first time. The entrance looks quiet, but something feels off."
+    }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": {
+    "day":   "Assets/images/rooms/apartment buiding_day.jpg",
+    "dusk":  "Assets/images/rooms/apartment_building_dusk.jpg",
+    "night": "Assets/images/rooms/apartment_building_night.jpg"
+  }
+}

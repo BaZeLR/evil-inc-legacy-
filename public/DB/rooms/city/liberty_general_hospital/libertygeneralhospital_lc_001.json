@@ -1,0 +1,57 @@
+{
+  "Name": "Liberty General Hospital",
+  "UniqueID": "libertygeneralhospital_lc_001",
+  "SDesc": "liberty_general_hospital",
+  "Group": "Liberty City General",
+  "Spawns": true,
+  "Description": "Your local hospital. It seems to have a very advanced set up here. The Justice Force must donate a lot.",
+  "Exits": [
+    { "Direction": "North", "DestinationRoom": "road22_lc_001" }
+  ],
+  "NPCs": [
+    { "UniqueID": "old_doctor_001", "Weight": 15 },
+    { "UniqueID": "female_doctor_001", "Weight": 10 },
+    { "UniqueID": "nurse_a_001", "Weight": 10 },
+    { "UniqueID": "nurse_b_001", "Weight": 10 },
+    { "UniqueID": "med_student_001", "Weight": 10 },
+    { "UniqueID": "hospital_adm_001", "Weight": 15 },
+    { "UniqueID": "janitor_001", "Weight": 5 }
+  ],
+  "Objects": [],
+  "Actions": [
+    {
+      "name": "<<On Player Enter>>",
+      "bActive": true,
+      "InputType": "None",
+      "Conditions": [
+        {
+          "ConditionName": "Hospital intro",
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.prologue_hospital_started",
+              "ConditionStep3": "==",
+              "ConditionStep4": true
+            },
+            {
+              "CkType": "And",
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.prologue_hospital_intro_done",
+              "ConditionStep3": "!=",
+              "ConditionStep4": true
+            }
+          ],
+          "PassCommands": [],
+          "FailCommands": []
+        }
+      ],
+      "TriggerScene": "hospital_intro_001_sequence",
+      "PassCommands": [],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/bd_day.jpg"
+}

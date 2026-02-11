@@ -1,0 +1,38 @@
+{
+  "UniqueID": "winifred_burkle_001",
+  "Charname": "Dr. Winifred Burkle",
+  "Gender": "Female",
+  "Type": "secondary",
+  "Disposition": "friendly",
+  "prob_spawn": 0,
+  "Description": "Dr. Winifred Burkle.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "CurrentRoom": "appartmentlobby_lc_001",
+  "KnowsPlayer": false,
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Look at Dr. Winifred Burkle." }
+  ],
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/placeholder.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Dr. Winifred Burkle." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Examine",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/placeholder.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Dr. Winifred Burkle." }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [{"mindReadable": true}]
+}

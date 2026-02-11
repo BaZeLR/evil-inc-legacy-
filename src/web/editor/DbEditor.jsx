@@ -3,6 +3,7 @@ import { TabButtons } from './TabButtons.jsx';
 import { CharactersEditor } from './CharactersEditor.jsx';
 import { ObjectsEditor } from './ObjectsEditor.jsx';
 import { RoomsEditor } from './RoomsEditor.jsx';
+import { ScenesEditor } from './ScenesEditor.jsx';
 
 export function DbEditor({ game, onRequestClose }) {
   const [tab, setTab] = useState('characters');
@@ -19,6 +20,7 @@ export function DbEditor({ game, onRequestClose }) {
       {tab === 'characters' ? <CharactersEditor /> : null}
       {tab === 'objects' ? <ObjectsEditor game={game} /> : null}
       {tab === 'rooms' ? <RoomsEditor /> : null}
+      {tab === 'scenes' ? <ScenesEditor game={game} /> : null}
 
       {onRequestClose ? (
         <div className="inventory-action-row">

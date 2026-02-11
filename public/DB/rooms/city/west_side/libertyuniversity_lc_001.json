@@ -1,0 +1,34 @@
+{
+  "Name": "Liberty University",
+  "UniqueID": "libertyuniversity_lc_001",
+  "SDesc": "liberty_university",
+  "Group": "Liberty University Campus",
+  "Spawns": true,
+  "Description": "Liberty City's very own university. The campus is beautiful but all the buildings require a security badge for entry.",
+  "Exits": [
+    { "Direction": "NW", "DestinationRoom": "College Security Center", "Locked": false, "Visible": true, "ShowIf": "player.Stats.herbert_locked_out != true" },
+    { "Direction": "Around Back", "DestinationRoom": "Herbert's Office", "ShowIf": "player.Stats.herbert_locked_out == true" },
+    { "Direction": "North", "DestinationRoom": "Campus Library", "Locked": true, "Visible": true, "UnlockedBy": "campus_unlocked", "LockedMessage": "The library doors are locked. You need a campus security badge to enter." },
+    { "Direction": "NE", "DestinationRoom": "Science Lab", "Locked": true, "Visible": true, "UnlockedBy": "campus_unlocked", "LockedMessage": "The science building is locked. You need a campus security badge to enter." },
+    { "Direction": "East", "DestinationRoom": "Lecture Hall", "Locked": true, "Visible": true, "UnlockedBy": "campus_unlocked", "LockedMessage": "The lecture hall is locked. You need a campus security badge to enter." },
+    { "Direction": "West", "DestinationRoom": "Liberty University Gym", "Locked": true, "Visible": true, "UnlockedBy": "campus_unlocked", "LockedMessage": "The gym doors are locked. You need a campus security badge to enter." },
+    { "Direction": "South", "DestinationRoom": "West Side", "Locked": false, "Visible": true }
+  ],
+  "NPCs": [
+    { "UniqueID": "student_a_001", "Weight": 5 },
+    { "UniqueID": "student_b_001", "Weight": 10 },
+    { "UniqueID": "prof_001", "Weight": 25 },
+    { "UniqueID": "college_coed_001", "Weight": 10 },
+    { "UniqueID": "young_super_a_001", "Weight": 15 },
+    { "UniqueID": "visiting_parent_a_001", "Weight": 15 },
+    { "UniqueID": "visiting_parent_b_001", "Weight": 15 }
+  ],
+  "Objects": [],
+  "Actions": [
+    { "name": "<<On Player Enter First Time>>", "bActive": true, "InputType": "None", "run": "\"Wow this place is not too bad at all.... They must get a lot of money from the Hall of Justice. There's tons of their shit all over campus. Uggghhhhh....It's like they're brainwashing these poor kids. How sickening.....\"\n\nYou smile as you stroll through campus. You overhear a conversation while wandering around.\n\n\"Uhhhhh I was sooooo late for Psych 201 yesterday. I totally forgot my campus badge and I couldn't get into the fucking building!\"\n\n\"Well with all these super's fighting these days you can never be too safe.\"\n\n&lt;Well that sucks! I'm going to need a Campus Security Badge to get into any of the buildings. I should check the Security Center and see if I can get one.....&gt;" }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/lc_campus.jpg"
+}

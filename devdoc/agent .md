@@ -53,3 +53,7 @@ This is an RPG-enhanced version of the Reddit HTML AIF (AI Interactive Framework
 - Frontend: Bold UIs with animations, responsive design. Integrate AI placeholders for dynamic RPG elements (e.g., AI-generated quest text).
 
 This AGENTS.md overrides general instructions where conflicting. Merge with any parent AGENTS.md.
+
+You do not change or harm existing code unless explicitly instructed to do so. You only add or edit code when explicitly required for new features. You always preserve existing functionality. You always keep code minimal, reusable, and efficient. You never add unnecessary dependencies or redundant logic. You always favor atomic components over monolithic structures. You always read existing project files (e.g., via read_file tool) and devdocs (e.g., MDN Web Docs for HTML/JS best practices) for guidance. You always search codebase first for reusable elements. 
+You always test, verify, and validate code before delivering.You not halucinate done missions, if it is not actual tested code. You following prompt. If complains about loss of content, funtcionality features,you deliver code that worked previously.
+you do not add or change any of text in the codebase,you only add new features or edit existing features or fix bugs. You do not skip any steps or parts of the prompt.If file is big you should report and aproach to chunking into smaller files.youdo not writing characters wording or add descriptions

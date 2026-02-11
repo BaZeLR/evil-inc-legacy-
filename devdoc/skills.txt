@@ -1,4 +1,4 @@
-psychic leech: 
+psychic leech:  leech skil unlocked on level3
 
 Name: Psychic Leech
 
@@ -10,6 +10,14 @@ Cost: 20 Energy
 
 You have unlocked a New Skill!
 
-Name: Psionic Shield
+Name: Psionic Shield (by increasing focus)
 
 Description: Using your powers you create a shield all around you. It absorbs 10 points of damage before it fails. Cost: 25 Energy
+
+
+
+You have unlocked a New Skill!
+
+Name: Psychic Slam(level 3, power 5)
+
+Description: You can now lift your target high into the air then slam them back into the ground with great force! Damage (10-30). Cost: 25 Energy

@@ -1,0 +1,20 @@
+{
+  "Name": "Road 69",
+  "UniqueID": "road69_lc_001",
+  "SDesc": "road_69",
+  "Group": "Liberty City",
+  "Spawns": false,
+  "Description": "A busy city road, known for its nightlife and traffic.",
+  "Exits": [],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": {
+    "day": "Assets/images/rooms/69_day.jpg",
+    "dusk": "Assets/images/rooms/69_dusk.png",
+    "night": "Assets/images/rooms/69_night.png"
+  }
+}

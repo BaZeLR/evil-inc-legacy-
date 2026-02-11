@@ -1,0 +1,38 @@
+{
+  "Name": "Downtown",
+  "UniqueID": "downtown_lc_001",
+  "SDesc": "downtown",
+  "Group": "Liberty City",
+  "Spawns": true,
+  "Description": "",
+  "Exits": [
+    { "Direction": "West", "DestinationRoom": "road7_lc_001" },
+    { "Direction": "South", "DestinationRoom": "Road 13" },
+    { "Direction": "East", "DestinationRoom": "Old Factory" },
+    { "Direction": "NE", "DestinationRoom": "Back Alley" },
+    { "Direction": "NW", "DestinationRoom": "Uranus Lounge" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [
+    {
+      "Name": "In",
+      "Description": "Enter Uranus Lounge",
+      "Type": "enter-location",
+      "TargetRoom": "uranuslounge_lc_001",
+      "PictureChange": {
+        "day": "Assets/images/rooms/Uranus Lounge_Inside.jpg",
+        "dusk": "Assets/images/rooms/Uranus Lounge_Inside.jpg",
+        "night": "Assets/images/rooms/Uranus Lounge_Inside.jpg"
+      }
+    }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": {
+    "day": "Assets/images/rooms/downtown_day.jpg",
+    "dusk": "Assets/images/rooms/downtown_dusk.jpg",
+    "night": "Assets/images/rooms/downtown_night.jpg"
+  }
+}

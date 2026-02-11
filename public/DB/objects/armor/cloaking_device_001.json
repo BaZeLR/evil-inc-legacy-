@@ -1,0 +1,30 @@
+{
+  "UniqueID": "cloaking_device_001",
+  "Name": "Cloaking Device",
+  "Type": "wearable",
+  "Description": "A very old arm band with what looks like a chunk of the meteor imbued in it. Activating it will cause you to turn completely invisible but at the cost of all your energy.",
+  "Picture": "Assets/images/objects/Armor/cloackVest.png",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 1200,
+  "Bonuses": {
+    "Stealth": 10
+  },
+  "Tooltip": "Examine, Equip",
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Inspect the device." },
+    { "Action": "Equip", "Description": "Wear the cloaking device." },
+    { "Action": "Unequip", "Description": "Remove the cloaking device." },
+    { "Action": "Drop", "Description": "Drop the device." }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": []
+}

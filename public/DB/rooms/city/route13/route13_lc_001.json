@@ -1,0 +1,21 @@
+{
+  "Name": "Road 13",
+  "UniqueID": "route13_lc_001",
+  "SDesc": "route13",
+  "Group": "Liberty City",
+  "Spawns": true,
+  "Description": "",
+  "Exits": [
+    { "Direction": "North", "DestinationRoom": "Downtown" },
+    { "Direction": "East", "DestinationRoom": "LC Tunnel_South" },
+    { "Direction": "West", "DestinationRoom": "City Mall" },
+    { "Direction": "SouthEast", "DestinationRoom": "Police Station" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/downtown_day.jpg"
+}

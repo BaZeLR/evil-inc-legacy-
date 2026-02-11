@@ -1,0 +1,61 @@
+{
+  "Name": "Vadar's Office",
+  "UniqueID": "evilinc_vadar_office_lc_001",
+  "SDesc": "vadar_office",
+  "Group": "Evil Inc- B1 floor",
+  "Spawns": false,
+  "Description": "Dark and gloomy office of the chief of security, Vadar. He is a big fan of plants and has a large collection of them in his office.",
+  "Exits": [
+    { "Direction": "North", "DestinationRoom": "evilelevator_lc_001" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [
+    {
+      "name": "Examine Room",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/rooms/chief_of_security_evil_inc.jpg" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "May be I will buy him some Plant???- no way! " }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "<<On Player Enter>>",
+      "bActive": true,
+      "InputType": "None",
+      "Conditions": [
+        {
+          "ConditionName": "Security briefing",
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.prologue_time_skip_seen",
+              "ConditionStep3": "==",
+              "ConditionStep4": true
+            },
+            {
+              "CkType": "And",
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.prologue_security_briefing_done",
+              "ConditionStep3": "!=",
+              "ConditionStep4": true
+            }
+          ],
+          "PassCommands": [],
+          "FailCommands": []
+        }
+      ],
+      "TriggerScene": "evilinc_securitycenter_001_sequence",
+      "PassCommands": [],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "bActive": false,
+  "Picture": "Assets/images/rooms/chief_of_security_evil_inc.jpg"
+}
+

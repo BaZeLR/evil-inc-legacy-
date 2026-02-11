@@ -1,0 +1,86 @@
+{
+  "UniqueID": "herbert_desk_001",
+  "Name": "Herbert's Desk",
+  "Type": "container",
+  "Description": "Herbert's desk is cluttered with junk mail and sticky notes. The trash bin is... unpleasant.",
+  "Picture": "Assets/images/rooms/herby_office_01.jpg",
+  "Owner": "herbert_001",
+  "AlwaysPresent": true,
+  "PresentOnFirstVisit": true,
+  "CanExamine": true,
+  "CanPickUp": false,
+  "CanDrop": false,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "contains": ["lcuSecurity_badge_001"],
+  "Price": 0,
+  "Tooltip": "Examine, Search Desk",
+  "ActionsMenu": [
+    {
+      "Action": "Examine",
+      "Description": "Look at Herbert's desk closely."
+    },
+    {
+      "Action": "Search Desk",
+      "Description": "Search for anything useful."
+    }
+  ],
+  "Actions": [
+    {
+      "name": "Search Desk",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.herbert_desk_search_once",
+              "ConditionStep3": "==",
+              "ConditionStep4": true
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "You dig deeper, checking the drawers you skipped the first time.\n\nIn the bottom drawer: a stack of blank [b]Campus Security Badges[/b].\n\nYou quickly pocket one and forge your own credentials."
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.has_campus_badge",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "campus_unlocked",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.herbert_badge_acquired",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            }
+          ],
+          "FailCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "You rummage through the mess: junk mail, sticky notes, and a few greasy fingerprints.\n\nNothing obvious.\n\n&lt;Where those badges?&gt;"
+            },
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "CommandPart2": "player.Stats.herbert_desk_search_once",
+              "CommandPart3": "Equals",
+              "CommandPart4": true
+            }
+          ]
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": []
+}
+

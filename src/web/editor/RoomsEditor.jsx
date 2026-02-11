@@ -26,7 +26,7 @@ export function RoomsEditor() {
     setLoading(true);
     setStatus(null);
     try {
-      const doc = await readDbJsonFile('DB/rooms.json');
+      const doc = await readDbJsonFile('DB/rooms/index.json');
       setRoomsDoc(doc);
     } catch (error) {
       setRoomsDoc(null);
@@ -99,7 +99,7 @@ export function RoomsEditor() {
     const list = Array.isArray(nextDoc.Rooms) ? nextDoc.Rooms : [];
     const idx = list.findIndex(r => normalizeId(r?.UniqueID) === selectedId);
     if (idx < 0) {
-      setStatus({ kind: 'error', message: `Room not found in rooms.json: ${selectedId}` });
+      setStatus({ kind: 'error', message: `Room not found in rooms index: ${selectedId}` });
       return;
     }
 
@@ -108,7 +108,7 @@ export function RoomsEditor() {
 
     setStatus({ kind: 'info', message: `Saving ${selectedId}...` });
     try {
-      await writeDbJsonFile('DB/rooms.json', nextDoc);
+      await writeDbJsonFile('DB/rooms/index.json', nextDoc);
       setRoomsDoc(nextDoc);
       loadedJsonRef.current = nextRoom;
       setJsonText(formatJson(nextRoom));
@@ -145,7 +145,7 @@ export function RoomsEditor() {
 
     setStatus({ kind: 'info', message: `Creating ${id}...` });
     try {
-      await writeDbJsonFile('DB/rooms.json', nextDoc);
+      await writeDbJsonFile('DB/rooms/index.json', nextDoc);
       setRoomsDoc(nextDoc);
       setNewId('');
       setStatus({ kind: 'success', message: `Created ${id}` });
@@ -158,7 +158,7 @@ export function RoomsEditor() {
     if (!canWrite) return;
     if (!selectedId) return;
 
-    const ok = window.confirm(`Remove room ${selectedId} from rooms.json?`);
+    const ok = window.confirm(`Remove room ${selectedId} from rooms index?`);
     if (!ok) return;
 
     const nextDoc = jsonClone(roomsDoc && typeof roomsDoc === 'object' ? roomsDoc : {});
@@ -172,7 +172,7 @@ export function RoomsEditor() {
 
     setStatus({ kind: 'info', message: `Deleting ${selectedId}...` });
     try {
-      await writeDbJsonFile('DB/rooms.json', nextDoc);
+      await writeDbJsonFile('DB/rooms/index.json', nextDoc);
       setRoomsDoc(nextDoc);
       setSelectedId(null);
       setJsonText('');
@@ -220,7 +220,7 @@ export function RoomsEditor() {
     nextDoc.Rooms = list;
     setStatus({ kind: 'info', message: `Creating batch (${uniqueIds.length})...` });
     try {
-      await writeDbJsonFile('DB/rooms.json', nextDoc);
+      await writeDbJsonFile('DB/rooms/index.json', nextDoc);
       setRoomsDoc(nextDoc);
       setStatus({ kind: 'success', message: `Created ${uniqueIds.length} room(s).` });
     } catch (error) {
@@ -231,7 +231,7 @@ export function RoomsEditor() {
   return (
     <>
       <div className="drawer-subtitle">Rooms</div>
-      <div className="drawer-muted">Writes go to `public/DB/rooms.json` (dev server only).</div>
+      <div className="drawer-muted">Writes go to `public/DB/rooms/index.json` (dev server only).</div>
       {!canWrite ? <div className="drawer-warning">Write APIs are only available on `npm run dev`.</div> : null}
 
       <StatusLine status={status} />
@@ -245,7 +245,7 @@ export function RoomsEditor() {
 
       <div className="inventory-action-row">
         <button type="button" className="drawer-action-btn" onClick={loadRooms} disabled={loading}>
-          Reload rooms.json
+          Reload rooms index
         </button>
         <button type="button" className="drawer-action-btn" onClick={saveRoom} disabled={!canWrite || !selectedId || !dirty}>
           Save

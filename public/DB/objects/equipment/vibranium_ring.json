@@ -1,0 +1,64 @@
+{
+  "UniqueID": "vibranium_ring_001",
+  "Name": "Vibranium Ring",
+  "Type": "wearable",
+  "Description": "a ring made of of pure Vibranium. You feel much more focused while wearing it. POWER+2",
+  "Picture": "Assets/images/objects/vibranium_ring.png",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 0,
+  "Bonuses": {
+    "Power": 2
+  },
+  "Tooltip": "Examine, Take, Drop, Equip, Unequip",
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Look at the Vibranium Ring closely." },
+    { "Action": "Take", "Description": "Pick up the Vibranium Ring." },
+    { "Action": "Drop", "Description": "Drop the Vibranium Ring." },
+    {
+      "Action": "Equip",
+      "Description": "&lt;With this equipped you are able to channel your new powers. You can also use your Abilities!!!!!&gt;\n\nYou just leveled up! Right click your portrait to chose a attribute to add to.\n\nPower is your STR, it affects your attack damage and your ability to give orders.\n\nFocus is your DEF, it affects how much damage you take from enemy attacks and your ability to control your abilities.\n\nStealth is your AGL, it affects the chance of being hit and fleeing a battle as well as approaching someone unnoticed."
+    },
+    { "Action": "Unequip", "Description": "Remove the Vibranium Ring." }
+  ],
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/objects/vibranium_ring.png" },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "a ring made of of pure Vibranium. You feel much more focused while wearing it. POWER+2"
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Examine",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/objects/vibranium_ring.png" },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "a ring made of of pure Vibranium. You feel much more focused while wearing it. POWER+2"
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": [
+    { "Property": "Equipped", "Value": false }
+  ]
+}

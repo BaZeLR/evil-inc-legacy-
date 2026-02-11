@@ -1,0 +1,131 @@
+{
+  "UniqueID": "penny_001",
+  "Charname": "Penny the Secretary",
+  "Gender": "Female",
+  "Type": "main character",
+  "Disposition": "neutral",
+  "prob_spawn": 0,
+  "Description": "A cute young thing too bad she not very enthusiastic about her job....Her desk name plate reads Penny.",
+  "Picture": "Assets/images/characters/main_npc/penny_portrait.png",
+  "CurrentRoom": "evilreception_lc_001",
+  "KnowsPlayer": false,
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Look at Penny the Secretary." },
+    { "Action": "Talk", "Description": "Talk to Penny the Secretary." },
+    { "Action": "Ask", "Description": "????", "ShowIf": "player.Stats.winifred_lab_stage == 1" }
+  ],
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/main_npc/penny_portrait.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "{character.Description}" }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Examine",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/main_npc/penny_portrait.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "{character.Description}" }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Talk",
+      "bActive": true,
+      "InputType": "None",
+      "TriggerScene": "evilreception_penny_001_sequence",
+      "Conditions": [
+        {
+          "ConditionName": "Pre time-skip",
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.prologue_time_skip_seen",
+              "ConditionStep3": "!=",
+              "ConditionStep4": true
+            }
+          ],
+          "PassCommands": [],
+          "FailCommands": []
+        }
+      ],
+      "PassCommands": [
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "character.KnowsPlayer",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        }
+      ],
+      "FailCommands": []
+    }
+    ,
+    {
+      "name": "Talk",
+      "bActive": true,
+      "InputType": "None",
+      "TriggerScene": "evilreception_penny_002_sequence",
+      "Conditions": [
+        {
+          "ConditionName": "Post time-skip",
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.prologue_time_skip_seen",
+              "ConditionStep3": "==",
+              "ConditionStep4": true
+            }
+          ],
+          "PassCommands": [],
+          "FailCommands": []
+        }
+      ],
+      "PassCommands": [
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "character.KnowsPlayer",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        }
+      ],
+      "FailCommands": []
+    }
+    ,
+    {
+      "name": "Ask",
+      "bActive": true,
+      "InputType": "None",
+      "bConditionFailOnFirst": false,
+      "CustomChoiceTitle": "???",
+      "CustomChoices": [],
+      "Conditions": [
+        {
+          "ConditionName": "Dr Burkle Lab",
+          "Checks": [
+            {
+              "CondType": "CT_Input_Comparison",
+              "ConditionStep3": "Equals",
+              "ConditionStep4": "Dr Burkle Lab"
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "\"Dr. Burkle? She's on the B1 level. If you need access, talk to Vadar or Mini Me.\""
+            }
+          ],
+          "FailCommands": []
+        }
+      ],
+      "PassCommands": [],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [{"mindReadable": true}]
+}

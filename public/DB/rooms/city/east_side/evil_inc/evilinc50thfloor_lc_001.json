@@ -1,0 +1,69 @@
+{
+  "Name": "Top Floor",
+  "UniqueID": "evilinc50thfloor_lc_001",
+  "SDesc": "evil_inc_50th_floor",
+  "Group": "Evil Inc Building",
+  "Spawns": false,
+  "Description": "A dark gold and chrome hallway that kind of gives you the willies.",
+  "Exits": [
+    { "Direction": "North", "DestinationRoom": "drevilscommandcenter_lc_001" },
+    { "Direction": "East", "DestinationRoom": "evilelevator_lc_001" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [
+    {
+      "name": "<<On Player Enter First Time>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYPICTURE",
+          "CommandPart2": "Assets/images/characters/main_npc/pam_first_time.jpg"
+        },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "DING!\n\nThe doors slides open and you feel terribly sick. Just what have you gotten yourself into here? Without looking you walk out of the elevator almost right into a pretty red head. She was wearing a lab coat and carrying two beakers full of some strange glowing liquids.\n\n\"Gwahhahhaa!!!\" Yelling and dodging the young woman, she looks as if she's about to crack a smile but instead scowls at you. \"BE CAREFULL! DO YOU EVEN KNOW WHAT WOULD HAVE HAPPENED IF...? \" She takes a short breath...\"...It doesn't matter.\" She sighs. \"I'm sorry I....\" You try to explain but it's too late the doors shut and the lass is gone. \"God I just make friends wherever I go don't I...?\""
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "<<On Player Enter>>",
+      "bActive": true,
+      "InputType": "None",
+      "Conditions": [
+        {
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "room.bFirstTimeVisited",
+              "ConditionStep3": "==",
+              "ConditionStep4": true
+            }
+          ],
+          "PassCommands": [],
+          "FailCommands": []
+        }
+      ],
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/rooms/evil_inc 50th floor.jpg" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "A dark gold and chrome hallway that kind of gives you the willies." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Examine Room",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "A dark gold and chrome hallway that kind of gives you the willies." }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/evil_inc 50th floor.jpg"
+}

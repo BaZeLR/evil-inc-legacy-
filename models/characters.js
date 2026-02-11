@@ -1,0 +1,21 @@
+export const CharacterTemplate = {
+  UniqueID: '',
+  Charname: '',
+  CharnameOverride: '',
+  Gender: 'Other',
+  CharGender: 'Other',
+  Description: '',
+  Picture: '',
+  CharPortrait: '',
+  CurrentRoom: '',
+  Inventory: [],
+  Actions: [],
+  ActionsMenu: [],
+  CustomProperties: [],
+  isMindreadable: false,
+  thoughts: [],
+  bAllowInventoryInteraction: false,
+  bEnterFirstTime: false,
+  bLeaveFirstTime: false,
+  KnowsPlayer: false
+};

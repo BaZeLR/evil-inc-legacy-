@@ -1,0 +1,28 @@
+{
+  "id": "after_hang_out",
+  "name": "After Hang Out",
+  "repeatable": false,
+  "description": "Aftermath: Triggered when the player leaves Emily's apartment after hanging out.",
+  "trigger": {
+    "when": "exit",
+    "room": "emily_apartment"
+  },
+  "sequence": [
+    {
+      "text": "You step out of Emily's apartment, feeling a sense of warmth from the evening spent together.",
+      "media": "Assets/images/Emily_and_Mark.jpg"
+    },
+    {
+      "text": "Suddenly, you realize you forgot your wallet inside.",
+      "media": "Assets/images/Emily_03.jpg"
+    },
+    {
+      "text": "You sheepishly return, and Mark laughs as Emily hands you your wallet.",
+      "media": "Assets/images/Emily_and_Mark.jpg"
+    },
+    {
+      "text": "With everything in hand, you finally head out for the night.",
+      "media": "Assets/images/Emily_03.jpg"
+    }
+  ]
+}

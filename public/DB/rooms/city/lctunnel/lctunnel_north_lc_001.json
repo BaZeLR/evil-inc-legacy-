@@ -1,0 +1,20 @@
+{
+  "Name": "LC Tunnel North",
+  "UniqueID": "lctunnel_north_lc_001",
+  "SDesc": "lc_tunnel_north",
+  "Group": "Liberty City",
+  "Type": "hostile",
+  "Spawns": true,
+  "Description": "Northern entrance to the Liberty City tunnel.",
+  "Exits": [
+    { "Direction": "SouthEast", "DestinationRoom": "Business District" },
+    { "Direction": "West", "DestinationRoom": "Route 13" }
+  ],
+  "Picture": "Assets/images/rooms/tunnel_north.jpg",
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false
+}

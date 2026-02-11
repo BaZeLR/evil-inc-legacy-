@@ -1,0 +1,58 @@
+{
+  "$schema": "Scene Template v1.0",
+  "$comment": "Talk reveals the current stage. If a stage has NextStage and no Choices, the > Continue button advances to the next stage (auto-revealed). Use StartIf/RequiredFlags to gate the sequence, and Repeatable=true if you want it re-playable.",
+  "UniqueID": "talk_continue_template_001_sequence",
+  "Title": "Talk + Continue Template",
+  "SceneType": "sequence",
+  "Location": "REPLACE_ROOM_ID",
+  "Repeatable": false,
+  "StartIf": null,
+  "Trigger": {
+    "EventType": "Triggered by event (manual)",
+    "AttachedTo": "room",
+    "EntityID": "REPLACE_ROOM_ID"
+  },
+  "Stages": [
+    {
+      "StageID": "stage_01",
+      "Media": "Assets/images/rooms/REPLACE_IMAGE_01.jpg",
+      "Text": "Stage 1: First dialog block goes here.",
+      "Choices": [],
+      "NextStage": "stage_02"
+    },
+    {
+      "StageID": "stage_02",
+      "Media": "Assets/images/rooms/REPLACE_IMAGE_02.jpg",
+      "Text": "Stage 2: Second dialog block goes here.",
+      "Choices": [],
+      "NextStage": "stage_03"
+    },
+    {
+      "StageID": "stage_03",
+      "Media": "Assets/images/rooms/REPLACE_IMAGE_03.jpg",
+      "Text": "Stage 3: Final dialog block. You can apply effects here (flags, rewards, unlocks).",
+      "Effects": [
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "Text": "<b>Example:</b> You feel a chill run down your spine..."
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "Variable": "player.Stats.example_story_flag",
+          "Operator": "Equals",
+          "Value": true
+        }
+      ],
+      "IsEnd": true
+    }
+  ],
+  "Rewards": {
+    "OnComplete": {
+      "Experience": 0,
+      "Credits": 0,
+      "Items": [],
+      "Flags": {}
+    }
+  },
+  "CustomProperties": []
+}

@@ -1,0 +1,30 @@
+{
+  "UniqueID": "rubber_gloves_001",
+  "Name": "Thick Insulated Gloves",
+  "Type": "wearable",
+  "Description": "A large pair of thick insulated gloves every mad scientist should own!",
+  "Picture": "Assets/images/objects/Armor/rubber_gloves.png",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "Price": 200,
+  "Bonuses": {
+    "Defence": 1
+  },
+  "Tooltip": "Examine, Equip",
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Inspect the gloves." },
+    { "Action": "Equip", "Description": "Put the gloves on." },
+    { "Action": "Unequip", "Description": "Take the gloves off." },
+    { "Action": "Drop", "Description": "Drop the gloves." }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": []
+}

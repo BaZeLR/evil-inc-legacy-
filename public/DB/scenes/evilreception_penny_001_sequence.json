@@ -1,0 +1,87 @@
+{
+  "$comment": "PROLOGUE SEQUENCE: Meet Penny",
+  "UniqueID": "evilreception_penny_001_sequence",
+  "Title": "Meet Penny",
+  "SceneType": "sequence",
+  "Location": "evilreception_lc_001",
+  "TargetEntity": "penny_001",
+  "Repeatable": false,
+  "Trigger": {
+    "EventType": "Triggered by event (manual)",
+    "AttachedTo": "character",
+    "EntityID": "penny_001"
+  },
+  "Stages": [
+    {
+      "StageID": "stage_01",
+      "Media": "Assets/images/characters/main_npc/penny_copier_trouble.png",
+      "Text": "Talk\n\"Wow she's a beauty ain't she?....\" The shapely red head stands in front of you wearing modest work attire. She seems to be having problems sending a fax. Tapping her foot and folding her arms, obviously flustered she turns and sees you. \"Sorry sir no one gets in without a appointment. Please lea....\"",
+      "Choices": [],
+      "NextStage": "stage_01b"
+    },
+    {
+      "StageID": "stage_01b",
+      "Media": "Assets/images/characters/main_npc/penny_full_view.png",
+      "Text": "\"Errrbut... I do....I called about the ad in the paper. I have a interview today my name is Steven Wolf.\" You stammer out nervously. You were never very good with the opposite sex in fact you've only gotten laid once and it was about a year ago. A buddy from AEON actually recommend you get a working girl to help you build some confidence. Turns out it didn't so much help you with confidence, as it did help you get robbed...",
+      "Choices": [],
+      "NextStage": "stage_02"
+    },
+    {
+      "StageID": "stage_02",
+      "Media": "Assets/images/characters/main_npc/penny_portrait.png",
+      "Text": "\"So your the Doctor's 1:00. Hmmmmm I see...\"\n\nVery slowly she looks you up and down. Almost as if she's looking right through you.... Sheesh... You feel a shiver run through your body.\n\n&lt;What the fuck is she doing? Are her eyes glowing?&gt;",
+      "Choices": [],
+      "NextStage": "stage_03"
+    },
+    {
+      "StageID": "stage_03",
+      "Media": "Assets/images/characters/main_npc/Penny_glowing.png",
+      "NextStage": "stage_04"
+    },
+    {
+      "StageID": "stage_04",
+      "Media": "Assets/images/characters/main_npc/penny_full_view.png",
+      "Text": [
+        "-------------------------------",
+        "I'll buzz you up. Good luck. You're like the 10th guy they've interviewed and the last one never came back down...",
+        "So I hope you're prepared for the test...",
+        "",
+        "What TEST??? The person on the phone told me this was just a simple meet and greet...",
+        "And what the hell did you just do to me? Oh god what have I gotten myself into maybe I should just go..."],
+      "NextStage": "stage_05"
+    },
+    {
+      "StageID": "stage_05",
+      "Media": "Assets/images/characters/main_npc/Penny_glowing.png",
+      "Text": 
+        "\n\nBzzzzzzzzzzzzzzzzzz\n\n",
+      "NextStage":"stage_06"
+    },
+    {
+      "StageID": "stage_06",
+      "Media": "Assets/images/characters/main_npc/penny_portrait.png",
+      "Text": [  
+        "It was just a scan to make sure you are who you say you are and I wouldn't stand up the doctor, if I were you sir.",
+        "Take the elevator to the 50th floor and be quick about it. Don't even think about going anywhere else in the building",
+        "We're watching you! She points to one of the more obvious cameras watching over the both of you.",
+        "",
+        "Gulp....",
+        "\n\nMeet Penny event over\n\n",
+        "debug demon: The east path just now opened up. Click on link located in navigation box, to go that way but be careful you may not always be able to go back"
+      ],
+      "Effects": [
+        { "cmdtype": "CT_SETVARIABLE", "Variable": "player.Stats.prologue_penny_complete", "Operator": "Equals", "Value": true },
+        { "cmdtype": "CT_SETVARIABLE", "Variable": "penny.knowsYou", "Operator": "Equals", "Value": true }
+      ],
+      "IsEnd": true
+    }
+  ],
+  "Rewards": {
+    "OnComplete": {
+      "Experience": 10,
+      "Credits": 0,
+      "Items": [],
+      "Flags":[{"meet_penny": true},{"reception.bFirstVisit": true}]
+    }
+  }
+}

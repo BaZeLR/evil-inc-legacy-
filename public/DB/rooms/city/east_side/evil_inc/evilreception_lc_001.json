@@ -1,0 +1,46 @@
+{
+  "Name": "Evil Reception",
+  "UniqueID": "evilreception_lc_001",
+  "SDesc": "evil_reception",
+  "Group": "Evil Inc Building",
+  "Spawns": false,
+  "Description": "Evil Incorporated reception.",
+  "Exits": [
+    { "Direction": "East", "DestinationRoom": "evilelevator_lc_001", "ShowIf": "player.Stats.prologue_penny_complete == true" }
+  ],
+  "NPCs": ["penny_evil_001"],
+  "Objects": [],
+  "Actions": [
+    {
+      "name": "<<On Player Enter First Time>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYPICTURE",
+          "CommandPart2": "Assets/images/rooms/evil_inc_reception.jpg"
+        },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Upon going through the front door you notice a large but empty reception. Except for the secretary and what seems to be some sort of security officer standing next to the door.\n\nCLICK!\n\n\"Huh...? What was that? Did the door just lock?\" You mumble to your self as the door shuts behind you.Taking a careful look around you notice several security devices placed around the lobby and entrance.\n\n&lt;I better be careful and do what they say. I'd hate to see what they do to security risk around here....&gt;\n\nDebug Demon: When you enter a room and there are people in the visible characters box, right click on them to talk or look at them"
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Examine Room",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/rooms/evil_inc_reception.jpg" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Evil Incorporated reception." }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/evil_inc_reception.jpg"
+}
+

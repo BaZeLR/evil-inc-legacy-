@@ -1,0 +1,26 @@
+{
+  "$schema": "Thread Template v1.0",
+  "name": "prologue",
+  "state": "active",
+  "flags": {
+    "started": true,
+    "completed": false
+  },
+  "events": [
+    "start prologue",
+    "ei reception_1",
+    "50th floor encounter",
+    "interview_1",
+    "dr_test",
+    "dr asks",
+    "player's app",
+    "winifred encounter",
+    "channel 4",
+    "ei reception_2",
+    "breafing",
+    "vader office talk",
+    "elevator encounter",
+    "personal lab",
+    "hospital"
+  ]
+}

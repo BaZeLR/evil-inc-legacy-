@@ -1,0 +1,17 @@
+{
+  "UniqueID": "debug_demon",
+  "Name": "Debug Demon",
+  "Type": "game_items",
+  "Description": "A mysterious demonic entity summoned for debugging purposes. It watches over the game world with malevolent curiosity.",
+  "Picture": "Assets/images/objects/debug_demon.jpg",
+  "Usable": false,
+  "Value": 0,
+  "Weight": 0,
+  "Effects": [
+    "Debugging companion",
+    "Watches game state",
+    "Provides developer insights"
+  ],
+  "Tags": ["debug", "demon", "developer", "special"],
+  "Rarity": "Unique"
+}

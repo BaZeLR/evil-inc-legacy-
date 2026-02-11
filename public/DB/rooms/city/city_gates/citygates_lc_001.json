@@ -1,0 +1,19 @@
+{
+  "Name": "City Gates",
+  "UniqueID": "citygates_lc_001",
+  "SDesc": "city_gates",
+  "Group": "Liberty City",
+  "Type": "neutral",
+  "Spawns": true,
+  "Description": "",
+  "Exits": [
+    { "Direction": "South", "DestinationRoom": "Road 22" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/tunnel_north.jpg"
+}

@@ -1,0 +1,20 @@
+{
+  "Name": "Back Alley",
+  "UniqueID": "backalley_lc_001",
+  "SDesc": "back_alley",
+  "Group": "Downtown",
+  "Type": "hostile",
+  "Spawns": true,
+  "Description": "A very dim and narrow alley.",
+  "Exits": [
+    { "Direction": "NE", "DestinationRoom": "Black Market" },
+    { "Direction": "SW", "DestinationRoom": "Downtown" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/downtown_night.jpg"
+}

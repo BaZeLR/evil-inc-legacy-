@@ -1,0 +1,63 @@
+{
+  "UniqueID": "dr_aaron_hart_001",
+  "Charname": "Dr. Aaron Hart",
+  "Gender": "Male",
+  "Type": "secondary",
+  "Disposition": "neutral",
+  "prob_spawn": 0,
+  "Description": "Dr. Aaron Hart he is on Dr. Evil's payroll as our own private doc.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "CurrentRoom": "libertygeneralhospital_lc_001",
+  "KnowsPlayer": true,
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Look at Dr. Aaron Hart." },
+    { "Action": "Heal", "Description": "Heal?" },
+    { "Action": "Telepathy", "Description": "Read Dr. Aaron Hart's thoughts.", "ShowIf": "player.Stats.prologue_telepathy_unlocked == true" }
+  ],
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/placeholder.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Dr. Aaron Hart he is on Dr. Evil's payroll as our own private doc." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Examine",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/placeholder.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Dr. Aaron Hart he is on Dr. Evil's payroll as our own private doc." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Heal",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.Health", "CommandPart3": "Equals", "CommandPart4": "{player.Stats.MaxHealth}" },
+        { "cmdtype": "CT_SETVARIABLE", "CommandPart2": "player.Stats.Energy", "CommandPart3": "Equals", "CommandPart4": "{player.Stats.MaxEnergy}" },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "Heal?\nThe doctor scans your body and injects you with some nanobots to repair the damage.\n\n\"Ok you seem to be all better. Dr. Evil has called me back to HQ. He also wanted me to pass you a message. Meet him in his office if you want to chat. Otherwise he'll use your com unit to get ahold of you for anything important. I gotta go bye!\" The robot says in a cheerful voice. then waves at you and rolls off towards E.I.\n\nDr. Hart looks at you with a smug look on his face. \"There you go now get out before anybody see ya'....\""
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Telepathy",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "<Man whoever is hiring the nurses around here is doing one hell of a job!>" }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [{"mindReadable": true}]
+}

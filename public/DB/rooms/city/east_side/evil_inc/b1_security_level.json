@@ -1,0 +1,109 @@
+{
+      "Name": "Security Level",
+      "UniqueID": "evilincsecuritylevel_lc_001",
+      "SDesc": "evil_inc_security_level",
+      "Group": "Evil Inc Building",
+      "Spawns": false,
+      "Description": "Security Level (B1).",
+      "Exits": [
+        {
+          "Direction": "East",
+          "DestinationRoom": "evilelevator_lc_001",
+          "Locked": false 
+        },
+        {
+          "Direction": "South",
+          "DestinationRoom": "evilinc_vadar_office_lc_001",
+          "Locked": true
+        },
+        {
+          "Direction": "SouthEast",
+          "DestinationRoom": "ei_training_room_lc_001",
+          "Locked": true 
+        }
+      ],
+      "NPCs": [],
+      "Objects": [],
+      "Actions": [
+        {
+          "name": "Examine Room",
+          "bActive": true,
+          "InputType": "None",
+          "PassCommands": [
+            {
+              "cmdtype": "CT_DISPLAYPICTURE",
+              "CommandPart2": "Assets/images/rooms/security office evilInc.jpg"
+            },
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "CommandText": "Its very dark in here, it almost sucks the life right out of you. Maybe thats the point..."
+            }
+          ],
+          "FailCommands": []
+        },
+        {
+          "name": "<<On Player First Enter>>",
+          "bActive": true,
+          "InputType": "None",
+          "Conditions": [
+            {
+              "ConditionName": "Security briefing",
+              "Checks": [
+                {
+                  "CondType": "CT_Variable_Comparison",
+                  "ConditionStep2": "player.Stats.prologue_time_skip_seen",
+                  "ConditionStep3": "==",
+                  "ConditionStep4": true
+                },
+                {
+                  "CkType": "And",
+                  "CondType": "CT_Variable_Comparison",
+                  "ConditionStep2": "player.Stats.prologue_security_briefing_ready",
+                  "ConditionStep3": "!=",
+                  "ConditionStep4": true
+                }
+              ],
+              "PassCommands": [],
+              "FailCommands": []
+            }
+          ],
+          "TriggerScene": "evilinc_securitycenter_001_sequence",
+          "PassCommands": [],
+          "FailCommands": []
+        },
+        {
+          "name": "<<On Player Enter>>",
+          "bActive": true,
+          "InputType": "None",
+          "Conditions": [
+            {
+              "ConditionName": "Security badge access",
+              "Checks": [
+                {
+                    "CondType": "CT_Variable_Comparison",
+                    "ConditionStep2": "player.Stats.evilinc_security_badge",
+                    "ConditionStep3": "==",
+                    "ConditionStep4": true
+                 },
+                {
+                    "CkType": "And",
+                    "CondType": "CT_Variable_Comparison",
+                    "ConditionStep2": "player.Stats.prologue_lab_intro_done",
+                    "ConditionStep3": "!=",
+                    "ConditionStep4": true
+                  }
+                ],
+                "PassCommands": [],
+                "FailCommands": []
+              }
+            ],
+            "TriggerScene": "evilinc_lab_intro_001_sequence",
+            "PassCommands": [],
+            "FailCommands": []
+          }
+      ],
+      "CustomProperties": [],
+      "bFirstTimeVisited": false,
+      "bFirstTimeLeft": false,
+      "Picture": "Assets/images/rooms/evilinc_B1.png"
+    }

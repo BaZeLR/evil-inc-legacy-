@@ -1,0 +1,400 @@
+{
+  "$comment": "INTRO SEQUENCE: Pre-prologue story beats",
+  "UniqueID": "evilinc_intro_001_sequence",
+  "Title": "Evil Incorporated Intro",
+  "SceneType": "sequence",
+  "Location": "evilincfront_lc_001",
+  "TargetEntity": null,
+  "Repeatable": false,
+  "ChunkByParagraphs": true,
+  "ParagraphsPerPage": 2,
+  "Trigger": {
+    "EventType": "<<Triggered By Event>>"
+  },
+  "Stages": [
+    {
+      "StageID": "intro_world",
+      "Media": "Assets/images/rooms/Intro/intro_0.jpg",
+      "Text":
+      [
+        "This world is a fucked up place. For a hundred years, private corporations and corrupt governments",
+        " had spread across the planet like a plague. Infecting the minds and bodies of its populace.",
+        "\n\nTechnology had made life too simple and the people in charge of it all were gods.",
+        " They changed the world...",
+        "\n Greed, Wealth, and Status were all that mattered.",
+        "\n\nDuring this period countries were nothing more than fronts for these corporations.",
+        " They would wage war with each other to become stronger and more influential around the world.",
+        " The only cost was the hundreds of thousands of soldiers and civilian deaths each day.",
+        "\n\nIf left to our own accord who knows where the world would be...",
+        "\n\nLuckily for us all, the universe has a way of course correcting sometimes.",
+        " Even in the most unexpected ways..."],
+      "NextStage": "intro_comet"
+    },
+    {
+      "StageID": "intro_comet",
+      "Media": "Assets/images/rooms/Intro/intro_1.png",
+      "Text": ["About 350 years ago there was an incident...",
+      " A comet containing traces of several unidentified elements and radiation collided with the sun!",
+      " The impact sent a huge wave of energy straight at the earth.",
+      " Bathing the planet in this strange energy, turning it into a post-apocalyptic wasteland.",
+      " Electrical components stopped working rendering most of the world's technology useless.",
+      "\n\nFor 200 years the world was in a Global Black-Out or \"The Great Discharge\" as the period became known as.",
+      "\n\nMany cities fell into chaos. Without our modern conveniences cities could no longer support their populace.",
+      " The power grids were completely useless and clean water became a valuable resource.",
+      " This led to rioting and civilization slowly falling.",
+      " Anarchy ruled the streets and no one had anybody to turn to.",
+      " What was left of most governments collapsed.",
+      "\n\nDecades passed and many people reverted back to a tribe-like society to try and survive.",
+      "\nBillions died, the human race almost wiped out... yet something strange happened...",
+      "\n\nOut of the chaos arrived... hope... evolution..."],
+      "NextStage": "intro_meta"
+    },
+    {
+      "StageID": "intro_meta",
+      "Media": "Assets/images/rooms/Intro/intro_2.png",
+      "Text": ["Years after the incident, about .00001% of babies started being born with strange mutations.",
+      "\n\nThose \"meta-humans\" (or Supers as society named them) exhibited some of the most unusual abilities",
+      " and traits. It wasn't until these supers started growing up that the world finally began to rebuild.",
+      " Today these evolved humans are pretty common in larger settlements. Some seek fame and fortune, others power",
+      " and control.\n",
+      " Hell, there are plenty that want nothing, but a normal life but have been given little choice in the matter...",
+      "\n\nThis past decade has been landmark for these meta humans.",
+      " A small group of supers in Liberty City sought each other out and formed the Justice Force!",
+      " A group of supers showing up in costumes and masks, spouting nonsense about the return of truth and justice,",
+      " and what not."],
+      "NextStage": "intro_justice"
+    },
+    {
+      "StageID": "intro_justice",
+      "Media": "Assets/images/rooms/Intro/intro_3.jpg",
+      "Text":[ "In the beginning the Justice Force didn't do much.",
+      " Taking out small targets, slowly building their reputation.",
+      " You see in days of old the city was actually controlled by four factions always waging war for more resources.",
+      " Wilson Fisk was one of the leaders in control and the most ruthless.",
+      " Over time he slaughtered and back stabbed the three other crime lords becoming the Kingpin of Liberty City.",
+      " The city was a dark place under his rule. People however continued to move and live there because it was better",
+      " than living outside the city walls.",
+      "\n\nThe Justice Force started as a small group hiding in the shadows.",
+      " But they recruited more like minded individuals and waited for the right time to strike.",
+      "\n\nThey took down the Kingpin eight years after first announcing themselves and brought justice and order",
+      " to the city. Or so they say...",
+      "\n\nThat was almost 30 years ago and they've managed to hold on to the city so far.",
+      " They've helped establish a somewhat working government with a police force.",
+      " As well as providing simple utilities like electricity and clean running water to other nearby settlements.",
+      "\nCrime was always a problem and the city tended to attract powerful individuals trying to take over.",
+      " This always brought death and destruction to Liberty City.\nIt was a risk people were willing to take.",
+      " A lot of jobs were located there and that brought housing and pretty good schools too.",
+      " Compared to the rest of the world, Liberty City was a lot better than most.",
+      "\nThe majority of settlements were little more than shacks with a few communities",
+      " restoring themselves to their former glory. A few the supers used their powers to create whole towns",
+      " that'd still exist long after they died.",
+      "\nTowns and settlements were generally safer than being on your own but still faced a large amount of danger.",
+      " Raiders and gangs were always targeting weaker communities.",
+      " Many did live alone but in their isolation they had become much more suspicious and wary of others.",
+      " Still it was the best time to be alive since before the Great Discharge.",
+      "\nYou find yourself at a new dawn of a new era. One our young hero will help shape..."],
+      "NextStage": "intro_chaz"
+    },
+    {
+      "StageID": "intro_chaz",
+      "Media": "Assets/images/rooms/Intro/intro_4.jpg",
+      "Text": ["\"Hey, jerk wad! You done fantasizing about how great you fucking are? Here's an idea...",
+      " How about you go put your fancy pancy degree to work over there and change Mrs Anderson's oil.",
+      "\" A man with beaty eyes and an ugly soul patch yells into your face. ",
+      "You wish he had brushed his single rotted tooth before getting that close to any living thing.",
+      "\n\nHis name is Chaz and he owns this garage. Chaz is also a giant douche bag.",
+      " He's also the only person in the entire area that would hire you. And he knows it..."],
+      "NextStage": "intro_steven"
+    },
+    {
+      "StageID": "intro_steven",
+      "Media": "Assets/images/player/steven_1.jpg",
+      "Text": ["Your name is Steven, you are a genius. And most importantly you're fucked...",
+      " You've recently moved back in with your parents in the small village of Blue Leaf.",
+      " A small town west of Liberty City known for its small population of farmers and their Azure Trees.",
+      " A tree that resembles a large oak but its leaves are blue instead of green.",
+      "\n\nYou were the youngest son of 5 children. There was Ralph the oldest, Jed and Ted the twins,",
+      " your sister Emily who is a couple of years younger than you. You were always a bit of a whiz kid.",
+      " You graduated high school before Ralph at the age of 12. He always hated you and his parents' wonder kid",
+      " making him look bad didn't help.\n\nIn college you quickly obtained a master degree in electrical engineering",
+      " before landing a job with AEON. A high tech laboratory to the northwest.",
+      " You were the head of your own R&D division. That was until the incident in your lab..."],
+      "NextStage": "intro_aeon"
+    },
+    {
+      "StageID": "intro_aeon",
+      "Media": "Assets/images/rooms/Intro/AEON HQ.jpg",
+      "Text":["On top of letting you go, AEON black listed you by actively blocking your employment opportunities.",
+      " Seems they wanted to make an example out of you to the rest of their employees.",
+      " Fail us and we'll destroy your life was great motivation.",
+      "\n\nAccording to their lawyers you have unique knowledge of several pieces of technology.",
+      " Therefore AEON will challenge any employment opportunities that may gain from that particular piece of knowledge.",
+      "\n The way AEON sees it, any place that uses their tech could possibly benefit.",
+      " Meaning no company that uses said tech could ever hire you without facing a massive court battle.",
+      "\n Problem was that their tech was everywhere... Inside every computer every lab...",
+      "\n\nAEON's reach was far and wide and any hope of landing a job at one was squashed.",
+      " As it turned out this also included teaching in schools, flipping burgers, and bagging groceries...",
+      "\n\nThat's how you ended up in Chaz's Garage. Doing oil changes on old cars and tractors for minimum wage.",
+      " You could only work there because that bag of dicks Chaz refused to upgrade anything",
+      " from before the Great Discharge. All the ancient tools got the job done but it didn't make it easy."],
+      "NextStage": "intro_emily"
+    },
+    {
+      "StageID": "intro_emily",
+      "Media": "Assets/images/characters/secondary_npc/emily_02.png",
+      "Text": ["Once again you curse your misfortune.",
+      " But you start to think about your sister Emily.",
+      "\n\nEmily was the one good thing from home and probably your best friend.",
+      " When she reached college you were working for AEON and you were able to pay for everything.",
+      "\n\n<At least that's something AEON could never take from you.> You thought.",
+      "\n\nAfter Emily graduated she moved to the city and recently got engaged.",
+      " She had invited you to come live with her instead of your parents but was closer to the one place",
+      " that would hire you.. Not to mention you didn't want to intrude on her happy life.",
+      "\n\n\"Errr...\" Your head starts to throb. Lately you've been getting these head aches.",
+      " Skull splitting, stay in bed all day, mother fucking headaches.",
+      " You haven't told anybody but you think you have blacked out a few times."],
+      "NextStage": "intro_thoughts"
+    },
+    {
+      "StageID": "intro_thoughts",
+      "Media": "Assets/images/rooms/Intro/closeup_intro.jpg",
+      "Text": ["The pain begins to throb and suddenly!",
+      "\n\n<Ah yeah baby that right slobber on that there knob.",
+      "< I love it when they ask what payment options we have!>",
+      "\n\n<Fuck this is gross. Doesn't he have a shower? Just get it over with...>",
+      "\n\nWhat the hell was that? Were those peoples thoughts? Am I... am I a super?",
+      " No! no, no no! This cant be true!\u0022 You panic but the pain comes back and suddenly you her the voices in your head",
+      "\n\n<Yes! Yes! Yes! hold it just a bit longer!>\n<Too much he's got to let me breath! He's going to kill me!>"],
+      "NextStage": "intro_chaz_scene"
+    },
+    {
+      "StageID": "intro_chaz_scene",
+      "Media": "Assets/images/player/player_abilities/mental_blast_mode.jpg",
+      "Text":[ "\"She's going to die!",
+      " You rush over to your boss's office and you see the pretty Mrs. Anderson lying naked on her back while Chaz,",
+      " who was also nude, forced his cock into her throat and was pounding her mouth.",
+      " Her lovely body thrashes underneath the giant douche.",
+      " Her face was starting to turn blue but Chaz showed no sign of stopping.",
+      "\n\nChaz spots you.\n ",
+      "-Hey Wolf! Why don't you get the fuck out of here!!!.",
+      " Me and Mrs. Anderson are working out her bill, yeehaw!"],
+    "NextStage": "unleashing_powers_scene"
+    
+    },
+    {  
+      "StageID": "unleashing_powers_scene",
+      "Media": "Assets/images/player/player_abilities/mental_blast_mode.jpg",
+      "Text": ["GET AWAY FROM HER!!!! A overwhelming feeling took over you and suddenly your migraine is back and you feel this strange energy flowing through you. Without realizing you unleash a blast of mental energy at Chaz! Sending him flying back into a wall and...killing him.",
+              " The woman screams not sure what she just saw. The presence of Chaz's body and you standing there makes her scream! The power is still too much to control and you accidently turn your powers on her and suddenly her eyes begin to glow a weird neon pink then she collapses on the floor like a puppet who had its strings cut.",
+               "Oh nonononono! What have I done!? Not again I cant believe it happened again!!!",
+               "You were just trying to help ", "Chaz, who is naked, appears to also be dead laying in a small pool of blood."],
+      "NextStage": "dead_chaze_scene"
+    },
+    {
+      "StageID":"dead_chaze_scene", 
+      "Media":"Assets/images/rooms/Intro/dead_chaz.jpg",
+      "NextStage":"dead_mrs_anderson_scene"
+    },
+    {
+      "StageID":"dead_mrs_anderson_scene", 
+      "Media":"Assets/images/rooms/Intro/dead_anderson.jpg",
+      "NextStage":"intro_escape"
+    },
+    {
+      "StageID": "intro_escape",
+      "Media": "Assets/images/player/thinking_pose_01.jpg",
+      "Text": ["\"I have to go. I have to get out of here. If anybody knew I had super powers they'd... ",
+      "they'd... Oh fuck! I don't wanna get lynched.",
+      " Your hands are shaking and your headache is making it hard to think straight. ",
+      "\"I need to run but run where?\"\n\nThe only other person that might help you is your sister,",
+      " but how would you even get to her? Liberty City is at least a three day walk from here.",
+      " Cars weren't something everybody had these days.",
+      " They were reserved for the wealthy and even then could be rendered useless by a simple road block",
+      " caused by The Great Discharge.",
+      " Travel between most settlements were done on foot or bikes.",
+      " Even if your journey was easy there are terrible things lurking out in these woods at night.",
+      "\n\n<Well that settles it I'm not running to LC. Its too dangerous!>",
+      "\n\nCRRREEEEEEAAAAAAAAKKK!\n\nA loud creaking noise as the side door opens up."],
+      "NextStage": "intro_ralph"
+    },
+    {
+      "StageID": "intro_ralph",
+      "Media": "Assets/images/rooms/Intro/ralph.jpg",
+      "Text":[ "\"Whats taking you so long shit stain? You know maw wont let us eat until you get home...!?",
+      " It's your older brother Ralph who is suddenly at a loss for words.",
+      "\n\n\"Ralph it isn't what it looks like.\" You panic as Ralph takes in the scene before him.",
+      "\n\nRalph walked into a garage to find his brother in Chaz's office.",
+      " Chaz, who is naked, appears to also be dead laying in a small pool of blood.",
+      " On the other side of the room is an older naked woman who just seemed to pass out in a big pile.",
+      " And then there's his brother looking guilty as fuck.",
+      "\n\nYou are about to explain when you feel your headache come back over you."],
+      "NextStage": "intro_blast"
+    },
+    {
+      "StageID": "intro_blast",
+      "Media": "Assets/images/player/player_abilities/mental_order_action.jpg",
+      "Text": "\"RALPH MOVE!\" You shout not wanting to kill your eldest brother. No matter how much you hated him he was still family after all. Your blast blasted a huge hole in the garage door while Ralph just barely moved in time.\n\n\"You're a god damned SUPER!? OH I'M GONNA KILL YOU!\" Ralph shouts. Ralph quickly runs out the door away from you. He obviously didn't feel the same way about you.\n\nRalph's going to round up a mob of people. That's how the town has always done it, gone after supers! You have to run, it's your only choice. You grimace and run out the back door into the very dark woods.",
+      "NextStage": "intro_run"
+    },
+    {
+      "StageID": "intro_run",
+      "Media": "Assets/images/rooms/Intro/woods_night.jpg",
+      "Text":["You sprint into the dark woods quickly regretting it.",
+      " You were never an athlete and nothing has changed in your adult life. Winded and still shaken up."],
+      "NextStage": "intro_truck"
+    },
+    {
+      "StageID": "intro_truck",
+      "Media": "Assets/images/rooms/Intro/darknighttruck.jpg",
+      "Text":["\"Gross it smells like livestock...Holy shit is that a truck?\"",
+      "\nOff in the distance a truck full of caged chickens",
+      " was parked on the side of the road. In the field next to it was the driver.",
+      " Looked like he must have pulled over to take a piss. He didn't even bother to turn off the truck.",
+      "\nYou quietly sneak up on the driver. Its not too hard the birds chuckling covers up most of the sound you make.",
+      " Getting into the car you put your foot down on the gas pedal and abruptly take off!",
+      " You shut the door and you here the truck driver yelling some profanity about kids and you make your escape.",
+      "\n\nAfter a few miles you pull over the side of the road. Your hands had stopped shaking and your heart rate",
+      " was coming down. You realized you needed a plan.",
+      "\n\nNot wanting to make the same mistake as the truck driver. You stay inside the cab and lock the doors.",
+      " The driver had a map with this route highlighted to Deacon a mid sized town, just north of Liberty City.",
+      " The route is kind of out of the way but would get you closer to the big city. You put the truck back in drive and drove forward toward Deacon.",
+      "\n\nThe drive went without any further delay and you made it to Deacon by late the next morning.",
+      " You decided trying to sell a truck load of chickens may be a bit too conspicuous.",
+      " So you ditched the truck outside of town. Before walking the rest of the way you decided to free all the chickens",
+      " from their cages.",
+      "\n\n<Hey why not? I just couldn't leave them here to be cooked in the sun with no water could I?",
+      " I'm not a monster...>\nYou reasoned and then high tailed it back towards Deacon."],
+      "NextStage": "intro_deacon"
+    },
+    {
+      "StageID": "intro_deacon",
+      "Media": "Assets/images/rooms/Intro/deacon_1.jpg",
+      "Text": ["Deacon was a much larger town than Blue Leaf.",
+      " It was around 5 miles north of Liberty City and you can see a few buildings in the horizon.",
+      " Deacon is a dangerous place. A lot of crime went on here, but people continued to move there for the access of utilities and jobs.",
+      " Deacon shared utilities with the big city. A luxury not many settlement's had. There were a lot of jobs to be had between Deacon and LC.",
+      " Deacon was cheaper to live in, if you can survive there.",
+      "\n\nA few gangs fought over the town and they each had a few supers on their side.",
+      " This brought the presence of the Justice Force here often. ",
+      "The people of Deacon have a love/hate relationship with the Justice Force.",
+      " On the one hand they stop crime before it gets too bad. But on the other they have no problem destroying the town in pursuit of it.",
+      "\n\nDeacon did have a security police force but it was completely corrupt. Bribes were common place as were favor for favor.",
+      " They worked with the Justice Force and everybody knew they were in their pocket."],
+      "NextStage": "intro_cafe"
+    },
+    {
+      "StageID": "intro_cafe",
+      "Media": "Assets/images/rooms/Intro/emily_com_unit.png",
+      "Text": ["You walk into a local cafe to get something to eat and maybe ask around about jobs.",
+      " The place was pretty empty but you were able to find a seat at the counter and order a cup of coffee.",
+      " The barista was a nice old lady who was happy to chat with you while she made your coffee.",
+      "\n\nShe told you about some of the gangs in town and how they were always recruiting. She also mentioned that there were some jobs at the docks if you were interested in manual labor.",
+      "\n\nAfter chatting for a bit you felt a bit more relaxed and decided to head out and explore the town a bit more."],
+      "NextStage": "intro_inn"
+    },
+    {
+      "StageID": "intro_inn",
+      "Media": "Assets/images/rooms/Intro/deacon_city_inn.jpg",
+      "Text":[ "Leaving the cafe in higher spirits you travel down the road to a local Inn.",
+      " You figured you have enough credits to rent a room for the night then head into the city the next day.",
+      " The town was dark but a few lamps were lit. The place felt scarier in the darkness and you suddenly notice, no one else out on the streets.",
+      "\n\n\"Ahhh.. my head!\" Grasping your head you run into a nearby alleyway. You didn't want to accidently hurt anybody.",
+      " Your eyes were glowing that greenish glow as your body began to tremble and sweat. Without warning found yourself feeling completely overwhelmed.",
+      "\n\nVoices. Fucking voices were basically screaming in your head. The pain was agonizing and you collapsed onto the trash littered ground."],
+      "NextStage": "intro_clown"
+    },
+    {
+      "StageID": "intro_clown",
+      "Media": "Assets/images/characters/secondary_npc/intro_characters/clown001.jpg",
+      "Text": "\"Well, well. Who do we have here boys? He looks like a poor little scared piggy. Are you ok Mr. Pig? Do you need some help?\" A strange looking man jabs you in your back with a long piece of pipe. Two guys with him come closer and start kicking the shit out of you. You had the thought that at least when your powers explode they would at least take out these dam goons but as quickly as your mind was flooded with thoughts. It was just as quickly cleared like someone flipping a switch.\n\nTheir boss begins laughing hysterically and the thugs followed suite. They were so loud they didn't even here the man land behind them.",
+      "NextStage": "intro_hero_arrival"
+    },
+    {
+      "StageID": "intro_hero_arrival",
+      "Media": "Assets/images/rooms/Intro/knightwing001.jpg",
+      "Text": "\"Did you put that lipstick on in the dark? Bro..... you should have used a mirror.\" A young man in blue and black combat armor drops down from the roof top.\n\n\"Heheheeheh! Good one junior. But as you can see I'm a bit busy showing my pal why you don't go out at night . So if you wouldn't mind, piss off before me and the boys pop your cherry.\" Said the clown. His goons stopped kicking you to laugh at the hero.\n\n\"Well alrighty then...\" The kid says as he whips a throwing knife at the thugs which they easily avoided. However at the time you were just sitting up and one misses your face just a you flinch away. The second one goes straight into your left shoulder.\n\n\"AHHH! What the fuck!\" You cry out.",
+      "NextStage": "intro_shadow"
+    },
+    {
+      "StageID": "intro_shadow",
+      "Media": "Assets/images/characters/secondary_npc/intro_characters/batknight-001.jpg",
+      "Text": "The goons start fighting the boy and the clown turns back towards you.\n\n\"Yes!\" He yells as he reaches past you to pull the weapon out of the brick wall, licking his lips in anticipation. The thugs have the kid held down and the clown starts to walk towards him chuckling.\n\nHowever the alley way suddenly got much darker... Shadows bend and extend in a unnatural ways.\n\nA tendril composed of shadow stretches out and lashes the weapon out of the clowns hand. At the same time two more reach out of the darkness wrapping around the thugs necks, lifting them into the air. A tall, well built man reveals himself in the shadow.\n\nClearing his throat \" Do you know what you did wrong kid?\" He says not even addressing the thugs or clown. The shadows still keeping all of them at bay.\n\n\"I missed my target?\"",
+      "NextStage": "intro_firestorm_morph"
+    },
+    {
+      "StageID": "intro_firestorm_morph",
+      "Media": "Assets/images/rooms/Intro/firestorm-001.jpg",
+      "Text": "\"You gave yourself away fuck wad! What's the point of using stealth if you're going to throw it away quipping with the enemy?\" Says a bird made completely from fire flies down into the alley. You can feel its heat from across the alley and it slowly morphs into a young woman.\n\n<She must be a shifter. That power is always so cool and unique. No two shifters are alike they say.>",
+      "NextStage": "intro_firestorm_talk"
+    },
+    {
+      "StageID": "intro_firestorm_talk",
+      "Media": "Assets/images/rooms/Intro/firestorm-shifted.jpg",
+      "Text": "\"Even you should have been able to take down these idiots. Way to go shit breath.... Bat Knight, you really know how to pick your side kicks.\" The redhead shifter says.\n\n\"Firestorm...We've talked about your attitude....and I didn't pick Knight Wing.\" Bat mumbles that last part to himself.\n\nFirestorm goes to say more but the clown has managed to get free of the tendril and is making a move on you. He pulls a switchblade out of his pocket and starts running towards you.",
+      "NextStage": "intro_firestorm_repeat"
+    },
+    {
+      "StageID": "intro_firestorm_repeat",
+      "Media": "Assets/images/rooms/Intro/knightwing002.jpg",
+      "Text": "That is until he is suddenly slammed into the ground from above by a white and red blur.\"Even you should have been able to take down these idiots. Way to go shit breath.... Bat Knight, you really know how to pick your side kicks.\" The redhead shifter says.\n\n\"Firestorm...We've talked about your attitude....and I didn't pick Knight Wing.\" Bat mumbles that last part to himself.\n\nFirestorm goes to say more but the clown has managed to get free of the tendril and is making a move on you. He pulls a switchblade out of his pocket and starts running towards you.\n\nThat is until he is suddenly slammed into the ground from above by a white and red blur.",
+      "NextStage": "intro_sentry"
+    },
+    {
+      "StageID": "intro_sentry",
+      "Media": "Assets/images/characters/secondary_npc/thesentry-020.jpg",
+      "Text": "Another woman arrives after hammering the clown into the pavement.\n\n'Got'em!\" She announces to the group as the other two younger members rolled their eyes. She was actually the first to even look at you or notice your wound. \"Hey BK, this dude's been hurt.\"\n\nLetting out a loud sigh Bat Knight starts going through his belt looking for something.\n\n\"You....you...fucking stabbed me...!\" You say shaking from the whole ordeal.\n\nBat Knight walks over to you and gives you a card. He looks you up and down in a way that completely terrifies you.\n\n\"There's a clinic a couple blocks from here. Go there and get that wound looked at. Give them that card and they wont bill you. It doesn't look like it did any serious damage so you should be ok.\"\n\nYou just nod too scared to refuse the man. \"The Sentry here will fly you over there. Wont she?\"\n\n\"Yes sir! Let me pick you up and I'll get you there in no time.\" Sentry says to you compassionately. She gently lifts you up and flies you to the clinic.\n\n--------------------------------",
+      "NextStage": "intro_after_sentry"
+    },
+    {
+      "StageID": "intro_after_sentry",
+      "Media": "Assets/images/characters/secondary_npc/thesentry-headshot.jpg",
+      "Text": "A part of you doesn't mind being carried by this beautiful woman. It had kind of been a while for you and you had never had the best of luck.\n\nBut another part of you a much bigger part is fucking pissed. That gang broke a few ribs and nearly killed you. Then that junior hero almost finishes you off! Like covering your medical bill makes it ok?\n\n<And hey what the fuck? What would have happened if that dumb ass had killed me with his weapon? At best they would've pinned it on the gang and worst just dump my corpse in the woods for the crazie's to get ahold of. I think I'm going to be sick!>\n\nThe Sentry tries to ignore your puking but the noises are kind of overwhelming. She leaves you at the clinic and when she goes to fly you notice some vomit on the back of her cape.\n\nIt took all night to see the doctor and be taken care of.\n\nIn the morning you left for your sister's place over in the east side of Liberty City.",
+      "NextStage": "intro_emily_return"
+    },
+    {
+      "StageID": "intro_emily_return",
+      "Media": "Assets/images/characters/secondary_npc/Emily_01.png",
+      "Text": "The journey to Emily's apartment was uneventful. You hadn't had any more accidents with your new ability but you couldn't help but be nervous. The first night back you get to meet Mark, a pretty nice but regular guy. Not in a bad way mind you.\n\nThey welcomed you into their home and that first night you stayed up late with Emily catching up. She eventually asked you about your ability.\n\nYou told her everything that had happened so far. Em remained silent throughout out your story. When you were done she just hugs you and tells you she's here to help and support you any way she can.",
+      "NextStage": "intro_two_weeks"
+    },
+    {
+      "StageID": "intro_two_weeks",
+      "Media": "Assets/images/player/thinking_pose_01.jpg",
+      "Text": "Two weeks later....\n\nThe headaches stop coming so often and after a week of moping about you start to look for work. With all of AEONS restrictions and threat of lawsuits you knew it was going to be hard but you manage to stumble across a employment agency that guaranteed they could find a job for you.\n\nAfter filling out several forms and passing a few specialized test a few days go by. The employment agency contacts you and tells you they found something. A small start up company, E.I.\n\nWith no other viable options you accept and they tell the interview is tomorrow morning. The lab was located not too far from your apartment so you would be able to walk there.\n\nYou couldn't find any information on the net about this company so you decide to see if there was any news about your little incident in Blue Leaf.",
+      "NextStage": "intro_news"
+    },
+    {
+      "StageID": "intro_news",
+      "Media": "Assets/images/player/playerafraid.jpg",
+      "Text": "As of today there was still no news. They had found Chaz's body and the unconscious woman. But besides that nothing was reported.\n\nRalph must of not told anybody of your involvement to protect the rest of the family. Even he was smart enough to know how the family members of supers got treated back home.\n\nYou suddenly realize those people chasing you in the woods were probably your family.... Cousins, Aunts, Uncles.....\n\nThere were rumors back home. Some families would quietly kill a member of their own if they showed any signs of abilities. Having a pure family tree was a sign of status.\n\n\"Yikes I better not go home for a while. I wonder if Mom or Dad were apart.....No best not to even think it.\"",
+      "NextStage": "intro_prolog_start"
+    },
+    {
+      "StageID": "intro_prolog_start",
+      "Media": "Assets/images/player/steven_1.jpg",
+      "Text": "The next day you travel to the address you were given. Nervous you stand outside the doors not sure if your ready to go in....",
+      "NextStage": "intro_prolog_transition"
+    },
+    {
+      "StageID": "intro_prolog_transition",
+      "SuppressText": true,
+      "Effects": [
+        {
+          "Type": "CT_SETVARIABLE",
+          "VarName": "player.CurrentRoom",
+          "Operator": "Equals",
+          "Value": "evilincfront_lc_001"
+        }
+      ],
+      "IsEnd": true
+    }
+  ],
+  "Rewards": {
+    "OnComplete": {
+      "Experience": 0,
+      "Credits": 0,
+      "Items": [],
+      "Flags": { "prologue_intro_complete": true }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "UniqueID": "Katie",
+  "id": "Katie",
+  "Charname": "Katie",
+  "name": "Katie",
+  "category": "main",
+  "Gender": "Female",
+  "Type": "npc",
+  "Disposition": "neutral",
+  "prob_spawn": 0,
+  "Description": "A thoughtful barista with a mysterious aura, often seen reading behind the counter at the cozy cafe.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "CurrentRoom": "cozycafe_lc_001",
+  "location": "cozy_cafe",
+  "mindRead": true,
+  "KnowsPlayer": false,
+  "ActionsMenu": [
+    { "Action": "Talk", "Description": "Strike up a conversation with Katie." },
+    { "Action": "Examine", "Description": "Observe Katie and her surroundings." },
+    {
+      "Action": "Give Order",
+      "Description": "Order a drink from Katie.",
+      "ShowIf": "player.Stats.katie_quest_01 == true"
+    }
+  ],
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/placeholder.png" },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "A thoughtful barista with a mysterious aura, often seen reading behind the counter at the cozy cafe."
+        }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Talk",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/placeholder.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "You strike up a conversation with Katie." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Examine",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/placeholder.png" },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "She keeps a calm smile, eyes flicking between you and the room as if she already knows what you're thinking."
+        }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "LoreStages": {},
+  "questVariables": {
+    "katie_quest_01": false,
+    "katie_quest_02": false,
+    "katie_quest_03": false,
+    "katie_belongings": false
+  },
+  "CustomProperties": [
+    { "Property": "mindReadable", "Value": true }
+  ]
+}

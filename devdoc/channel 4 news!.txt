@@ -1,0 +1,190 @@
+channel 4 news!
+may be to arrange TV set?
+any way on first time living the lobby:
+
+channel 4  news picture renders:
+text:
+
+ALERT ALERT ALERT!
+
+INCOMING BREAKING NEWS FROM CHANNEL 4!
+You switch your com unit to the feed.
+
+
+"Good Morning Liberty City! I'm Ron Burgundy and this is the Channel 4 News! Joining me is Junior Anchor Leslie Park!"
+
+continue button clicked:
+new picture clicked:
+"....Thanks Ron....happy to be here..." Says the lightly accented brunette.
+
+"Haha! Sure you are Les, sure you are. And lets not forget our very lovely, very spicy, Rosa de Mencia!"
+
+on continue button clicked:
+picture changes to 3d anchor:
+
+text: 
+
+"Aye papi! Ron you're embarrassing me! Hola everybody!" Rosa says in a spanish accent.
+
+"Yes, yes now lets get to the news!" Ron says as the cameras switches back to him.
+
+on continue button click:
+
+picture changes to main anchor
+
+text:
+"The Channel 4 News is brought to you by the Justice Force! YEAH! Wooo! JUSTICE FORCE! Speaking of the Justice Force. Can I get a hell yeah!?"
+
+"Hell yeah!" Rosa yells from off screen.
+
+"Thank you Rosa! At least someone can make some noise for the sponsors! I'm looking at you Les."
+
+"Dont call me that ....We've talked about it...." Leslie replies in a flat no nonsense tone.
+
+Ron just looks nervous and looks into the camera and says. "Any who...."
+on continue button click:
+
+rosa de Mencia rendered:
+
+text: 
+"The JF have recently released a study on the mutation rate in humans. It stated there's a slight increase in the percentage of infants born with the meta gene. In the past the percent of infants born was stated at .00001%. However the most recent analyst is stating the new percentage at .00002%. This could mean trouble in our future."
+"That's barley any different Les..." Ron says causing Leslie to cringe and bite her tongue.
+"Ron the rate is double what they thought. That's a big difference. Imagine twice as many of these Super's running around."
+On continue button click:
+
+picture changes to main anchor:
+"You mean twice as many scantly dressed babes running around? Explain to me how's that a bad thing? Am I right fellas? Hahaha, junior anchors am I right...? Next we have Rosa with The Super Scoop! Rosa.....!"
+on continue button click
+picture changes to third anchor with yellow dress: 
+"Thanks Ron! Today on The Scoop, We have Junior JF member volunteering and sighing pictures down at Liberty University. GO WILDCATS WOO!" Rosa jumps and all her parts jiggle just right.
+
+"We have a confirmed sighting of Robo man down near the Harbor yesterday. He was however in the presence of a unknown female. Many have speculated she was a recent rescue gone good. Real Good! Question is who is this mystery woman? What is their relationship? And has she seen under the mask? Question we might just reveal later in the show. Ron."
+
+on continue button click:
+
+main anchor rendered:
+"Thank you Rosa! I'm Ron Burgundy and The Channel 4 News will be right back after a word from our sponsor!"
+
+You decide you had enough and turn off the broadcast.
+on continue button click: end of 1st broadcast,
+
+room : east side, outside apartment
+The east side of Liberty City. There are many bars and clubs on this side as well as many businesses. Not the safest place at night....
+
+
+
+news flash #2
+
+ALERT ALERT ALERT!
+
+INCOMING BREAKING NEWS FROM CHANNEL 4!
+You switch your com unit to the feed.
+Ron burgundy picture presses
+continue button pressed
+"Good Morning Liberty City! I'm Ron Burgundy and this is the Channel 4 News! Joining me is Junior Anchor Les Park!"
+"....Thanks Ron....happy to be here..." Says the lightly French accented brunette obviously frustrated at Ron.
+channel pic#2
+"Haha! Sure you are Les, sure you are. And lets not forget our very own, very caliente.... Rosa de Mencia!"
+on continue pressed
+Pic#3 channel news rendered:
+text ;
+Rosa blows a kiss to the audience at home. The yellow dress she wear clings to her curvy frame and shows quite a bit of cleavage and leg.
+"Hola Ron, Hola Leslie! Hola guys!!!" Rosa says in her own Latina accent.
+"Rosa yo soy muy caliente! Hahahah!" Ron flirts. "Now time for the NEWS!"
+on continue pressed:
+"The Channel 4 News is brought to you by the Justice Force." Leslie says in her french accent.
+
+"Hell yeah!" Rosa yells from off screen and Leslie just shoots her a look of disgust. One might read it as silently asking why are you doing that?
+
+"Breaking News we have footage of Blue Bolt laying siege to the Business District. Police and Justice Force have shut down the area until the meta has been dealt with."
+continue pressed
+"Blue Bolts sudden appearance was met with several dead and many more hospitalized in critical condition.
+
+Mayor Krump has made a statement that he will not tolerate this kind of civil disobedience and has authorized the use of lethal force. Krump is up for re election at the end of this year and stands upon a platform to register all Meta and refusing any more residency inside the city." Ron says.
+on continue pressed:
+picture change: 
+text: 
+"That's not all Ron. Tweets are coming in all over the city people are saying that Arachnid is on scene to stop Blue Bolt! I'd say that's good news for the Business District eh Ron, Eh Les? Guess we can all relax! We have pictures of him on the screen and as usual he loves the camera!"
+"That is one tight suite eh ladies? Nothing wrong with a little eye candy eh?' Says Ron from off camera.
+"He cant hide anything in that can he Les? Wait..... Do you like men? Never mind. It appears he hasn't replace his side kick yet."
+
+on continue press:
+picture changes:
+"That's not all Ron. Tweets are coming in all over the city people are saying that Arachnid is on scene to stop Blue Bolt! I'd say that's good news for the Business District eh Ron, Eh Les? Guess we can all relax! We have pictures of him on the screen and as usual he loves the camera!"
+"That is one tight suite eh ladies? Nothing wrong with a little eye candy eh?' Says Ron from off camera.
+"He cant hide anything in that can he Les? Wait..... Do you like men? Never mind. It appears he hasn't replace his side kick yet."
+"That's all we have this time! I'm Ron Burgundy and its been a pleasure! Stay classy Liberty City!"
+
+***end of event! News Break number 2***
+
+news break number 3
+
+ron picture renders
+
+text:
+ALERT ALERT ALERT!
+
+INCOMING BREAKING NEWS FROM CHANNEL 4!
+You switch your com unit to the feed.
+
+
+"Hello Liberty City! I'm Ron Burgundy and this is the Channel 4 News! Joining me is Junior Anchor Lessie Park!"
+on continue press:
+"......Hello and welcome to the news." Says the lightly French accented brunette with a slight thorn in her voice.
+
+"Haha! Sure you are Leslie, sure you are. And lets not forget our very own, very caliente.... Rosa de Mencia!"
+on pressing continue
+Rosa bounces a little waving to the camera and greeting the viewers. Her bright dress hugs her shape quiet nicely.
+"Hola Ron, Hola Leslie! Hola guys!!!" Rosa says in her own latina accent.
+"Rosa yo soy muy caliente! Hahahah!" Ron flirts. 
+"As I'm sure our viewers at home know by now the Channel 4 News Team is brought to you by the Justice Force! Those wonderful heroes that risk everything so we can be safe in our city! Hahahaha I just love those guys! Now time for the NEWS!"
+on continue press
+
+"Parker Industries has released a press statement today saying they had a successful batch of clinical trials in replicating the Hannah Formula.
+
+Viewers at home may recognize the name Hannah from the deceased entrepreneur Zachary Hannah, the former CEO of Hannah Chemicals who was tragically murdered in his home a decade ago. Zachary had supposedly created a formula to replicate super powers in a regular human but took those secrets to the grave." Leslie says.
+picture changes:
+"Well talk about an idiot eh Leslie? I mean how hard is it to write something like that down? Am I right folks?" Ron gestures to the camera.
+
+"His actions suggest he was worried of someone stealing the formula. Since the press release from Parker Industries this morning the company's stock has steadily been on the incline." Leslie said in her French accent.
+
+"Well that's enough about that now on to our most popular segment...The Super Scoop! Rosa!"
+
+on continue press
+
+"We have lots of news today, papi! First off good news to the viewers at home who got a thing for bad boys. That's right Xander Cain has been spotted out on the abandoned roads north of Deacon. Witnesses state he was traveling alone and heading towards the LC! Civilians should steer clear of him. This man is extremely unstable and very dangerous. So unless you have a death wish or are into crazy eyes make sure to stay away!"
+
+on continue press:
+
+"And on the softer side of things Black Swan and Lokia had reportedly called it quits again after last weeks scandal involving Black Swan a few members of the paparazzi. Bad news for the ladies but good news to all the single viewers at home eh Ron! Hahaha!"
+
+"Damn straight Rosa! I'm hitting them both up on social media right now!"
+
+"Ron es muy loco! Hehehehehe!"Says Rosa in Spanish giggling as the camera switches back to Ron.
+
+on continue press:
+
+"That's all we have this time! I'm Ron Burgundy and its been a pleasure! Stay classy Liberty City!"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

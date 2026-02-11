@@ -1,0 +1,16 @@
+{
+  "Name": "Tunnel North",
+  "UniqueID": "tunnel_north_lc_001",
+  "SDesc": "tunnel_north",
+  "Group": "Liberty City",
+  "Spawns": false,
+  "Description": "A dark tunnel heading north.",
+  "Exits": [],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/tunnel_north.jpg"
+}

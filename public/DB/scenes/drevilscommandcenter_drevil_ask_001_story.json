@@ -1,0 +1,163 @@
+{
+  "$comment": "PROLOGUE STORY: Dr Evil Ask menu (post job-offer)",
+  "UniqueID": "drevilscommandcenter_drevil_ask_001_story",
+  "Title": "Ask Dr. Evil",
+  "Description": "Ask Dr. Evil questions after joining Evil Inc.",
+  "Location": "drevilscommandcenter_lc_001",
+  "SceneType": "story",
+  "Priority": 100,
+  "Repeatable": true,
+  "Trigger": {
+    "EventType": "<<Triggered By Event>>"
+  },
+  "Media": "Assets/images/characters/main_npc/drE_speaks.png",
+  "Stages": [
+    {
+      "StageID": "ask_menu",
+      "Text": "Ask?",
+      "Choices": [
+        {
+          "ChoiceID": "ask_minds",
+          "Text": "You dont sound too freaked out about the whole can read minds thing....",
+          "ShowIf": {
+            "StatCheck": {
+              "prologue_ask_minds_done": false
+            }
+          },
+          "NextStage": "minds_01"
+        },
+        {
+          "ChoiceID": "ask_justice",
+          "Text": "Why go after the Justice Force?",
+          "ShowIf": {
+            "StatCheck": {
+              "prologue_ask_justice_done": false
+            }
+          },
+          "NextStage": "justice_01"
+        },
+        {
+          "ChoiceID": "ask_ready",
+          "Text": "I've got no more questions. I'm ready to go.",
+          "NextStage": "ready_01"
+        }
+      ]
+    },
+    {
+      "StageID": "minds_01",
+      "Text": "\"So you don't sound too freaked out at all Doctor Evil... I mean your the first person I've told my secret to. Is a little \\\"Gasp....\\\" or \\\"What the frick?\\\" to much to ask for?\"\n\n\"Now, now, Steven your not the first Advanced Mind I've ever encountered. If I thought you were a threat you wouldn't be standing here now. Luckily you're still untrained and can only read thoughts at the front of peoples minds.\" He says quite confidently.\n\n\"Truth is you have a truly exceptional gift but it comes with its own particular downside.... Once you enter another beings mind you'll eventually start to do so unconsciously. It will happen slowly , but in time you wont be able to separate your mind from all the others.\n\nYou wont eat, sleep, fuck, the voices just find you no matter what! Driving you into bouts of increased rage and paranoia . Until....until........well lets just say it's a sad thing to witness, trust me....\" The doctors says sadly.\n\n\"How do you know so much Dr. E? \"",
+      "Media": "Assets/images/characters/main_npc/drE_speaks.png",
+      "NextStage": "minds_02",
+      "Choices": []
+    },
+    {
+      "StageID": "minds_02",
+      "Text": "\"In my youth I knew someone with the same gift as you... She was very close to me.... erhm.... Anyway near the end of her life we discovered a extremely rare metal called Vibranium. It helped her focus her powers just by being around it. We didn't know it then, due to its recent discovery but... Vibranium once refined and correctly allocated. Can increases a Super's Ability by quite a bit.\n\nBack then we both thought just being around the rare mineral would be enough. Unfortunately it wasn't. When she had ....passed....... I vowed I'd never let it happen again. After many years we were able to to forge a ring out of the exotic ore.\"\n\nMini Me walks up to you and hands you a box. You were so engrossed in the good doctors story you have even notice the little guy walk up to you.\n\n\"Steven hopefully you find this to be helpful in our conquest. Upon finishing the ring \\\"too late.\\\" We have vastly improved upon its original design. It will grow as your powers do, so use it wisely.\"",
+      "Media": "Assets/images/characters/main_npc/drE_speaks_03.png",
+      "NextStage": "minds_03",
+      "Choices": []
+    },
+    {
+      "StageID": "minds_03",
+      "Text": [
+        "--------------------------------",
+        "Mini Me thrusts the box into your hands while Dr. Evil grins, \"With this equipped you'll be able to channel your new powers.\"",
+        "\"Use it wisely,\" he says. \"You'll feel the difference before you even leave this room.\"",
+        "<b>Level Up!</b> The ring unlocks your Telepathy ability. Pick Power, Focus, or Stealth via your portrait menu now."
+      ],
+      "Media": "Assets/images/characters/main_npc/drEvilAndMiniMe.png",
+      "Effects": [
+        {
+          "Type": "CT_ADDTOARRAY",
+          "VarName": "room.objects",
+          "Value": {
+            "UniqueID": "vibranium_ring_001",
+            "Name": "Vibranium Ring"
+          }
+        },
+        {
+          "Type": "CT_SETVARIABLE",
+          "VarName": "player.Stats.prologue_ask_minds_done",
+          "Operator": "Equals",
+          "Value": true
+        }
+      ],
+      "IsEnd": true,
+      "NextStage": "ask_menu",
+      "Choices": []
+    },
+    {
+      "StageID": "justice_01",
+      "Text": ["-So, doc, I have to know why do you go after the Justice Force?",
+      "\n-I've got history with a few of their leaders. They like for you to think that they're so above you, like gods",
+      "\n- Like they don't have to take responsibility for their actions!",
+      "\n- I intend to prove them wrong. I'll reveal them to the world for what they really are!",
+      "\n- I almost got one of them, did you know that? Starry Night, a curvy little brunette",
+      "\n- I'm sure you've heard of her. She was one of the originals to form the Justice Force",
+      " She's been in the game for a while but, I like them with a little experience, if you know what I mean",
+      "\n\n\"Muawhahahaha!",
+      "\n\n-I will one day be reunited with that sweet lass. In a way she helped me become the man I am today",
+      "- I would love to thank her for that!!!\""],
+      "Media": "Assets/images/JF/Starry_Night.jpg",
+      "Effects": [
+        {
+          "Type": "CT_SETVARIABLE",
+          "VarName": "player.Stats.prologue_ask_justice_done",
+          "Operator": "Equals",
+          "Value": true
+        }
+      ],
+      "NextStage": "justice_02",
+      "Choices": []
+    },
+    {
+      "StageID": "justice_02",
+      "Text": [
+        "--------------------------------",
+        "\n-The Justice Force pays their own bills through Hannah Industries,\" he snarls.",
+        "\n-We cut them off at the source by hitting Miss Liberty, Meta-Hume, Starry Night, and Odin. While Vadar storms the front door, you and my mole sneak into AEON during the monthly update.\"",
+        "\"Once we grab the device and the scientist Fiona, the Justice Force will never know what hit them.\"",
+        "<b>Primary Targets:</b> Miss Liberty, Starry Night, The Mighty Odin, and Meta-Hume.",
+        "\"Let me brief you on each of them.\""
+      ],
+      "Media": "Assets/images/characters/main_npc/drE_holds_katana.png",
+      "NextStage": "justice_03",
+      "Choices": []
+    },  
+    {
+      "StageID": "justice_03",
+      "Text": [
+        "\"That is your cast list,\" Dr. Evil says. \"You recruit the allies; I handle the brains.\"",
+        "\"When the time comes, we strike fast and clean.\""
+      ],
+      "Choices": [],
+      "IsEnd": true,
+      "NextStage": "ask_menu"
+    },
+    {
+      "StageID": "ready_01",
+      "Media": "Assets/images/rooms/players_living_room.jpg",
+      "Text":["Two weeks later***",
+      "\n\nDoctor Evil has you put up in a luxury apartment in downtown Liberty City.",
+      " It just so happens to be down the hall from your sister's.",
+      "\n\nWell today is the day we finally put all the pieces of the mission together. We're suppose to meet in the SECURITY CENTER back at E.I. this morning. The Doctor is introducing me to his security chief today as well and I get to finally work in my new lab!\n\n&lt;So, big day try not to fuck it up.....&gt;\n\n\"Man since I been wearing this ring I've been getting so much rest..... I gonna have to look into this vibranium.....\" You mumble to yourself."],
+      "Effects": [
+        {
+          "Type": "CT_SETVARIABLE",
+          "VarName": "player.Stats.prologue_time_skip_seen",
+          "Operator": "Equals",
+          "Value": true
+        },
+        {
+          "Type": "CT_SETVARIABLE",
+          "VarName": "player.CurrentRoom",
+          "Operator": "Equals",
+          "Value": "apartment_player_001"
+        }
+      ],
+    
+      "IsEnd": true,
+      "Choices": []
+    }
+  ]
+}

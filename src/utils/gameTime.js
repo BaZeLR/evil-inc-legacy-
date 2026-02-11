@@ -59,6 +59,25 @@ export function advanceGameClockByMoves(player, moveCount = 1) {
   return { day, minutes, daysGained };
 }
 
+export function advanceGameClockByMinutes(player, minutesToAdd = 0) {
+  if (!player) return { day: DEFAULT_START_DAY, minutes: DEFAULT_START_MINUTES, daysGained: 0 };
+  if (!player.Stats || typeof player.Stats !== 'object') player.Stats = {};
+
+  const stats = player.Stats;
+  const clock = getGameClockFromStats(stats);
+
+  const deltaMinutes = toSafeInt(minutesToAdd, 0);
+  const total = clock.minutes + deltaMinutes;
+  const daysGained = Math.floor(total / MINUTES_PER_DAY);
+  const minutes = total % MINUTES_PER_DAY;
+  const day = clampDay(clock.day + daysGained);
+
+  stats.GameTimeMinutes = minutes < 0 ? minutes + MINUTES_PER_DAY : minutes;
+  stats.DaysInGame = day;
+
+  return { day, minutes: stats.GameTimeMinutes, daysGained };
+}
+
 export function formatGameClock(minutesValue) {
   const minutes = normalizeMinutes(minutesValue);
   const hour = Math.floor(minutes / 60);

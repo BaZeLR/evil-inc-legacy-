@@ -1,0 +1,18 @@
+{
+  "Name": "Lecture Hall",
+  "UniqueID": "lecturehall_lc_001",
+  "SDesc": "lecture_hall",
+  "Group": "Liberty University Campus",
+  "Spawns": false,
+  "Description": "A lecture hall with rows of seats and a large projector screen.",
+  "Exits": [
+    { "Direction": "West", "DestinationRoom": "Liberty University" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/lc_campus.jpg"
+}

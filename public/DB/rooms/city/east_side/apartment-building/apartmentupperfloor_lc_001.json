@@ -1,0 +1,29 @@
+{
+  "Name": "Apartment Upper Floor",
+  "UniqueID": "apartmentupperfloor_lc_001",
+  "SDesc": "apartment_upper_floor",
+  "Group": "Apartment Building",
+  "Spawns": true,
+  "SpawnResidentsFromNPCs": true,
+  "ResidentSpawnChance": 70,
+  "Description": "",
+  "Exits": [
+    { "Direction": "Down", "DestinationRoom": "apartmentlobby_lc_001" },
+    { "Direction": "West", "DestinationRoom": "apartment_player_001" }
+  ],
+  "NPCs": [
+    { "UniqueID": "hot_neighbor_001", "Weight": 15 },
+    { "UniqueID": "cute_neighbor_001", "Weight": 15 },
+    { "UniqueID": "high_neighbor_001", "Weight": 10 },
+    { "UniqueID": "fud_ex_driver_001", "Weight": 10 },
+    { "UniqueID": "scary_drug_dealer_001", "Weight": 15 },
+    { "UniqueID": "married_neighbor_001", "Weight": 15 },
+    { "UniqueID": "landlord_001", "Weight": 20 }
+  ],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/apartment_hallway.png"
+}

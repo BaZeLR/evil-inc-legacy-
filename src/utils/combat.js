@@ -173,6 +173,28 @@ function awardRewards(game, enemy) {
   return { exp, credits: creditsReward, loot: lootItems, levelProgression };
 }
 
+function awardCombatNotoriety(game, enemy, rng) {
+  const stats = game?.player?.Stats ?? null;
+  if (!stats) return 0;
+
+  const maxNotoriety = Math.max(1, clampInt(stats?.MaxNotoriety ?? 100, 100));
+  const notoriety = Math.max(0, Math.min(maxNotoriety, clampInt(stats?.Notoriety ?? 0, 0)));
+
+  // Default: modest notoriety gain per win (can be overridden per enemy).
+  const enemyReward = clampInt(enemy?.NotorietyReward ?? enemy?.notorietyReward ?? 0, 0);
+  const delta = enemyReward > 0 ? enemyReward : randomIntInclusive(3, 10, rng);
+
+  const next = Math.max(0, Math.min(maxNotoriety, notoriety + delta));
+  stats.Notoriety = next;
+
+  if (!game.variables || typeof game.variables !== 'object') game.variables = {};
+  game.variables.last_combat_notoriety_delta = next - notoriety;
+  game.variables.last_combat_notoriety_room_id = String(game?.player?.CurrentRoom ?? '').trim() || '';
+  game.variables.last_combat_notoriety_enemy_id = String(enemy?.id ?? enemy?.UniqueID ?? '').trim() || '';
+
+  return next - notoriety;
+}
+
 function resolvePlayerCoreStats(game) {
   const ms = clampInt(game?.player?.Stats?.MS ?? game?.player?.Stats?.Str ?? 1, 1);
   const defence = clampInt(game?.player?.Stats?.Defence ?? 1, 1);
@@ -282,12 +304,17 @@ export function performCombatTurn({ game, room, combat, enemy, action, rng, play
     nextLog.push(createLogEntry(ragsToHtml(victoryRaw, createContextVars(game, room, 0, { _enemyDMG: 0 })), 'enemy'));
 
     const rewards = awardRewards(game, enemy);
+    const notorietyDelta = awardCombatNotoriety(game, enemy, rng);
     if (rewards.exp || rewards.credits || rewards.loot?.length) {
       const parts = [];
       if (rewards.exp) parts.push(`+${rewards.exp} XP`);
       if (rewards.credits) parts.push(`+${rewards.credits} Credits`);
       if (rewards.loot?.length) parts.push(`Loot: ${rewards.loot.join(', ')}`);
       nextLog.push(createLogEntry(`Rewards: <b>${parts.join(' | ')}</b>`, 'system'));
+    }
+
+    if (notorietyDelta > 0) {
+      nextLog.push(createLogEntry(`Notoriety: <b>+${notorietyDelta}</b>`, 'system'));
     }
 
     return {

@@ -1,0 +1,36 @@
+{
+  "$comment": "PROLOGUE SEQUENCE: 34th floor lab intro",
+  "UniqueID": "evilinc_lab_intro_001_sequence",
+  "Title": "Lab Intro",
+  "SceneType": "sequence",
+  "Location": "evilinc34thfloor_lc_001",
+  "Repeatable": false,
+  "ChunkByParagraphs": true,
+  "ParagraphsPerPage": 2,
+  "Trigger": {
+    "EventType": "Triggered by event (manual)",
+    "AttachedTo": "room",
+    "EntityID": "evilinc34thfloor_lc_001"
+  },
+  "Stages": [
+    {
+      "StageID": "stage_01",
+      "Text": "DING!\n\nThe door's open up and I see the floor I'm to be working on. And like nothing ever happened he leads you to your lab. He looks up at you. \"Thanks, I guess...... Go back to whatever you have to do and forget this ever happened. \"\n\nHe walks away but not before waving goodbye and flashing an unsatisfied smile. \"Well at least you got him to stop. Most people just ignore it so they dont wind up fish food but whatev's. Well it looks like we're neighbors from now on. Come by and see me some time I'll show you what I mean about my boss. Bye\" She waves and heads to her office.\n\n--------------------------------\nA very nice and bright lobby. There are several labs on this floor.\n\nNorth\n<So this is my lab. I LOVE IT!!!!>\n\nIt has everything I need to extract my revenge on Fiona! It looks like the good doctor outfitted me with a few nice gadgets. \"Ohhh! A containment field, that will be good if I ever have a prisoner to hold. A giant laser well I don't know about that... I should be able to program it to keep Mini Me away at the very least ..... And my PC will have a collection of information on the Justice Force. Plus will be updated as more intel is discovered.\"\n\nDebug demon:<You can also check your Email and view E.I.'s Security Feed via your PC.>\nI couldn't have wished for a better lab!",
+      "Effects": [
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.prologue_lab_intro_done",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.winifred_lab_stage",
+          "CommandPart3": "Equals",
+          "CommandPart4": 2
+        }
+      ],
+      "IsEnd": true
+    }
+  ]
+}

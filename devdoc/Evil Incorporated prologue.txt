@@ -1,0 +1,998 @@
+Evil Incorporated:
+After intro played:
+Room: Evil incorporation front
+game start in front of evil inc building: link to picture
+event: Prologue
+welcome to the game message displayed: in yellow text with rpg font
+Debug Demon Icon:
+Welcome to the game! I'm the tutorial for first time  players.
+If you have used Rags before please ignore this it wont be for long. The lower left corner of the game is your compass. Around the compass are little green dots indicating a direction you can travel. For right now all you can do is go inside Evil Inc's HQ. More will open up after the prolog.
+E.I HQ description Hmmm...Something about this building is off
+in objects is Com Unit and duffel bug with equipment (open, close action text buttons),when open  wallet will show up (open/close buttons)
+on open: content of bag renders in utility, text screen render text:You pick your Equipment. Make sure you equip everything inside before moving on!
+status system message bag open, wallet open
+players box actions choices hovered tooltip: examine, wait.
+action examine: will open player's drawer , action wait will open menu choices: one hour, two, hours, next day(function add chosen amount to game time)
+go in -->in navigation box and navigation panel(those 3 should be simultaneously syncronized)
+On In:
+room changes to Evil reception,
+elevators locked 
+picture change to evil lobby: picture path,
+text: Upon going through the front door you notice a large but empty reception. Except for the secretary and what seems to be some sort of security officer standing next to the door.
+CLICK!
+"Huh...? What was that? Did the door just lock?" You mumble to your self as the door shuts behind you.Taking a careful look around you notice several security devices placed around the lobby and entrance.
+
+player thinking!<I better be careful and do what they say. I'd hate to see what they do to security risk around here....>
+
+Debug Demon: When you enter a room and there are people in the visible characters box, right click on them to talk or look at them
+
+Penny the Secretary in Characters box: (talk, examine:default action options to any character)Examine renders Penny's picture, talk renders Penny's picture
+on talk: picture changes, 
+text displayed: with continue button below the text pulsing(to press)
+
+Talk
+"Wow she's a beauty ain't she?...." The shapely red head stands in front of you wearing modest work attire. She seems to be having problems sending a fax. Tapping her foot and folding her arms, obviously flustered she turns and sees you. "Sorry sir no one gets in without a appointment. Please lea...."
+
+"Errrbut... I do....I called about the ad in the paper. I have a interview today my name is Steven Wolf." You stammer out nervously. You were never very good with the opposite sex in fact you've only gotten laid once and it was about a year ago. A buddy from AEON actually recommend you get a working girl to help you build some confidence. Turns out it didn't so much help you with confidence, as it did help you get robbed....
+
+penny: picture changed to previous(full view picture) in media screen:
+"So your the Doctor's 1:00. Hmmmmm I see......" > 
+
+Very slowly she looks you up and down. Almost as if she's looking right through you.... Sheesh... You feel a shiver run through your body.
+
+player thinking <What the fuck is she doing? Are her eyes glowing?>  
+continue button on click:
+closer view of Penny picture,with geen glowing eyes: 
+continue button on click(we should press continue button here): 
+first Penny picture(full body view) rendered:
+text rendered: 
+ -------------------------------
+
+"I'll buzz you up. Good luck. You're like the 10th guy they've interviewed and the last one never came back down.... So I hope you're prepared for the test...."
+"What TEST??? The person on the phone told me this was just a simple meet and greet....And what the hell did you just do to me? Oh god what have I gotten myself into maybe I should just go...."
+Bzzzzzzzzzzzzzzz
+
+"It was just a scan to make sure you are, who you say you are and I wouldn't stand up the doctor, if I were you, sir.
+Take the elevator to the 50th floor and be quick about it. Don't even think about going anywhere else in the building, we're watching you! She points to one of the more obvious cameras watching over the both of you."
+
+"Gulp.... "
+Meet Penny event over
+debug demon: The east path just now opened up. Click the green dot located on the compass to go that way but be careful you may not always be able to go back
+navigation box and navigation panel shows new navigation command east: destination elevator(evil elevator room)room name hovers tooltip:
+elevator clicked
+(evil elevator room)>room name hovers tooltip:
+with green frame animation: select floor action command in tooltip menu
+Elevator room(group evil inc building)
+picture of elevator and description:
+description text: Hmmmm.......... it kinda smells like piss in here....
+Select floor navigation commands menu drawer panel:
+Which Floor?
+50th: Top Floor
+34th: Research Labs
+1st: Reception
+B1: Security Level
+Evil inc 50th exits: w: destination 50th floor
+on click: room 50th floor, picture rendered
+West
+DING!
+
+The doors slides open and you feel terribly sick. Just what have you gotten yourself into here? Without looking you walk out of the elevator almost right into a pretty red head. She was wearing a lab coat and carrying two beakers full of some strange glowing liquids.
+scene_01 
+"Gwahhahhaa!!!" Yelling and dodging the young woman, she looks as if she's about to crack a smile but instead scowls at you. "BE CAREFULL! DO YOU EVEN KNOW WHAT WOULD HAVE HAPPENED IF...? " She takes a short breath..."...It doesn't matter." She sighs. "I'm sorry I...." You try to explain but it's too late the doors shut and the lass is gone. "God I just make friends wherever I go don't I...?"
+on continue press(at the right corner of text window)
+navigation box and nav drawer should show: n: dr evil's Command center, east elevator
+picture 50th floor Evil inc
+description in text window:
+A dark gold and chrome hallway that kind of gives you the willies.
+
+Dr Evil Command Center:
+picture Evil and mini evil serious rendered,
+text: North
+"Awwww! Yes, Yes, Yes! You're the one who the employment agency told me about! See Mini Me I told you he would show up! Can you believe it's him? It's really him!" The Doctor stands to greets you, his clone follows suite.
+"Welcome to my building I am Dr.Evil and this little beautiful man is Mini Me. We are going to see if you got what it takes to join our little organization! Muahahahahahahahah! Well tell me a bit about yourself. My henchman still need a little more time to get the test ready for you...." The doctor asks.
+You:Feeling a little dumbfounded you nervously begin. "Ummm..... ummm ...well..... ummmm..well.......um... My name is Steven Wolf. I was know as a child prodigy of sort in my home town of Blue Leaf.I graduated high school when I was 12. I finished college when I was 17 with a masters in electrical engineering and bachelors in computer science."
+"Well ,well not too shabby. I see you ended up at AEON. Thats quite impressive Steven. With your skills I bet you did well there. Why did you leave? Did something happen...?" Dr. Evil asks giving you a knowing look.
+system awaits ">"
+onclick continue button:
+--------------------------------
+picture render AEON(this is todo room)
+you:"It's not so simple, ehhhh..." Rubbing the back of your head you tell yourself not to be so nervous. "Until recently I was working at AEON a tech firm. Specializing in furthering humans needs as well as creating weapons and defenses....."
+-"I was there for several years until I became the head of their R&D Department. We had access to the real cutting edge technology. It was nirvana. But we were given this project and within a few months there was this incident.... "
+
+-"My team and I were give the task with engineering a non lethal riot suppressing technology. Their goal was to take out as many people as possible with out hurting them. Human and super alike."
+
+-"We were making a huge amount of progress. One day while we were testing the device there was an explosion in the lab next to us. All of a sudden our laboratory goes into lock down mode and the safety lights came on. We were trying to reach HQ that's when one of my tech's heard the device power on......
+
+-She rushed towards it to power it down, but..........it  didn't work...erhm." You choke up a little recounting the last time you were with your team.
+
+You were never a popular guy. But with them you had always felt accepted and at home. Losing them had hurt you a lot. You've spent many nights wondering what you could have done differently.
+awaits button click to proceed
+on continue button on click;
+
+The doctor gives you a few seconds before saying  "please continue..."
+
+-"Well my whole team was turned into these, these..... Husk these, mindless drones with glazed over white eyes. Everyone except me that is...... I was in a coma for a few weeks...."
+
+"Well well you were right, Mini Me! He's not a killer!  Well, not yet anyway!- Muawhahahahahah!" Doctor Evil slaps the miniature man on the shoulder. Mini Me smiles widely and shakes his head up and down agreeing with the doctor. He looks at you and gives you the thumbs down.
+
+continue button on click:
+players picture renders on media screen: sad player(we have the whole bunch of different player's pictures)
+text: "I don't know why I wasn't affected like the rest.. All I know is as soon as I woke up I was visited by AEON's lawyers.
+
+"They explained how I was fired and how they burned all existence of me from there files. Not to mentioned locked up all of my research and prototypes. Worse of all they have been actively blocking all of my employment opportunities. Maybe I shouldn't have said that last part.""
+
+"I don't know if you noticed Mr. Wolf but we are more than prepared to fight a lawsuit. Were not exactly your typical tech company I....Steven are you ok?"
+
+You fell to your knees as a migraine hits you out of no where. A sharp pain in your temple makes you grab the side of your head in agony. The pain subsides but you can still feel the pulse of a headache. "Yes.....its just since that since the accident I've been getting these migraines a lot lately. The doctors say it's nothing....but....."
+
+"Its not nothing Mr Wolf. Would you be so kind as to tell me what's going on?"
+
+"......well.....I swear I've been hearing people's thoughts these last few weeks..."
+
+"A machine that gave you the advanced mind ability, eh? That's some side effect from almost turning into a mindless drone. Very interesting and very useful if mastered. If you can live long enough to master it. So what went wrong with your device? It must drive a tech genius like you crazy not knowing.
+system awaits 
+continue button on click:
+-"Well I don't have solid proof but it had to be my assistant Fiona![Picture changes on fiona's]
+-" Our department split into two groups. One group working on the science and the other creating a device that allows them to use it in the field. You put Fiona in charge of the science part. My team built the device. "
+
+"Fiona was a young prodigy like myself. She had come to AEON right after I did. We quickly rose through the ranks together often competing for similar projects and positions. When my old job opened up we both put in for it but I got the head researcher position. Fiona was assigned as my lab assistant. She was very bright and had no problem staying "late" but it was just an act, to gain access to the device."
+
+"Using what money and contacts I had left, I managed to track her down. It seems just two days after the incident she relocated back to Liberty City. She's landed a job at THE HALL OF JUSTICE!"
+
+"Muawhahahahaha! Oh my the plot thickens. Oh I love it! Muhawhahahahahahahaha!Muhawhahahahahahahaha!Muhawhahahahahahahaha!"
+
+"Yes.... The Hall of Justice home of the Justice Force! Fiona is head researcher in their civilian defense department. It all seems to coincidental. I'm starting to think she was a spy for the Justice force the whole time. I need to talk to her to figure what exactly she did!"
+
+"Why do you need to speak with her? Why not just take her out? You're so sure she's done it?"
+
+"If I figure out what she did, I might be able to reverse the affect of the device on my team. Hell maybe even myself."
+
+picture render Fiona(we should have one):
+
+continue button on click:
+picture renders:dr Evil and mini evil(first one)
+text:"A noble goal Steven. Thank you for being so forthcoming with your story. Truth is we have a common enemy you and I. I believe you are correct that Fiona sabotaged your device but if she did it for the fucking Justice Force. Who's really to blame? As I mentioned before we are not your typical tech startup. Truth is E. I. is just a front for my little organization. A public persona as you will. In truth we dabble in more than just technology here. Our goal? World Domination...."
+Dr.Evil stares at you with a serious face you almost crack a smile.
+<He cant be serious? Can he?>
+You feel sick to your stomach all of a sudden. "Are you ready to take the test Steven?" Dr. Evil asks.
+<Fuck it....>
+You shake your head up and down.
+continue button on click:
+"Muwhahahahaah! Fine then! MINI ME READY THE TEST!"
+"The little man hops up in his chair and takes a large breath. READY THE TEST!!!!!!!!!!!!!!!!!!!!!!!!!!!!" With haste the henchmen carry out a .....school desk and chair? WTF?<This is what took so long to prepare.....?>
+desk object (appears in objects box)
+They place the desk in the center of the room facing Dr. Evil. Mini Me jumps down from his chair. Runs to the desk and slaps a piece of paper and a #2 pencil on to it before running back to the Doctor's side.
+picture: evil and mini laughing 
+System awaits 
+continue button on click: (test ready=true) 
+-"What is this...?" You ask almost jokingly. There no way thats all there is.
+
+-"Please take a seat." The Doctor stands and motions towards the desk.
+
+-"But..." you say raising a eyebrow.
+
+-"Zip it..."
+
+-"Bu...."
+
+"I said zp it zippidy do zippidy dee just fricking zip it! STEVEN! Now, sit down!
+ Shut up and get ready!Todays the first day of the rest of your life!"
+<What have I gotten myself into?>
+New Scene: the Quiz (E.I_CC_Player_Job_Test)
+room: dr Evil command center
+object box: old school desk(appears), object alwas have examine command in hovering menu 
+description on examine:
+
+"old desk from a elementary school. It has curse words carved all over it...
+"take test" command option added to action tooltip command menu if test ready==true 
+characters: examine > dr evil portrait renders: 
+description: 
+Doctor Evil, a short and stout man with bright blue eyes, and the evil genius behind E.I.
+
+mini evil examine:>portrait of mini
+description: 
+Mini Me is a clone of Doctor Evil. Although he is just 1/4 the size he is just as smart and evil as the doctor himself. Probably even more bloodthirsty!
+
+on "take test" clicked(can be clicked in actions drawer as a well): 
+
+"take Test" text description:
+You take a seat. Is there something weird about the floor?
+
+-"Now! Are you ready, Steven? Well, too bad it doesn't matter anyway! Muawhahahaha!
+
+-"Answer all your questions aloud."
+
+Then what's with the desk and paper......?
+on continue click: 
+Question # 1
+Johnny ‘s mother had three children. The first child was named April The second child was named May. What was the third child ‘s name?
+(answer) Johnny
+System await 
+on continue click:
+we call input field popup : What was the third child name? and submit button
+
+-player must fill and submit
+--------------------------------
+
+continue button on click 
+
+input field with submit button:
+
+
+text rendering after submit in action drawer: Next question...
+Question # 2
+What word in the English Language is always spelled incorrectly?
+
+(answer: incorrectly);- do not render it
+ text renders:
+-"Are you sure you're a prodigy...?"
+-" Well, anyway, on to the next question..."
+
+<I don't see what these questions have to do with anything...>
+
+continue button on click:
+same input field and with submit button and  text:----
+Question # 3
+
+There is a clerk at the butcher shop, he is five feet ten inches tall, and he wears size 13 sneakers. What does he weigh?
+(answer meat) --do not render it!
+
+on submit click 
+text: Well, well take a minute to think about your answers, Steven....
+System awaits:
+continue button on click:
+--------------------------------
+Dr.Evil checking your answers: 
+Question # 1
+Johnny ‘s mother had three children. The first child was named April The second child was named May. What was the third child ‘s name?
+
+Well duhhh.... Johnny of corse.....
+
+Question # 2
+What word in the English Language is always spelled incorrectly?
+
+Well it's the word Incorrectly! Did you guess that? awahahaha!
+
+Question #3
+There is a clerk at the butcher shop, he is five feet ten inches tall, and he wears size 13 sneakers. What does he weigh?
+MEAT!!!! Muawhahaha I love that one!
+
+Well how did you do?
+
+
+"Good job! you got them all right! Give him what he deserves, Mini Me!" Mini Me stands and give you the finger.
+note: test is over...  
+NOTE, agent!if: test_over =true now in dr.evil's  tooltip menu and in action drawer option talk is available for Dr Evil,not Mini Me
+
+on  talk choice:
+text renders:
+Talk
+"Very well done Steven! Your mind is very sharp and ready to tackle the world in front of you. Please stand up and walk towards us." He claps his hands and two henchmen are brought out.
+
+Standing up and approaching where the duo were sitting you say
+
+"Well I have to admit I was thinking there was gonna be more. Your receptionist said you went through 10 people so far. Whats with these two..." You ask looking back at the two obviously scared chaps.
+
+"Yes well to be perfectly honest all my interviews are actually a way to feed my pet sharks Patty and Selma. You see at the end of each interview I have either a qualified new employee or shark food. Do you know how much feed cost for them two? Me neither I've always done this! Muawhahahaah! Quite genius yes?"
+
+"I'm afraid to admit we don't take as many applicants as we use to. Thanks to that Ecomonic Situation we've had to cut way back on our hiring and had to let folks go. My poor sharks were just bloated to the gills!"
+continue button on click
+picture changes mini and doctor laughs
+text renders:
+
+-------------------------------
+
+"Really..... I'm all for catching a good game every now and again but rooting for the Cubs. NOT IN MY BUILDING THEY WONT!!!" The Doctor yells at the two.
+
+He pushes a button on his desk and the floor opens up and both guys and the desk fall into the water bellow. Dr.Evil pushes another button and the floor is replace with what looks like some kind of glass. The men struggle to stay at the top near the glass but then the sharks came.... Their screams were muffled as they were both brought underwater. The water become red ....quickly.....
+
+"Steven I would like to offer you a job. I willing to supply you with a fully equipped lab and maybe even a assistant or two down the road. I want your main focus to be helping me take down the Justice Force! "
+
+You gulp. "I know this is no simple task, Steven, but between your combined genius and resources we will show the world that we dont need heroes to survive! Do you accept?"
+
+You nod again.
+
+-"Excellent! Never forget Steven! 
+-We are an EVIL ORGANIZATION AND I'M IN CHARGE! That means if you fuck me or my organization that means your DEAD! And not just you Steven, we will go after your entire family. Your neighbors hell even people you don't know.... Then we'll take care of you last....be warned!" He says all too seriously "Now that thats over join us in a evil laugh!!!!!!!! To the end of the Hall of Justice and THAT FRIKNING JUSTICE FORCE!!!!!!!!"
+
+Muwahahaha!
+Muwahahaha!
+Muwahahahah!
+Note to Agent: desk gone! 
+
+Joining Evil Inc. - Complete [ EXP + 70 ]
+system updating objectives,
+continue button on click 
+text renders: 
+"Mini Me! get human resources to set up Mr. Wolf's file. Tell them a lab on the 34th floor, 
+-and...
+- Steven do you have a place to stay?", dr Evil asks.
+
+-"No I am currently living out of a suite case at my sisters apartment."
+
+-"We'll we can give you a company apartment. We offer them to all higher ranking E.I. employees. They have a bit more security than your standard home."
+ Evil stand and meets you in the center of the room and Mini Me runs off to prepare your living quarters.
+
+"I would like to have a private word with you before you leave. And if you have any questions, please, ask."
+Note: command option ask added to both, dr Evil action's menu and character's  tooltip menus: (we can ask him)
+on clicking  ask:
+ask choice menu rendered in action drawer:
+Ask?
+-You dont sound too freaked out about the whole can read minds thing....
+-Why go after the Justice Force?
+-I've got no more questions. I'm ready to go.
+if 1st  choice clicked:
+
+text window renders: 
+"So you don't sound too freaked out at all Doctor Evil..... I mean your the first person I've told my secret to. Is a little "Gasp...." or "What the frick?" to much to ask for?"
+
+"Now, now, Steven your not the first Advanced Mind I've ever encountered. If I thought you were a threat you wouldn't be standing here now.
+ Luckily, you're still untrained and can only read thoughts at the front of peoples minds."
+ He says quite confidently.
+
+"The truth is you have a truly exceptional gift, but it comes with its own particular downside.... Once you enter another beings mind you'll eventually start to do so unconsciously. It will happen slowly , but in time you wont be able to separate your mind from all the others.
+
+You won't eat, sleep, fuck, the voices just find you no matter what! Driving you into bouts of increased rage and paranoia . Until...until...well, lets just say it's a sad thing to witness, trust me..."
+The doctors says sadly.
+-"How do you know so much, Dr. E? "
+
+on continue clicked;text:
+"In my youth I knew someone with the same gift as you... She was very close to me... erhm... Anyway, near the end of her life, we discovered an extremely rare metal called Vibranium.
+ It helped her focus her powers just by being around it. We didn't know it then, due to its recent discovery, however!...
+ -" Vibranium once refined and correctly allocated. Can increases a Super's Ability by quite a bit.
+
+Back then, we both thought just being around the rare mineral would be enough. Unfortunately, it wasn't. When she had ...passed... I vowed I'd never let it happen again. After many years we were able to  forge a ring out of the exotic ore."
+
+Mini Me walks up to you and hands you a box.
+You were so engrossed in the good doctors story, you have not even notice the little guy walk up to you.
+-"Steven, hopefully you find this to be helpful in our conquest. Upon finishing the ring "too late." We have vastly improved upon its original design. It will grow as your powers do, so use it wisely."
+
+System awaits for:
+--------------------------------
+on continue clicked:
+
+vibranium ring added to the objects box
+and options added to object's(vibranium ring) tooltip menu:
+1.examine: ring picture renders,
+text renders:
+a ring made of of pure Vibranium. You feel much more focused while wearing it. POWER+2
+2.take: ring added to inventory UI box box,
+with equip,examine,drop options in object tooltip menu
+on equip chosen ring equipped,
+ with text in text window: 
+ <With this equipped you are able to channel your new powers. You can also use your Abilities!!!!!>
+leveling procedure
+You just leveled up! Right click your portrait to chose a attribute to add to.
+
+
+Power is your STR, it affects your attack damage and your ability to give orders.
+
+Focus is your DEF, it affects how much damage you take from enemy attacks and your ability to control your abilities.
+
+Stealth is your AGL, it affects the chance of being hit and fleeing a battle as well as approaching someone unnoticed.
+
+and to menu choices wants to play animations during leveling up? yes,no.
+choosing yes: animation will be played
+choosing no: disable animations only text window
+now, when clicking  on players box we will see:
+next option opened in player's tooltip command menu: 
+Abilities
+--Telepathy
+Examine
+Wait (note to agent: need time skipping function)
+now, after leveling up,new menu renders in action drawer:
+player  can keep asking with only two asking choices left in action drawer;
+Ask?
+1.Why go after the Justice Force?
+2.I've got no more questions. I'm ready to go.
+on click of first choice :
+Briefing Scene:
+Pictures of brief preview renders  ___________
+with text :
+"So doc, I have to know why do you go after the Justice Force?"
+
+-"I've got history with a few of their leaders. They like for you to think that they're so above you, like gods. Like they don't have to take responsibilities for their actions!!!
+-" I intend to prove them wrong! I'll reveal them to the world for what they really are! I almost got one of them, did you know that? Starry Night, a curvy little brunette.
+-"I'm sure you've heard of her. She was one of the originals to form the Justice Force.
+-" She's been in the game for a while but I like em with a some experience if ya know what I mean! Muawhahaha! "
+"I will one day reunited with that sweet lass. In a way she help me become the man I am today! I would love to thank her for that!"
+
+ask again(by choising the last rendered option of ask dialog)
+
+Ask?
+I've got no more questions. I'm ready to go.
+on  option this last clicked :
+text rendered in text window(or popup window!better )
+Two weeks later***(big letters)
+
+Doctor Evil has you put up in a luxury apartment in downtown Liberty City. It just so happens to be down the hall from your sister's.
+next scene :
+rendering rendering player's apartment 
+players's current location: his apartment:
+on continue click
+happy player picture rendered,
+text window rendered:
+Well today is the day we finally put all the pieces of the mission together. We're suppose to meet in the SECURITY CENTER back at E.I. this morning. 
+The Doctor is introducing me to his security chief today as well and I get to finally work in my new lab!
+<So, big day try not to fuck it up.....>
+
+"Man since I been wearing this ring I've been getting so much rest..... I gonna have to look into this vibranium....." You mumble to yourself.
+description: I still cant believe I went from living out of a suite case to this!!!
+navigation menu:
+north: bedroom ---> clicking on it yield 
+debug demon: 
+<This is your bedroom! Right click on the bed to Sleep. Sleeping restores your health, and energy. As well as erasing your notoriety! It also advances to the next day!> bed disabled, navigation south: Personal apartment
+
+east: apartment Hallway
+
+in apartment lobby:
+on visiting first time:
+picture apartment lobby,
+text: Hurrying down the stairs you realize you're going to be late for your first day. You heard stories about what the good doctor does to his tardy employee's and you were not going to find out! <Shit, shit, shit, I gotta hurry I gotta...Whaaaaa?>
+New scene_winifred: (her pictures and json todo),
+SLAM! CRASH!
+You were in such a rush you hadn't noticed the woman in red, standing with her back to you at the bottom of the stairs.
+Spilling her coffee all over the lobby floor. "WHAT THE HELL FUCKING MOVE ALREADY WOULD YA?" You shout.
+
+"....excuse me?" says a quiet feminine voice from in front of you.
+on continue button click:
+
+-"Hey there, asshole! Maybe you don't know this, but it's rude to throw a ladies coffee on the floor, before she had a chance to try it!" Says the young woman half joking half serious.
+You blush. The opposite sex alway made you nervous and this times no different.
+
+"Oh! Um uhhh..." The room goes silent and you're just staring at her like a idiot!
+<Shit! Say something! Anything! Come on, THINK!> " 
+-"I'm so sorry! I never am ...uhhh.look ... Im late and I...uhhhh....I just have to go ok?..."
+You stammer out loud trying to pass her but you trip on the last step taking quite a fall.
+
+<Great job Steve! You're late on your FIRST DAY and now your first encounter with a female not at work.... And she thinks you are a fucking idiot.>
+picture changes to woman's(Winifred Burkle)
+continue button on click:
+-------------------------------
+
+<This day is all gone to hell! I should just go back to bed. Why does this alway happen to me? This is too embarrassing to continue.... Wait is she smiling at me....? It's a really cute smile....>
+
+Nervously glancing up at her face the woman is smirking at you. She's still staring you down but has a forgiving look on her face. Flashing you a warm smile she offers you a hand up.
+
+-"Sorry...I can be a real bitch with out my morning caffeine. Hey its just a cup of coffee no reason to kill yourself or anything. Are you alright?" Helping you back to your feet you just nod. Still kind of speechless.
+
+"Where are you so late to anyway?" she asks. "E.I., it's my first day." "HAHAHA! I love a newbies first day. Should be fun to watch!" She replies.
+
+"Wait, you work for E.I?"
+
+"Nothing gets past you, Einstein! I'm Dr. Winifred Burkle and I head up our exotic science division. It's very nice to meet you!"
+
+continue button on click:
+picture changes: nice close up of doctor Winifred
+text: 
+--------------------------------
+
+-"I don't want to hold you up any longer... but ...
+-"We still have this matter of my spilled coffee. What'cha gonna do about that Mr..?"
+-"Wolf, Steven Wolf."
+"Well Mr. Wolf?...
+"May I buy you another cup? I think there's a cafe on the west side."
+-"Already forget about being late? Tell you what...if you will find me and my lab we'll go get coffee together and you can tell me all about your first day."
+-"Deal! Where's your lab?"
+-"Ha! yeah! right, where's the fun if I just tell you? Ask your "co-workers" for hints. Now You better go , bye!"
+With that Winifred waves and walks up stairs. Your eyes look back catching a glimpse of her tight pert ass(picture?) and leave for work.
+
+OBJECTIVES UPDATED!
+Evil Inc Quest: Find Winifred Burkle's Lab
+Try asking your co-workers!
+on continue button click:
+apartment lobby picture renders(to do appartment lobby picture):
+text:
+The reception to your apartment buildings. People are constantly coming and going.
+the com unit objective section update: Active quest: Find dr Winifred Lab with text:Try asking people at work where Dr. Winifred Burkle's lab might be.
+<out of context: Fed Ex driver(examine, talk),telepathy...>
+on first apartment lobby leave  where is a feature of flash news alert event(where is 3 so far)-TODO flash news player!
+after flash broadcast first scene played:
+
+New Scene:
+
+location changes to evil inc reception
+penny the secretary talk: (first visit false, penny knows player true)
+choice talk:
+Talk (penny talk)
+-"Oh good morning Mr. Wolf! Dr. E said to meet him in in the Security Center on B1. Got that? Hmmmm...I could have sworn I was suppose to tell you something else...
+ Oh well must not have been important..." Feeling a little confident from the woman in your building earlier. You decide to drop your best line on Penny.
+"Thanks uh uh ummm....pen...penny... Hey, I was wondering when.. you know...when...like if you have time... I mean..."
+"Let me stop you right there, dweeb!
+-"I don't date any of you lab monkeys, got it?
+-" Now stop staring at me and get going!", She stomps her foot and points to the elevator.
+we can try to read her mind( result ---------) with continue button(need to find the condition when we can actually read penny's mind)
+
+note:we should arrive to elevator...
+if to choose wrong floor: text window : You ride the elevator for several minutes and your starting to get bored.
+b1 level: 
+<Well this sure is interesting how far down does this building go? Feels like I've been in here forever.>
+DING!
+ The doors roll open and there stands a horrible sight!
+<HOLY SHIT! WRONG FLOOR!!!! WRONG FLOOR!!!!!>
+on pressing continue: 
+dart veder stop picture renders
+text: 
+PSHHHHHEEEEERRRRHHHHH! "WHO THE FUCK ARE YOU? HOW DID YOU GET DOWN HERE? YOU'RE WITH THE JUSTICE FORCE ARENT YOU?" PSHHHHHEEEEERRRRHHHHH!
+
+The giant man in black thrust his open hand at you and you feel a wave of energy slam you into the elevators back wall. Suddenly it's hard to breath and you can barley take a breath.
+
+"Ahhhh...hhh..h.h St...ev...n.....W...lf..... " is all you can choke out. The strange looking man in the costume steps into the elevator and neels down infront of you. You cant see his face because of the mask but you can tell he's studying you.
+
+"Ohhh...I see. "The giant man lowers his hand and your breathing returns to "somewhat" normal.
+
+on continue button press: 
+renders dr E Picture (famous with pinky finger)
+text:
+-"Mr Vadar, that's no way to treat the third member in our band of EVIL! Muawhaha! Now, now, help Mr. Wolf to his feet." Doctor Evils voice can be heard as you spot him witnessing the whole scene from the center of the room.
+
+As the giant man-robot-thing helps you up you notice the room you were in was high tech. Several henchmen were working different consoles, rushing back and forth in a serious manner. Dr. Evil approaches you both . As usual Mini Me follows behind him smiling at your misfortune just a minute ago.
+
+"Mr. Wolf I heard many things about you. I wouldn't of had to strike you if you had your security badge. Didn't the receptionist give it to you up stairs? Never mind I'll just get you another. Meet me in my office before you leave..."
+
+Vadar says in a authoritative tone.
+-"Now Steven, today is the day we go over the outline of our plan are you ready to begin?" the doctor chimes in.
+-"Yes, in fact my inside source at AEON was able to get me the info I needed, so are you ready? Let me have your attention to the center monitor. Lets Begin."
+
+on continue button press: 
+New scene 
+text: -----------------
+"Well as we all know we're here because we all want the end of the Justice Force. So here's what we know. The Justice Force is composed of several meta-humans with special abilities. Super strength, super speed, laser vision, talking to fish. There seems to be a new variety every day popping up somewhere. And lately the Justice Force has been growing. Taking in even non-super's as support roles for running their day to day operation."
+"Our goal isn't to take out these small fry, they are not the problem. Our primary goal is to go after key members of the Force to bring them down or to our cause. Without these key players the whole Justice Force will be unable to continue. Soon becoming a distant memory."
+Our Primary Targets:
+-----------------------
+on continue button press;
+picture of goddess
+text:
+Meta-Hume: The Goddess
+Real Name: Julia Swanson
+Powers: A extrasensory ability to perceive the stress points, fracture planes, or weaknesses, in all objects or persons around. By striking and applying pressure at these points, she can split or shatter objects made of seemingly invincible substances or render insensate beings of far greater strength than she.
+Position in JF: A founding member of the Justice Force, she now is the big lady in charge.
+Bio: Raised a poor orphan along side her brother in L.C
+she developed her powers at a very early age. She graduated at the top of her class in both high school and college. She first put on her tiara almost 20 years ago along side her brother. Together they took to combat the evil that had taken over the world.
+Her and her brother Odin were both founding member of the team. Has a reputation of being a deadly viper while wielding her twin daggers, she is not to be messed with.
+on continue button press: 
+picture of Odin rendered
+text: 
+Meta-Hume: The Might Odin
+Real Name.: Tobias Swanson
+Powers: His powers are to absorb and store all kinetic energy inside his body then release it back upon his enemies. This means the more he fights the stronger he becomes. Is also super strong and has a very high endurance.
+Position in JF: A founding member of the team. Odin trains the new initiates getting them ready for real combat.
+Bio: Raised along side of her sister in the slums of Liberty City.
+Tobias uses his hammer to deliver his own unique brand of justice. A very cruel man who enjoys wagging war on just about anybody. He was known to fall into these blood frenzies and just start killing who ever was around. A number of working girls have died because of this. He cant control when it happens so he tries to drink himself in to a stooper. Doesn't always work... but the JF always has his back and covers up the deaths.
+on  continue button press:
+Meta-Hume: Starry Night
+Real Name: Diana Kent
+Powers: A gifted warrior of sword and shield. She has enhanced strength and endurance granted to her by ancient Greek goddess Hera. Her abilities are magically based and one of the few supers that was not born with her abilities. Has several powerful relics she uses to fight besides her. Her second power is a passive power she can't turn off. She's able to make people work really well together so they can accomplish a common goal. She could turn a crowd of civilians in to a army or mob with nothing but a mere glance.
+
+Position in JF: A founding member. Recently she has been taking less and less responsibility in the field. She's has been running the Hall of Justice's day to day operations as well as over seeing the junior members.
+
+Bio: Diana Kent was born ordinary at birth,
+but went on to receive the blessing of the Greek Goddess Hera,
+during a field trip to a traveling museum.
+Details of the incident are classified.
+ She met the Goddess in her youth and has been at her side ever since.
+picture of Diana rendered
+
+on continue button press:
+picture of miss liberty rendered
+
+text:
+Meta-Hume: Miss Liberty
+Real Name: Shannon Hannah
+Powers: Mastery over flight. Has semi advanced strength and endurance. Generates a force field around her body to protect her from just about anything.
+Position in JF: 2nd Generation, serious ass kicker.
+
+Bio: Born and raised right here in Liberty City. Shannon Hannah was the heiress to Hannah Family Fortune. Her father was a scientist researching synthetically created super powers. Until he and the rest of his family was gunned down during a home invasion. Ever since Shannon has devoted her life and fortune to the fight against evil. Turns out her father had been testing the secret formula on his daughter and by result is how she came into her abilities.
+on continue button press:
+text rendered in text window:
+-"My Plan", dr Dr Evil says:
+-Stage 1:
+We cut off their blood supply,and  then... we will go for the head.
+I have discovered that the majority of the Force's funding comes from Miss Liberty.
+As well as her fathers company Hannah Industries, so we need to take her out!
+But the thing is we cant just kill her. We do that we're gonna have every super within a hundred miles at our front door. No I suggest we use the device I was working on at AEON to brainwash her into being a double agent and work for us. Once I have control, we have her leave the Justice Fucks, taking her money with her. But to do this we are going to have to break into AEON....
+on continue button press
+
+veder picture rendered:
+
+text rendered:
+
+"And as of this morning I've have discovered a way inside. I have a mole on at the company who is willing to help us but as a part of the deal we have to break him and his research out of captivity. Apparently the research is bound to the lab in one of their Sub-Levels. If we agree to help her he'll be able to unlock a side door at a undisclosed location. We can get in grab my tech, grab her and we leave. In and out before anybody knows a thing. " You say confidently.
+
+"YOU CANT BE SERIOUS? So what? You just walk on through to the lower level like a walk in the park? They're the worlds leading technologies on the planet. They are bound to have security in place to keep the likes of us out. Nano Bots that infiltrate the targets immune system, Robotic Security Guards, not to mention lasers! What do you suppose then?" Vadar asks.
+
+steven thoughs <God this guys an ass!>
+
+on continue button press:
+players thinking picture rendered in media window
+
+text: "Once a month the whole system gets updated. Security measures to keep people like us from ever breaching their firewall. The thing is this is when the building itself is the most vulnerable. Security Bots will be shut down, cameras are off line. Plus almost everyone has the day off until the update is complete. And....... as it so happens to be, my mole is in charge of updating the system. We give her the heads up and we sneak onto the property. Making our way inside through one of the side doors where the techs take their smoke breaks. That's how we get inside."
+
+"There will still be people inside the lab, a few scientist and engineers. But we shouldn't have to worry about them. What we'll need to watch for is the extra people they bring to help guard the place during the update. I will lead a small team through the heart of AEON and down to the sub levels to where my old lab is then to get the mole. Down in the lab areas there they are only a small handfuls of human guards that should be easily avoidable. If detected we will have to incapacitate anyone in our way before they can raise alarm. Once we arrive at my old office we grab the device and my old research, then we head to LAB 113. Where my informant is being held. Unfortunately freeing him will trigger the alarm...."
+
+Vadar crosses his arms and asks." Just walk into one of the most secure buildings in the world. Go deep into their complex then intentionally trigger an alarm..... Yeah I don't buy it....but let say it isn't dumb as fuck ....Even if you manage to get to that point. How exactly do you plan on escaping?"
+
+"I'm so glad you asked  Mr.Vadar! If all goes to plan we will be able to just sneak back out. but since I imagine something will go wrong we will need a distraction! That's where you, Mr. Vadar come in you and your best guy's storm the front door guns blazing. Your aim is to draw as much attention as possible causing the whole building to go into emergency lock down. During a lock down all the remaining scientist in the building are herded into a safe room. Riding out whatever is happening. As it turns out on the same floor as my mole there's my old colleague Dr. Lyle Knopf. Lyle was working on human teleportation and he was getting pretty close. I think we can use his teleporter to get us safely out of the building."
+on continue button press;
+next Scene:
+text renders:
+"I know AEON's security procedure! We can pull this off, but..... we will need to build our resources around here."
+
+"True we have had to let some people go......Fine! Steven I want you to go out and get us some new recruits for us. Convince them that working for us would be in their best interest! "Doctor Evil winks his eye at you."
+
+You are going to come across many weak willed people in Liberty City. Use your powers to bring them to your cause! Careful though you might come across someone with enough fortitude to withstand your abilities. Or a super in their disguise. SAVE OFTEN
+
+"I know of some old friends that might even join our cause. Thing is... you're going to have to help them first. Come talk to me later. Oh and find Mini Me when you want to go see your new lab."
+
+on continue button press:
+picture of level B1 (TODO)
+text description:
+Its very dark in here, it almost sucks the life right out of you. Maybe that's the point...
+in characters box: dr Evil, mini Evil
+if press telepathy:
+in action drawer: menu to end telepathy press continue
+Who?
+Vadar
+Mini Me
+Dr. Evil
+
+Vadar mind: ----------
+Mini me: <For any right-angled triangle, the square of the length of the hypotenuse, c, (the longest side of a right triangle) equals the sum of the squares of the lengths of the other two sides (a and b). Thus, a^2 + b^2 = c^2> 
+drEvil: <Who is such a nice clone? Huh? That's right! You are! You are such a good boy! Yes! Yes! Yes!>
+talk options
+drEvil: Talk
+"It's a good plan, Steven! But I get the feeling we're going to need more muscle and brains around here.
+Mr. Vadar is going to need some extra help.
+I noticed, you said that your colleague's machine "should" work...
+I don't like this "should", Steven."
+The boss puts his finger into air quotes as he says should.
+-"Well, it's true Dr. Knope never finished his device but he is close...
+-"If I remember right, he didn't have a problem teleporting matter.
+- It was just putting back together on re-entry..."
+-"And your OK with that? It seems rather foolish to hinge your entire escape on a device that probably wont work..."
+-"It's a risk I'm willing to take! I'd risk anything to get at Fiona! She ruined my life that day, but I'll have the last laugh doctor, I'll do it alone if I have to!!!!" You almost yell.
+-"Fine! I want you to out into the city and find us some help then.
+There's a undergrad from Liberty Univ. named Melody Parker, that specializes in advanced quantum engineering (kinda perfect right...)
+We are going to need her to complete the teleporter.
+Go find her, doing whatever it takes to convince her to join our side.
+It would be easier if you had more control over your powers, but for now do whatever you can to get her to help us
+She should be your main goal, but if you happen to see any good recruits along the way send them here!"
+
+<Recruit 2 scientist types (not including miss parker) and 2 soldier types to E.I before you undertake the theft.>
+"I'll be in my office, if you need me." 
+only Mini me left in characters(change doctors to his office)at this stage
+adds second active mission to objectives: recruiting stuff(if press the choice: objective screen in com unit:Player Objective:
+
+Your first objective is to go out into the world and try to recruit people to Evil Inc. Your going to need 2 Scientist Types and 2 Soldier Types.
+
+Use your powers to help bring people in to E.I.
+Debug Demon:<Doing favors for people might sway them to join our cause>
+Soldiers (0/2)
+Scientist (0/2)
+Melody Parker (0/1) 
+
+mini me character's menu tooltips:
+1.examine 
+2.show me my lab, (condition? security badge)
+
+if "show me my lab pressed" and security E.I badge==false)
+Show me to my lab
+You need to pick up your security badge from Vadar first. Wouldn't want another accident to happen...
+in both navigation box and drawer new command visible=true (note to Agent: in all prologe we have navigation defined ,but they are not visible)
+south: Evil Inc - vadar's office 
+new scene: 
+room vadar's office: first time visit===true
+picture of vadar's office renders
+characters boxe: vadar:
+telepathy result: (<I have a itch...Grrr I hate this suit. If I didn't need it to survive I could finally live a normal life. If I ever catch Robo Man I'll torture him for what he put me through.....>) continue
+talk choice on vadar :
+text:
+Talk
+<Well you certainly have unique taste huh..... This place is hideous...>
+
+"Now it's about time you showed up...... Here take your security badge, with it you will be able to access the restricted areas of the building." Vadar throws you a badge as you enter his office slapping you square in the face. "Do your best to hold on to it. We wouldn't want any more incidents...."[b]PSSSSSSSHHHHRRRRHHH This doesn't surprise you . Bullies targeted you a lot when you were a kid and it feels the same now.
+
+"....right....thanks....I guess. So what's the deal with security around here? For a top secret evil base there isn't much of a security presence." Looking over the badge the large man handed you. You notice they spelled you name Stephen Wolf not Steven Wolf....great....
+
+"We're completely protected don't worry little lamb. I'll protect you and all your little gizmos! Hahahaha!" PSSSSSSSHHHHRRRRHHH
+
+object box object appears:
+
+Room Objects:
+Security Badge
+Basic Lab Coat
+Standard Rubber Gloves
+Insulated Boots with standard take/examine hovering tip tool, take place the object to inventory, with equip, unequip, drop, examine all wearing except EI security badge in wallet
+when ask option on vadar's hover tool tip :
+pressing ask yields: 
+???
+"Heist?" pressing heist yields: 
+"Ask"
+
+Do you think your ready for Phase 1 of my plan?
+
+To be completely honest......
+"We don't stand a chance in hell! I cant do this alone and the fembots must stay in the building at all times to protect Dr. Evil. You need to go out and find us members to join our team. I'm going to need at least a 2 man team to hit Aeon. Dr. E should be able to give you a list of names. We're gonna need scientist to help us with the teleporter as well. Talk to Dr. Evil about that."
+
+North
+Its very dark in here, it almost sucks the life right out of you. Maybe that's the point.....
+going back to briefing Pam and mini here;
+Pam :picture
+text on examine ;
+Examine
+Pamela Isley- Works under Dr. Romi Laheary in the genetics lab and hates it. She's usually pretty nice to you....
+<More to come eventually but for now just a place holder!>
+
+on talk: 
+Talk
+'God will this elevator ever get down here?"
+
+nav box: in south east "training room is visible": in training room charachters box "Yes Man" (with only examine option and picture)
+
+examine room text: 
+Almost like something out a comic book.... telepathy on Yes Man yields<001010100000001111000011> with continue button , telepathy standard procedure: if pressed available for mind reading character names shows up
+show me my lab mini me option: if E.I security badge here: 
+"Show me to my lab",  menu choice option: 
+New Scene:
+elevator cabin: 
+The elevator finally arrives after quite a wait. A load of henchman arrive for their shift grumbling and moving slowly they head to work. The three of you board the lift.
+"Ok I'm ready to see my lab." You say to the anxious little man and trying to ignore the lab tech. She didn't seem to like you very much the last time you saw her
+continue on click
+pams picture
+text: You reach to shake "Dr. Steven Wolf, Director of R&D." You smile, glad to make a friend in this obviously scary place.
+You hope that's true at least...The friend part not the scary place part....
+on continue click: 
+"Hey I remember you buddy! You're that guy who almost made spill my beaker and have his face melted off!
+-"So, you got the job, huh? Hmm... I figured you for shark food,though..."
+
+Mini me shakes his head up and down really fast agreeing with the young lady. But he just shrugs and presses the button for floor 34.
+"Well um ... ok..." "Hey I'm sorry about before I was working a deadline for my bitch of a boss. You see not all of us have our own department after one week." She says enviously but also smiling. She adjusts her glasses and reaches out a hand. "Dr. Pam Isley Assistant Researcher in the Genetics Lab, It's nice to meet you." pam knows you true...
+continue on click 
+mini me picture renders
+All of a sudden Mini Me lets go of your hand and starts to hump you on your ride up. "Hey! Cut that shit out! I said STOP!!!! You little freak!"
+Shouting at the small clone as he humps away like no tomorrow. "Eeeeeee!"
+You can feel his tiny wood rubbing against your leg. "Oh my!" Says Pam gasping at the indecent scene of midget on man action.
+
+What do you do?
+
+(Try right clicking the clone...)
+telepathy on mini me yields:
+<Am I god?>
+continue
+character choice menu added an option "do something":
+when clicked: 
+Choices menu" in action drawer: 
+1.Get him off you!(condition POWER=1 )
+yields: same picture of happy player
+texts
+renders:
+"Hey I said stop it! Come on you fucking midget get off of me!"
+You yell shaking your leg and hitting the clone but he just wont let go.
+"Oh my! He really likes your leg..."- Says the redhead.
+<Grrr!!!! Stop!> You feel a surge of energy right behind your eyes and it erupts from your mind like a blast wave.
+"Eeeeeeeeeeee!" It hits the clone and sends Mini Me into the wall of the elevator!
+Debug demon:
+<You just unlocked a new power to Give Orders!
+Use your gift to control those around you! Certain commands requires a higher strength than others!>
+Debug Demon:
+<Also, your commands only work as long as you're near your target! Once you leave the subject 
+forgets what they were doing and goes back about its day. 
+This power is located under Abilities on the player's portrait box choice  menu. Use it now!>
+2.Change desires...if FOCUS==1 yields:
+same picture of happy player text: same text as below
+
+
+
+
+
+3."Distract him!" STEALTH=1 -------- yield : happy player picture, text : Do Something!
+"Eeeeee!" The little clone yells and rubs his little wood all over your leg. "Hehehehe!" The cute lab assistant laughs at your predicament and it gives you a idea. <I wonder if I can enter his mind and change his preferences....>
+You focus on his mind and you alter his desires, now the little man needs some pussy.
+-"Huh...? -Eeee???-Eeee!" He stops humping you instantly and he looks over the pretty red head.
+-"Oh no!" She whispers and tries to move away but with no where to go -Mini Me latches on.
+HUMP HUMP HUMP
+continue pressed yields :
+She reaches into her lab coat. Pulling out a strange looking gun that shoots lighting bolts ! "Enough you freak!" Pulling the trigger a bluish white lighting bolt hits the little clone into the wall of the elevator. Holy shit!
+Too bad some of the sparks hit you....
+You take 10 damage HP - 10 points, flag: failed to order Mini Mi==true
+<You just unlocked a new power to Give Orders! Use your gift to control those around you. Certain commands requires a higher strength than others!
+Also your commands only work as long as you're near them. Once you leave the subject forgets what they were doing and goes back about its day. This power is located under Abilities on the character portrait menu. Use it now!>
+now after all of this in abilities hovering menu I have give order pressing it yields: text Concentrating with all your might you feel these waves of energy come off of you and enter the little ones mind.
+<YOU WILL STOP HUMPING THIS INSTANT! >
+And like that, Mini Me stopped and just stood there for the rest of the ride up. A tiny hard on creating a bulge in his small trousers.
+Experience + 40
+
+on continue button: 
+floor 34 on frst time visit description 
+
+DING!
+
+The door's open up and I see the floor I'm to be working on. And like nothing ever happened he leads you to your lab. He looks up at you. "Thanks, I guess...... Go back to whatever you have to do and forget this ever happened. "
+He walks away, but not before waving goodbye and flashing an unsatisfied smile.
+-"Well at least you got him to stop. Most people just ignore it so they dont wind up fish food but whatev's.
+-" Well it looks like we're neighbors from now on. Come by and see me some time
+-" I'll show you what I mean, about my boss. -Bye" She waves and heads to her office.
+
+
+--------------------------------
+usual description 
+A very nice and bright lobby. There are several labs on this floor.
+picture of 34 floor rendered 
+on continue button: the message come we suppose to level up!
+with leveling up animation! 
+we will see on navigation menu: 
+on north : Evil Inc- your personal lab(R&D)
+room personal lab picture:
+text :
+North
+<So this is my lab. I LOVE IT!!!!>
+
+It has everything I need to extract my revenge on Fiona!
+It looks like the good doctor outfitted me with a few nice gadgets. "Ohhh! A containment field, that will be good if I ever have a prisoner to hold. A giant laser well I don't know about that... I should be able to program it to keep Mini Me away at the very least ..... And my PC will have a collection of information on the Justice Force. Plus will be updated as more intel is discovered."
+
+Debug demon:<You can also check your Email and view E.I.'s Security Feed via your PC.>
+I couldn't have wished for a better lab!
+objects in lab 
+Room Objects:
+Lab Computer : hovering action menu:
+Examine  picture render with text  description:
+My office's PC. Thank god it's not a Mac. Fuck, I hate Mac's...
+Look at Security Feed's : if Herbert pc hacked: false "what channel"as default message, if true: camera feed "#202" picture
+Check Email:
+--" from dr Evil"
+if pressed: 
+text: Check Email
+Welcome to your new lab, Steven! I hope its up to your specifications. 
+Now, as we discussed, here is a list of people that would be a great help to our cause. All of this data will be downloaded onto the Com Unit next to the PC. With it you will be able to hack passwords, communicate directly to the security center of this building as well as allow us to track your position, and it should be able to provide you with help if you so need it.
+continue: 
+Xander Cain- Master of two handed combat, last seen down in the Harbor District. Picture of Xander Cain. 
+continue: 
+The Coon- A small time thief and major annoyance. The Coon has been last seen in Downtown. Picture of Coon 
+continue: 
+Black Cat- A living legend among the underworld. Gato has a reputation of getting any job done no matter how difficult or impossible it may seem. Whereabouts unknown.
+continue:
+Mistress T- A hot shot in the Human Trafficking market. She has been targeting young college coeds for years now and sending them over seas. Whereabouts put her somewhere down town... mistress T picture
+continue:
+usual lab picture, while reading the e-male
+flags knows about Coon, Xander, Gato, mistress T changed to true! 
+Containment Field: action choice menu
+examine
+descriptions
+It's a containment field that looks big enough for a least one adult.
+Giant Laser
+examine
+description: A frickin' laser what else do you need to know?
+On R&D lab first leave event;
+text: Objectives
+-"Well, well,well!- I wonder what else is on this floor..." You say walking out into the lobby scoping out your neighbors.
+- That was until you heard this loud humming noise and a machine walk up behind you.
+
+Scene : Yes Man!
+Yes Man in Characters Box:
+-------------------
+"Hello! My name is Yes Man, Dr. Evil's most favorite robot! I am here to ... wait you seemed to be injured", The odd robot notes.
+"Yeah...I just had a..... "meeting" with Vadar. It was a little intense."
+"Well, this is no good, you need to go to the hospital, right now and get fixed up!!!"
+"Look it's not that bad I...." His face turns angry almost scary.
+"NO! Sir! It is company policy to have all critically wounded staff taken to the nearest doctors. Come on lets go I'll carry you like a baby if I have to. I wasn't built for shame..."
+"Hey! Just keep your hands to your self and I'll go to the closet ER. "
+"Dr. Evil keeps a doctor on his payroll to keep all your procedures off the books. Just tell em you have a appointment with Dr. Aaron Hart, they'll see you in right away."
+lobby of 34th floor  picture renders
+characters box Yes Man; on click action drawer menu options: 
+1.examine
+Yes Man Picture 
+Yes Man Description
+2.go to hospital? 
+location changes room: Local hospital:
+on first visit: picture renders ,room LC General
+text:
+You felt a bit strange walking through downtown with a giant robot following your every move but we arrived at Liberty City General. Once inside Yes Man wait next to the door to make sure you get healed. Wow so this is one nice hospital. You look around at how futuristic everything seems.
+on first visit description: picture renders,room's name LC General
+Then the doctor walks in.
+
+
+------------------
+usual description:
+Your local hospital. It seems to have a very advanced set up here. The Justice Force must donate a lot.
+continue button in text field
+picture of doctor:
+characters box: Dr Aaron Hart
+                Yes Man
+talk to doctor:
+Talk
+"Look I can heal ya whenever you need it, but I'm gonna need a favor from you every now and again.
+We got a deal?"
+
+"Deal!"(if chosen)
+-"Good, this times free but everyone from now on is 15 credits. Gotta it? Don't care..."
+examine on doctor's yield: Examine
+Dr. Aaron Hart he is on Dr. Evil's payroll as our own private doc.
+new option on doctor's Heal?
+yes man picture renders:
+text renders;
+Heal?
+The doctor scans your body and injects you with some nanobots to repair the damage.
+"Ok you seem to be all better. Dr. Evil has called me back to HQ. He also wanted me to pass you a message. Meet him in his office if you want to chat. Otherwise he'll use your com unit to get ahold of you for anything important. I gotta go bye!" The robot says in a cheerful voice. then waves at you and rolls off towards E.I.
+Dr. Hart looks at you with a smug look on his face. "There you go now get out before anybody see ya'...."
+characters box : only doctor is here
+heal? again : Heal?
+telepathy on doctor yields: <Man whoever is hiring the nurses around here is doing one hell of a job!>
+"There you go now get out!" 
+nav panel: north road 22
+on first leave hospital:
+debug demon: Objectives
+<Now that you leave the hospital you are ready to start your mission! Spend some time in the city and build your team.
+Return to the hospital to restore health. Going back to your apartment to sleep to recover both energy and health. Every time you sleep the game will advance to the next day.
+While you travel around you will come across random encounters save often! Not all the encounter will be bounty hunters. Have a notoriety over 30 the Heroes will come looking for you! Be on the look out!>
+road 22 picture is rendered. The end of prologue.
+flag:plolog done=true, Day 1,time 12:00 ,credits: 50, current exp point, curent level 
+abilities: telepaphy,give order,
+action(player):
+examine, wait
+combat actions:
+fist,
+mental blast 
+inventory:
+basic equipment,
+wallet,
+E.I security card,
+vibranium ring
+game flags:
+objective status:
+list of availiable quests,
+inro played =true
+drEvil 1st question=true,
+drEvil 2nd question=true,
+dr 3d question=true,
+objective variables
+(chanel4 flashnwes number booleans)
+from now on game routine is actually started.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+

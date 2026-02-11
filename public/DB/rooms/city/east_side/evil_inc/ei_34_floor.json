@@ -1,0 +1,61 @@
+{
+  "Name": "Research Labs",
+  "UniqueID": "evilinc34thfloor_lc_001",
+  "SDesc": "evil_inc_34th_floor",
+  "Group": "Evil Inc Building",
+  "Spawns": false,
+  "Description": "34th floor research labs.",
+  "Exits": [
+    { "Direction": "East", "DestinationRoom": "evilelevator_lc_001" },
+    { "Direction": "North", "DestinationRoom": "evilinc_lab_steven_lc_001" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [
+    {
+      "name": "Examine Room",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/rooms/34_floor_evil_inc.jpg" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "34th floor research labs." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "<<On Player Enter>>",
+      "bActive": true,
+      "InputType": "None",
+      "Conditions": [
+        {
+          "ConditionName": "Lab intro",
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.evilinc_security_badge",
+              "ConditionStep3": "==",
+              "ConditionStep4": true
+            },
+            {
+              "CkType": "And",
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.prologue_lab_intro_done",
+              "ConditionStep3": "!=",
+              "ConditionStep4": true
+            }
+          ],
+          "PassCommands": [],
+          "FailCommands": []
+        }
+      ],
+      "TriggerScene": "evilinc_lab_intro_001_sequence",
+      "PassCommands": [],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/34_floor_evil_inc.jpg"
+}
+

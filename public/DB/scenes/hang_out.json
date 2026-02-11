@@ -1,0 +1,40 @@
+{
+  "id": "hang_out",
+  "description": "Sequence: Hang out with Mark and Emily in Emily's apartment. Triggered by the Hang Out action.",
+  "sequence": [
+    {
+      "text": "You, Mark, and Emily settle in the living room.",
+      "media": "Assets/images/Emily_and_Mark.jpg"
+    },
+    {
+      "text": "You all share stories and laugh together.",
+      "media": "Assets/images/Emily_03.jpg"
+    },
+    {
+      "text": "The evening winds down, and you feel closer to your friends.",
+      "media": "Assets/images/Emily_and_Mark.jpg"
+    }
+  ],
+  "actions": [
+    {
+      "type": "SetFlag",
+      "target": "player",
+      "flag": "hangedOutEmily",
+      "value": true
+    },
+    {
+      "type": "SetFlag",
+      "target": "player",
+      "flag": "afterHangOut",
+      "value": true
+    },
+    {
+      "type": "GrantAchievement",
+      "target": "player",
+      "achievementId": "HangedOutWithMarkAndEmily",
+      "name": "Hanged Out with Mark and Emily!",
+      "description": "You spent a memorable evening with Mark and Emily.",
+      "media": "Assets/images/characters/secondary_npc/Emily_03.jpg"
+    }
+  ]
+}

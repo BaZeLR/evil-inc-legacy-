@@ -1,0 +1,508 @@
+{
+  "UniqueID": "libertycampus_herbert_pl_001_story",
+  "LegacyIDs": ["westside_securitycenter_001_story"],
+  "Title": "Campus Security Confrontation",
+  "Description": "Herbert, head of campus security, guards access to university buildings",
+  "Location": "collegesecuritycenter_lc_001",
+  "SceneType": "story",
+  "Priority": 95,
+  "Trigger": {
+    "EventType": "<<Triggered By Event>>",
+    "RequiredFlags": {}
+  },
+  "Media": "Assets/images/characters/bosses/herby_talk.jpg",
+  "Stages": [
+    {
+      "StageID": "initial_encounter",
+      "Effects": [
+        {
+          "Type": "CT_SETVARIABLE",
+          "VarName": "quest_herbert_stage",
+          "Value": 1
+        },
+        {
+          "Type": "CT_SETVARIABLE",
+          "VarName": "herbert_dialog",
+          "Value": 1
+        }
+      ],
+      "Text": "Walking into campus security you see an overweight man in his 40's. He's staring intensely at his computer screen. He notices you looking at him and you hear him start clicking, then he looks up at you with this dead-eyed stare.\n\n\"Can I help you? Hmmm now that's one funny get-up you got there pal... You in the science department or something?\"\n\n\"Errr....Uhhhh\" <Fuck what do I tell him?>",
+      "Media": "Assets/images/characters/bosses/herby_talk.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "telepathy",
+          "Text": "Use Telepathy (read his mind)",
+          "ShowIf": {
+            "AbilityCheck": "Telepathy"
+          },
+          "NextStage": "telepathy_read",
+          "Effects": [
+            {
+              "Type": "CT_SETVARIABLE",
+              "VarName": "herbert_telepathy_done",
+              "Value": true
+            }
+          ]
+        },
+        {
+          "ChoiceID": "lie_science",
+          "Text": "(Lie) Yes I just started over in the Science department",
+          "NextStage": "lie_path"
+        },
+        {
+          "ChoiceID": "lie_emergency",
+          "Text": "(Lie) OH GOD PLEASE HELP!",
+          "NextStage": "emergency_lie"
+        }
+      ]
+    },
+    {
+      "StageID": "telepathy_read",
+      "Text": "<My high's starting to wear off. I better call my guy and see if he would front me some product. Ever since my parents froze my accounts I've really had a hard time getting high. I better hope this whole hidden camera thing works out or I'm going to owe a lot of money...>\n\nYou pull back from his mind, disgusted. Hidden cameras? What's he up to?",
+      "Media": "Assets/images/characters/bosses/herby_talk.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "return_to_talk",
+          "Text": "Continue conversation",
+          "NextStage": "initial_encounter"
+        }
+      ]
+    },
+    {
+      "StageID": "lie_path",
+      "Text": "\"Yes...umm... I just started. I'm Dr. Wolf. I just moved into the area.\"\n\n\"Doctor 'eh'? Well nice to meet ya, I'm Herbert, head of campus security. So, you're new, huh? Have ya got your security badge Dr. Wolf? You're gonna need one to get into any of the buildings around campus.... You can get it here if ya like.\" He rubs his large belly and snorts.\n\n\"Well I guess I'll get one......\"\n\n\"GREAT! That'll be 200 bucks!\"\n\n\"WHAT???\"\n\n\"I know you rich 'educated' folks got the money... now, fork it over! I'm the head of security and the Dean says I get to make the rules!\"",
+      "Media": "Assets/images/characters/bosses/herby_warry.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "buy_badge",
+          "Text": "Pay 200 credits for the badge",
+          "ShowIf": {
+            "StatCheck": {
+              "Credits": 200
+            }
+          },
+          "NextStage": "badge_obtained",
+          "Effects": [
+            {
+              "Type": "CT_MODIFYVALUE",
+              "VarName": "Credits",
+              "Value": -200
+            },
+            {
+              "Type": "CT_ADDTOARRAY",
+              "ArrayName": "Inventory",
+              "Value": {
+                "UniqueID": "campus_badge_001",
+                "Name": "Campus Security Badge"
+              }
+            },
+            {
+              "Type": "CT_SETVARIABLE",
+              "VarName": "campus_unlocked",
+              "Value": true
+            },
+            {
+              "Type": "CT_SETVARIABLE",
+              "VarName": "herbert_paid",
+              "Value": true
+            }
+          ]
+        },
+        {
+          "ChoiceID": "refuse",
+          "Text": "Refuse to pay",
+          "NextStage": "refused_badge"
+        },
+        {
+          "ChoiceID": "sneak_later",
+          "Text": "Say you'll come back later and plan to sneak in",
+          "NextStage": "plan_sneak"
+        }
+      ]
+    },
+    {
+      "StageID": "badge_obtained",
+      "Text": "You reluctantly hand over the credits. Herbert grins and produces a laminated badge from his desk drawer.\n\n\"There ya go, 'Doctor.' All campus buildings are now open to ya. Enjoy your... research.\" He winks grotesquely and returns to his computer screen.\n\n[b][c Green]OBJECTIVE COMPLETE: Campus Access Unlocked[/c][/b]",
+      "Media": "Assets/images/characters/bosses/herby_talk.jpg",
+      "Choices": []
+    },
+    {
+      "StageID": "refused_badge",
+      "Text": "\"I'm not paying you 200 credits for something that should be free!\"\n\nHerbert's face darkens. \"Oh really? Well then you can get the hell out of my office. No badge, no access. PERIOD.\" He crosses his arms and glares at you.",
+      "Media": "Assets/images/characters/bosses/herby_warry.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "leave",
+          "Text": "Leave and find another way in",
+          "NextStage": "plan_sneak"
+        }
+      ]
+    },
+    {
+      "StageID": "emergency_lie",
+      "Text": "\"Oh GOD IT'S HORRIBLE! Quick you have to help! Americana and Miss Liberty are fighting out near the campus gates! They're destroying a lot of property. Hell, they're fighting so hard their uniforms are barely hanging on....\"\n\n\"WHAT! I gotta go check this out! So do you mind getting out? I'm going to have to lock up before I go.\"\n\n\"Uhhh yeah...no problem.\"\n\nHerbert speeds away on his Segway toward the campus gates. Now, how are you going to acquire a security badge?",
+      "Media": "Assets/images/characters/bosses/herby_warry.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "go_around_back",
+          "Text": "Go around back and find another way in",
+          "NextStage": "back_window",
+          "Effects": [
+            {
+              "Type": "CT_SETVARIABLE",
+              "VarName": "herbert_distracted",
+              "Value": true 
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "StageID": "plan_sneak",
+      "Text": "You leave the security office, mind racing. There has to be another way to get access to the campus buildings. Maybe you can sneak in through a back entrance?",
+      "Media": null,
+      "Choices": [
+        {
+          "ChoiceID": "explore_back",
+          "Text": "Explore around the back of the building",
+          "NextStage": "back_window"
+        }
+      ]
+    },
+    {
+      "StageID": "back_window",
+      "Text": "You crouch down and go behind the Security Building to see if there is a back door. \n\nHey, what's this? His window is wide open. It leads directly into Herbert's office. Well if you're going to do this, you have to go now!\n\nSliding the window open the rest of the way, you climb in with ease.",
+      "Media": "Assets/images/rooms/herby_office_01.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "scan_room",
+          "Text": "Scan the room telepathically first",
+          "ShowIf": {
+            "StatCheck": {
+              "MS": 3
+            }
+          },
+          "NextStage": "safe_entry",
+          "Effects": [
+            {
+              "Type": "CT_SETVARIABLE",
+              "VarName": "scanned_room_first",
+              "Value": true
+            }
+          ]
+        },
+        {
+          "ChoiceID": "climb_in",
+          "Text": "Just climb in quickly",
+          "ChanceSuccess": 50,
+          "OnSuccess": "safe_entry",
+          "OnFailure": "cactus_crash"
+        }
+      ]
+    },
+    {
+      "StageID": "cactus_crash",
+      "Text": "CRASH! THUD!\n\nYou knock over a cactus plant as you climb through. Damn it! You should have tried to scan the room or something before climbing in here. You hope no one heard that...\n\nYou quickly examine the office and see a desk and a computer on top of it. Herbert's workstation. Gross... you just noticed his trash bin is filled with used tissue. You're just going to assume he has a 'cold.'",
+      "Media": "Assets/images/rooms/herby_office_01.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "search_desk",
+          "Text": "Search Herbert's desk",
+          "NextStage": "desk_search"
+        },
+        {
+          "ChoiceID": "check_pc",
+          "Text": "Examine his computer",
+          "NextStage": "pc_examine"
+        }
+      ]
+    },
+    {
+      "StageID": "safe_entry",
+      "Text": "You carefully enter the office, avoiding the cactus on the windowsill. Good thing you scanned first.\n\nYou quickly examine the office and see a desk and a computer on top of it. Herbert's workstation. Gross... you just noticed his trash bin is filled with used tissue. You're just going to assume he has a 'cold.'",
+      "Media": "Assets/images/rooms/herby_office_01.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "search_desk",
+          "Text": "Search Herbert's desk",
+          "NextStage": "desk_search"
+        },
+        {
+          "ChoiceID": "check_pc",
+          "Text": "Examine his computer",
+          "NextStage": "pc_examine"
+        }
+      ]
+    },
+    {
+      "StageID": "desk_search",
+      "Text": "You rifle through Herbert's desk drawers. Fast food wrappers, empty energy drink cans, and... wait. In the bottom drawer, you find a stack of blank security badges!\n\nYou quickly grab one and forge your own credentials. [b][c Green]Campus Badge Acquired![/c][/b]",
+      "Media": null,
+      "Choices": [
+        {
+          "ChoiceID": "take_badge",
+          "Text": "Take the badge and leave",
+          "NextStage": "badge_stolen_escape",
+          "Effects": [
+            {
+              "Type": "CT_ADDTOARRAY",
+              "ArrayName": "Inventory",
+              "Value": {
+                "UniqueID": "campus_badge_001",
+                "Name": "Campus Security Badge"
+              }
+            },
+            {
+              "Type": "CT_SETVARIABLE",
+              "VarName": "campus_unlocked",
+              "Value": true
+            },
+            {
+              "Type": "CT_SETVARIABLE",
+              "VarName": "herbert_badge_stolen",
+              "Value": true
+            }
+          ]
+        },
+        {
+          "ChoiceID": "check_pc_first",
+          "Text": "Check his computer before leaving",
+          "NextStage": "pc_examine",
+          "Effects": [
+            {
+              "Type": "CT_ADDTOARRAY",
+              "ArrayName": "Inventory",
+              "Value": {
+                "UniqueID": "campus_badge_001",
+                "Name": "Campus Security Badge"
+              }
+            },
+            {
+              "Type": "CT_SETVARIABLE",
+              "VarName": "campus_unlocked",
+              "Value": true
+            },
+            {
+              "Type": "CT_SETVARIABLE",
+              "VarName": "herbert_badge_stolen",
+              "Value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "StageID": "pc_examine",
+      "Text": "Herbert's computer is unlocked. You see multiple windows open:\n\n- Email from Maintenance: 'Installed the improvements you wanted. Especially like the setup in Room #202. Your highlight reel!'\n- Email from Mother: 'Dearest Herbbie... cum by for dinner... Love Mom'\n- Email from Dean Wildler: 'Thought about your situation... come see me Friday. Betray us and you know what happens.'\n\nBrowser History shows several dozen porn sites... and one non-porn site: 'Hidden Cams for Dummies.' There are cameras all over campus. You'll have to be careful.\n\nYou might be able to hack his PC with your Com Unit to gather more evidence... you just need to figure out his password.",
+      "Media": null,
+      "Choices": [
+        {
+          "ChoiceID": "search_for_password",
+          "Text": "Search office for password hints",
+          "NextStage": "password_found"
+        },
+        {
+          "ChoiceID": "guess_password",
+          "Text": "Try to guess the password",
+          "NextStage": "password_attempt"
+        },
+        {
+          "ChoiceID": "leave_office",
+          "Text": "You have what you need, leave now",
+          "NextStage": "badge_stolen_escape"
+        }
+      ]
+    },
+    {
+      "StageID": "password_found",
+      "Text": "You search around the desk and find a sticky note under his keyboard: 'Herbie Burgy - Mom's nickname for me!'\n\nPathetic. You enter the password and successfully access his system.",
+      "Media": null,
+      "Choices": [
+        {
+          "ChoiceID": "hack_system",
+          "Text": "Hack into his surveillance system",
+          "NextStage": "hack_success",
+          "Effects": [
+            {
+              "Type": "CT_SETVARIABLE",
+              "VarName": "herbert_pc_hacked",
+              "Value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "StageID": "password_attempt",
+      "Text": "You try several passwords: 'herbert', 'security', 'password123'... nothing works. You need more information.",
+      "Media": null,
+      "Choices": [
+        {
+          "ChoiceID": "search_more",
+          "Text": "Search the office more thoroughly",
+          "NextStage": "password_found"
+        },
+        {
+          "ChoiceID": "give_up",
+          "Text": "Give up and leave",
+          "NextStage": "badge_stolen_escape"
+        }
+      ]
+    },
+    {
+      "StageID": "hack_success",
+      "Text": "You successfully hack into Herbert's system and download evidence of his hidden camera network. This is serious - he's been spying on students!\n\nSuddenly, you hear footsteps and the jingle of keys. Herbert is coming back!",
+      "Media": null,
+      "Choices": [
+        {
+          "ChoiceID": "hide",
+          "Text": "Try to hide",
+          "ChanceSuccess": 40,
+          "OnSuccess": "hidden_success",
+          "OnFailure": "caught_hacking"
+        },
+        {
+          "ChoiceID": "escape_window",
+          "Text": "Escape through the window",
+          "ChanceSuccess": 60,
+          "OnSuccess": "escaped_clean",
+          "OnFailure": "caught_hacking"
+        },
+        {
+          "ChoiceID": "confront",
+          "Text": "Stand your ground and confront him",
+          "NextStage": "caught_hacking"
+        }
+      ]
+    },
+    {
+      "StageID": "caught_hacking",
+      "Text": "The door bursts open. Herbert sees you at his computer, his face turning red with rage.\n\n\"YOU! You little FREAK! You think you can break into MY office?\" His eyes glow with an unnatural blue light. \"You're not the only one with powers around here, pal!\"\n\nPsychic energy crackles around his head. His expression shifts - eyes glazed, face slack. He's using some kind of hypnotic ability!",
+      "Media": "Assets/images/characters/bosses/herby_hyp.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "resist",
+          "Text": "Resist his hypnotic attack",
+          "ShowIf": {
+            "StatCheck": {
+              "MS": 5
+            }
+          },
+          "ChanceSuccess": 70,
+          "OnSuccess": "resist_success",
+          "OnFailure": "fight_start"
+        },
+        {
+          "ChoiceID": "fight",
+          "Text": "Prepare for combat",
+          "NextStage": "fight_start"
+        }
+      ]
+    },
+    {
+      "StageID": "resist_success",
+      "Text": "You throw up mental shields, blocking his clumsy hypnotic attempt. Herbert snarls in frustration.\n\n\"Fine! We'll do this the HARD way!\" He grabs his police baton.",
+      "Media": "Assets/images/characters/bosses/herby_hyp.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "fight",
+          "Text": "Fight!",
+          "NextStage": "fight_start"
+        }
+      ]
+    },
+    {
+      "StageID": "fight_start",
+      "Text": "Herbert charges with his baton raised. His amateur psychic powers flare around him - he's dangerous but untrained.\n\n[c Red][b]COMBAT INITIATED![/b][/c]",
+      "Media": "Assets/images/characters/bosses/herby_hyp.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "enter_combat",
+          "Text": "Enter Combat",
+          "NextStage": "post_fight",
+          "Effects": [
+            {
+              "Type": "CT_STARTCOMBAT",
+              "EnemyID": "herbert_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "StageID": "post_fight",
+      "Text": "Herbert drops his baton and staggers back, wheezing and defeated. The blue glow fades from his eyes.\n\n\"This... this isn't over...\" He clutches his side. \"The Dean... he'll hear about this...\"\n\nBefore you can respond, he limps out of the office, leaving the door wide open.",
+      "Media": "Assets/images/characters/bosses/herby_talk.jpg",
+      "Choices": [
+        {
+          "ChoiceID": "examine_office",
+          "Text": "Search the office thoroughly now",
+          "NextStage": "post_fight_search"
+        },
+        {
+          "ChoiceID": "leave_quickly",
+          "Text": "Leave before anyone else shows up",
+          "NextStage": "victory_escape"
+        }
+      ]
+    },
+    {
+      "StageID": "post_fight_search",
+      "Text": "You search Herbert's office more thoroughly. You find:\n- Evidence of the hidden camera network\n- Financial records showing payments from the Dean\n- Blackmail material on several students\n\nThis is bigger than just a creepy security guard. The Dean is involved.",
+      "Media": null,
+      "Choices": [
+        {
+          "ChoiceID": "take_evidence",
+          "Text": "Take all the evidence",
+          "NextStage": "victory_escape",
+          "Effects": [
+            {
+              "Type": "CT_SETVARIABLE",
+              "VarName": "herbert_evidence_collected",
+              "Value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "StageID": "victory_escape",
+      "Text": "[b][c Green]OBJECTIVE COMPLETE: Campus Security Defeated[/c][/b]\n\nYou leave the security office with your campus badge. All university locations are now accessible. But you've made an enemy of Herbert and potentially the Dean as well.\n\nYou'll need to be careful moving forward.",
+      "Media": null,
+      "Choices": []
+    },
+    {
+      "StageID": "badge_stolen_escape",
+      "Text": "[b][c Green]OBJECTIVE COMPLETE: Campus Badge Acquired[/c][/b]\n\nYou slip out through the window with the forged badge. All university locations are now accessible. Herbert will probably notice the missing badge eventually, but by then you'll be long gone.",
+      "Media": null,
+      "Choices": []
+    },
+    {
+      "StageID": "hidden_success",
+      "Text": "You manage to hide in a closet just as Herbert enters. He mutters to himself and sits at his computer, not noticing anything amiss. After a few tense minutes, he gets distracted by his browser and you're able to slip out the window.",
+      "Media": null,
+      "Choices": [
+        {
+          "ChoiceID": "escape_clean",
+          "Text": "Leave quietly",
+          "NextStage": "escaped_clean"
+        }
+      ]
+    },
+    {
+      "StageID": "escaped_clean",
+      "Text": "[b][c Green]OBJECTIVE COMPLETE: Campus Badge Acquired[/c][/b]\n\nYou escape with the badge and hacked data intact. Herbert has no idea you were there. All university locations are now accessible, and you have damning evidence of his surveillance network.",
+      "Media": null,
+      "Choices": []
+    }
+  ],
+  "Rewards": {
+    "OnComplete": {
+      "Experience": 150,
+      "Flags": {
+        "campus_security_complete": true,
+        "herbert_confronted": true
+      }
+    }
+  }
+}

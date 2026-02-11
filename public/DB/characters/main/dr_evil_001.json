@@ -1,0 +1,128 @@
+{
+  "UniqueID": "dr_evil_001",
+  "Charname": "Dr. Evil",
+  "Gender": "Male",
+  "Type": "main_npc",
+  "Disposition": "neutral",
+  "prob_spawn": 0,
+  "Description": "Doctor Evil, a short and stout man with bright blue eyes, and the evil genius behind E.I.",
+  "Picture": "Assets/images/characters/main_npc/drE_holds_katana.png",
+  "CurrentRoom": "drevilscommandcenter_lc_001",
+  "KnowsPlayer": false,
+  "ActionsMenu": [
+    {
+      "Action": "Talk",
+      "Description": "Talk to Dr. Evil.",
+      "ShowIf": "player.Stats.prologue_test_complete == true"
+    },
+    {
+      "Action": "Ask",
+      "Description": "Ask Dr. Evil a question.",
+      "ShowIf": "player.Stats.prologue_can_ask_drevil == true"
+    }
+  ],
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/main_npc/drE_holds_katana.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Doctor Evil, a short and stout man with bright blue eyes, and the evil genius behind E.I." }
+      ],
+      "FailCommands": []
+    },
+    
+    {
+      "name": "Talk",
+      "bActive": true,
+      "InputType": "None",
+      "Conditions": [
+        {
+          "Checks": [
+            { "CondType": "CT_Variable_Comparison", "ConditionStep2": "player.Stats.prologue_test_complete", "ConditionStep3": "==", "ConditionStep4": true },
+            { "CkType": "And", "CondType": "CT_Variable_Comparison", "ConditionStep2": "player.Stats.prologue_job_offer_complete", "ConditionStep3": "!=", "ConditionStep4": true }
+          ],
+          "PassCommands": [],
+          "FailCommands": []
+        }
+      ],
+      "TriggerScene": "drevilscommandcenter_drevil_002_sequence",
+      "PassCommands": [],
+      "FailCommands": []
+    },
+    {
+      "name": "Ask",
+      "bActive": true,
+      "InputType": "None",
+      "CustomChoiceTitle": "Ask Dr. Evil",
+      "CustomChoices": [
+        {
+          "Label": "You dont sound too freaked out about the whole can read minds thing....",
+          "Value": "ask_minds",
+          "ShowIf": "player.Stats.prologue_ask_minds_done != true"
+        },
+        {
+          "Label": "Why go after the Justice Force?",
+          "Value": "ask_justice",
+          "ShowIf": "player.Stats.prologue_ask_justice_done != true"
+        },
+        {
+          "Label": "I've got no more questions. I'm ready to go.",
+          "Value": "ask_ready",
+          "ShowIf": "player.Stats.prologue_ask_minds_done == true && player.Stats.prologue_ask_justice_done == true"
+        }
+      ],
+      "Conditions": [
+        {
+          "Checks": [
+            { "CondType": "CT_Input_Comparison", "ConditionStep3": "Equals", "ConditionStep4": "ask_minds" }
+          ],
+          "PassCommands": [
+            { "cmdtype": "CT_TRIGGER_SCENE", "CommandPart2": "drevilscommandcenter_drevil_ask_001_story::minds_01" }
+          ],
+          "FailCommands": []
+        },
+        {
+          "Checks": [
+            { "CondType": "CT_Input_Comparison", "ConditionStep3": "Equals", "ConditionStep4": "ask_justice" }
+          ],
+          "PassCommands": [
+            { "cmdtype": "CT_TRIGGER_SCENE", "CommandPart2": "drevilscommandcenter_drevil_ask_001_story::justice_01" }
+          ],
+          "FailCommands": []
+        },
+        {
+          "Checks": [
+            { "CondType": "CT_Input_Comparison", "ConditionStep3": "Equals", "ConditionStep4": "ask_ready" }
+          ],
+          "PassCommands": [
+            { "cmdtype": "CT_TRIGGER_SCENE", "CommandPart2": "drevilscommandcenter_drevil_ask_001_story::ready_01" }
+          ],
+          "FailCommands": []
+        }
+      ],
+      "PassCommands": [],
+      "FailCommands": []
+    },
+    {
+      "name": "Talk",
+      "bActive": true,
+      "InputType": "None",
+      "Conditions": [
+        {
+          "Checks": [
+            { "CondType": "CT_Variable_Comparison", "ConditionStep2": "player.Stats.prologue_job_offer_complete", "ConditionStep3": "==", "ConditionStep4": true }
+          ],
+          "PassCommands": [],
+          "FailCommands": []
+        }
+      ],
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "\"Ask your questions, Steven. We don't have all day.\" Dr. Evil folds his hands and waits." }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": []
+}

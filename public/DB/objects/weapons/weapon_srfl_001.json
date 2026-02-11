@@ -1,0 +1,13 @@
+{
+  "id": "weapon_srfl_001",
+  "name": "Sonic Rifle",
+  "picture": "Assets/images/objects/weapons/steampunk_sonic_blaster.jpg",
+  "menu": ["examine", "equip", "unequip"],
+  "description": "A rifle that uses sound to injure, incapacitate, or kill opponents. High powered sound waves can disrupt or destroy the eardrums of a target and cause severe pain or disorientation. This is usually sufficient to incapacitate a person. Less powerful sound waves can cause humans to experience nausea or discomfort.",
+  "effects": ["Non-concealable", "Can be lethal or non-lethal", "Chance to cripple opponents"],
+  "playerWeaponDmg": 6,
+  "cost": 600,
+  "actionDescription": "BOOOMMMMBOOOOMMM. Your rifle makes a large tuba sound as you fire at the enemy. It's so powerful it almost hurts to hold on to it. The enemy grabs their ears in excruciating pain. They fall to their knees helpless!",
+  "special": "broken armor",
+  "tags": ["Non-concealable"]
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "id": "HangedOutWithMarkAndEmily",
+    "name": "Hanged Out with Mark and Emily!",
+    "description": "You spent a memorable evening with Mark and Emily. True friendship is forged in laughter and late-night snacks.",
+    "media": "Assets/images/Emily_03.jpg",
+    "popup": {
+      "title": "Achievement Unlocked!",
+      "text": "You hung out with Mark and Emily!",
+      "media": "Assets/images/Emily_03.jpg"
+    }
+  }
+]

@@ -1,0 +1,138 @@
+{
+  "$schema": "Scene Template v1.0",
+  "$comment": "Vadar office talk scene: give badge + gear on first meeting.",
+  "UniqueID": "evilinc_securitycenter_002_sequence",
+  "Title": "Vadar Office Briefing",
+  "SceneType": "sequence",
+  "Location": "evilinc_vadar_office_lc_001",
+  "TargetEntity": "vadar_001",
+  "Repeatable": true,
+  "StartIf": {
+    "Condition": "CT_Variable_Comparison",
+    "Variable": "room.bFirstTimeVisited",
+    "Operator": "==",
+    "Value": true
+  },
+  "Trigger": {
+    "EventType": "Triggered by event (manual)",
+    "AttachedTo": "room",
+    "EntityID": "evilinc_vadar_office_lc_001"
+  },
+  "Stages": [
+    {
+      "StageID": "stage_01",
+      "Media": "Assets/images/rooms/chief_of_security_evil_inc.jpg",
+      "Text": [
+        "Talk",
+        "<Well you certainly have unique taste huh..... This place is hideous...>",
+        "\"Now it's about time you showed up...... Here take your security badge, with it you will be able to access the restricted areas of the building.\" Vadar throws you a badge as you enter his office slapping you square in the face. \"Do your best to hold on to it. We wouldn't want any more incidents....\"\n[b]PSSSSSSSHHHHRRRRHHH This doesn't surprise you . Bullies targeted you a lot when you were a kid and it feels the same now.",
+        "\"....right....thanks....I guess. So what's the deal with security around here? For a top secret evil base there isn't much of a security presence.\" Looking over the badge the large man handed you. You notice they spelled you name Stephen Wolf not Steven Wolf....great....",
+        "\"We're completely protected don't worry, little lamb. I'll protect you and all your little gizmos! Hahahaha!\" PSSSSSSSHHHHRRRRHHH"
+      ],
+      "Effects": [
+        {
+          "cmdtype": "CT_MOVEITEMTOROOM",
+          "CommandPart2": "evilinc_security_badge_001",
+          "CommandPart3": "evilinc_vadar_office_lc_001"
+        },
+        {
+          "cmdtype": "CT_MOVEITEMTOROOM",
+          "CommandPart2": "lab_coat_001",
+          "CommandPart3": "evilinc_vadar_office_lc_001"
+        },
+        {
+          "cmdtype": "CT_MOVEITEMTOROOM",
+          "CommandPart2": "rubber_gloves_001",
+          "CommandPart3": "evilinc_vadar_office_lc_001"
+        },
+        {
+          "cmdtype": "CT_MOVEITEMTOROOM",
+          "CommandPart2": "insulated_boots_001",
+          "CommandPart3": "evilinc_vadar_office_lc_001"
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.evilinc_security_badge",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.talked_to_vadar",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.vadar_talks",
+          "CommandPart3": "Equals",
+          "CommandPart4": 1
+        },
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.vadar_ask_ready",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        },
+        {
+          "cmdtype": "CT_SET_CHARACTER_ROOM",
+          "CommandPart2": "pam_isley_001",
+          "CommandPart4": "evilincsecuritylevel_lc_001"
+        },
+        {
+          "cmdtype": "CT_SET_CHARACTER_ROOM",
+          "CommandPart2": "mini_me_001",
+          "CommandPart4": "evilincsecuritylevel_lc_001"
+        }
+      ],
+      "IsEnd": true
+    },
+    {
+      "StageID": "ask_heist",
+      "Text": [
+        "Ask",
+        "Do you think your ready for Phase 1 of the plan?",
+        "To be completely honest......",
+        "\"We don't stand a chance in hell! I can't do this alone and the fembots must stay in the building at all times to protect Dr. Evil. You need to go out and find us members to join our team. I'm going to need at least a 2 man team to hit Aeon. Dr. E should be able to give you a list of names. We're gonna need this scientist to help us with the teleporter as well. Talk to Dr. Evil about that.\""
+      ],
+      "IsEnd": true
+    },
+    {
+      "StageID": "ask_winifred",
+      "Text": [
+        "Ask",
+        "\"Talk about this with Penny. She's Penny's friend.\""
+      ],
+      "Effects": [
+        {
+          "Checks": [
+            {
+              "CondType": "CT_Variable_Comparison",
+              "ConditionStep2": "player.Stats.winifred_lab_stage",
+              "ConditionStep3": "==",
+              "ConditionStep4": 1
+            }
+          ],
+          "PassCommands": [
+            {
+              "cmdtype": "CT_ACTION_ADD_CUSTOMCHOICE",
+              "CommandPart2": "Chr:penny_001:Ask",
+              "CommandText": "Dr Burkle Lab"
+            }
+          ],
+          "FailCommands": []
+        }
+      ],
+      "IsEnd": true
+    }
+  ],
+  "Rewards": {
+    "OnComplete": {
+      "Experience": 0,
+      "Credits": 0,
+      "Items": [],
+      "Flags": {}
+    }
+  },
+  "CustomProperties": []
+}

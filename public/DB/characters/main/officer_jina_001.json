@@ -1,10 +1,11 @@
 {
   "UniqueID": "officer_jina_001",
-  "Charname": "Officer Jina",
+  "Charname": "Officer Jina Hill",
   "Gender": "Female",
-  "Type": "soldier",
-  "Description": "A tough, no-nonsense police officer.",
-  "CurrentRoom": "citygates_lc_001",
+  "Type": "npc",
+  "Disposition": "friendly",
+  "Description": "A tired officer with sharp eyes.",
+  "CurrentRoom": "policestation_lc_001",
   "Picture": "Assets/images/characters/placeholder.png",
   "KnowsPlayer": false,
   "Actions": [

@@ -1,0 +1,197 @@
+{
+  "$schema":  "Scene Template v1.0",
+  "$comment": "Centralized scene/story system. Name format: {location}_{target}_{number}_{type}.json",
+  "$comment2":"Choices menus rendered in actions drawer plus conditional logic written using modern command types",
+  "UniqueID": "scene_template_001",
+  "SceneName": "Example Scene Template",
+  "SceneType": "story",
+  "Location": "eastside_lc_001",
+  "TargetEntity": null,
+  "Tags": ["tutorial", "main-quest"],
+  "RequiredFlags": {},
+  "Description": "Template for creating story scenes with dynamic choices and modern conditional logic",
+  
+  "Trigger": {
+    "EventType": "<<On Player Enter First Time>>",
+    "AttachedTo": "room",
+    "EntityID": "eastside_lc_001"
+  },
+  
+  "Stages": [
+    {
+      "StageID": "intro",
+      "Media": "Assets/images/scenes/example_intro.jpg",
+      "MediaType": "image",
+      "Text": "You arrive at the location. The atmosphere is tense...",
+      "AutoAdvance": false,
+      "Conditions": [],
+      "NextStage": "choice_point_1"
+    },
+    {
+      "StageID": "choice_point_1",
+      "Media": null,
+      "Text": "[b]What do you do?[/b]",
+      "Choices": [
+        {
+          "ChoiceID": "choice_1_investigate",
+          "DisplayText": "Investigate the area",
+          "Tooltip": "Use your psychic senses to scan the surroundings",
+          "ShowIf": {
+            "Condition": "CT_Variable_Comparison",
+            "Variable": "player.Stats.MS",
+            "Operator": ">=",
+            "Value": 3
+          },
+          "Effects": [
+            {
+              "cmdtype": "CT_SETVARIABLE",
+              "Variable": "player.Stats.quest_main_stage",
+              "Operator": "Equals",
+              "Value": 2
+            },
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You focus your mental powers and sense... something lurking nearby."
+            }
+          ],
+          "NextStage": "investigate_result",
+          "GainExp": 10,
+          "EnergyCost": 5
+        },
+        {
+          "ChoiceID": "choice_1_talk",
+          "DisplayText": "Talk to the guard",
+          "Tooltip": "Try to persuade the guard to let you pass",
+          "ShowIf": null,
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You approach the guard confidently..."
+            }
+          ],
+          "NextStage": "talk_result",
+          "GainExp": 5
+        },
+        {
+          "ChoiceID": "choice_1_leave",
+          "DisplayText": "Leave quietly",
+          "Tooltip": "Come back later when you're better prepared",
+          "ShowIf": null,
+          "Effects": [],
+          "NextStage": "end",
+          "GainExp": 0
+        }
+      ]
+    },
+    {
+      "StageID": "investigate_result",
+      "Media": "Assets/images/scenes/example_investigate.jpg",
+      "Text": "Your psychic senses reveal a hidden camera in the corner. Someone is watching...",
+      "Choices": [],
+      "Effects": [
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "Variable": "player.Stats.discovered_camera",
+          "Operator": "Equals",
+          "Value": true
+        }
+      ],
+      "NextStage": "end"
+    },
+    {
+      "StageID": "talk_result",
+      "Media": null,
+      "Text": "The guard looks at you suspiciously. 'You got a badge?'",
+      "Choices": [
+        {
+          "ChoiceID": "show_badge",
+          "DisplayText": "Show campus badge",
+          "ShowIf": {
+            "Condition": "CT_Variable_Comparison",
+            "Variable": "player.Stats.has_campus_badge",
+            "Operator": "==",
+            "Value": true
+          },
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "The guard nods and steps aside. You're in."
+            }
+          ],
+          "NextStage": "success_enter",
+          "GainExp": 15
+        },
+        {
+          "ChoiceID": "use_telepathy",
+          "DisplayText": "Use telepathy to control the guard",
+          "Tooltip": "Requires MS >= 5",
+          "ShowIf": {
+            "Condition": "CT_Variable_Comparison",
+            "Variable": "player.Stats.MS",
+            "Operator": ">=",
+            "Value": 5
+          },
+          "Effects": [
+            {
+              "cmdtype": "CT_DISPLAYTEXT",
+              "Text": "You reach into the guard's mind... [i]'Let them pass...'[/i]"
+            }
+          ],
+          "NextStage": "success_enter",
+          "GainExp": 20,
+          "EnergyCost": 10
+        },
+        {
+          "ChoiceID": "bluff",
+          "DisplayText": "Try to bluff your way in",
+          "ShowIf": null,
+          "ChanceSuccess": 50,
+          "OnSuccess": {
+            "Text": "The guard buys your story and lets you through.",
+            "NextStage": "success_enter",
+            "GainExp": 10
+          },
+          "OnFailure": {
+            "Text": "The guard sees through your lies. 'Get lost!'",
+            "NextStage": "end",
+            "GainExp": 0
+          }
+        }
+      ]
+    },
+    {
+      "StageID": "success_enter",
+      "Media": "Assets/images/rooms/inside_building.jpg",
+      "Text": "You're inside. Now the real work begins...",
+      "Effects": [
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "Variable": "player.Stats.quest_main_stage",
+          "Operator": "Equals",
+          "Value": 3
+        },
+        {
+          "cmdtype": "CT_ADDTOARRAY",
+          "Variable": "player.CompletedScenes",
+          "Value": "scene_template_001"
+        }
+      ],
+      "NextStage": "end"
+    },
+    {
+      "StageID": "end",
+      "IsEnd": true
+    }
+  ],
+  
+  "Rewards": {
+    "OnComplete": {
+      "Experience": 50,
+      "Credits": 100,
+      "Items": ["item_keycard_001"],
+      "UnlockScenes": ["scene_followup_002"]
+    }
+  },
+  
+  "CustomProperties": []
+}

@@ -1,0 +1,22 @@
+{
+  "UniqueID": "young_super_e_001",
+  "Charname": "Young Super E",
+  "Gender": "Unknown",
+  "Type": "citizen",
+  "Disposition": "neutral",
+  "prob_spawn": 10,
+  "Description": "A young super hanging around, trying to look casual while barely containing their power.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Actions": [],
+  "ActionsMenu": [
+    { "Action": "Talk", "Description": "Start a conversation." },
+    { "Action": "Examine", "Description": "Look closer." }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {},
+  "LoreStages": {},
+  "SpawnAreas": ["Liberty City East"],
+  "CustomProperties": []
+}

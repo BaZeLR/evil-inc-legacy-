@@ -1,0 +1,27 @@
+{
+  "UniqueID": "evilinc_security_badge_001",
+  "Name": "E.I. Security Badge",
+  "Type": "object",
+  "SDesc": "evilinc_security_badge",
+  "Description": "An E.I. security badge issued to authorized staff. It grants access to secured Evil Incorporated areas.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "Owner": "",
+  "AlwaysPresent": false,
+  "PresentOnFirstVisit": false,
+  "CanExamine": true,
+  "CanPickUp": true,
+  "CanDrop": true,
+  "CanCombine": false,
+  "CanSpawn": false,
+  "CanEquip": false,
+  "Price": 0,
+  "Tooltip": "Examine, Take",
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Inspect the E.I. security badge." },
+    { "Action": "Take", "Description": "Pick up the E.I. security badge." }
+  ],
+  "CustomActions": [],
+  "CombinableWith": [],
+  "CreatesOnCombine": "",
+  "CustomProperties": []
+}

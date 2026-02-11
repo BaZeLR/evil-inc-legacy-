@@ -28,6 +28,7 @@
     "maxHealth": 10,
     "maxEnergy": 8
   },
+  "statPointsPerLevel": 1,
   "statLeveling": {
     "enabled": true,
     "thresholdToNext": 2,

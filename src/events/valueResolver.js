@@ -2,6 +2,38 @@ function isRecord(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
 
+function normalizeLookupKey(value) {
+  return String(value ?? '').trim().toLowerCase();
+}
+
+function normalizeAliasKey(value) {
+  return String(value ?? '').trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+function resolveAliasValue(raw, context) {
+  const key = normalizeAliasKey(raw);
+  if (key === 'skip intro') {
+    const flag = Boolean(context?.game?.player?.Stats?.prologue_intro_skipped);
+    return flag ? 1 : 0;
+  }
+  return undefined;
+}
+
+function setAliasValue(raw, value, context) {
+  const key = normalizeAliasKey(raw);
+  if (key === 'skip intro') {
+    const coerced = coerceLiteral(value);
+    const flag = coerced === true || coerced === 1;
+    if (!context?.game?.player) return false;
+    if (!context.game.player.Stats || typeof context.game.player.Stats !== 'object') {
+      context.game.player.Stats = {};
+    }
+    context.game.player.Stats.prologue_intro_skipped = flag;
+    return true;
+  }
+  return false;
+}
+
 function getCustomPropertiesArray(entity) {
   if (!entity) return null;
   if (Array.isArray(entity.CustomProperties)) return entity.CustomProperties;
@@ -183,6 +215,7 @@ export function resolveValue(reference, context) {
     { prefix: 'room.', root: () => context?.room ?? game?.getCurrentRoom?.() ?? null },
     { prefix: 'object.', root: () => context?.objectBeingActedUpon ?? context?.object ?? null },
     { prefix: 'character.', root: () => context?.character ?? null },
+    { prefix: 'timer.', root: () => context?.timer ?? null },
     { prefix: 'global.', root: () => game?.variables ?? null },
     { prefix: 'vars.', root: () => game?.variables ?? null }
   ];
@@ -195,6 +228,22 @@ export function resolveValue(reference, context) {
 
   const variables = game?.variables ?? null;
   if (variables && Object.prototype.hasOwnProperty.call(variables, raw)) return variables[raw];
+
+  const textLibrary = variables?.texts ?? null;
+  if (textLibrary) {
+    if (lower.startsWith('text.') || lower.startsWith('texts.')) {
+      const tail = raw.split('.').slice(1).join('.');
+      const resolvedText = getByPath(textLibrary, tail);
+      if (resolvedText !== undefined) return resolvedText;
+    }
+    if (raw.includes('.')) {
+      const resolvedText = getByPath(textLibrary, raw);
+      if (resolvedText !== undefined) return resolvedText;
+    }
+  }
+
+  const alias = resolveAliasValue(raw, context);
+  if (alias !== undefined) return alias;
 
   return undefined;
 }
@@ -213,6 +262,7 @@ export function setValue(reference, value, context) {
     { prefix: 'room.', root: () => context?.room ?? game?.getCurrentRoom?.() ?? null },
     { prefix: 'object.', root: () => context?.objectBeingActedUpon ?? context?.object ?? null },
     { prefix: 'character.', root: () => context?.character ?? null },
+    { prefix: 'timer.', root: () => context?.timer ?? null },
     { prefix: 'global.', root: () => (variables ?? null) },
     { prefix: 'vars.', root: () => (variables ?? null) }
   ];
@@ -222,6 +272,8 @@ export function setValue(reference, value, context) {
     const tail = raw.slice(entry.prefix.length);
     return setByPath(entry.root(), tail, value);
   }
+
+  if (setAliasValue(raw, value, context)) return true;
 
   if (!game) return false;
   if (!game.variables) game.variables = {};
@@ -235,10 +287,18 @@ export function resolveEntityById(game, entityType, entityId, fallbackEntity) {
   if (!id || !game) return null;
 
   if (entityType === 'room') return game.roomMap?.[id] ?? null;
-  if (entityType === 'object') return game.objectMap?.[id] ?? null;
-  if (entityType === 'character') return game.characterMap?.[id] ?? null;
+  if (entityType === 'object') {
+    const direct = game.objectMap?.[id] ?? null;
+    if (direct) return direct;
+    return game.objectNameMap?.[normalizeLookupKey(id)] ?? game.objectNameMap?.[normalizeAliasKey(id)] ?? null;
+  }
+  if (entityType === 'character') {
+    return game.characterMap?.[id] ?? game.characterNameMap?.[normalizeLookupKey(id)] ?? null;
+  }
+  if (entityType === 'timer') {
+    return game.timerMap?.[id] ?? game.timerNameMap?.[normalizeLookupKey(id)] ?? null;
+  }
   if (entityType === 'player') return game.player ?? null;
   if (entityType === 'global') return game ?? null;
   return null;
 }
-

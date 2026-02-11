@@ -1,0 +1,22 @@
+{
+  "UniqueID": "hot_neighbor_001",
+  "Charname": "Hot Neighbor",
+  "Gender": "Unknown",
+  "Type": "citizen",
+  "Disposition": "neutral",
+  "prob_spawn": 10,
+  "Description": "A hot neighbor lounging around the apartment building, clearly aware of the attention they draw.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "KnowsPlayer": false,
+  "Actions": [],
+  "ActionsMenu": [
+    { "Action": "Talk", "Description": "Start a conversation." },
+    { "Action": "Examine", "Description": "Look closer." }
+  ],
+  "Inventory": [],
+  "Schedule": [],
+  "Stats": {},
+  "LoreStages": {},
+  "SpawnAreas": ["Apartment Building"],
+  "CustomProperties": []
+}

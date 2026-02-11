@@ -1,0 +1,58 @@
+{
+  "UniqueID": "yesman_friend_001",
+  "Charname": "Yes Man",
+  "Gender": "Neutral",
+  "Type": "secondary",
+  "Disposition": "friendly",
+  "prob_spawn": 0,
+  "Description": "Yes Man.",
+  "Picture": "Assets/images/characters/placeholder.png",
+  "CurrentRoom": "evilinc34thfloor_lc_001",
+  "KnowsPlayer": true,
+  "ActionsMenu": [
+    { "Action": "Examine", "Description": "Look at Yes Man." },
+    { "Action": "Talk", "Description": "Talk to Yes Man." },
+    { "Action": "Telepathy", "Description": "Read Yes Man's thoughts.", "ShowIf": "player.Stats.prologue_telepathy_unlocked == true" }
+  ],
+  "Actions": [
+    {
+      "name": "<<On Click>>",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/placeholder.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Yes Man." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Examine",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYPICTURE", "CommandPart2": "Assets/images/characters/placeholder.png" },
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "Yes Man." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Talk",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "\"Hello! My name is Yes Man, Dr. Evils most favorite robot! I am here to ... wait you seemed to be injured\" The odd robot notes." }
+      ],
+      "FailCommands": []
+    },
+    {
+      "name": "Telepathy",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        { "cmdtype": "CT_DISPLAYTEXT", "CommandText": "<001010100000001111000011>" }
+      ],
+      "FailCommands": []
+    }
+  ],
+  "CustomProperties": [{"mindReadable": true}]
+}

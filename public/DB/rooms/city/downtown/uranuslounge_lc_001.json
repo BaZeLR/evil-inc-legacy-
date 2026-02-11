@@ -1,0 +1,23 @@
+{
+  "Name": "Uranus Lounge",
+  "UniqueID": "uranuslounge_lc_001",
+  "SDesc": "uranus_lounge",
+  "Group": "Downtown",
+  "Spawns": true,
+  "Description": "Home to Liberty City's Underworld",
+  "Exits": [
+    { "Direction": "SW", "DestinationRoom": "downtown_lc_001" },
+    { "Direction": "Go Inside", "DestinationRoom": "uranuslounge_inside_lc_001" }
+  ],
+  "NPCs": [],
+  "Objects": [],
+  "Actions": [],  
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": {
+    "day":   "Assets/images/rooms/Uranus_Lounge_Day.jpg",
+    "dusk":  "Assets/images/rooms/Uranus_Lounge_Dusk.jpg",
+    "night": "Assets/images/rooms/Uranus_Lounge_Night.jpg"
+  }
+}

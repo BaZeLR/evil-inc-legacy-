@@ -1,4 +1,4 @@
-import { chancePercent, cryptoRng } from '../utils/random.js';
+import { chancePercent, cryptoRng, randomIntInclusive } from '../utils/random.js';
 import { getGameClockFromStats } from '../utils/gameTime.js';
 import { evaluateCondStr } from './condStr.js';
 
@@ -6,6 +6,51 @@ function clampInt(value, fallback = 0) {
   const num = Number(value);
   if (!Number.isFinite(num)) return fallback;
   return Math.trunc(num);
+}
+
+function clampPercent(value, fallback = 100) {
+  const num = clampInt(value, fallback);
+  return Math.max(0, Math.min(100, num));
+}
+
+function parseProbPercent(probRaw, rng) {
+  if (probRaw == null) return 100;
+
+  if (typeof probRaw === 'number') return clampPercent(probRaw, 100);
+
+  if (typeof probRaw === 'string') {
+    const text = probRaw.trim();
+    if (!text) return 100;
+
+    const match = /^([0-9]{1,3})\s*-\s*([0-9]{1,3})$/.exec(text);
+    if (match) {
+      const min = clampPercent(match[1], 0);
+      const max = clampPercent(match[2], 0);
+      const lo = Math.min(min, max);
+      const hi = Math.max(min, max);
+      return randomIntInclusive(lo, hi, rng);
+    }
+
+    return clampPercent(text, 100);
+  }
+
+  if (Array.isArray(probRaw) && probRaw.length >= 2) {
+    const min = clampPercent(probRaw[0], 0);
+    const max = clampPercent(probRaw[1], 0);
+    const lo = Math.min(min, max);
+    const hi = Math.max(min, max);
+    return randomIntInclusive(lo, hi, rng);
+  }
+
+  if (typeof probRaw === 'object') {
+    const min = clampPercent(probRaw.min ?? probRaw.Min ?? 0, 0);
+    const max = clampPercent(probRaw.max ?? probRaw.Max ?? 0, 0);
+    const lo = Math.min(min, max);
+    const hi = Math.max(min, max);
+    return randomIntInclusive(lo, hi, rng);
+  }
+
+  return 100;
 }
 
 function normalizeText(value) {
@@ -29,6 +74,9 @@ function normalizeWhen(value, fallback = 'enter') {
   if (raw === 'enter') return 'enter';
   if (raw === 'exit') return 'exit';
   if (raw === 'presence' || raw === 'npc_present') return 'presence';
+  if (raw === 'character_enter' || raw === 'npc_enter') return 'character_enter';
+  if (raw === 'character_leave' || raw === 'npc_leave') return 'character_leave';
+  if (raw === 'manual') return 'manual';
   return raw;
 }
 
@@ -50,6 +98,7 @@ function ensureSaveEventsContainer(save) {
   if (!save.events.threads || typeof save.events.threads !== 'object') save.events.threads = {};
   if (!save.events.states || typeof save.events.states !== 'object') save.events.states = {};
   if (!save.events.flags || typeof save.events.flags !== 'object') save.events.flags = {};
+  if (!save.events.activeScenes || typeof save.events.activeScenes !== 'object') save.events.activeScenes = {};
   return save.events;
 }
 
@@ -274,7 +323,7 @@ export class EventController {
     return { ...rewards, items: grantedItems, loot: grantedLoot, levelProgression };
   }
 
-  pickEligibleEvent({ when, roomId, fromRoomId, toRoomId, rng = cryptoRng } = {}) {
+  pickEligibleEvent({ when, roomId, fromRoomId, toRoomId, characterId, rng = cryptoRng } = {}) {
     const triggerWhen = normalizeWhen(when, 'enter');
     const room = normalizeText(roomId);
     if (!room) return null;
@@ -303,8 +352,14 @@ export class EventController {
       const repeatable = normalizeBool(evt?.repeatable, false);
       if (!repeatable && (status === 'complete' || status === 'aborted')) return false;
 
-      const location = normalizeText(evt?.location ?? evt?.Location ?? '');
-      if (location && location !== '*' && location !== room) return false;
+      const locationRaw = evt?.location ?? evt?.Location ?? '';
+      if (Array.isArray(locationRaw)) {
+        const list = locationRaw.map(v => normalizeText(v)).filter(Boolean);
+        if (list.length && !list.includes('*') && !list.includes(room)) return false;
+      } else {
+        const location = normalizeText(locationRaw);
+        if (location && location !== '*' && location !== room) return false;
+      }
 
       const minDay = clampInt(evt?.day ?? 0, 0);
       const fixedDay = clampInt(evt?.evtDay ?? 0, 0);
@@ -332,7 +387,15 @@ export class EventController {
         }
       }
 
-      const prob = clampInt(evt?.prob ?? 100, 100);
+      if (triggerWhen === 'character_enter' || triggerWhen === 'character_leave') {
+        const target = normalizeText(evt?.target ?? '');
+        if (target) {
+          const incoming = normalizeText(characterId ?? '');
+          if (incoming && incoming !== target) return false;
+        }
+      }
+
+      const prob = parseProbPercent(evt?.prob ?? 100, rng);
       if (prob <= 0) return false;
       if (prob < 100 && !chancePercent(prob, rng)) return false;
 
@@ -350,12 +413,12 @@ export class EventController {
     return candidates[0] || null;
   }
 
-  triggerEvent(event, { when, roomId, fromRoomId, toRoomId, rng = cryptoRng } = {}) {
+  triggerEvent(event, { when, roomId, fromRoomId, toRoomId, characterId, rng = cryptoRng } = {}) {
     const evt = event && typeof event === 'object' ? event : null;
-    if (!evt) return { triggered: false, texts: [], media: null, suppressCombat: false, rewards: null };
+    if (!evt) return { triggered: false, texts: [], media: null, paused: false, sceneData: null, startCombatEnemyId: null, suppressCombat: false, rewards: null, errors: [] };
 
     const id = normalizeText(evt?.id);
-    if (!id) return { triggered: false, texts: [], media: null, suppressCombat: false, rewards: null };
+    if (!id) return { triggered: false, texts: [], media: null, paused: false, sceneData: null, startCombatEnemyId: null, suppressCombat: false, rewards: null, errors: [] };
 
     const room = this.game?.roomMap?.[roomId] ?? null;
     const ctxRoom = room ?? this.game?.getCurrentRoom?.() ?? null;
@@ -376,11 +439,15 @@ export class EventController {
 
     const texts = Array.isArray(result?.texts) ? [...result.texts] : [];
     const media = result?.media || null;
+    const paused = Boolean(result?.paused);
+    const sceneData = result?.sceneData || null;
+    const startCombatEnemyId = result?.startCombatEnemyId || null;
+    const errors = Array.isArray(result?.errors) ? [...result.errors] : [];
 
     const suppressCombat = normalizeBool(evt?.suppressCombat, true);
     const hasRewards = evt?.rewards && typeof evt.rewards === 'object' && Object.keys(evt.rewards).length > 0;
-    const didSomething = Boolean(result?.didSomething || media || result?.paused || (Array.isArray(result?.errors) && result.errors.length) || hasRewards);
-    if (!didSomething) return { triggered: false, texts: [], media: null, suppressCombat: false, rewards: null };
+    const didSomething = Boolean(result?.didSomething || media || paused || errors.length || hasRewards);
+    if (!didSomething) return { triggered: false, texts: [], media: null, paused: false, sceneData: null, startCombatEnemyId: null, suppressCombat: false, rewards: null, errors: [] };
 
     const thread = normalizeText(evt?.thread_name ?? '');
     if (thread) this.setThreadStatus(thread, 'active');
@@ -390,7 +457,12 @@ export class EventController {
 
     let rewardResult = null;
     const completeOnTrigger = normalizeBool(evt?.completeOnTrigger, true);
-    if (completeOnTrigger) {
+    const sceneId = normalizeText(sceneData?.sceneId ?? sceneData?.scene?.UniqueID ?? '');
+    if (!completeOnTrigger && sceneId) {
+      this.registerActiveSceneEvent(id, sceneId, thread);
+    }
+
+    if (completeOnTrigger || (!sceneId && !completeOnTrigger)) {
       this.setEventStatus(id, 'complete');
       rewardResult = this.applyRewards(evt?.rewards ?? evt?.Rewards ?? null);
 
@@ -408,12 +480,55 @@ export class EventController {
       if (parts.length) texts.push(`Rewards: <b>${parts.join(' | ')}</b>`);
     }
 
-    return { triggered: true, eventId: id, thread, texts, media, suppressCombat, rewards: rewardResult };
+    return { triggered: true, eventId: id, thread, texts, media, paused, sceneData, startCombatEnemyId, suppressCombat, rewards: rewardResult, errors };
   }
 
-  run({ when, roomId, fromRoomId, toRoomId, rng = cryptoRng } = {}) {
-    const evt = this.pickEligibleEvent({ when, roomId, fromRoomId, toRoomId, rng });
-    if (!evt) return { triggered: false, texts: [], media: null, suppressCombat: false, eventId: null };
-    return this.triggerEvent(evt, { when, roomId, fromRoomId, toRoomId, rng });
+  registerActiveSceneEvent(eventId, sceneId, threadName = '') {
+    const id = normalizeText(eventId);
+    const scene = normalizeText(sceneId);
+    if (!id || !scene) return;
+    const container = ensureSaveEventsContainer(this.game?.save);
+    if (!container) return;
+    container.activeScenes[scene] = id;
+    this.setEventStatus(id, 'active');
+
+    const thread = normalizeText(threadName || this.game?.plannedEventMap?.[id]?.thread_name || '');
+    if (thread) {
+      const record = container.threads[thread] && typeof container.threads[thread] === 'object' ? container.threads[thread] : {};
+      container.threads[thread] = { ...record, status: normalizeStatus(record.status, 'active'), lastEventId: id };
+      this.setThreadStatus(thread, 'active');
+    }
+  }
+
+  completeThreadEventForScene(sceneId) {
+    const scene = normalizeText(sceneId);
+    if (!scene) return null;
+    const container = ensureSaveEventsContainer(this.game?.save);
+    if (!container) return null;
+    const eventId = normalizeText(container.activeScenes?.[scene] ?? '');
+    if (!eventId) return null;
+
+    delete container.activeScenes[scene];
+    this.setEventStatus(eventId, 'complete');
+
+    const evt = this.game?.plannedEventMap?.[eventId] ?? this.game?.threadEventById?.[eventId] ?? null;
+    const rewards = evt?.rewards ?? evt?.Rewards ?? null;
+    const rewardResult = rewards ? this.applyRewards(rewards) : null;
+
+    const thread = normalizeText(evt?.thread_name ?? '');
+    if (thread) {
+      const order = Array.isArray(this.game?.threadEventIndex?.[thread]) ? this.game.threadEventIndex[thread] : [];
+      if (order.length && order[order.length - 1] === eventId) {
+        this.setThreadStatus(thread, 'complete');
+      }
+    }
+
+    return rewardResult;
+  }
+
+  run({ when, roomId, fromRoomId, toRoomId, characterId, rng = cryptoRng } = {}) {
+    const evt = this.pickEligibleEvent({ when, roomId, fromRoomId, toRoomId, characterId, rng });
+    if (!evt) return { triggered: false, texts: [], media: null, paused: false, sceneData: null, startCombatEnemyId: null, suppressCombat: false, rewards: null, eventId: null, errors: [] };
+    return this.triggerEvent(evt, { when, roomId, fromRoomId, toRoomId, characterId, rng });
   }
 }

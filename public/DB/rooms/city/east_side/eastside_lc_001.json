@@ -1,0 +1,41 @@
+{
+  "Name": "East Side",
+  "UniqueID": "eastside_lc_001",
+  "SDesc": "eastside",
+  "Group": "Liberty City East",
+  "Type": "hostile",
+  "Spawns": true,
+  "SpawnResidentsFromNPCs": true,
+  "ResidentSpawnChance": 70,
+  "Description": "The east side of Liberty City. There are many bars and clubs on this side as well as many businesses. Not the safest place at night.... You stand in front of entrance to appartment building, nearby, in the corner  a <a href=\"Assets/images/rooms/street_vendor.jpg\" target=\"_blank\">Street Vendor</a> and a <a href=\"Assets/images/objects/debug_demon.jpg\" target=\"_blank\">Debug Demon</a> here.",
+  "Exits": [
+    { "Direction": "North", "DestinationRoom": "route69_lc_001" },
+    { "Direction": "West", "DestinationRoom": "road22_lc_001" },
+    { "Direction": "South", "DestinationRoom": "apartmentbuilding_lc_001" },
+    { "Direction": "East", "DestinationRoom": "evilincfront_lc_001" }
+  ],
+  "NPCs": [
+    { "UniqueID": "nerd_001", "Weight": 20 },
+    { "UniqueID": "young_super_d_001", "Weight": 15 },
+    { "UniqueID": "biker_b_001", "Weight": 15 },
+    { "UniqueID": "happy_grandpa_001", "Weight": 20 },
+    { "UniqueID": "powerful_ceo_001", "Weight": 20 }
+  ],
+  "Objects": [
+    { "Name": "Street Vendor", "UniqueID": "streetvendor_001", "Type": "machine", "AlwaysPresent": true },
+    { "Name": "Debug Demon", "UniqueID": "debug_demon", "Type": "game_items", "AlwaysPresent": true },
+    { "Name": "duffel bag", "UniqueID": "duffelbag_001", "Type": "container", "PresentOnFirstVisit": true, "CanExamine": true, "CanPickUp": true, "Description": "You see a fancy duffel bag lying in the corner near the vendor machine.", "Tooltip": "Examine or pick up the equipment.", "ActionsMenu": [ { "Action": "Examine", "Description": "Look at the equipment closely." }, { "Action": "Pick Up", "Description": "Take the equipment with you." } ] }
+  ],
+  "Actions": [
+    { "name": "<<On Player Enter First Time>>", "bActive": true, "InputType": "None", "run": "You step into the reception for the first time." },
+    { "name": "Examine Room", "bActive": true, "Tooltip": "Examine the room for more details.", "run": "You look around and notice the details of the reception area." }
+  ],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": {
+    "day": "Assets/images/rooms/east_side.jpg",
+    "dusk": "Assets/images/rooms/east_side_dusk.jpg",
+    "night": "Assets/images/rooms/east_side_night.jpg"
+  }
+}

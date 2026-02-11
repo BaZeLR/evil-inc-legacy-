@@ -1,0 +1,28 @@
+{
+  "$comment": "PROLOGUE SEQUENCE: Player apartment intro",
+  "UniqueID": "apartment_player_001_sequence",
+  "Title": "Apartment Intro",
+  "SceneType": "sequence",
+  "Location": "apartment_player_001",
+  "Repeatable": false,
+  "Trigger": {
+    "EventType": "Triggered by event (manual)",
+    "AttachedTo": "room",
+    "EntityID": "apartment_player_001"
+  },
+  "Stages": [
+    {
+      "StageID": "stage_01",
+      "Text": "I still cant believe I went from living out of a suite case to this!!!\n\n<This is your bedroom! Right click on the bed to Sleep. Sleeping restores your health, and energy. As well as erasing your notoriety! It also advances to the next day!>",
+      "Effects": [
+        {
+          "cmdtype": "CT_SETVARIABLE",
+          "CommandPart2": "player.Stats.prologue_apartment_intro_done",
+          "CommandPart3": "Equals",
+          "CommandPart4": true
+        }
+      ],
+      "IsEnd": true
+    }
+  ]
+}

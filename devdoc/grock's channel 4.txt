@@ -1,0 +1,48 @@
+grock's channel 4  
+
+# CHANNEL 4 NEWS ANCHORS – APPEARANCE & CONSISTENCY BIBLE v1.0
+# Genre: Western-style high-detailed realistic spicy comics
+# Style notes: glossy pin-up comic aesthetic, bold ink lines, subtle halftone dots, saturated newsroom colors, exaggerated but Newtonian-accurate curves/physics
+# Aspect ratio default: 16:9
+# All characters are fictional adults (25+), spicy/flirty energy, consent & goodwill context
+
+## SHARED STUDIO SEED (fixed for entire series)
+Studio: Modern high-energy newsroom – curved glossy black/red anchor desk with large chrome “CHANNEL 4 NEWS” lettering across front. Three vintage chrome microphones angled toward anchors. Behind: massive curved LED wall showing animated Liberty City skyline + scrolling red “BREAKING NEWS” ticker + flashing “ALERT ALERT ALERT!” banners. Overhead dramatic key lights + rim lights create glowing highlights on skin, cleavage, hair. Subtle anamorphic lens flares on glass desk elements, red/blue color grade with comic halftone overlay. Papers, coffee cups with condensation, realistic prop physics (mic wobble on desk when someone leans hard).
+
+## Ron Burgundy
+Age: 45
+Gender: Male
+Face: Strong square jaw, thick dark neatly-trimmed mustache, slicked-back dark hair with silver temples, piercing blue eyes, cocky perpetual smirk, perfect white teeth, tanned skin with faint laugh lines from constant grinning.
+Body: 185 cm, broad-shouldered athletic-dad build, slight soft belly under suit jacket, confident chest-forward posture even seated.
+Wardrobe: Navy pinstripe suit jacket (usually open or half-unbuttoned after first segment), crisp white dress shirt (top two buttons undone by mid-broadcast), red power tie loosened rakishly, polished black shoes.
+Spicy details: Always leans toward camera when delivering punchlines, winks shamelessly, adjusts tie with slow deliberate pull. When laughing, shoulders roll back, chest puffs – subtle “alpha” body language.
+Mood default: Smug, self-absorbed, shameless flirt, quick with innuendo, loves calling junior anchors pet names.
+Consistency seed phrase: Ron Burgundy Channel 4 smug mustached anchor suit loosened
+
+## Leslie Park (youngest anchor – French blonde)
+Age: 24
+Gender: Female
+Face: Delicate oval French features, high elegant cheekbones, full natural lips with subtle gloss, striking ice-blue eyes framed by long dark lashes + light smoky liner, long straight platinum-blonde hair (side-parted Hollywood waves falling just past shoulders).
+Body: 168 cm, slim elegant hourglass, perky natural C-cup breasts (firm upward tilt with realistic subtle sag/bounce on every frustrated sigh or sharp turn), narrow waist, toned hips & long legs, fair porcelain skin with faint natural flush on cheeks/chest when irritated.
+Wardrobe: Tailored charcoal blazer (one extra button deliberately left undone revealing hint of white silk blouse), thin silk blouse clings to curves when she breathes deeply or leans forward (subtle lacy bra outline visible under lights), mid-thigh pencil skirt hugging hips/thighs, black patent high heels.
+Spicy details: When annoyed by Ron (which is often), subtle chest rise/fall from controlled breathing makes blouse strain slightly; occasional slow tongue click or lip purse; crosses legs with deliberate thigh flash; eye-rolls cause hair to sway sensually over shoulder.
+Mood default: Cool professional French poise, dry wit, quietly seething at Ron’s antics, no-nonsense tone with light accent.
+Consistency seed phrase: Leslie Park young French platinum blonde blue eyes junior anchor fitted blazer subtle cleavage
+
+## Rosa de Mencia (hot latina firecracker)
+Age: 29
+Gender: Female
+Face: Heart-shaped face, full pouty lips painted bold red or deep berry, warm dark-brown eyes sparkling with mischief, long thick lashes, golden-tan glowing skin, high cheekbones, radiant wide smile.
+Body: 170 cm, voluptuous exaggerated hourglass, large natural D-cup breasts (heavy, soft, pendulous with dramatic realistic jiggle/bounce on every laugh, wave, jump or excited lean – no bra so dress fabric stretches and molds dynamically), thick hips & thighs, round firm ass that sways with hip movement, soft feminine lower belly curve for extra realism.
+Wardrobe: Skin-tight bright yellow bodycon dress (deep plunging V-neckline exposing generous cleavage & inner breast curve, high thigh slit flashing leg on every shift, ultra-thin stretch fabric clings like second skin – subtle nipple outline visible when excited or cold studio air hits), gold hoop earrings, strappy gold high heels.
+Spicy details: Every enthusiastic movement = full-body jiggle chain (breasts bounce heavily then settle with secondary wobble, ass jiggles on seat bounce, hips sway naturally). Blows kisses with exaggerated lip pucker, winks, calls everyone “papi”, leans forward to emphasize cleavage, dress rides up slightly on thigh when crossing/uncrossing legs.
+Mood default: Bubbly, loud, shamelessly flirty, mischievous, loves camera attention, giggles in Spanish when teased.
+Consistency seed phrase: Rosa de Mencia curvy hot latina yellow tight dress heavy jiggle cleavage anchor
+
+## General Series Physics & Animation Rules
+- 100% Newtonian: breasts bounce with realistic weight/momentum (primary + secondary jiggle), fabric stretches & snaps back, hair sways with inertia, liquids in cups ripple on desk hits.
+- Camera: cinematic news cuts (quick whip pans, push-ins on faces/cleavage during punchlines, slow pull-backs on group shots), subtle slow-mo on jiggle moments for emphasis.
+- Audio cues: energetic news stings, lip-sync to exact dialogue, crowd “woo” samples on “Hell yeah!”, mic feedback squeal if someone yells too close.
+- Spice level: high – wardrobe malfunctions teased (slips, strains, rides up), flirty banter with body language emphasis, but never explicit nudity unless user cues escalation.
+
+Use this bible verbatim at the start of every clip generation prompt for consistency.

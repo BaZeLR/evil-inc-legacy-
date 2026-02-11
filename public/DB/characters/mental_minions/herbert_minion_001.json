@@ -1,0 +1,44 @@
+{
+  "UniqueID": "herbert_minion_001",
+  "Charname": "Herbert (Minion)",
+  "Gender": "Male",
+  "Type": "mental_minion",
+  "Disposition": "friendly",
+  "prob_spawn": 0,
+  "Description": "A broken shadow of the man he was. Silent, devoted, and waiting for orders.",
+  "Picture": "Assets/images/characters/bosses/herby_talk.jpg",
+  "CurrentRoom": null,
+  "KnowsPlayer": true,
+  "Weapons": [],
+  "ExpReward": 0,
+  "CreditsReward": 0,
+  "CustomProperties": [
+    { "Property": "MindControlled", "Value": true },
+    { "Property": "MentalMinion", "Value": true }
+  ],
+  "ActionsMenu": [
+    {
+      "Action": "Talk",
+      "Description": "He waits for your command.",
+      "ShowIf": "true"
+    }
+  ],
+  "Actions": [
+    {
+      "name": "Talk",
+      "bActive": true,
+      "InputType": "None",
+      "PassCommands": [
+        {
+          "cmdtype": "CT_DISPLAYPICTURE",
+          "CommandPart2": "Assets/images/characters/bosses/herby_talk.jpg"
+        },
+        {
+          "cmdtype": "CT_DISPLAYTEXT",
+          "CommandText": "\"Nothing......master.....\""
+        }
+      ],
+      "FailCommands": []
+    }
+  ]
+}

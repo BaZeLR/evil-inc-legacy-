@@ -1,0 +1,28 @@
+{
+  "Name": "West Side",
+  "UniqueID": "westside_lc_001",
+  "SDesc": "westside",
+  "Group": "Liberty City West",
+  "Type": "neutral",
+  "Spawns": true,
+  "Description": "Liberty City West - Home of the Hall of Justice and Liberty University. In the north east direction you can see Cozy Cafe. On the north side of the district is local University campus.",
+  "Exits": [
+    { "Direction": "South", "DestinationRoom": "Road 7" },
+    { "Direction": "East", "DestinationRoom": "Road 22" },
+    { "Direction": "NE", "DestinationRoom": "Cozy Cafe" },
+    { "Direction": "West", "DestinationRoom": "Hall of Justice" },
+    { "Direction": "North", "DestinationRoom": "Liberty University" }
+  ],
+  "NPCs": [
+    { "UniqueID": "young_super_c_001", "Weight": 15 },
+    { "UniqueID": "jogger_001", "Weight": 10 },
+    { "UniqueID": "biker_a_001", "Weight": 15 },
+    { "UniqueID": "bikini_babe_001", "Weight": 10 }
+  ],
+  "Objects": [],
+  "Actions": [],
+  "CustomProperties": [],
+  "bFirstTimeVisited": false,
+  "bFirstTimeLeft": false,
+  "Picture": "Assets/images/rooms/downtown_day.jpg"
+}
