@@ -11,3 +11,5 @@ preview.stdout.log
 preview.stderr.log
 
 .DS_Store
+
+public/Assets/images/*.zip
