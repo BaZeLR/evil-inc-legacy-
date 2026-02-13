@@ -1,15 +1,27 @@
+# Dependencies and build output
 node_modules/
 dist/
 regalia/node_modules/
+
+# Backups
 backups/
+
+# Runtime DB instance (disposable, not tracked)
+public/DB/**
+!public/DB/.keep
+
+# Runtime save file
 public/DB/savegame.json
 
+# Logs
 *.log
 dev.stdout.log
 dev.stderr.log
 preview.stdout.log
 preview.stderr.log
 
+# System files
 .DS_Store
 
+# Optional large archives inside media
 public/Assets/images/*.zip
